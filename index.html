@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ FAVICON ============ -->
+  <!-- Brand mark: lime dot on charcoal (per brand bible) -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#C9F31D">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#1A1A1A">
+  <meta name="apple-mobile-web-app-title" content="ngo.digital">
+  <meta name="application-name" content="ngo.digital">
+
   <title>ngo.digital — Digital fundraising that actually raises money</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -165,6 +182,38 @@
       color: #555;
     }
 
+    /* ============ LANGUAGE SWITCHER ============ */
+    /* Self-contained — moves cleanly to /quick-check.html or any other page. */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: stretch;
+      border: 1px solid #00000020;
+      border-radius: 999px;
+      overflow: hidden;
+      font-family: 'Bricolage Grotesque', sans-serif;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      transition: background 0.15s ease, color 0.15s ease;
+      line-height: 1.2;
+    }
+    .lang-btn:hover { color: #000; }
+    .lang-btn.is-active {
+      background: #000;
+      color: #C9F31D;
+    }
+    .lang-btn:focus-visible {
+      outline: 2px solid #C9F31D;
+      outline-offset: 2px;
+    }
+
     /* ============ HERO ============ */
     .hero {
       padding: 100px 0 120px;
@@ -277,6 +326,51 @@
     .about-bio p strong { font-weight: 700; }
     .about-bio p em { font-style: italic; }
 
+    /* About — achievement stats */
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+      margin-bottom: 28px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .about-stat-num {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: #000;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .about-stat-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.4;
+      margin-top: 8px;
+    }
+    /* About — recognition badges */
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .about-badge {
+      display: inline-block;
+      background: #FAFAFA;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1A1A1A;
+      letter-spacing: 0.02em;
+    }
+
     /* ============ QUICKCHECK HERO ============ */
     .quickcheck-hero {
       padding: 120px 0;
@@ -353,25 +447,26 @@
     }
     .qc-feature-highlight {
       grid-column: 1 / -1;
-      background: #F5FBE3;
-      border: 1px solid #E1F297;
-      border-radius: 10px;
-      padding: 14px 16px;
+      background: #000;
+      border: none;
+      border-radius: 12px;
+      padding: 28px 32px;
       align-items: center;
     }
-    .qc-feature-highlight .qc-feature-num {
-      background: #C9F31D;
-      color: #1A1A1A;
-      width: 28px;
-      height: 28px;
-      padding: 0;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 800;
-      line-height: 1;
+    .qc-feature-hero-text {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+    }
+    .qc-feature-hero-text em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: #C9F31D;
+      letter-spacing: -0.02em;
     }
     .qc-ctas {
       display: flex;
@@ -928,12 +1023,14 @@
 
     /* ============ CONTACT ============ */
     .contact {
-      padding: 120px 0;
-      background: #1A1A1A;
-      color: #FFFFFF;
+      padding: 64px 0 120px;
+      background: #C9F31D;
+      color: #000;
     }
     .contact .eyebrow-pill {
       margin-bottom: 32px;
+      background: #000;
+      color: #C9F31D;
     }
     .contact h2 {
       font-family: 'Bricolage Grotesque', sans-serif;
@@ -941,19 +1038,19 @@
       font-weight: 800;
       line-height: 1.0;
       letter-spacing: -0.045em;
-      color: #FFFFFF;
+      color: #000;
       margin-bottom: 24px;
     }
     .contact h2 em {
       font-family: 'Instrument Serif', serif;
       font-style: italic;
       font-weight: 400;
-      color: #C9F31D;
+      color: #000;
     }
     .contact p.contact-lead {
       font-family: 'Source Sans 3', sans-serif;
       font-size: 19px;
-      color: #BBBBBB;
+      color: #1A1A1A;
       line-height: 1.55;
       margin-bottom: 36px;
       max-width: 580px;
@@ -965,7 +1062,7 @@
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 12px;
       font-weight: 700;
-      color: #888;
+      color: #1A1A1A;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 14px;
@@ -984,27 +1081,27 @@
     .contact-chip {
       display: inline-block;
       padding: 10px 18px;
-      border: 1px solid #3A3A3A;
+      border: 1px solid #000;
       border-radius: 999px;
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 14px;
       font-weight: 600;
-      color: #DDDDDD;
+      color: #000;
       cursor: pointer;
       transition: all 0.15s ease;
-      background: #2A2A2A;
+      background: transparent;
     }
     .contact-chip:hover {
-      border-color: #C9F31D;
-      color: #FFFFFF;
+      background: #000;
+      color: #C9F31D;
     }
     .contact-chips input[type="radio"]:checked + .contact-chip {
-      background: #C9F31D;
-      border-color: #C9F31D;
-      color: #1A1A1A;
+      background: #000;
+      border-color: #000;
+      color: #C9F31D;
     }
     .contact-chips input[type="radio"]:focus-visible + .contact-chip {
-      outline: 2px solid #C9F31D;
+      outline: 2px solid #000;
       outline-offset: 2px;
     }
     .contact-email-row {
@@ -1012,10 +1109,10 @@
       gap: 8px;
       max-width: 540px;
       align-items: center;
-      background: #2A2A2A;
+      background: #FFFFFF;
       border-radius: 999px;
       padding: 8px 8px 8px 28px;
-      border: 1px solid #3A3A3A;
+      border: 1px solid #000;
     }
     .contact-email-row input {
       flex: 1;
@@ -1024,15 +1121,15 @@
       background: transparent;
       font-family: 'Source Sans 3', sans-serif;
       font-size: 16px;
-      color: #FFFFFF;
+      color: #000;
       padding: 10px 0;
     }
     .contact-email-row input::placeholder {
       color: #888;
     }
     .contact-submit {
-      background: #C9F31D;
-      color: #1A1A1A;
+      background: #000;
+      color: #C9F31D;
       padding: 14px 24px;
       border-radius: 999px;
       font-family: 'Bricolage Grotesque', sans-serif;
@@ -1043,27 +1140,27 @@
       letter-spacing: 0.02em;
     }
     .contact-submit:hover {
-      background: #B5DC1A;
+      background: #1A1A1A;
     }
     .contact-fallback {
       font-family: 'Source Sans 3', sans-serif;
       font-size: 14px;
-      color: #888;
+      color: #1A1A1A;
       margin-top: 24px;
     }
     .contact-fallback a {
-      color: #C9F31D;
-      text-decoration: none;
-      border-bottom: 1px solid #C9F31D40;
+      color: #000;
+      text-decoration: underline;
+      border-bottom: 1px solid #00000040;
     }
     .contact-fallback a:hover {
-      border-bottom-color: #C9F31D;
+      border-bottom-color: #000;
     }
     .contact-success {
       display: none;
       padding: 16px 20px;
-      background: #C9F31D;
-      color: #1A1A1A;
+      background: #000;
+      color: #C9F31D;
       border-radius: 12px;
       max-width: 540px;
       font-family: 'Bricolage Grotesque', sans-serif;
@@ -1137,26 +1234,98 @@
     }
 
     /* ============ RESPONSIVE (basic) ============ */
-    @media (max-width: 900px) {
-      .container { padding: 0 24px; }
-      nav.top-nav { padding: 16px 24px; }
-      .nav-links { gap: 16px; font-size: 13px; }
+    /* ============ RESPONSIVE — TABLET (≤ 1024px) ============ */
+    @media (max-width: 1024px) {
+      .container { padding: 0 32px; }
+      nav.top-nav { padding: 18px 32px; }
+      .hero { padding: 80px 0 96px; }
+      .about, .quickcheck-hero, .services, .cases, .testimonial { padding: 96px 0; }
+      .contact { padding: 56px 0 96px; }
+      footer { padding: 64px 0 48px; }
+      .services-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ============ RESPONSIVE — MOBILE (≤ 768px) ============ */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      nav.top-nav { padding: 14px 20px; }
+      .nav-links { gap: 12px; font-size: 13px; }
+
+      /* Hero */
+      .hero { padding: 64px 0 72px; }
       .hero h1 { font-size: 52px; }
       .rotating-wrap { min-width: 320px; height: 56px; }
       .hero p { font-size: 18px; }
+
+      /* Sections */
+      .about, .quickcheck-hero, .services, .cases, .testimonial { padding: 64px 0; }
+      .contact { padding: 48px 0 72px; }
+      footer { padding: 48px 0 36px; }
+
+      /* Stats / grids */
       .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
       .stat-num { font-size: 36px; }
-      .about-grid, .services-header, .services-grid, .cases-grid, .footer-grid, .qc-grid {
+      .about-stats { grid-template-columns: 1fr; gap: 16px; }
+      .about-grid, .services-header, .services-grid, .services-grid-3,
+      .cases-grid, .footer-grid, .qc-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: 40px;
       }
       .services-grid-2 { grid-template-columns: 1fr; }
       .qc-features { grid-template-columns: 1fr; }
+      .case-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+      /* Typography */
       .qc-title { font-size: 38px; }
       .section-title, .contact h2 { font-size: 38px; }
-      .testimonial-quote { font-size: 22px; min-height: 320px; }
+      .testimonial-quote { font-size: 22px; min-height: auto; margin-bottom: 28px; }
       .case-card h3 { font-size: 28px; }
-      .footer-bottom { flex-direction: column; gap: 12px; }
+      .qc-feature-hero-text { font-size: 18px; }
+
+      /* Cards — tighter padding */
+      .service-card { padding: 28px; min-height: auto; }
+      .case-card { padding: 32px; }
+      .qc-card { padding: 28px; }
+      .qc-feature-highlight { padding: 20px 22px; }
+
+      /* Footer bottom stack */
+      .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+    }
+
+    /* ============ RESPONSIVE — SMALL MOBILE (≤ 480px) ============ */
+    @media (max-width: 480px) {
+      .container { padding: 0 18px; }
+      nav.top-nav { padding: 12px 18px; }
+      .logo { font-size: 18px; }
+
+      /* Hero */
+      .hero { padding: 48px 0 56px; }
+      .hero h1 { font-size: 40px; line-height: 1.05; }
+      .rotating-wrap { min-width: 260px; height: 44px; }
+      .hero p { font-size: 16px; }
+
+      /* Stats — 1 column */
+      .stats-grid { grid-template-columns: 1fr; gap: 24px; }
+      .stat-num { font-size: 32px; }
+
+      /* Headings */
+      .section-title, .contact h2 { font-size: 32px; }
+      .qc-title { font-size: 32px; }
+      .testimonial-quote { font-size: 20px; }
+      .case-card h3 { font-size: 24px; }
+
+      /* Case stats — stack vertically when really tight */
+      .case-stats { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .case-stat-num { font-size: 26px; }
+
+      /* Cards — even tighter */
+      .service-card { padding: 24px; }
+      .case-card { padding: 24px; }
+      .qc-card { padding: 22px; }
+
+      /* Touch-friendly form */
+      .contact-submit { padding: 16px 22px; }
+      .contact-email-row { padding: 6px 6px 6px 20px; }
     }
   </style>
 </head>
@@ -1166,18 +1335,20 @@
   <nav class="top-nav">
     <a href="#" class="logo">ngo<span class="dot">.</span>digital</a>
     <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#cases">Cases</a>
-      <a href="#contact">Contact</a>
-      <a href="mailto:peter@ngo.digital?subject=QuickCheck%20inquiry&body=Hi%20Peter%2C%0D%0A%0D%0AI%27d%20like%20to%20learn%20more%20about%20your%20QuickCheck.%20Here%27s%20a%20bit%20about%20us%3A%0D%0A%0D%0AOrganization%3A%20%0D%0AWebsite%3A%20%0D%0ATeam%20size%3A%20%0D%0ABiggest%20fundraising%20challenge%3A%20%0D%0A%0D%0AThanks%21" class="btn-primary" style="padding: 11px 20px; font-size: 14px;">Get a QuickCheck →</a>
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-lang="de" aria-pressed="false">DE</button>
+      </div>
+      <a href="mailto:peter@ngo.digital?subject=QuickCheck%20inquiry&body=Hi%20Peter%2C%0D%0A%0D%0AI%27d%20like%20to%20learn%20more%20about%20your%20QuickCheck.%20Here%27s%20a%20bit%20about%20us%3A%0D%0A%0D%0AOrganization%3A%20%0D%0AWebsite%3A%20%0D%0ATeam%20size%3A%20%0D%0ABiggest%20fundraising%20challenge%3A%20%0D%0A%0D%0AThanks%21"
+         class="btn-primary" style="padding: 11px 20px; font-size: 14px;"
+         data-i18n="nav.cta" data-i18n-href="nav.cta_href">Get a QuickCheck →</a>
     </div>
   </nav>
 
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="container">
-      <h1>
+      <h1 data-i18n="hero.h1">
         Digital fundraising,<br>
         <em>that actually</em><br>
         <span class="rotating-wrap">
@@ -1187,12 +1358,14 @@
           <span class="rotating-headline">grows community<span class="lime-dot">.</span></span>
         </span>
       </h1>
-      <p>
+      <p data-i18n="hero.lead">
         <strong style="color: #1A1A1A; font-weight: 700;">Most nonprofits leave money on the table every month.</strong> Let's fix that with digital fundraising — and turn it into <strong style="color: #1A1A1A; font-weight: 700;">real donations</strong>.
       </p>
       <div class="hero-ctas">
-        <a href="mailto:peter@ngo.digital?subject=QuickCheck%20inquiry&body=Hi%20Peter%2C%0D%0A%0D%0AI%27d%20like%20to%20start%20with%20a%20QuickCheck.%20Here%27s%20a%20bit%20about%20us%3A%0D%0A%0D%0AOrganization%3A%20%0D%0AWebsite%3A%20%0D%0ATeam%20size%3A%20%0D%0ABiggest%20fundraising%20challenge%3A%20%0D%0A%0D%0AThanks%21" class="btn-primary">Start with a QuickCheck <span>→</span></a>
-        <a href="#services" class="btn-secondary">See all services →</a>
+        <a href="mailto:peter@ngo.digital?subject=QuickCheck%20inquiry&body=Hi%20Peter%2C%0D%0A%0D%0AI%27d%20like%20to%20start%20with%20a%20QuickCheck.%20Here%27s%20a%20bit%20about%20us%3A%0D%0A%0D%0AOrganization%3A%20%0D%0AWebsite%3A%20%0D%0ATeam%20size%3A%20%0D%0ABiggest%20fundraising%20challenge%3A%20%0D%0A%0D%0AThanks%21"
+           class="btn-primary"
+           data-i18n="hero.cta_primary" data-i18n-href="hero.cta_primary_href">Start with a QuickCheck <span>→</span></a>
+        <a href="#services" class="btn-secondary" data-i18n="hero.cta_secondary">See all services →</a>
       </div>
     </div>
   </section>
@@ -1206,21 +1379,50 @@
         </div>
         <div class="about-bio">
           <div class="eyebrow">About me</div>
+          <!-- Headline options (final pick: C — provocative-claim, brand bible §5.2.1):
+               A. "I help European nonprofits unlock the donors they already have."
+               B. "Ten years. Hundreds of donors. One job — real money for nonprofits."
+               C. "I help nonprofits across Europe raise real money — not just engagement."
+               Picked C: first-person + "real" + negace buzzwordu "engagement" — nejlépe
+               sedí pro DACH publikum a punchy provocative tón. -->
           <h2 class="section-title">
             I help nonprofits<br>
-            unlock the <em>potential</em><br>
-            they already have<span class="lime-dot">.</span>
+            across Europe raise<br>
+            <em>real money</em> — not<br>
+            just engagement<span class="lime-dot">.</span>
           </h2>
           <p>
-            I'm Peter Chalupiansky — fundraising consultant from Prague. For ten years I've been working with nonprofits across Europe, helping them turn digital donations into a sustainable revenue channel.
+            I'm Peter Chalupiansky — a fundraising consultant based in Prague. For the past <strong>ten years</strong>, I've worked with nonprofits across Europe, helping them turn digital donations into a sustainable revenue channel.
           </p>
           <p>
-            By day, I lead CSR & ESG at Kaufland Czech Republic, where I'm behind the Christmas campaign for Světluška that raised <strong>€4.9M over seven years</strong>. After hours, I run my own projects — including <strong>Czechia's #1 Christmas campaign 2024</strong> (€700K in six weeks) and a side campaign with ROI of 2,100%.
+            By day, I lead <strong>CSR &amp; ESG at Kaufland Czech Republic</strong> — part of <strong>Schwarz Gruppe</strong>, Europe's largest retailer. I'm behind the Christmas campaign for <em>Světluška</em> that has raised <strong>€4.9M over seven years</strong>.
           </p>
           <p>
-            I sit on the board of the Czech Radio Foundation and have been recognized as <em>Personality of Philanthropy</em> (2021) and <em>Laskavec</em> (2020).
+            After hours, I run my own projects. <strong>Rozsviťme Česko</strong> became Czechia's #1 Christmas campaign of 2024. A 2-month campaign for a small social enterprise returned <strong>2,100% ROI</strong>. I sit on the board of the <strong>Czech Radio Foundation</strong>, speak at TEDx, and was named <em>Personality of Philanthropy</em> (2021) and <em>Laskavec</em> (2020).
           </p>
-          <a href="#" class="btn-secondary" style="margin-top: 12px;">Read full story →</a>
+
+          <!-- Achievement stats -->
+          <div class="about-stats">
+            <div>
+              <div class="about-stat-num">€4.9M</div>
+              <div class="about-stat-label">Raised over 7 years for a Czech Christmas campaign</div>
+            </div>
+            <div>
+              <div class="about-stat-num">€700K</div>
+              <div class="about-stat-label">Czechia's #1 Christmas campaign 2024 — in 6 weeks</div>
+            </div>
+            <div>
+              <div class="about-stat-num">2,100%</div>
+              <div class="about-stat-label">ROI on a side fundraising campaign</div>
+            </div>
+          </div>
+
+          <!-- Recognition badges -->
+          <div class="about-badges">
+            <span class="about-badge">Board · Czech Radio Foundation</span>
+            <span class="about-badge">Personality of Philanthropy 2021</span>
+            <span class="about-badge">Laskavec 2020</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1239,7 +1441,7 @@
             missing<span class="lime-dot">.</span>
           </h2>
           <p class="qc-lead">
-            In just 10 working days, I run a complete external audit of your digital fundraising — without your team lifting a finger. You get a <strong>15–25 page report</strong>, a <strong>video walkthrough</strong>, and <strong>5–10 quick wins</strong> you can ship next week.
+            In just 10 working days, I run a complete external audit of your digital fundraising — without your team lifting a finger. You get a <strong>full report</strong>, a <strong>video walkthrough</strong>, and a list of <strong>concrete quick wins</strong> you can ship next week.
           </p>
 
           <div class="qc-features">
@@ -1260,7 +1462,7 @@
             <div class="qc-feature">
               <div class="qc-feature-num">03</div>
               <div class="qc-feature-text">
-                <strong>5–10 quick wins</strong>
+                <strong>Quick wins</strong>
                 <span>Concrete actions to ship next week</span>
               </div>
             </div>
@@ -1272,10 +1474,8 @@
               </div>
             </div>
             <div class="qc-feature qc-feature-highlight">
-              <div class="qc-feature-num">!</div>
-              <div class="qc-feature-text">
-                <strong>Zero work from your team</strong>
-                <span>No interviews, no access requests, no meetings — I work entirely from public sources</span>
+              <div class="qc-feature-hero-text">
+                No interviews, no access requests, no meetings — I work <em>entirely</em> from public sources<span class="lime-dot">.</span>
               </div>
             </div>
           </div>
@@ -1287,7 +1487,7 @@
               <span class="qc-divider">·</span>
               <span>10 working days</span>
               <span class="qc-divider">·</span>
-              <span>No prep needed</span>
+              <span>No meetings</span>
             </div>
           </div>
         </div>
@@ -1347,8 +1547,8 @@
               <div class="qc-darkpillar">
                 <span class="qc-darkpillar-num">07</span>
                 <div class="qc-darkpillar-text">
-                  <strong>Your Christmas fundraising</strong>
-                  <span>Plus year-end &amp; seasonal campaigns</span>
+                  <strong>Your campaign performance</strong>
+                  <span>Year-end, seasonal and one-off fundraising campaigns</span>
                 </div>
               </div>
               <div class="qc-darkpillar">
@@ -1395,7 +1595,7 @@
             <div class="card-tag-dark">MOST POPULAR</div>
           </div>
           <h3>QuickCheck</h3>
-          <p>A complete external audit of your digital fundraising in 10 working days. PDF report, video walkthrough, microsite — and 5–10 quick wins to ship next week.</p>
+          <p>A complete external audit of your digital fundraising in 10 working days. PDF report, video walkthrough, microsite — and concrete quick wins to ship next week.</p>
           <div class="card-pricing">
             <div class="pricing-from">From</div>
             <div class="pricing-amount">CHF 4,999</div>
@@ -1412,7 +1612,7 @@
           <p>Mid-term digital fundraising, donor care &amp; social media strategy. Comprehensive document with PDF report, microsite and HeyGen video walkthrough.</p>
           <div class="card-pricing">
             <div class="pricing-from">Tailored to your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Full Strategy" style="font-size: 22px;">Let's talk →</a>
+            <a href="#contact" class="pricing-amount-link" data-interest="Full Strategy" style="font-size: 22px;">Plan together →</a>
           </div>
         </div>
 
@@ -1422,10 +1622,10 @@
             <div class="card-num">03 · Partnership</div>
           </div>
           <h3>Retainer</h3>
-          <p>Long-term partnership as your fractional fundraising director. Strategy, execution, donor journey, AI tools — everything in one rhythm.</p>
+          <p>Long-term partnership as your fractional fundraising director. Strategy, execution, donor journey, AI tools — everything in one rhythm. Hours scale up or down to match your needs.</p>
           <div class="card-pricing">
-            <div class="pricing-from">Tailored to your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Retainer" style="font-size: 22px;">Let's talk →</a>
+            <div class="pricing-from">Hours flex with your needs</div>
+            <a href="#contact" class="pricing-amount-link" data-interest="Retainer" style="font-size: 22px;">Start a retainer →</a>
           </div>
         </div>
 
@@ -1439,7 +1639,7 @@
           <p>One-off consultation on a fundraising campaign, social media strategy or donor care. Plus honest feedback on your nonprofit's plans before you ship.</p>
           <div class="card-pricing">
             <div class="pricing-from">Tailored to your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Consulting" style="font-size: 22px;">Let's talk →</a>
+            <a href="#contact" class="pricing-amount-link" data-interest="Consulting" style="font-size: 22px;">Book a session →</a>
           </div>
         </div>
 
@@ -1453,7 +1653,7 @@
           <p>A purpose-built donation microsite for a specific campaign. Optimised donor journey, gamification, payment integration and analytics ready out of the box.</p>
           <div class="card-pricing">
             <div class="pricing-from">Tailored to your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Donor microsite" style="font-size: 22px;">Let's talk →</a>
+            <a href="#contact" class="pricing-amount-link" data-interest="Donor microsite" style="font-size: 22px;">Scope it out →</a>
           </div>
         </div>
 
@@ -1467,7 +1667,7 @@
           <p>Honest note: I'm not a designer myself — but I lead this together with my trusted external graphic designer. You get one project lead, two minds, zero handover headaches.</p>
           <div class="card-pricing">
             <div class="pricing-from">Tailored to your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Visual identity" style="font-size: 22px;">Let's talk →</a>
+            <a href="#contact" class="pricing-amount-link" data-interest="Visual identity" style="font-size: 22px;">Brief the team →</a>
           </div>
         </div>
 
@@ -1488,8 +1688,8 @@
         <div class="case-card">
           <div>
             <div class="case-tag">FEATURED</div>
-            <h3>Rozsviťme Česko 2024</h3>
-            <p class="case-desc">Czechia's #1 Christmas campaign of 2024. Built on gamification, donor journey design and media partnerships.</p>
+            <h3>Czechia's #1 Christmas campaign 2024</h3>
+            <p class="case-desc">Built with a team of volunteers — the most successful Christmas fundraiser in the country that year. Powered by gamification, donor journey design and media partnerships.</p>
           </div>
           <div class="case-stats">
             <div>
@@ -1497,7 +1697,7 @@
               <div class="case-stat-label">raised</div>
             </div>
             <div>
-              <div class="case-stat-num">60K+</div>
+              <div class="case-stat-num">60 000+</div>
               <div class="case-stat-label">donors</div>
             </div>
             <div>
@@ -1511,18 +1711,14 @@
         <div class="case-card muted">
           <div>
             <div class="case-tag">SMALL NGO</div>
-            <h3>Sociální podnik Klubák</h3>
+            <h3>Czech social enterprise</h3>
             <p class="case-desc">Two-month digital campaign for a small social enterprise. Result: ROI of 2,100%.</p>
           </div>
           <div class="case-result">
-            <div class="case-result-num">€26K → €560K</div>
+            <div class="case-result-num">CHF 1,400 → CHF 26,000</div>
             <div class="case-result-label">investment to result, in 2 months</div>
           </div>
         </div>
-      </div>
-
-      <div class="cases-cta">
-        <a href="#" class="btn-secondary">All case studies →</a>
       </div>
     </div>
   </section>
@@ -1533,7 +1729,7 @@
       <div class="testimonial-content">
         <div class="eyebrow">References</div>
         <p class="testimonial-quote">
-          "With a team of volunteers, Peter built the <strong style="color: #C9F31D; font-weight: 700;">most successful Christmas campaign</strong> in the Czech Republic last year. Through simplicity and gamification, he reached <strong style="color: #C9F31D; font-weight: 700;">over 60,000 donors</strong>."
+          "With a team of volunteers, Peter built the <strong style="color: #C9F31D; font-weight: 700;">most successful Christmas campaign</strong> in the Czech Republic last year. Through simplicity and gamification, he reached <strong style="color: #C9F31D; font-weight: 700;">over 60 000 donors</strong>."
         </p>
         <div class="testimonial-author">
           <div class="author-avatar"><img src="data:image/jpeg;base64,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" alt="Zdeněk Mihalco" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
@@ -1551,8 +1747,8 @@
     <div class="container">
       <div class="eyebrow-pill">Let's talk</div>
       <h2>
-        Tell me about<br>
-        your <em>nonprofit</em><span style="color: #C9F31D;">.</span>
+        Tell me <em>more</em> about<br>
+        your organization<span style="color: #000;">.</span>
       </h2>
       <p class="contact-lead">
         Pick what you're curious about, drop your email, and I'll get back within 24 hours. No commitment, no sales pitch — just a real conversation.
