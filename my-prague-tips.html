@@ -24,6 +24,11 @@
 <!-- SEO -->
 <meta name="description" content="A local's guide to Prague from Petr Chalupianský — coffee, food, beer, parks and day trips. Where I actually go, what to skip, what's worth your time.">
 
+<!-- hreflang for EN/DE versions -->
+<link rel="alternate" hreflang="en" href="https://ngo.digital/my-prague-tips.html">
+<link rel="alternate" hreflang="de" href="https://ngo.digital/de/my-prague-tips.html">
+<link rel="alternate" hreflang="x-default" href="https://ngo.digital/my-prague-tips.html">
+
 <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
 <meta property="og:title" content="My Prague — A local's guide">
 <meta property="og:description" content="Where I actually go in Prague — coffee, food, beer, parks and day trips. What to skip, what's worth your time.">
@@ -45,9 +50,34 @@
   .container { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
 
   .top-nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 0.5px solid rgba(0,0,0,0.08); padding: 18px 0; }
-  .top-nav .container { display: flex; justify-content: space-between; align-items: center; }
+  .top-nav .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
   .logo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 18px; color: #1A1A1A; letter-spacing: -0.02em; text-decoration: none; }
   .logo .dot { color: #C9F31D; }
+
+  /* ============ NAV RIGHT (lang switcher + back link) ============ */
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+
+  /* Language switcher — per brand bible 4.6 eyebrow style */
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .lang-switcher a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.15s ease;
+    padding: 4px 2px;
+  }
+  .lang-switcher a:hover { color: #1A1A1A; }
+  .lang-switcher a.active { color: #1A1A1A; }
+  .lang-divider { color: #C9F31D; font-weight: 800; }
+
   .back-link { font-size: 14px; font-weight: 600; color: #1A1A1A; text-decoration: none; }
 
   .hero { padding: 120px 0 80px; }
@@ -200,14 +230,39 @@
   }
 
 
+  /* ============ MOBILE ============ */
   @media (max-width: 768px) {
     .container { padding: 0 24px; }
+
+    /* Mobile nav: kompaktnější */
+    .top-nav { padding: 14px 0; }
+    .top-nav .container { gap: 12px; }
+    .nav-right { gap: 14px; }
+    .back-link { font-size: 13px; }
+    /* Schováme "Back to fundraising" text na malých obrazovkách, aby se vešel lang switcher */
+    .back-link .back-link-text { display: none; }
+    .back-link .back-link-arrow { display: inline; font-size: 18px; }
+
+    /* HIDE pill-bar on mobile — bylo to "lítavé" a horizontal scroll na 7 položek = UX bída.
+       Místo toho: smooth scroll funguje, sekce mají silné typo, uživatel se neztratí.
+       Pokud bys chtěl v budoucnu mobile nav, doporučuji buď hamburger nebo <select> dropdown. */
+    .pill-bar { display: none; }
+    .cat-section { scroll-margin-top: 80px; } /* méně, protože nemáme pill-bar */
+
     .hero { padding: 64px 0 48px; }
     .hero h1 { font-size: 48px; }
     .cat-section { padding: 64px 0; }
     .cat-section h2 { font-size: 32px; }
     .cards-grid { grid-template-columns: 1fr; gap: 24px; }
     .cta-section h2 { font-size: 32px; }
+    .cta-buttons { flex-direction: column; align-items: stretch; }
+  }
+
+  /* Velmi úzké telefony (iPhone SE atd.) */
+  @media (max-width: 380px) {
+    .container { padding: 0 18px; }
+    .hero h1 { font-size: 40px; }
+    .lang-switcher { font-size: 11px; }
   }
 </style>
 </head>
@@ -218,7 +273,21 @@
 <nav class="top-nav">
   <div class="container">
     <a href="/" class="logo">ngo<span class="dot">.</span>digital</a>
-    <a href="/" class="back-link">← Back to fundraising</a>
+
+    <div class="nav-right">
+      <!-- Language switcher: EN active, DE links to /de/ subdir.
+           PETR: až budeš mít DE překlad, ulož ho na /de/my-prague-tips.html -->
+      <div class="lang-switcher" aria-label="Language">
+        <a href="/my-prague-tips.html" class="active" hreflang="en" aria-current="page">EN</a>
+        <span class="lang-divider" aria-hidden="true">·</span>
+        <a href="/de/my-prague-tips.html" hreflang="de">DE</a>
+      </div>
+
+      <a href="/" class="back-link">
+        <span class="back-link-arrow">←</span>
+        <span class="back-link-text"> Back to fundraising</span>
+      </a>
+    </div>
   </div>
 </nav>
 
