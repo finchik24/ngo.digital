@@ -1461,34 +1461,19 @@
       .container { padding: 0 20px; }
       nav.top-nav { padding: 14px 20px; }
 
-      /* Hamburger ON, nav-links transforms into a fixed dropdown panel */
-      .nav-hamburger { display: flex; }
+      /* Mobile: skrýt hamburger, top nav zobrazit inline (logo vlevo, jazyk vpravo) */
+      .nav-hamburger { display: none; }
       .nav-links {
-        position: fixed;
-        top: 60px; /* under top-nav (14+~32+14 ≈ 60px on mobile) */
-        left: 0;
-        right: 0;
-        background: #FFFFFF;
-        flex-direction: column;
-        gap: 20px;
-        padding: 28px 20px 32px;
-        border-bottom: 0.5px solid #00000010;
-        box-shadow: 0 8px 24px #00000010;
-        align-items: stretch;
-        font-size: 14px;
-        transform: translateY(-110%);
-        transition: transform 0.3s ease;
-        z-index: 90;
-      }
-      .nav-links.is-open {
-        transform: translateY(0);
-      }
-      .nav-links .lang-switcher {
-        align-self: flex-start;
+        display: flex;
+        gap: 12px;
+        align-items: center;
       }
       .nav-links .btn-primary {
-        display: none;       /* hide QuickCheck CTA in hamburger panel on mobile */
+        display: none;       /* QuickCheck CTA na mobilu skryté */
       }
+      /* Kompaktnější top nav na malé obrazovce */
+      nav.top-nav { padding: 16px 20px; }
+      .logo { font-size: 19px; }
 
       /* Hero */
       .hero { padding: 64px 0 72px; }
