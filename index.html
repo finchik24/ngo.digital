@@ -1268,93 +1268,6 @@
       margin-bottom: 36px;
       max-width: 580px;
     }
-    .contact-form-wrap {
-      max-width: 660px;
-    }
-    .contact-label {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      color: #1A1A1A;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .contact-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .contact-chips input[type="radio"] {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .contact-chip {
-      display: inline-block;
-      padding: 10px 18px;
-      border: 1px solid #000;
-      border-radius: 999px;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: #000;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      background: transparent;
-    }
-    .contact-chip:hover {
-      background: #000;
-      color: #C9F31D;
-    }
-    .contact-chips input[type="radio"]:checked + .contact-chip {
-      background: #000;
-      border-color: #000;
-      color: #C9F31D;
-    }
-    .contact-chips input[type="radio"]:focus-visible + .contact-chip {
-      outline: 2px solid #000;
-      outline-offset: 2px;
-    }
-    .contact-email-row {
-      display: flex;
-      gap: 8px;
-      max-width: 540px;
-      align-items: center;
-      background: #FFFFFF;
-      border-radius: 999px;
-      padding: 8px 8px 8px 28px;
-      border: 1px solid #000;
-    }
-    .contact-email-row input {
-      flex: 1;
-      border: none;
-      outline: none;
-      background: transparent;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 16px;
-      color: #000;
-      padding: 10px 0;
-    }
-    .contact-email-row input::placeholder {
-      color: #888;
-    }
-    .contact-submit {
-      background: #000;
-      color: #C9F31D;
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-    .contact-submit:hover {
-      background: #1A1A1A;
-    }
     .contact-fallback {
       font-family: 'Source Sans 3', sans-serif;
       font-size: 14px;
@@ -1369,17 +1282,352 @@
     .contact-fallback a:hover {
       border-bottom-color: #000;
     }
-    .contact-success {
+
+    /* ============ CONTACT WIZARD (one-question-at-a-time) ============ */
+    .wizard {
+      max-width: 720px;
+      margin-top: 32px;
+      background: #FFFFFF;
+      border: 1px solid #00000010;
+      border-radius: 24px;
+      padding: 56px 48px;
+      box-shadow: 0 4px 0 #00000008;
+      position: relative;
+      overflow: hidden;
+    }
+    .wizard-progress {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+    .wizard-progress-dot {
+      flex: 1;
+      height: 4px;
+      background: #EEE;
+      border-radius: 2px;
+      transition: background 0.3s ease;
+    }
+    .wizard-progress-dot.done { background: #C9F31D; }
+    .wizard-progress-dot.current { background: #1A1A1A; }
+    /* Prefill intro: full-bleed lime stripe (variant 01) */
+    .wizard-prefill-intro {
       display: none;
-      padding: 16px 20px;
-      background: #000;
+      align-items: center;
+      gap: 16px;
+      margin: -56px -48px 32px;
+      padding: 18px 48px;
+      background: linear-gradient(90deg, #C9F31D 0%, #DEF96B 50%, #C9F31D 100%);
+      background-size: 200% 100%;
+      animation: wizardStripeSlide 8s ease-in-out 2;
+      animation-fill-mode: forwards;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .wizard-prefill-intro.is-visible { display: flex; }
+    @keyframes wizardStripeSlide {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* Custom SVG sparks - geometric, on-brand (no emoji) */
+    .wizard-prefill-sparks {
+      flex-shrink: 0;
+      width: 36px;
+      height: 28px;
+      position: relative;
+    }
+    .wizard-prefill-sparks svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .wizard-prefill-sparks .spark {
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: wizardSparkPop 1.6s cubic-bezier(.2,.8,.2,1) 1 both;
+    }
+    .wizard-prefill-sparks .spark-1 { animation-delay: 0.15s; }
+    .wizard-prefill-sparks .spark-2 { animation-delay: 0.30s; }
+    .wizard-prefill-sparks .spark-3 { animation-delay: 0.45s; }
+    @keyframes wizardSparkPop {
+      0% { transform: scale(0) rotate(0deg); opacity: 0; }
+      40% { transform: scale(1.15) rotate(15deg); opacity: 1; }
+      70% { transform: scale(0.95) rotate(-5deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .wizard-prefill-thanks {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1A1A1A;
+      letter-spacing: -0.01em;
+      flex: 1;
+      min-width: 200px;
+      line-height: 1.35;
+    }
+    .wizard-prefill-thanks em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 18px;
+    }
+    .wizard-prefill-change {
+      background: #1A1A1A;
       color: #C9F31D;
-      border-radius: 12px;
-      max-width: 540px;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: transform 0.15s ease;
+      flex-shrink: 0;
+    }
+    .wizard-prefill-change:hover { transform: scale(1.05); }
+    /* Reduced motion: no animations */
+    @media (prefers-reduced-motion: reduce) {
+      .wizard-prefill-intro { animation: none; }
+      .wizard-prefill-sparks .spark { animation: none; }
+    }
+    .wizard-step {
+      display: none;
+      animation: wizardFadeIn 0.4s cubic-bezier(.2,.8,.2,1);
+    }
+    .wizard-step.active { display: block; }
+    @keyframes wizardFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .wizard-question {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: #1A1A1A;
+      margin-bottom: 8px;
+    }
+    .wizard-question em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .wizard-hint {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 16px;
+      color: #888;
+      margin-bottom: 28px;
+    }
+    .wizard-input {
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid #1A1A1A;
+      padding: 16px 0;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 22px;
+      color: #1A1A1A;
+      background: transparent;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .wizard-input:focus { border-bottom-color: #C9F31D; }
+    .wizard-input::placeholder { color: #BBB; font-weight: 300; }
+    .wizard-input.is-error { border-bottom-color: #E63946; }
+    .wizard-error {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 13px;
+      color: #E63946;
+      margin-top: 8px;
+      min-height: 18px;
+    }
+    .wizard-textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid #1A1A1A;
+      padding: 16px 0;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #1A1A1A;
+      background: transparent;
+      outline: none;
+      resize: none;
+      min-height: 90px;
+    }
+    .wizard-textarea:focus { border-bottom-color: #C9F31D; }
+    .wizard-textarea::placeholder { color: #BBB; font-weight: 300; }
+    .wizard-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .wizard-chips input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .wizard-chip {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 1px solid #000;
+      border-radius: 999px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: transparent;
+    }
+    .wizard-chip:hover { background: #000; color: #C9F31D; }
+    .wizard-chips input[type="radio"]:checked + .wizard-chip {
+      background: #000; color: #C9F31D; border-color: #000;
+    }
+    .wizard-chips input[type="radio"]:focus-visible + .wizard-chip {
+      outline: 2px solid #000;
+      outline-offset: 2px;
+    }
+    .wizard-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 32px;
+    }
+    .wizard-back, .wizard-next, .wizard-skip {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 700;
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+    .wizard-back {
+      background: transparent;
+      color: #888;
+      padding: 12px 18px;
       font-size: 15px;
-      margin-top: 12px;
+    }
+    .wizard-back:hover { color: #1A1A1A; }
+    .wizard-back.is-hidden { visibility: hidden; }
+    .wizard-skip {
+      background: transparent;
+      color: #888;
+      padding: 12px 18px;
+      font-size: 14px;
+      margin-right: 8px;
+    }
+    .wizard-skip:hover { color: #1A1A1A; }
+    .wizard-skip.is-hidden { display: none; }
+    .wizard-next {
+      background: #C9F31D;
+      color: #1A1A1A;
+      padding: 14px 26px;
+      font-size: 15px;
+      box-shadow: 0 4px 0 #00000010;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .wizard-next:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #00000010;
+    }
+    .wizard-next:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .wizard-press-enter {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 12px;
+      color: #888;
+      margin-left: 14px;
+    }
+    .wizard-press-enter kbd {
+      background: #F5F5F5;
+      border: 1px solid #DDD;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .wizard-success {
+      text-align: center;
+      padding: 48px 0 16px;
+      animation: wizardFadeIn 0.5s cubic-bezier(.2,.8,.2,1);
+    }
+    .wizard-success-icon {
+      width: 64px;
+      height: 64px;
+      background: #C9F31D;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #1A1A1A;
+      font-weight: 800;
+    }
+    .wizard-success h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .wizard-success h3 em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .wizard-success p {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 17px;
+      color: #444;
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .wizard { padding: 48px 36px; }
+      .wizard-question { font-size: 32px; }
+      .wizard-prefill-intro {
+        margin: -48px -36px 28px;
+        padding: 16px 36px;
+      }
+    }
+    /* Mobile */
+    @media (max-width: 768px) {
+      .wizard {
+        padding: 32px 24px;
+        border-radius: 20px;
+        margin-top: 24px;
+      }
+      .wizard-question { font-size: 26px; line-height: 1.15; }
+      .wizard-hint { font-size: 15px; margin-bottom: 24px; }
+      .wizard-input { font-size: 19px; }
+      .wizard-textarea { font-size: 16px; }
+      .wizard-press-enter { display: none; }
+      .wizard-controls { margin-top: 28px; }
+      .wizard-next { padding: 14px 22px; font-size: 14px; }
+      .wizard-success { padding: 32px 0 8px; }
+      .wizard-success h3 { font-size: 28px; }
+      .wizard-prefill-intro {
+        margin: -32px -24px 24px;
+        padding: 14px 24px;
+        gap: 12px;
+      }
+      .wizard-prefill-thanks { font-size: 15px; }
+      .wizard-prefill-thanks em { font-size: 17px; }
+      .wizard-prefill-sparks { width: 30px; height: 24px; }
     }
 
     /* ============ FOOTER ============ */
@@ -1641,10 +1889,6 @@
       .service-card { padding: 24px; }
       .case-card { padding: 24px; }
       .qc-card { padding: 22px; }
-
-      /* Touch-friendly form */
-      .contact-submit { padding: 16px 22px; }
-      .contact-email-row { padding: 6px 6px 6px 20px; }
     }
   </style>
 </head>
@@ -1840,7 +2084,7 @@
           </div>
 
           <div class="qc-ctas">
-            <a href="mailto:peter@ngo.digital?subject=Book%20my%20QuickCheck&body=Hi%20Peter%2C%0D%0A%0D%0AI%27d%20like%20to%20book%20a%20QuickCheck.%20Here%27s%20a%20bit%20about%20us%3A%0D%0A%0D%0AOrganization%3A%20%0D%0AWebsite%3A%20%0D%0ATeam%20size%3A%20%0D%0ABiggest%20fundraising%20challenge%3A%20%0D%0A%0D%0AThanks%21" class="btn-primary pulse">Book my QuickCheck <span>→</span></a>
+            <a href="#contact" data-interest="QuickCheck" class="btn-primary pulse">Book my QuickCheck <span>→</span></a>
             <div class="qc-meta">
               <span>Up to 15 working days</span>
               <span class="qc-divider">·</span>
@@ -1988,7 +2232,7 @@
           <p>Long-term collaboration as your fractional fundraising manager. Strategy, execution, donor journey - everything in one rhythm. Hours scale up or down to match your needs.</p>
           <div class="card-pricing">
             <div class="pricing-from">Hours flex with your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Ongoing partnership" style="font-size: 22px;">Start the partnership →</a>
+            <a href="#contact" class="pricing-amount-link" data-interest="Retainer" style="font-size: 22px;">Start the partnership →</a>
           </div>
         </div>
 
@@ -2016,7 +2260,7 @@
           <p>Together with my trusted experts, I build modern websites for your organization - or a standalone donor microsite for a specific campaign. Optimised donor journey, gamification, payment integration and analytics ready out of the box.</p>
           <div class="card-pricing">
             <div class="pricing-from">Tailored to your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="New website" style="font-size: 22px;">Scope it out →</a>
+            <a href="#contact" class="pricing-amount-link" data-interest="Donor microsite" style="font-size: 22px;">Scope it out →</a>
           </div>
         </div>
 
@@ -2125,42 +2369,114 @@
         your organization<span style="color: #000;">.</span>
       </h2>
       <p class="contact-lead">
-        Pick what you're curious about, drop your email, and I'll get back within 24 hours. No commitment, no sales pitch - just a real conversation.
+        A few short questions, no commitment. I'll get back within 24 hours - just a real conversation, no sales pitch.
       </p>
-      <form class="contact-form-wrap" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="contact-label">I'm interested in</div>
-        <div class="contact-chips">
-          <input type="radio" name="interest" value="QuickCheck" id="int-quickcheck" required>
-          <label for="int-quickcheck" class="contact-chip">QuickCheck</label>
 
-          <input type="radio" name="interest" value="Full Strategy" id="int-strategy">
-          <label for="int-strategy" class="contact-chip">Full Strategy</label>
-
-          <input type="radio" name="interest" value="Retainer" id="int-retainer">
-          <label for="int-retainer" class="contact-chip">Retainer</label>
-
-          <input type="radio" name="interest" value="Consulting" id="int-consulting">
-          <label for="int-consulting" class="contact-chip">Consulting</label>
-
-          <input type="radio" name="interest" value="Donor microsite" id="int-microsite">
-          <label for="int-microsite" class="contact-chip">Donor microsite</label>
-
-          <input type="radio" name="interest" value="Visual identity" id="int-identity">
-          <label for="int-identity" class="contact-chip">Visual identity</label>
-
-          <input type="radio" name="interest" value="Just exploring" id="int-exploring">
-          <label for="int-exploring" class="contact-chip">Just exploring</label>
+      <!-- Multi-step wizard form (one question at a time) -->
+      <form class="wizard" id="contactWizard" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <!-- Progress dots -->
+        <div class="wizard-progress" id="wizardProgress">
+          <div class="wizard-progress-dot current" data-step="0"></div>
+          <div class="wizard-progress-dot" data-step="1"></div>
+          <div class="wizard-progress-dot" data-step="2"></div>
+          <div class="wizard-progress-dot" data-step="3"></div>
+          <div class="wizard-progress-dot" data-step="4"></div>
         </div>
 
-        <div class="contact-label" style="margin-top: 28px;">Your email</div>
-        <div class="contact-email-row">
-          <input type="email" name="email" placeholder="your@email.com" required>
-          <button type="submit" class="contact-submit">Get in touch →</button>
+        <!-- Prefilled lime stripe intro (shown only when interest is preselected) -->
+        <div class="wizard-prefill-intro" id="wizardPrefillBadge">
+          <div class="wizard-prefill-sparks" aria-hidden="true">
+            <svg viewBox="0 0 36 28" xmlns="http://www.w3.org/2000/svg">
+              <!-- 3 geometric sparks: diamond + 4-pointed star + small diamond -->
+              <path class="spark spark-1" d="M6 14 L9 8 L12 14 L9 20 Z" fill="#1A1A1A"/>
+              <path class="spark spark-2" d="M18 4 L20 12 L28 14 L20 16 L18 24 L16 16 L8 14 L16 12 Z" fill="#1A1A1A" transform="translate(0 0) scale(0.7) translate(8 4)"/>
+              <path class="spark spark-3" d="M28 14 L30 10 L32 14 L30 18 Z" fill="#1A1A1A"/>
+            </svg>
+          </div>
+          <span class="wizard-prefill-thanks">Thanks for picking <em id="wizardPrefillLabel"></em>. Let's get the basics.</span>
+          <button type="button" class="wizard-prefill-change" id="wizardPrefillChange">Change</button>
+        </div>
+
+        <!-- Step 0: Interest chips -->
+        <div class="wizard-step active" data-step="0">
+          <h3 class="wizard-question">What brings you <em>here</em>?</h3>
+          <p class="wizard-hint">Pick whatever fits - we can refine this later.</p>
+          <div class="wizard-chips">
+            <input type="radio" name="interest" value="QuickCheck" id="wiz-int-quickcheck">
+            <label for="wiz-int-quickcheck" class="wizard-chip">QuickCheck</label>
+
+            <input type="radio" name="interest" value="Full Strategy" id="wiz-int-strategy">
+            <label for="wiz-int-strategy" class="wizard-chip">Full Strategy</label>
+
+            <input type="radio" name="interest" value="Retainer" id="wiz-int-retainer">
+            <label for="wiz-int-retainer" class="wizard-chip">Retainer</label>
+
+            <input type="radio" name="interest" value="Consulting" id="wiz-int-consulting">
+            <label for="wiz-int-consulting" class="wizard-chip">Consulting</label>
+
+            <input type="radio" name="interest" value="Donor microsite" id="wiz-int-microsite">
+            <label for="wiz-int-microsite" class="wizard-chip">Donor microsite</label>
+
+            <input type="radio" name="interest" value="Visual identity" id="wiz-int-identity">
+            <label for="wiz-int-identity" class="wizard-chip">Visual identity</label>
+
+            <input type="radio" name="interest" value="Just exploring" id="wiz-int-exploring">
+            <label for="wiz-int-exploring" class="wizard-chip">Just exploring</label>
+          </div>
+          <div class="wizard-error" id="wiz-err-interest"></div>
+        </div>
+
+        <!-- Step 1: Name -->
+        <div class="wizard-step" data-step="1">
+          <h3 class="wizard-question">First, what's your <em>name</em>?</h3>
+          <p class="wizard-hint">Just so I know who I'm talking to.</p>
+          <input type="text" class="wizard-input" name="name" id="wiz-name" placeholder="Type your name here…" autocomplete="given-name">
+          <div class="wizard-error" id="wiz-err-name"></div>
+        </div>
+
+        <!-- Step 2: Organization -->
+        <div class="wizard-step" data-step="2">
+          <h3 class="wizard-question">Which <em>organization</em>?</h3>
+          <p class="wizard-hint">If you don't have one yet, that's okay - just write "personal".</p>
+          <input type="text" class="wizard-input" name="organization" id="wiz-org" placeholder="Organization name" autocomplete="organization">
+          <div class="wizard-error" id="wiz-err-org"></div>
+        </div>
+
+        <!-- Step 3: Email -->
+        <div class="wizard-step" data-step="3">
+          <h3 class="wizard-question">Where can I <em>reply</em>?</h3>
+          <p class="wizard-hint">No spam, no newsletter - unless you want one later.</p>
+          <input type="email" class="wizard-input" name="email" id="wiz-email" placeholder="your@email.com" autocomplete="email" inputmode="email">
+          <div class="wizard-error" id="wiz-err-email"></div>
+        </div>
+
+        <!-- Step 4: Message (optional) -->
+        <div class="wizard-step" data-step="4">
+          <h3 class="wizard-question">Anything you want <em>to share</em>?</h3>
+          <p class="wizard-hint">Optional - but a sentence or two helps me prepare.</p>
+          <textarea class="wizard-textarea" name="message" id="wiz-msg" placeholder="A line or two about what you're working on…" maxlength="800"></textarea>
+        </div>
+
+        <!-- Success -->
+        <div class="wizard-step" data-step="5">
+          <div class="wizard-success">
+            <div class="wizard-success-icon">✓</div>
+            <h3>Got it. <em>Talk soon.</em></h3>
+            <p id="wizardSuccessMsg">I'll be in touch within 24 hours - usually faster on weekdays.</p>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="wizard-controls" id="wizardControls">
+          <button type="button" class="wizard-back is-hidden" id="wizardBack">← Back</button>
+          <div>
+            <button type="button" class="wizard-skip is-hidden" id="wizardSkip">Skip</button>
+            <button type="button" class="wizard-next" id="wizardNext">OK <span style="font-weight:400">↵</span></button>
+            <span class="wizard-press-enter">press <kbd>Enter</kbd></span>
+          </div>
         </div>
       </form>
-      <div class="contact-success" id="contactSuccess">
-        ✓ Thanks! I'll be in touch within 24 hours.
-      </div>
+
       <p class="contact-fallback">
         Or just write me directly at <a href="mailto:peter@ngo.digital">peter@ngo.digital</a>
       </p>
@@ -2280,43 +2596,234 @@
       });
     }
 
-    // Auto-select chip when user clicks "Let's talk" from a service card
-    document.querySelectorAll('a[data-interest]').forEach(link => {
-      link.addEventListener('click', function() {
-        const interest = this.dataset.interest;
-        const radio = document.querySelector(`input[name="interest"][value="${interest}"]`);
-        if (radio) radio.checked = true;
-      });
-    });
+    // ============ CONTACT WIZARD LOGIC ============
+    (function() {
+      const wizard = document.getElementById('contactWizard');
+      if (!wizard) return;
 
-    // Contact form - Formspree submission with mailto fallback
-    document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const form = this;
-      const email = form.email.value;
-      const interest = form.interest?.value || 'Just exploring';
-      const success = document.getElementById('contactSuccess');
+      const steps = wizard.querySelectorAll('.wizard-step');
+      const dots = wizard.querySelectorAll('.wizard-progress-dot');
+      const nextBtn = document.getElementById('wizardNext');
+      const backBtn = document.getElementById('wizardBack');
+      const skipBtn = document.getElementById('wizardSkip');
+      const controls = document.getElementById('wizardControls');
+      const prefillBadge = document.getElementById('wizardPrefillBadge');
+      const prefillLabel = document.getElementById('wizardPrefillLabel');
+      const prefillChange = document.getElementById('wizardPrefillChange');
+      const successMsg = document.getElementById('wizardSuccessMsg');
 
-      // Try Formspree first; fallback to mailto
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
+      const VALID_INTERESTS = ['QuickCheck', 'Full Strategy', 'Retainer', 'Consulting', 'Donor microsite', 'Visual identity', 'Just exploring'];
+      let current = 0;
+      let history = [0]; // for back navigation
+      let prefilled = false;
+
+      function showStep(i, opts = {}) {
+        const dir = opts.direction || 'forward';
+        steps.forEach((s, idx) => s.classList.toggle('active', idx === i));
+        dots.forEach((d, idx) => {
+          d.classList.remove('current', 'done');
+          if (idx < i) d.classList.add('done');
+          else if (idx === i) d.classList.add('current');
         });
-        if (response.ok) {
-          form.style.display = 'none';
-          success.style.display = 'block';
-        } else {
-          throw new Error('Formspree error');
-        }
-      } catch (err) {
-        // Fallback: open mailto with prefilled subject + interest category
-        const subject = encodeURIComponent(`Inquiry: ${interest}`);
-        const body = encodeURIComponent(`Hi Peter,\n\nI'm interested in: ${interest}\nMy email: ${email}\n\n`);
-        window.location.href = `mailto:peter@ngo.digital?subject=${subject}&body=${body}`;
+        // back button: hidden on first interactive step + on success
+        const showBack = (i > 0 && i < 5) && !(prefilled && i === 1 && history.length <= 1);
+        backBtn.classList.toggle('is-hidden', !showBack);
+        // skip button: only on optional message step (4)
+        skipBtn.classList.toggle('is-hidden', i !== 4);
+        // controls hidden on success
+        controls.style.display = (i === 5) ? 'none' : 'flex';
+        // next button label
+        if (i === 4) nextBtn.innerHTML = 'Send <span style="font-weight:400">↵</span>';
+        else nextBtn.innerHTML = 'OK <span style="font-weight:400">↵</span>';
+        // focus the input on this step
+        const input = steps[i].querySelector('input[type="text"], input[type="email"], textarea');
+        if (input) setTimeout(() => input.focus(), 280);
+        // prefill badge: show only on steps 1-4 if prefilled
+        prefillBadge.classList.toggle('is-visible', prefilled && i >= 1 && i <= 4);
       }
-    });
+
+      function showError(stepIdx, msg) {
+        const errEl = steps[stepIdx].querySelector('.wizard-error');
+        const input = steps[stepIdx].querySelector('input, textarea');
+        if (errEl) errEl.textContent = msg;
+        if (input) {
+          input.classList.add('is-error');
+          setTimeout(() => input.classList.remove('is-error'), 1500);
+        }
+      }
+      function clearError(stepIdx) {
+        const errEl = steps[stepIdx].querySelector('.wizard-error');
+        if (errEl) errEl.textContent = '';
+      }
+
+      function validateStep(idx) {
+        clearError(idx);
+        if (idx === 0) {
+          const checked = wizard.querySelector('input[name="interest"]:checked');
+          if (!checked) { showError(0, 'Pick one option to continue.'); return false; }
+          return true;
+        }
+        if (idx === 1) {
+          const v = document.getElementById('wiz-name').value.trim();
+          if (v.length < 2) { showError(1, 'Please enter your name.'); return false; }
+          return true;
+        }
+        if (idx === 2) {
+          const v = document.getElementById('wiz-org').value.trim();
+          if (v.length < 1) { showError(2, 'Organization name (or just "personal") helps me prepare.'); return false; }
+          return true;
+        }
+        if (idx === 3) {
+          const v = document.getElementById('wiz-email').value.trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { showError(3, 'That email looks off - could you double-check?'); return false; }
+          return true;
+        }
+        return true; // step 4 is optional
+      }
+
+      function goNext() {
+        if (current === 5) return;
+        if (current === 4) { return submitForm(); }
+        if (!validateStep(current)) return;
+        current = current + 1;
+        history.push(current);
+        showStep(current, { direction: 'forward' });
+      }
+
+      function goBack() {
+        if (history.length <= 1) return;
+        history.pop();
+        current = history[history.length - 1];
+        showStep(current, { direction: 'back' });
+      }
+
+      function goSkip() {
+        if (current === 4) {
+          submitForm();
+        }
+      }
+
+      async function submitForm() {
+        const interest = wizard.querySelector('input[name="interest"]:checked')?.value || 'Just exploring';
+        const name = document.getElementById('wiz-name').value.trim();
+        const organization = document.getElementById('wiz-org').value.trim();
+        const email = document.getElementById('wiz-email').value.trim();
+        const message = document.getElementById('wiz-msg').value.trim();
+        // disable button during submit
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = 'Sending…';
+
+        try {
+          const fd = new FormData();
+          fd.append('interest', interest);
+          fd.append('name', name);
+          fd.append('organization', organization);
+          fd.append('email', email);
+          fd.append('message', message || '(no message)');
+          fd.append('_subject', `Inquiry: ${interest} - ${name} (${organization})`);
+
+          const response = await fetch(wizard.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: fd
+          });
+          if (!response.ok) throw new Error('Formspree error');
+          // success
+          successMsg.innerHTML = `Thanks ${name.split(' ')[0]} - I'll get back to you about <strong>${interest}</strong> within 24 hours.`;
+          current = 5;
+          showStep(5);
+        } catch (err) {
+          // Fallback: open mailto
+          const subject = encodeURIComponent(`Inquiry: ${interest} - ${name} (${organization})`);
+          const body = encodeURIComponent(
+            `Hi Peter,\n\nName: ${name}\nOrganization: ${organization}\nEmail: ${email}\nInterest: ${interest}\n\nMessage:\n${message || '(no message)'}\n`
+          );
+          window.location.href = `mailto:peter@ngo.digital?subject=${subject}&body=${body}`;
+          // Restore button if user comes back
+          nextBtn.disabled = false;
+          nextBtn.innerHTML = 'Send <span style="font-weight:400">↵</span>';
+        }
+      }
+
+      // ----- URL prefill detection -----
+      // Supports: ?interest=QuickCheck and #contact?interest=QuickCheck and #contact-quickcheck
+      function getPrefilledInterest() {
+        // 1. Query string
+        const params = new URLSearchParams(window.location.search);
+        const fromQuery = params.get('interest');
+        if (fromQuery && VALID_INTERESTS.includes(fromQuery)) return fromQuery;
+        // 2. Hash with embedded query (e.g. #contact?interest=QuickCheck)
+        const hash = window.location.hash;
+        if (hash && hash.includes('?')) {
+          const hashQuery = new URLSearchParams(hash.split('?')[1]);
+          const fromHash = hashQuery.get('interest');
+          if (fromHash && VALID_INTERESTS.includes(fromHash)) return fromHash;
+        }
+        return null;
+      }
+
+      function applyPrefill(interest, opts = {}) {
+        const radio = wizard.querySelector(`input[name="interest"][value="${interest}"]`);
+        if (!radio) return false;
+        radio.checked = true;
+        prefilled = true;
+        prefillLabel.textContent = interest;
+        // skip step 0 - jump directly to name step
+        if (opts.skipFirst !== false) {
+          current = 1;
+          history = [1];
+          showStep(1);
+        }
+        return true;
+      }
+
+      // ----- Auto-select chip on click from service cards -----
+      document.querySelectorAll('a[data-interest]').forEach(link => {
+        link.addEventListener('click', function() {
+          const interest = this.dataset.interest;
+          if (VALID_INTERESTS.includes(interest)) {
+            applyPrefill(interest);
+            // smooth scroll handled natively by href="#contact"
+          }
+        });
+      });
+
+      // "Change" button - reset to step 0
+      prefillChange.addEventListener('click', () => {
+        prefilled = false;
+        prefillBadge.classList.remove('is-visible');
+        // uncheck radio
+        const checked = wizard.querySelector('input[name="interest"]:checked');
+        if (checked) checked.checked = false;
+        current = 0;
+        history = [0];
+        showStep(0);
+      });
+
+      // Wire up controls
+      nextBtn.addEventListener('click', goNext);
+      backBtn.addEventListener('click', goBack);
+      skipBtn.addEventListener('click', goSkip);
+
+      // Enter key advances; Shift+Enter in textarea adds newline
+      wizard.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey && current < 5) {
+          // Skip submit on textarea unless explicitly clicked
+          if (e.target.tagName === 'TEXTAREA' && current === 4) {
+            // Allow Enter on textarea via Shift+Enter; plain Enter submits
+            e.preventDefault();
+            goNext();
+            return;
+          }
+          e.preventDefault();
+          goNext();
+        }
+      });
+
+      // Apply prefill on load
+      const initialInterest = getPrefilledInterest();
+      if (initialInterest) applyPrefill(initialInterest);
+    })();
   </script>
 
   <!-- Iubenda loader - načte iubenda.js, který navěsí modal handlery na všechny .iubenda-embed odkazy (Privacy Policy + Cookie Policy v patičce) -->
