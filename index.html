@@ -1319,7 +1319,7 @@
       gap: 16px;
       margin: -56px -48px 32px;
       padding: 18px 48px;
-      background: linear-gradient(90deg, #C9F31D 0%, #DEF96B 50%, #C9F31D 100%);
+      background: linear-gradient(90deg, #1A1A1A 0%, #2A2A2A 50%, #1A1A1A 100%);
       background-size: 200% 100%;
       animation: wizardStripeSlide 8s ease-in-out 2;
       animation-fill-mode: forwards;
@@ -1332,37 +1332,37 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    /* Custom SVG sparks - geometric, on-brand (no emoji) */
+    /* Elegant confirmation mark - on-brand lime + charcoal */
     .wizard-prefill-sparks {
       flex-shrink: 0;
-      width: 36px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       position: relative;
     }
     .wizard-prefill-sparks svg {
       width: 100%;
       height: 100%;
-      overflow: visible;
-    }
-    .wizard-prefill-sparks .spark {
       transform-origin: center;
-      transform-box: fill-box;
-      animation: wizardSparkPop 1.6s cubic-bezier(.2,.8,.2,1) 1 both;
+      animation: wizardCheckIn 0.55s cubic-bezier(.2,.8,.2,1) both;
     }
-    .wizard-prefill-sparks .spark-1 { animation-delay: 0.15s; }
-    .wizard-prefill-sparks .spark-2 { animation-delay: 0.30s; }
-    .wizard-prefill-sparks .spark-3 { animation-delay: 0.45s; }
-    @keyframes wizardSparkPop {
-      0% { transform: scale(0) rotate(0deg); opacity: 0; }
-      40% { transform: scale(1.15) rotate(15deg); opacity: 1; }
-      70% { transform: scale(0.95) rotate(-5deg); opacity: 1; }
-      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    .wizard-prefill-sparks .check-path {
+      stroke-dasharray: 22;
+      stroke-dashoffset: 22;
+      animation: wizardCheckDraw 0.5s cubic-bezier(.4,0,.2,1) 0.3s forwards;
+    }
+    @keyframes wizardCheckIn {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes wizardCheckDraw {
+      to { stroke-dashoffset: 0; }
     }
     .wizard-prefill-thanks {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 16px;
       font-weight: 700;
-      color: #1A1A1A;
+      color: #FFFFFF;
       letter-spacing: -0.01em;
       flex: 1;
       min-width: 200px;
@@ -1373,10 +1373,11 @@
       font-style: italic;
       font-weight: 400;
       font-size: 18px;
+      color: #C9F31D;
     }
     .wizard-prefill-change {
-      background: #1A1A1A;
-      color: #C9F31D;
+      background: #C9F31D;
+      color: #1A1A1A;
       border: none;
       padding: 7px 16px;
       border-radius: 999px;
@@ -1392,7 +1393,8 @@
     /* Reduced motion: no animations */
     @media (prefers-reduced-motion: reduce) {
       .wizard-prefill-intro { animation: none; }
-      .wizard-prefill-sparks .spark { animation: none; }
+      .wizard-prefill-sparks svg,
+      .wizard-prefill-sparks .check-path { animation: none; stroke-dashoffset: 0; }
     }
     .wizard-step {
       display: none;
@@ -1630,7 +1632,7 @@
       }
       .wizard-prefill-thanks { font-size: 15px; }
       .wizard-prefill-thanks em { font-size: 17px; }
-      .wizard-prefill-sparks { width: 30px; height: 24px; }
+      .wizard-prefill-sparks { width: 28px; height: 28px; }
     }
 
     /* ============ FOOTER ============ */
@@ -1904,6 +1906,9 @@
       <div class="lang-switcher" role="group" aria-label="Language">
         <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" class="lang-btn" data-lang="de" aria-pressed="false">DE</button>
+        <button type="button" class="lang-btn" data-lang="ch" aria-pressed="false" title="Swiss German">CH</button>
+        <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        <button type="button" class="lang-btn" data-lang="it" aria-pressed="false">IT</button>
       </div>
       <a href="#quickcheck"
          class="btn-primary" style="padding: 11px 20px; font-size: 14px;"
@@ -1919,14 +1924,14 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="container">
-      <h1 data-i18n="hero.h1">
-        Digital fundraising,<br>
-        <em>that actually</em><br>
+      <h1>
+        <span data-i18n="hero.line1">Digital fundraising,</span><br>
+        <em data-i18n="hero.line2">that actually</em><br>
         <span class="rotating-wrap">
-          <span class="rotating-headline">raises money<span class="lime-dot">.</span></span>
-          <span class="rotating-headline">brings new donors<span class="lime-dot">.</span></span>
-          <span class="rotating-headline">builds relationships<span class="lime-dot">.</span></span>
-          <span class="rotating-headline">grows community<span class="lime-dot">.</span></span>
+          <span class="rotating-headline" data-i18n="hero.rotate.0">raises money<span class="lime-dot">.</span></span>
+          <span class="rotating-headline" data-i18n="hero.rotate.1">brings new donors<span class="lime-dot">.</span></span>
+          <span class="rotating-headline" data-i18n="hero.rotate.2">builds relationships<span class="lime-dot">.</span></span>
+          <span class="rotating-headline" data-i18n="hero.rotate.3">grows community<span class="lime-dot">.</span></span>
         </span>
       </h1>
       <p data-i18n="hero.lead">
@@ -1952,66 +1957,66 @@
 
           <!-- Prague card - human moment, brand bible §5.6 -->
           <a href="https://www.ngo.digital/my-prague-tips" class="prague-card">
-            <span class="prague-pill">Prague tips from Peter</span>
-            <h3 class="prague-title">
+            <span class="prague-pill" data-i18n="prague.pill">Prague tips from Peter</span>
+            <h3 class="prague-title" data-i18n="prague.title">
               Coming to Prague?<br>
               <em>Let me help.</em>
             </h3>
-            <p class="prague-text">
+            <p class="prague-text" data-i18n="prague.text">
               This is my city. If you're flying in for work or just a weekend, I've made a small guide - the places I send my own friends. Coffee, food, beer, a few quiet corners.
             </p>
-            <span class="prague-cta">
+            <span class="prague-cta" data-i18n="prague.cta">
               Get my Prague tips <span class="prague-arrow">→</span>
             </span>
           </a>
         </div>
 
         <div class="about-bio">
-          <div class="eyebrow">About me</div>
+          <div class="eyebrow" data-i18n="about.eyebrow">About me</div>
           <!-- Headline options (final pick: C - provocative-claim, brand bible §5.2.1):
                A. "I help European nonprofits unlock the donors they already have."
                B. "Ten years. Hundreds of donors. One job - real money for nonprofits."
                C. "I help nonprofits across Europe raise real money - not just engagement."
                Picked C: first-person + "real" + negace buzzwordu "engagement" - nejlépe
                sedí pro DACH publikum a punchy provocative tón. -->
-          <h2 class="section-title">
+          <h2 class="section-title" data-i18n="about.title">
             I help nonprofits<br>
             across Europe raise<br>
             <em>real money</em> - not<br>
             just engagement<span class="lime-dot">.</span>
           </h2>
-          <p>
+          <p data-i18n="about.bio.p1">
             I'm Peter Chalupiansky, a fundraising consultant based in Prague. For the past <strong>ten years</strong>, I've worked with nonprofits, helping them turn digital donations into a sustainable revenue channel.
           </p>
-          <p>
+          <p data-i18n="about.bio.p2">
             My work spans two fronts. As CSR &amp; ESG lead at <strong>Kaufland Czech Republic - part of Schwarz Gruppe, Europe's largest retailer</strong> - I've built the Christmas campaign for <em>Světluška</em> into a <strong>€4.9M fundraising engine over seven years</strong>. As an independent consultant, I run digital fundraising campaigns for European nonprofits - most recently the <strong>most successful Christmas campaign in Czechia of 2025</strong>.
           </p>
-          <p>
+          <p data-i18n="about.bio.p3">
             My campaigns consistently <strong>deliver positive ROI</strong> and <strong>grow donor bases</strong> that stick.
           </p>
-          <p>
+          <p data-i18n="about.bio.p4">
             Now I want to bring all of that to your nonprofit - and help you <strong>build a digital fundraising channel that actually works</strong>.
           </p>
 
           <!-- Recognition -->
           <div class="about-recognition">
-            <div class="eyebrow recognition-eyebrow">Awards &amp; Recognition</div>
+            <div class="eyebrow recognition-eyebrow" data-i18n="about.recog.title">Awards &amp; Recognition</div>
             <div class="recognition-tier">
-              <div class="recognition-sub-eyebrow">Personal</div>
+              <div class="recognition-sub-eyebrow" data-i18n="about.recog.personal">Personal</div>
               <ul class="recognition-list">
-                <li><strong>Board Member of Czech Radio Foundation</strong> · one of the largest NGOs in Czechia</li>
-                <li><strong>TEDx, PechaKucha Nights &amp; conference speaker</strong> · more than 20 events</li>
-                <li><strong>The Kind Heart Award</strong> · Karel Janeček Foundation</li>
-                <li><strong>Personality of Philanthropy</strong> · Czech Donors Forum</li>
-                <li><strong>Personality of the Year</strong> · Wheelchair Sport Club Prague</li>
+                <li data-i18n="about.recog.item1"><strong>Board Member of Czech Radio Foundation</strong> · one of the largest NGOs in Czechia</li>
+                <li data-i18n="about.recog.item2"><strong>TEDx, PechaKucha Nights &amp; conference speaker</strong> · more than 20 events</li>
+                <li data-i18n="about.recog.item3"><strong>The Kind Heart Award</strong> · Karel Janeček Foundation</li>
+                <li data-i18n="about.recog.item4"><strong>Personality of Philanthropy</strong> · Czech Donors Forum</li>
+                <li data-i18n="about.recog.item5"><strong>Personality of the Year</strong> · Wheelchair Sport Club Prague</li>
               </ul>
             </div>
 
             <div class="recognition-tier">
-              <div class="recognition-sub-eyebrow">With Kaufland Czech Republic team (part of Schwarz Gruppe)</div>
+              <div class="recognition-sub-eyebrow" data-i18n="about.recog.team">With Kaufland Czech Republic team (part of Schwarz Gruppe)</div>
               <ul class="recognition-list">
-                <li><strong>Czech National Quality Award 2022 for Sustainability</strong> · Ministry of Industry &amp; Trade</li>
-                <li><strong>Four-time Responsible Retailer of the Year</strong> (2020, 2022, 2024, 2025) · Czech Confederation of Commerce and Tourism</li>
+                <li data-i18n="about.recog.item6"><strong>Czech National Quality Award 2022 for Sustainability</strong> · Ministry of Industry &amp; Trade</li>
+                <li data-i18n="about.recog.item7"><strong>Four-time Responsible Retailer of the Year</strong> (2020, 2022, 2024, 2025) · Czech Confederation of Commerce and Tourism</li>
               </ul>
             </div>
           </div>
@@ -2025,14 +2030,14 @@
     <div class="container">
       <div class="qc-grid">
         <div class="qc-content">
-          <div class="eyebrow-pill">Start here · Zero involvement from your team</div>
-          <h2 class="qc-title">
+          <div class="eyebrow-pill" data-i18n="qc.eyebrow">Start here · Zero involvement from your team</div>
+          <h2 class="qc-title" data-i18n="qc.title">
             QuickCheck - <em>let's</em><br>
             <em>find out what your</em><br>
             fundraising is<br>
             missing<span class="lime-dot">.</span>
           </h2>
-          <p class="qc-lead">
+          <p class="qc-lead" data-i18n="qc.lead">
             Within 15 working days, I run a complete external audit of your digital fundraising - without your team lifting a finger. You get a <strong>full report</strong>, a <strong>video walkthrough</strong>, your <strong>own microsite with the summary</strong>, and a list of <strong>concrete quick wins</strong> you can ship next week.
           </p>
 
@@ -2040,60 +2045,60 @@
             <div class="qc-feature">
               <div class="qc-feature-num">01</div>
               <div class="qc-feature-text">
-                <strong>Donor journey audit</strong>
-                <span>Where your visitors drop off - and why</span>
+                <strong data-i18n="qc.feat.1.title">Donor journey audit</strong>
+                <span data-i18n="qc.feat.1.sub">Where your visitors drop off - and why</span>
               </div>
             </div>
             <div class="qc-feature">
               <div class="qc-feature-num">02</div>
               <div class="qc-feature-text">
-                <strong>Social & campaign analysis</strong>
-                <span>What works, what wastes budget</span>
+                <strong data-i18n="qc.feat.2.title">Social & campaign analysis</strong>
+                <span data-i18n="qc.feat.2.sub">What works, what wastes budget</span>
               </div>
             </div>
             <div class="qc-feature">
               <div class="qc-feature-num">03</div>
               <div class="qc-feature-text">
-                <strong>Quick wins</strong>
-                <span>Concrete actions to ship next week</span>
+                <strong data-i18n="qc.feat.3.title">Quick wins</strong>
+                <span data-i18n="qc.feat.3.sub">Concrete actions to ship next week</span>
               </div>
             </div>
             <div class="qc-feature">
               <div class="qc-feature-num">04</div>
               <div class="qc-feature-text">
-                <strong>Benchmark of similar nonprofits</strong>
-                <span>How 3-5 peers in your space compare</span>
+                <strong data-i18n="qc.feat.4.title">Benchmark of similar nonprofits</strong>
+                <span data-i18n="qc.feat.4.sub">How 3-5 peers in your space compare</span>
               </div>
             </div>
           </div>
 
           <div class="qc-pricing">
             <div class="qc-pricing-pills">
-              <span class="qc-pill-dark">Limited offer</span>
-              <span class="qc-pill-lime">Until 31 May</span>
+              <span class="qc-pill-dark" data-i18n="qc.price.pill_limited">Limited offer</span>
+              <span class="qc-pill-lime" data-i18n="qc.price.pill_until">Until 31 May</span>
             </div>
 
             <div class="qc-pricing-row">
               <span class="qc-price-now">CHF 3,999</span>
               <span class="qc-price-was">CHF 5,499</span>
             </div>
-            <div class="qc-pricing-meta">
+            <div class="qc-pricing-meta" data-i18n="qc.price.meta">
               Special introductory price for the first <em>5 Swiss nonprofits</em> · Same scope, same standards.
             </div>
 
-            <p class="qc-pricing-body">
+            <p class="qc-pricing-body" data-i18n="qc.price.body">
               When you enter a new market, nothing is more valuable than a great reference. So I'm offering the first <strong>five Swiss organizations</strong> CHF 1,500 off through end of May, in exchange for your <strong>honest feedback</strong>. I'll do everything I can to make sure you're happy and that your digital fundraising moves forward.
             </p>
           </div>
 
           <div class="qc-ctas">
-            <a href="#contact" data-interest="QuickCheck" class="btn-primary pulse">Book my QuickCheck <span>→</span></a>
+            <a href="#contact" data-interest="QuickCheck" class="btn-primary pulse" data-i18n="qc.cta">Book my QuickCheck <span>→</span></a>
             <div class="qc-meta">
-              <span>Up to 15 working days</span>
+              <span data-i18n="qc.meta.duration">Up to 15 working days</span>
               <span class="qc-divider">·</span>
-              <span>No meetings</span>
+              <span data-i18n="qc.meta.no_meetings">No meetings</span>
               <span class="qc-divider">·</span>
-              <span>Zero client effort</span>
+              <span data-i18n="qc.meta.zero_effort">Zero client effort</span>
             </div>
           </div>
         </div>
@@ -2101,79 +2106,79 @@
         <div class="qc-visual">
           <div class="qc-card">
             <div class="qc-card-header">
-              <div class="qc-card-eyebrow">What I check</div>
-              <div class="qc-card-status">Up to 15 working days</div>
+              <div class="qc-card-eyebrow" data-i18n="qc.card.eyebrow">What I check</div>
+              <div class="qc-card-status" data-i18n="qc.card.status">Up to 15 working days</div>
             </div>
-            <div class="qc-card-title">9 things I look at</div>
-            <div class="qc-card-subtitle">Everything that helps you raise money online</div>
+            <div class="qc-card-title" data-i18n="qc.card.title">9 things I look at</div>
+            <div class="qc-card-subtitle" data-i18n="qc.card.subtitle">Everything that helps you raise money online</div>
             <div class="qc-card-divider"></div>
             <div class="qc-pillars-darklist">
               <div class="qc-darkpillar">
                 <span class="qc-darkpillar-num">01</span>
                 <div class="qc-darkpillar-text">
-                  <strong>Your website &amp; donation page</strong>
-                  <span>Where donors give - and where they leave</span>
+                  <strong data-i18n="qc.pillar.1.title">Your website &amp; donation page</strong>
+                  <span data-i18n="qc.pillar.1.sub">Where donors give - and where they leave</span>
                 </div>
               </div>
               <div class="qc-darkpillar">
                 <span class="qc-darkpillar-num">02</span>
                 <div class="qc-darkpillar-text">
-                  <strong>What donors experience</strong>
-                  <span>Step-by-step - like a secret shopper</span>
+                  <strong data-i18n="qc.pillar.2.title">What donors experience</strong>
+                  <span data-i18n="qc.pillar.2.sub">Step-by-step - like a secret shopper</span>
                 </div>
               </div>
               <div class="qc-darkpillar">
                 <span class="qc-darkpillar-num">03</span>
                 <div class="qc-darkpillar-text">
-                  <strong>Your social media</strong>
-                  <span>What works, what doesn't</span>
+                  <strong data-i18n="qc.pillar.3.title">Your social media</strong>
+                  <span data-i18n="qc.pillar.3.sub">What works, what doesn't</span>
                 </div>
               </div>
               <div class="qc-darkpillar">
                 <span class="qc-darkpillar-num">04</span>
                 <div class="qc-darkpillar-text">
-                  <strong>Your ads &amp; campaigns</strong>
-                  <span>Facebook, Instagram, Google Ads</span>
+                  <strong data-i18n="qc.pillar.4.title">Your ads &amp; campaigns</strong>
+                  <span data-i18n="qc.pillar.4.sub">Facebook, Instagram, Google Ads</span>
                 </div>
               </div>
               <div class="qc-darkpillar">
                 <span class="qc-darkpillar-num">05</span>
                 <div class="qc-darkpillar-text">
-                  <strong>Your emails &amp; newsletters</strong>
-                  <span>Welcome emails, regular updates</span>
+                  <strong data-i18n="qc.pillar.5.title">Your emails &amp; newsletters</strong>
+                  <span data-i18n="qc.pillar.5.sub">Welcome emails, regular updates</span>
                 </div>
               </div>
               <div class="qc-darkpillar">
                 <span class="qc-darkpillar-num">06</span>
                 <div class="qc-darkpillar-text">
-                  <strong>How you compare</strong>
-                  <span>Against 3-5 similar nonprofits</span>
+                  <strong data-i18n="qc.pillar.6.title">How you compare</strong>
+                  <span data-i18n="qc.pillar.6.sub">Against 3-5 similar nonprofits</span>
                 </div>
               </div>
               <div class="qc-darkpillar">
                 <span class="qc-darkpillar-num">07</span>
                 <div class="qc-darkpillar-text">
-                  <strong>Your campaign performance</strong>
-                  <span>Year-end, seasonal and one-off fundraising campaigns</span>
+                  <strong data-i18n="qc.pillar.7.title">Your campaign performance</strong>
+                  <span data-i18n="qc.pillar.7.sub">Year-end, seasonal and one-off fundraising campaigns</span>
                 </div>
               </div>
               <div class="qc-darkpillar">
                 <span class="qc-darkpillar-num">08</span>
                 <div class="qc-darkpillar-text">
-                  <strong>Monthly donors &amp; retention</strong>
-                  <span>How you keep them giving</span>
+                  <strong data-i18n="qc.pillar.8.title">Monthly donors &amp; retention</strong>
+                  <span data-i18n="qc.pillar.8.sub">How you keep them giving</span>
                 </div>
               </div>
               <div class="qc-darkpillar">
                 <span class="qc-darkpillar-num">09</span>
                 <div class="qc-darkpillar-text">
-                  <strong>How you tell your story</strong>
-                  <span>Voice, brand, donor stories</span>
+                  <strong data-i18n="qc.pillar.9.title">How you tell your story</strong>
+                  <span data-i18n="qc.pillar.9.sub">Voice, brand, donor stories</span>
                 </div>
               </div>
             </div>
             <!-- Promise close: bez schůzek, bez přístupů, bez interview (lime accent) -->
-            <div class="qc-card-footer">
+            <div class="qc-card-footer" data-i18n="qc.card.footer">
               No interviews, no access requests, no meetings. I&nbsp;work entirely from public sources<span class="lime-dot">.</span> Like your donors do.
             </div>
           </div>
@@ -2187,97 +2192,97 @@
     <div class="container">
       <div class="services-header">
         <div>
-          <div class="eyebrow">How else I can help you</div>
-          <h2 class="section-title">
+          <div class="eyebrow" data-i18n="services.eyebrow">How else I can help you</div>
+          <h2 class="section-title" data-i18n="services.title">
             Six ways<br>
             <em>we can work</em><br>
             together<span class="lime-dot">.</span>
           </h2>
         </div>
-        <p>From a quick external audit to a full strategic partnership. Pick the depth your nonprofit needs - from a single consultation to a long-term partnership.</p>
+        <p data-i18n="services.lead">From a quick external audit to a full strategic partnership. Pick the depth your nonprofit needs - from a single consultation to a long-term partnership.</p>
       </div>
       <div class="services-grid services-grid-3">
 
         <!-- Card 1: QuickCheck (LIME card + BLACK MOST POPULAR badge inline) -->
         <div class="service-card lime">
           <div class="card-header">
-            <div class="card-num">01 · Diagnostic</div>
-            <div class="card-tag-dark">MOST POPULAR</div>
+            <div class="card-num" data-i18n="srv.1.num">01 · Diagnostic</div>
+            <div class="card-tag-dark" data-i18n="srv.1.tag">MOST POPULAR</div>
           </div>
-          <h3>QuickCheck</h3>
-          <p>A complete external audit of your digital fundraising within 15 working days. PDF report, video walkthrough, microsite - and concrete quick wins to ship next week.</p>
+          <h3 data-i18n="srv.1.title">QuickCheck</h3>
+          <p data-i18n="srv.1.desc">A complete external audit of your digital fundraising within 15 working days. PDF report, video walkthrough, microsite - and concrete quick wins to ship next week.</p>
           <div class="card-pricing">
-            <div class="pricing-from">Ready within 15 working days</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="QuickCheck" style="font-size: 22px;">Get a QuickCheck →</a>
+            <div class="pricing-from" data-i18n="srv.1.meta">Ready within 15 working days</div>
+            <a href="#contact" class="pricing-amount-link" data-interest="QuickCheck" style="font-size: 22px;" data-i18n="srv.1.cta">Get a QuickCheck →</a>
           </div>
         </div>
 
         <!-- Card 2: Full Strategy -->
         <div class="service-card">
           <div class="card-header">
-            <div class="card-num">02 · Strategy</div>
-            <div class="card-tag muted">4–8 weeks</div>
+            <div class="card-num" data-i18n="srv.2.num">02 · Strategy</div>
+            <div class="card-tag muted" data-i18n="srv.2.tag">4–8 weeks</div>
           </div>
-          <h3>Full Strategy</h3>
-          <p>Mid-term strategy for your digital fundraising, donor care, and social media. The document that actually kickstarts your fundraising and gives it real direction for the next 12-24 months.</p>
+          <h3 data-i18n="srv.2.title">Full Strategy</h3>
+          <p data-i18n="srv.2.desc">Mid-term strategy for your digital fundraising, donor care, and social media. The document that actually kickstarts your fundraising and gives it real direction for the next 12-24 months.</p>
           <div class="card-pricing">
-            <div class="pricing-from">Tailored to your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Full Strategy" style="font-size: 22px;">Plan together →</a>
+            <div class="pricing-from" data-i18n="srv.tailored">Tailored to your needs</div>
+            <a href="#contact" class="pricing-amount-link" data-interest="Full Strategy" style="font-size: 22px;" data-i18n="srv.2.cta">Plan together →</a>
           </div>
         </div>
 
         <!-- Card 3: Retainer (BLACK card + WHITE text + LIME headlines) -->
         <div class="service-card featured lime-headlines">
           <div class="card-header">
-            <div class="card-num">03 · Partnership</div>
+            <div class="card-num" data-i18n="srv.3.num">03 · Partnership</div>
           </div>
-          <h3>Ongoing partnership</h3>
-          <p>Long-term collaboration as your fractional fundraising manager. Strategy, execution, donor journey - everything in one rhythm. Hours scale up or down to match your needs.</p>
+          <h3 data-i18n="srv.3.title">Ongoing partnership</h3>
+          <p data-i18n="srv.3.desc">Long-term collaboration as your fractional fundraising manager. Strategy, execution, donor journey - everything in one rhythm. Hours scale up or down to match your needs.</p>
           <div class="card-pricing">
-            <div class="pricing-from">Hours flex with your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Retainer" style="font-size: 22px;">Start the partnership →</a>
+            <div class="pricing-from" data-i18n="srv.3.meta">Hours flex with your needs</div>
+            <a href="#contact" class="pricing-amount-link" data-interest="Retainer" style="font-size: 22px;" data-i18n="srv.3.cta">Start the partnership →</a>
           </div>
         </div>
 
         <!-- Card 4: Consulting -->
         <div class="service-card">
           <div class="card-header">
-            <div class="card-num">04 · Advisory</div>
-            <div class="card-tag muted">Per session</div>
+            <div class="card-num" data-i18n="srv.4.num">04 · Advisory</div>
+            <div class="card-tag muted" data-i18n="srv.4.tag">Per session</div>
           </div>
-          <h3>Consulting</h3>
-          <p>One-off consultation on a fundraising campaign, social media strategy or donor care. Plus honest feedback on your nonprofit's plans before you ship.</p>
+          <h3 data-i18n="srv.4.title">Consulting</h3>
+          <p data-i18n="srv.4.desc">One-off consultation on a fundraising campaign, social media strategy or donor care. Plus honest feedback on your nonprofit's plans before you ship.</p>
           <div class="card-pricing">
-            <div class="pricing-from">Tailored to your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Consulting" style="font-size: 22px;">Book a session →</a>
+            <div class="pricing-from" data-i18n="srv.tailored">Tailored to your needs</div>
+            <a href="#contact" class="pricing-amount-link" data-interest="Consulting" style="font-size: 22px;" data-i18n="srv.4.cta">Book a session →</a>
           </div>
         </div>
 
         <!-- Card 5: Donor microsite -->
         <div class="service-card">
           <div class="card-header">
-            <div class="card-num">05 · Build</div>
-            <div class="card-tag muted">3–8 weeks</div>
+            <div class="card-num" data-i18n="srv.5.num">05 · Build</div>
+            <div class="card-tag muted" data-i18n="srv.5.tag">3–8 weeks</div>
           </div>
-          <h3>New website</h3>
-          <p>Together with my trusted experts, I build modern websites for your organization - or a standalone donor microsite for a specific campaign. Optimised donor journey, gamification, payment integration and analytics ready out of the box.</p>
+          <h3 data-i18n="srv.5.title">New website</h3>
+          <p data-i18n="srv.5.desc">Together with my trusted experts, I build modern websites for your organization - or a standalone donor microsite for a specific campaign. Optimised donor journey, gamification, payment integration and analytics ready out of the box.</p>
           <div class="card-pricing">
-            <div class="pricing-from">Tailored to your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Donor microsite" style="font-size: 22px;">Scope it out →</a>
+            <div class="pricing-from" data-i18n="srv.tailored">Tailored to your needs</div>
+            <a href="#contact" class="pricing-amount-link" data-interest="Donor microsite" style="font-size: 22px;" data-i18n="srv.5.cta">Scope it out →</a>
           </div>
         </div>
 
         <!-- Card 6: Visual identity -->
         <div class="service-card">
           <div class="card-header">
-            <div class="card-num">06 · Brand</div>
-            <div class="card-tag muted">With partner</div>
+            <div class="card-num" data-i18n="srv.6.num">06 · Brand</div>
+            <div class="card-tag muted" data-i18n="srv.6.tag">With partner</div>
           </div>
-          <h3>Visual identity</h3>
-          <p>Honest note: I'm not a designer myself - but I lead this together with my trusted external graphic designer. You get one project lead, two minds, zero handover headaches.</p>
+          <h3 data-i18n="srv.6.title">Visual identity</h3>
+          <p data-i18n="srv.6.desc">Honest note: I'm not a designer myself - but I lead this together with my trusted external graphic designer. You get one project lead, two minds, zero handover headaches.</p>
           <div class="card-pricing">
-            <div class="pricing-from">Tailored to your needs</div>
-            <a href="#contact" class="pricing-amount-link" data-interest="Visual identity" style="font-size: 22px;">Brief the team →</a>
+            <div class="pricing-from" data-i18n="srv.tailored">Tailored to your needs</div>
+            <a href="#contact" class="pricing-amount-link" data-interest="Visual identity" style="font-size: 22px;" data-i18n="srv.6.cta">Brief the team →</a>
           </div>
         </div>
 
@@ -2289,30 +2294,30 @@
   <section class="cases" id="cases">
     <div class="container">
       <div style="margin-bottom: 64px;">
-        <div class="eyebrow">Cases</div>
-        <h2 class="section-title">Numbers that <em>actually</em> moved<span class="lime-dot">.</span></h2>
+        <div class="eyebrow" data-i18n="cases.eyebrow">Cases</div>
+        <h2 class="section-title" data-i18n="cases.title">Numbers that <em>actually</em> moved<span class="lime-dot">.</span></h2>
       </div>
 
       <div class="cases-grid">
         <!-- Big case -->
         <div class="case-card">
           <div>
-            <div class="case-tag">FEATURED</div>
-            <h3>Czechia's #1 Christmas campaign 2025</h3>
-            <p class="case-desc">Built with a team of volunteers - the most successful Christmas fundraiser in the country that year. Powered by gamification, donor journey design and media partnerships.</p>
+            <div class="case-tag" data-i18n="case.big.tag">FEATURED</div>
+            <h3 data-i18n="case.big.title">Czechia's #1 Christmas campaign 2025</h3>
+            <p class="case-desc" data-i18n="case.big.desc">Built with a team of volunteers - the most successful Christmas fundraiser in the country that year. Powered by gamification, donor journey design and media partnerships.</p>
           </div>
           <div class="case-stats">
             <div>
               <div class="case-stat-num">€700K</div>
-              <div class="case-stat-label">raised</div>
+              <div class="case-stat-label" data-i18n="case.big.stat1">raised</div>
             </div>
             <div>
               <div class="case-stat-num">60 000+</div>
-              <div class="case-stat-label">donors</div>
+              <div class="case-stat-label" data-i18n="case.big.stat2">donors</div>
             </div>
             <div>
               <div class="case-stat-num">3,700%</div>
-              <div class="case-stat-label">ROI in 1 month</div>
+              <div class="case-stat-label" data-i18n="case.big.stat3">ROI in 1 month</div>
             </div>
           </div>
         </div>
@@ -2320,23 +2325,23 @@
         <!-- Klubák case -->
         <div class="case-card muted">
           <div>
-            <div class="case-tag">REGIONAL CAMPAIGN</div>
+            <div class="case-tag" data-i18n="case.small.tag">REGIONAL CAMPAIGN</div>
             <h3>Klubák</h3>
-            <p class="case-tagline">Czech social enterprise for people with disabilities</p>
-            <p class="case-desc">A 2-month regional fundraising campaign - built to reach donors in the communities where the organization actually works. Powered by donor journey design, gamification and Meta Ads.</p>
+            <p class="case-tagline" data-i18n="case.small.tagline">Czech social enterprise for people with disabilities</p>
+            <p class="case-desc" data-i18n="case.small.desc">A 2-month regional fundraising campaign - built to reach donors in the communities where the organization actually works. Powered by donor journey design, gamification and Meta Ads.</p>
           </div>
           <div class="case-stats">
             <div>
               <div class="case-stat-num">2,100%</div>
-              <div class="case-stat-label">ROI in 2 months</div>
+              <div class="case-stat-label" data-i18n="case.small.stat1">ROI in 2 months</div>
             </div>
             <div>
               <div class="case-stat-num">CHF 26K</div>
-              <div class="case-stat-label">raised from CHF 1.4K invested</div>
+              <div class="case-stat-label" data-i18n="case.small.stat2">raised from CHF 1.4K invested</div>
             </div>
             <div>
               <div class="case-stat-num">250+</div>
-              <div class="case-stat-label">new donors in the region</div>
+              <div class="case-stat-label" data-i18n="case.small.stat3">new donors in the region</div>
             </div>
           </div>
         </div>
@@ -2348,15 +2353,15 @@
   <section class="testimonial">
     <div class="container">
       <div class="testimonial-content">
-        <div class="eyebrow">References</div>
-        <p class="testimonial-quote">
+        <div class="eyebrow" data-i18n="testimonial.eyebrow">References</div>
+        <p class="testimonial-quote" data-i18n="testimonial.quote">
           "With a team of volunteers, Peter built the <strong style="color: #C9F31D; font-weight: 700;">most successful Christmas campaign</strong> in the Czech Republic last year. Through simplicity and gamification, he reached <strong style="color: #C9F31D; font-weight: 700;">over 60 000 donors</strong>."
         </p>
         <div class="testimonial-author">
           <div class="author-avatar"><img src="data:image/jpeg;base64,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" alt="Zdeněk Mihalco" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
           <div>
             <div class="author-name">Zdeněk Mihalco</div>
-            <div class="author-role">Director, Nadace Via</div>
+            <div class="author-role" data-i18n="testimonial.role">Director, Nadace Via</div>
           </div>
         </div>
       </div>
@@ -2366,12 +2371,12 @@
   <!-- ============ CONTACT ============ -->
   <section class="contact" id="contact">
     <div class="container">
-      <div class="eyebrow-pill">Let's talk</div>
-      <h2>
+      <div class="eyebrow-pill" data-i18n="contact.pill">Let's talk</div>
+      <h2 data-i18n="contact.title">
         Tell me <em>more</em> about<br>
         your organization<span style="color: #000;">.</span>
       </h2>
-      <p class="contact-lead">
+      <p class="contact-lead" data-i18n="contact.lead">
         A few short questions, no commitment. I'll get back within 24 hours - just a real conversation, no sales pitch.
       </p>
 
@@ -2389,21 +2394,19 @@
         <!-- Prefilled lime stripe intro (shown only when interest is preselected) -->
         <div class="wizard-prefill-intro" id="wizardPrefillBadge">
           <div class="wizard-prefill-sparks" aria-hidden="true">
-            <svg viewBox="0 0 36 28" xmlns="http://www.w3.org/2000/svg">
-              <!-- 3 geometric sparks: diamond + 4-pointed star + small diamond -->
-              <path class="spark spark-1" d="M6 14 L9 8 L12 14 L9 20 Z" fill="#1A1A1A"/>
-              <path class="spark spark-2" d="M18 4 L20 12 L28 14 L20 16 L18 24 L16 16 L8 14 L16 12 Z" fill="#1A1A1A" transform="translate(0 0) scale(0.7) translate(8 4)"/>
-              <path class="spark spark-3" d="M28 14 L30 10 L32 14 L30 18 Z" fill="#1A1A1A"/>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="15" fill="#C9F31D"/>
+              <path class="check-path" d="M10 16.5 L14.5 21 L22 12.5" stroke="#1A1A1A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <span class="wizard-prefill-thanks">Thanks for picking <em id="wizardPrefillLabel"></em>. Let's get the basics.</span>
-          <button type="button" class="wizard-prefill-change" id="wizardPrefillChange">Change</button>
+          <span class="wizard-prefill-thanks"><span data-i18n="wizard.prefill.before">Thanks for picking </span><em id="wizardPrefillLabel"></em><span data-i18n="wizard.prefill.after">. Let's get the basics.</span></span>
+          <button type="button" class="wizard-prefill-change" id="wizardPrefillChange" data-i18n="wizard.prefill.change">Change</button>
         </div>
 
         <!-- Step 0: Interest chips -->
         <div class="wizard-step active" data-step="0">
-          <h3 class="wizard-question">What brings you <em>here</em>?</h3>
-          <p class="wizard-hint">Pick whatever fits - we can refine this later.</p>
+          <h3 class="wizard-question" data-i18n="wizard.step0.q">What brings you <em>here</em>?</h3>
+          <p class="wizard-hint" data-i18n="wizard.step0.hint">Pick whatever fits - we can refine this later.</p>
           <div class="wizard-chips">
             <input type="radio" name="interest" value="QuickCheck" id="wiz-int-quickcheck">
             <label for="wiz-int-quickcheck" class="wizard-chip">QuickCheck</label>
@@ -2424,64 +2427,64 @@
             <label for="wiz-int-identity" class="wizard-chip">Visual identity</label>
 
             <input type="radio" name="interest" value="Just exploring" id="wiz-int-exploring">
-            <label for="wiz-int-exploring" class="wizard-chip">Just exploring</label>
+            <label for="wiz-int-exploring" class="wizard-chip" data-i18n="wizard.chip.exploring">Just exploring</label>
           </div>
           <div class="wizard-error" id="wiz-err-interest"></div>
         </div>
 
         <!-- Step 1: Name -->
         <div class="wizard-step" data-step="1">
-          <h3 class="wizard-question">First, what's your <em>name</em>?</h3>
-          <p class="wizard-hint">Just so I know who I'm talking to.</p>
-          <input type="text" class="wizard-input" name="name" id="wiz-name" placeholder="Type your name here…" autocomplete="given-name">
+          <h3 class="wizard-question" data-i18n="wizard.step1.q">First, what's your <em>name</em>?</h3>
+          <p class="wizard-hint" data-i18n="wizard.step1.hint">Just so I know who I'm talking to.</p>
+          <input type="text" class="wizard-input" name="name" id="wiz-name" placeholder="Type your name here…" data-i18n-placeholder="wizard.step1.placeholder" autocomplete="given-name">
           <div class="wizard-error" id="wiz-err-name"></div>
         </div>
 
         <!-- Step 2: Organization -->
         <div class="wizard-step" data-step="2">
-          <h3 class="wizard-question">Which <em>organization</em>?</h3>
-          <p class="wizard-hint">If you don't have one yet, that's okay - just write "personal".</p>
-          <input type="text" class="wizard-input" name="organization" id="wiz-org" placeholder="Organization name" autocomplete="organization">
+          <h3 class="wizard-question" data-i18n="wizard.step2.q">Which <em>organization</em>?</h3>
+          <p class="wizard-hint" data-i18n="wizard.step2.hint">If you don't have one yet, that's okay - just write "personal".</p>
+          <input type="text" class="wizard-input" name="organization" id="wiz-org" placeholder="Organization name" data-i18n-placeholder="wizard.step2.placeholder" autocomplete="organization">
           <div class="wizard-error" id="wiz-err-org"></div>
         </div>
 
         <!-- Step 3: Email -->
         <div class="wizard-step" data-step="3">
-          <h3 class="wizard-question">Where can I <em>reply</em>?</h3>
-          <p class="wizard-hint">No spam, no newsletter - unless you want one later.</p>
-          <input type="email" class="wizard-input" name="email" id="wiz-email" placeholder="your@email.com" autocomplete="email" inputmode="email">
+          <h3 class="wizard-question" data-i18n="wizard.step3.q">Where can I <em>reply</em>?</h3>
+          <p class="wizard-hint" data-i18n="wizard.step3.hint">No spam, no newsletter - unless you want one later.</p>
+          <input type="email" class="wizard-input" name="email" id="wiz-email" placeholder="your@email.com" data-i18n-placeholder="wizard.step3.placeholder" autocomplete="email" inputmode="email">
           <div class="wizard-error" id="wiz-err-email"></div>
         </div>
 
         <!-- Step 4: Message (optional) -->
         <div class="wizard-step" data-step="4">
-          <h3 class="wizard-question">Anything you want <em>to share</em>?</h3>
-          <p class="wizard-hint">Optional - but a sentence or two helps me prepare.</p>
-          <textarea class="wizard-textarea" name="message" id="wiz-msg" placeholder="A line or two about what you're working on…" maxlength="800"></textarea>
+          <h3 class="wizard-question" data-i18n="wizard.step4.q">Anything you want <em>to share</em>?</h3>
+          <p class="wizard-hint" data-i18n="wizard.step4.hint">Optional - but a sentence or two helps me prepare.</p>
+          <textarea class="wizard-textarea" name="message" id="wiz-msg" placeholder="A line or two about what you're working on…" data-i18n-placeholder="wizard.step4.placeholder" maxlength="800"></textarea>
         </div>
 
         <!-- Success -->
         <div class="wizard-step" data-step="5">
           <div class="wizard-success">
             <div class="wizard-success-icon">✓</div>
-            <h3>Got it. <em>Talk soon.</em></h3>
-            <p id="wizardSuccessMsg">I'll be in touch within 24 hours - usually faster on weekdays.</p>
+            <h3 data-i18n="wizard.success.title">Got it. <em>Talk soon.</em></h3>
+            <p id="wizardSuccessMsg" data-i18n="wizard.success.msg">I'll be in touch within 24 hours - usually faster on weekdays.</p>
           </div>
         </div>
 
         <!-- Controls -->
         <div class="wizard-controls" id="wizardControls">
-          <button type="button" class="wizard-back is-hidden" id="wizardBack">← Back</button>
+          <button type="button" class="wizard-back is-hidden" id="wizardBack" data-i18n="wizard.btn.back">← Back</button>
           <div>
-            <button type="button" class="wizard-skip is-hidden" id="wizardSkip">Skip</button>
+            <button type="button" class="wizard-skip is-hidden" id="wizardSkip" data-i18n="wizard.btn.skip">Skip</button>
             <button type="button" class="wizard-next" id="wizardNext">OK <span style="font-weight:400">↵</span></button>
-            <span class="wizard-press-enter">press <kbd>Enter</kbd></span>
+            <span class="wizard-press-enter"><span data-i18n="wizard.press_enter">press</span> <kbd>Enter</kbd></span>
           </div>
         </div>
       </form>
 
       <p class="contact-fallback">
-        Or just write me directly at <a href="mailto:peter@ngo.digital">peter@ngo.digital</a>
+        <span data-i18n="contact.fallback.before">Or just write me directly at </span><a href="mailto:peter@ngo.digital">peter@ngo.digital</a>
       </p>
     </div>
   </section>
@@ -2540,39 +2543,39 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo">ngo<span class="dot" style="color: #C9F31D;">.</span>digital</div>
-          <p class="footer-tag">Digital fundraising consulting for European nonprofits ready to grow. Made in Prague.</p>
+          <p class="footer-tag" data-i18n="footer.tag">Digital fundraising consulting for European nonprofits ready to grow. Made in Prague.</p>
           <div class="footer-email">peter@ngo.digital</div>
         </div>
 
         <div>
-          <div class="footer-col-title">Services</div>
+          <div class="footer-col-title" data-i18n="footer.col.services">Services</div>
           <div class="footer-links">
             <a href="#quickcheck">QuickCheck</a>
-            <a href="#services">Retainer</a>
-            <a href="#services">Full Strategy</a>
-            <a href="#services">Consulting</a>
+            <a href="#services" data-i18n="footer.link.retainer">Retainer</a>
+            <a href="#services" data-i18n="footer.link.strategy">Full Strategy</a>
+            <a href="#services" data-i18n="footer.link.consulting">Consulting</a>
           </div>
         </div>
 
         <div>
-          <div class="footer-col-title">Company</div>
+          <div class="footer-col-title" data-i18n="footer.col.company">Company</div>
           <div class="footer-links">
-            <a href="#about">About Peter</a>
-            <a href="#cases">Case studies</a>
-            <a href="#contact">Contact</a>
+            <a href="#about" data-i18n="footer.link.about">About Peter</a>
+            <a href="#cases" data-i18n="footer.link.cases">Case studies</a>
+            <a href="#contact" data-i18n="footer.link.contact">Contact</a>
           </div>
         </div>
 
         <div>
-          <div class="footer-col-title">Visit Prague</div>
+          <div class="footer-col-title" data-i18n="footer.col.prague">Visit Prague</div>
           <div class="footer-links">
-            <a href="https://www.ngo.digital/my-prague-tips">Prague Tips</a>
+            <a href="https://www.ngo.digital/my-prague-tips" data-i18n="footer.link.prague">Prague Tips</a>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div class="footer-meta">© 2026 Peter Chalupianský · Made in Prague · <a href="#imprint">Imprint</a> · <a href="https://www.iubenda.com/privacy-policy/97343048" class="iubenda-white iubenda-noiframe iubenda-embed" title="Privacy Policy">Privacy Policy</a> · <a href="https://www.iubenda.com/privacy-policy/97343048/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a></div>
+        <div class="footer-meta">© 2026 Peter Chalupianský · <span data-i18n="footer.bottom_made">Made in Prague</span> · <a href="#imprint" data-i18n="footer.imprint">Imprint</a> · <a href="https://www.iubenda.com/privacy-policy/97343048" class="iubenda-white iubenda-noiframe iubenda-embed" title="Privacy Policy">Privacy Policy</a> · <a href="https://www.iubenda.com/privacy-policy/97343048/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a></div>
         <div class="footer-legal">
           <a href="#">LinkedIn</a>
         </div>
@@ -2635,9 +2638,10 @@
         skipBtn.classList.toggle('is-hidden', i !== 4);
         // controls hidden on success
         controls.style.display = (i === 5) ? 'none' : 'flex';
-        // next button label
-        if (i === 4) nextBtn.innerHTML = 'Send <span style="font-weight:400">↵</span>';
-        else nextBtn.innerHTML = 'OK <span style="font-weight:400">↵</span>';
+        // next button label - lokalizováno
+        const T = window.NgoI18n ? window.NgoI18n.t.bind(window.NgoI18n) : (k => k === 'wizard.btn.send' ? 'Send' : 'OK');
+        if (i === 4) nextBtn.innerHTML = T('wizard.btn.send') + ' <span style="font-weight:400">↵</span>';
+        else nextBtn.innerHTML = T('wizard.btn.ok') + ' <span style="font-weight:400">↵</span>';
         // focus the input on this step
         const input = steps[i].querySelector('input[type="text"], input[type="email"], textarea');
         if (input) setTimeout(() => input.focus(), 280);
@@ -2661,24 +2665,25 @@
 
       function validateStep(idx) {
         clearError(idx);
+        const T = window.NgoI18n ? window.NgoI18n.t.bind(window.NgoI18n) : (k => k);
         if (idx === 0) {
           const checked = wizard.querySelector('input[name="interest"]:checked');
-          if (!checked) { showError(0, 'Pick one option to continue.'); return false; }
+          if (!checked) { showError(0, T('wizard.error.interest')); return false; }
           return true;
         }
         if (idx === 1) {
           const v = document.getElementById('wiz-name').value.trim();
-          if (v.length < 2) { showError(1, 'Please enter your name.'); return false; }
+          if (v.length < 2) { showError(1, T('wizard.error.name')); return false; }
           return true;
         }
         if (idx === 2) {
           const v = document.getElementById('wiz-org').value.trim();
-          if (v.length < 1) { showError(2, 'Organization name (or just "personal") helps me prepare.'); return false; }
+          if (v.length < 1) { showError(2, T('wizard.error.org')); return false; }
           return true;
         }
         if (idx === 3) {
           const v = document.getElementById('wiz-email').value.trim();
-          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { showError(3, 'That email looks off - could you double-check?'); return false; }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { showError(3, T('wizard.error.email')); return false; }
           return true;
         }
         return true; // step 4 is optional
@@ -2713,8 +2718,9 @@
         const email = document.getElementById('wiz-email').value.trim();
         const message = document.getElementById('wiz-msg').value.trim();
         // disable button during submit
+        const T = window.NgoI18n ? window.NgoI18n.t.bind(window.NgoI18n) : (k => k);
         nextBtn.disabled = true;
-        nextBtn.innerHTML = 'Sending…';
+        nextBtn.innerHTML = T('wizard.btn.sending');
 
         try {
           const fd = new FormData();
@@ -2731,8 +2737,8 @@
             body: fd
           });
           if (!response.ok) throw new Error('Formspree error');
-          // success
-          successMsg.innerHTML = `Thanks ${name.split(' ')[0]} - I'll get back to you about <strong>${interest}</strong> within 24 hours.`;
+          // success - lokalizovaná zpráva s vloženým jménem a zájmem
+          successMsg.innerHTML = T('wizard.success.tpl', { name: name.split(' ')[0], interest: interest });
           current = 5;
           showStep(5);
         } catch (err) {
@@ -2744,7 +2750,7 @@
           window.location.href = `mailto:peter@ngo.digital?subject=${subject}&body=${body}`;
           // Restore button if user comes back
           nextBtn.disabled = false;
-          nextBtn.innerHTML = 'Send <span style="font-weight:400">↵</span>';
+          nextBtn.innerHTML = T('wizard.btn.send') + ' <span style="font-weight:400">↵</span>';
         }
       }
 
@@ -2808,6 +2814,15 @@
       backBtn.addEventListener('click', goBack);
       skipBtn.addEventListener('click', goSkip);
 
+      // Auto-advance after picking an interest chip on step 0
+      wizard.querySelectorAll('input[name="interest"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          if (current === 0) {
+            setTimeout(goNext, 220);
+          }
+        });
+      });
+
       // Enter key advances; Shift+Enter in textarea adds newline
       wizard.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey && current < 5) {
@@ -2826,6 +2841,914 @@
       // Apply prefill on load
       const initialInterest = getPrefilledInterest();
       if (initialInterest) applyPrefill(initialInterest);
+
+      // Při změně jazyka přerenderovat aktuální krok (kvůli OK/Send tlačítku, atd.)
+      window.addEventListener('ngolangchange', () => {
+        if (current < 5) showStep(current);
+      });
+    })();
+  </script>
+
+  <!-- ============ I18N - PŘEPÍNAČ JAZYKŮ (EN/DE/CH/FR/IT) ============
+       Profesionální překlady viditelného obsahu. Imprint, Privacy a sekce Prague
+       (text o Praze) zůstávají v EN (právní text potřebuje native review).
+       Volba se ukládá do localStorage. Lze předat i ?lang=de v URL. -->
+  <script>
+    (function() {
+      const LANGS = ['en', 'de', 'ch', 'fr', 'it'];
+      const T = {
+        en: {
+          'nav.cta': 'Get a QuickCheck →',
+          'hero.line1': 'Digital fundraising,',
+          'hero.line2': 'that actually',
+          'hero.rotate.0': 'raises money<span class="lime-dot">.</span>',
+          'hero.rotate.1': 'brings new donors<span class="lime-dot">.</span>',
+          'hero.rotate.2': 'builds relationships<span class="lime-dot">.</span>',
+          'hero.rotate.3': 'grows community<span class="lime-dot">.</span>',
+          'hero.lead': '<strong style="color: #1A1A1A; font-weight: 700;">Most nonprofits leave money on the table every month.</strong> Let\'s fix that with digital fundraising - and turn it into <strong style="color: #1A1A1A; font-weight: 700;">real donations</strong>.',
+          'hero.cta_primary': 'Start with a QuickCheck <span>→</span>',
+          'hero.cta_secondary': 'See all services →',
+          'about.eyebrow': 'About me',
+          'about.title': 'I help nonprofits<br>across Europe raise<br><em>real money</em> - not<br>just engagement<span class="lime-dot">.</span>',
+          'qc.eyebrow': 'Start here · Zero involvement from your team',
+          'qc.title': 'QuickCheck - <em>let\'s</em><br><em>find out what your</em><br>fundraising is<br>missing<span class="lime-dot">.</span>',
+          'qc.lead': 'Within 15 working days, I run a complete external audit of your digital fundraising - without your team lifting a finger. You get a <strong>full report</strong>, a <strong>video walkthrough</strong>, your <strong>own microsite with the summary</strong>, and a list of <strong>concrete quick wins</strong> you can ship next week.',
+          'qc.cta': 'Book my QuickCheck <span>→</span>',
+          'services.eyebrow': 'How else I can help you',
+          'services.title': 'Six ways<br><em>we can work</em><br>together<span class="lime-dot">.</span>',
+          'services.lead': 'From a quick external audit to a full strategic partnership. Pick the depth your nonprofit needs - from a single consultation to a long-term partnership.',
+          'cases.eyebrow': 'Cases',
+          'cases.title': 'Numbers that <em>actually</em> moved<span class="lime-dot">.</span>',
+          'testimonial.eyebrow': 'References',
+          'testimonial.quote': '"With a team of volunteers, Peter built the <strong style="color: #C9F31D; font-weight: 700;">most successful Christmas campaign</strong> in the Czech Republic last year. Through simplicity and gamification, he reached <strong style="color: #C9F31D; font-weight: 700;">over 60 000 donors</strong>."',
+          'testimonial.role': 'Director, Nadace Via',
+          'contact.pill': 'Let\'s talk',
+          'contact.title': 'Tell me <em>more</em> about<br>your organization<span style="color: #000;">.</span>',
+          'contact.lead': 'A few short questions, no commitment. I\'ll get back within 24 hours - just a real conversation, no sales pitch.',
+          'contact.fallback.before': 'Or just write me directly at ',
+          'wizard.step0.q': 'What brings you <em>here</em>?',
+          'wizard.step0.hint': 'Pick whatever fits - we can refine this later.',
+          'wizard.chip.exploring': 'Just exploring',
+          'wizard.step1.q': 'First, what\'s your <em>name</em>?',
+          'wizard.step1.hint': 'Just so I know who I\'m talking to.',
+          'wizard.step1.placeholder': 'Type your name here…',
+          'wizard.step2.q': 'Which <em>organization</em>?',
+          'wizard.step2.hint': 'If you don\'t have one yet, that\'s okay - just write "personal".',
+          'wizard.step2.placeholder': 'Organization name',
+          'wizard.step3.q': 'Where can I <em>reply</em>?',
+          'wizard.step3.hint': 'No spam, no newsletter - unless you want one later.',
+          'wizard.step3.placeholder': 'your@email.com',
+          'wizard.step4.q': 'Anything you want <em>to share</em>?',
+          'wizard.step4.hint': 'Optional - but a sentence or two helps me prepare.',
+          'wizard.step4.placeholder': 'A line or two about what you\'re working on…',
+          'wizard.success.title': 'Got it. <em>Talk soon.</em>',
+          'wizard.success.msg': 'I\'ll be in touch within 24 hours - usually faster on weekdays.',
+          'wizard.success.tpl': 'Thanks {name} - I\'ll get back to you about <strong>{interest}</strong> within 24 hours.',
+          'wizard.btn.ok': 'OK',
+          'wizard.btn.send': 'Send',
+          'wizard.btn.sending': 'Sending…',
+          'wizard.btn.back': '← Back',
+          'wizard.btn.skip': 'Skip',
+          'wizard.press_enter': 'press',
+          'wizard.prefill.before': 'Thanks for picking ',
+          'wizard.prefill.after': '. Let\'s get the basics.',
+          'wizard.prefill.change': 'Change',
+          'wizard.error.interest': 'Pick one option to continue.',
+          'wizard.error.name': 'Please enter your name.',
+          'wizard.error.org': 'Organization name (or just "personal") helps me prepare.',
+          'wizard.error.email': 'That email looks off - could you double-check?',
+          'footer.tag': 'Digital fundraising consulting for European nonprofits ready to grow. Made in Prague.',
+          'footer.col.services': 'Services',
+          'footer.col.company': 'Company',
+          'footer.col.prague': 'Visit Prague',
+          'footer.link.retainer': 'Retainer',
+          'footer.link.strategy': 'Full Strategy',
+          'footer.link.consulting': 'Consulting',
+          'footer.link.about': 'About Peter',
+          'footer.link.cases': 'Case studies',
+          'footer.link.contact': 'Contact',
+          'footer.link.prague': 'Prague Tips',
+          'footer.bottom_made': 'Made in Prague',
+          'footer.imprint': 'Imprint',
+          // QuickCheck features
+          'qc.feat.1.title': 'Donor journey audit',
+          'qc.feat.1.sub': 'Where your visitors drop off - and why',
+          'qc.feat.2.title': 'Social & campaign analysis',
+          'qc.feat.2.sub': 'What works, what wastes budget',
+          'qc.feat.3.title': 'Quick wins',
+          'qc.feat.3.sub': 'Concrete actions to ship next week',
+          'qc.feat.4.title': 'Benchmark of similar nonprofits',
+          'qc.feat.4.sub': 'How 3-5 peers in your space compare',
+          // QC pricing block
+          'qc.price.pill_limited': 'Limited offer',
+          'qc.price.pill_until': 'Until 31 May',
+          'qc.price.meta': 'Special introductory price for the first <em>5 Swiss nonprofits</em> · Same scope, same standards.',
+          'qc.price.body': 'When you enter a new market, nothing is more valuable than a great reference. So I\'m offering the first <strong>five Swiss organizations</strong> CHF 1,500 off through end of May, in exchange for your <strong>honest feedback</strong>. I\'ll do everything I can to make sure you\'re happy and that your digital fundraising moves forward.',
+          // QC CTA meta
+          'qc.meta.duration': 'Up to 15 working days',
+          'qc.meta.no_meetings': 'No meetings',
+          'qc.meta.zero_effort': 'Zero client effort',
+          // QC right card
+          'qc.card.eyebrow': 'What I check',
+          'qc.card.status': 'Up to 15 working days',
+          'qc.card.title': '9 things I look at',
+          'qc.card.subtitle': 'Everything that helps you raise money online',
+          'qc.card.footer': 'No interviews, no access requests, no meetings. I&nbsp;work entirely from public sources<span class="lime-dot">.</span> Like your donors do.',
+          // QC pillars (9)
+          'qc.pillar.1.title': 'Your website &amp; donation page',
+          'qc.pillar.1.sub': 'Where donors give - and where they leave',
+          'qc.pillar.2.title': 'What donors experience',
+          'qc.pillar.2.sub': 'Step-by-step - like a secret shopper',
+          'qc.pillar.3.title': 'Your social media',
+          'qc.pillar.3.sub': 'What works, what doesn\'t',
+          'qc.pillar.4.title': 'Your ads &amp; campaigns',
+          'qc.pillar.4.sub': 'Facebook, Instagram, Google Ads',
+          'qc.pillar.5.title': 'Your emails &amp; newsletters',
+          'qc.pillar.5.sub': 'Welcome emails, regular updates',
+          'qc.pillar.6.title': 'How you compare',
+          'qc.pillar.6.sub': 'Against 3-5 similar nonprofits',
+          'qc.pillar.7.title': 'Your campaign performance',
+          'qc.pillar.7.sub': 'Year-end, seasonal and one-off fundraising campaigns',
+          'qc.pillar.8.title': 'Monthly donors &amp; retention',
+          'qc.pillar.8.sub': 'How you keep them giving',
+          'qc.pillar.9.title': 'How you tell your story',
+          'qc.pillar.9.sub': 'Voice, brand, donor stories',
+          // Services 6 cards
+          'srv.tailored': 'Tailored to your needs',
+          'srv.1.num': '01 · Diagnostic', 'srv.1.tag': 'MOST POPULAR', 'srv.1.title': 'QuickCheck',
+          'srv.1.desc': 'A complete external audit of your digital fundraising within 15 working days. PDF report, video walkthrough, microsite - and concrete quick wins to ship next week.',
+          'srv.1.meta': 'Ready within 15 working days', 'srv.1.cta': 'Get a QuickCheck →',
+          'srv.2.num': '02 · Strategy', 'srv.2.tag': '4–8 weeks', 'srv.2.title': 'Full Strategy',
+          'srv.2.desc': 'Mid-term strategy for your digital fundraising, donor care, and social media. The document that actually kickstarts your fundraising and gives it real direction for the next 12-24 months.',
+          'srv.2.cta': 'Plan together →',
+          'srv.3.num': '03 · Partnership', 'srv.3.title': 'Ongoing partnership',
+          'srv.3.desc': 'Long-term collaboration as your fractional fundraising manager. Strategy, execution, donor journey - everything in one rhythm. Hours scale up or down to match your needs.',
+          'srv.3.meta': 'Hours flex with your needs', 'srv.3.cta': 'Start the partnership →',
+          'srv.4.num': '04 · Advisory', 'srv.4.tag': 'Per session', 'srv.4.title': 'Consulting',
+          'srv.4.desc': 'One-off consultation on a fundraising campaign, social media strategy or donor care. Plus honest feedback on your nonprofit\'s plans before you ship.',
+          'srv.4.cta': 'Book a session →',
+          'srv.5.num': '05 · Build', 'srv.5.tag': '3–8 weeks', 'srv.5.title': 'New website',
+          'srv.5.desc': 'Together with my trusted experts, I build modern websites for your organization - or a standalone donor microsite for a specific campaign. Optimised donor journey, gamification, payment integration and analytics ready out of the box.',
+          'srv.5.cta': 'Scope it out →',
+          'srv.6.num': '06 · Brand', 'srv.6.tag': 'With partner', 'srv.6.title': 'Visual identity',
+          'srv.6.desc': 'Honest note: I\'m not a designer myself - but I lead this together with my trusted external graphic designer. You get one project lead, two minds, zero handover headaches.',
+          'srv.6.cta': 'Brief the team →',
+          // Cases
+          'case.big.tag': 'FEATURED',
+          'case.big.title': 'Czechia\'s #1 Christmas campaign 2025',
+          'case.big.desc': 'Built with a team of volunteers - the most successful Christmas fundraiser in the country that year. Powered by gamification, donor journey design and media partnerships.',
+          'case.big.stat1': 'raised', 'case.big.stat2': 'donors', 'case.big.stat3': 'ROI in 1 month',
+          'case.small.tag': 'REGIONAL CAMPAIGN',
+          'case.small.tagline': 'Czech social enterprise for people with disabilities',
+          'case.small.desc': 'A 2-month regional fundraising campaign - built to reach donors in the communities where the organization actually works. Powered by donor journey design, gamification and Meta Ads.',
+          'case.small.stat1': 'ROI in 2 months', 'case.small.stat2': 'raised from CHF 1.4K invested', 'case.small.stat3': 'new donors in the region',
+          // About bio
+          'about.bio.p1': 'I\'m Peter Chalupiansky, a fundraising consultant based in Prague. For the past <strong>ten years</strong>, I\'ve worked with nonprofits, helping them turn digital donations into a sustainable revenue channel.',
+          'about.bio.p2': 'My work spans two fronts. As CSR &amp; ESG lead at <strong>Kaufland Czech Republic - part of Schwarz Gruppe, Europe\'s largest retailer</strong> - I\'ve built the Christmas campaign for <em>Světluška</em> into a <strong>€4.9M fundraising engine over seven years</strong>. As an independent consultant, I run digital fundraising campaigns for European nonprofits - most recently the <strong>most successful Christmas campaign in Czechia of 2025</strong>.',
+          'about.bio.p3': 'My campaigns consistently <strong>deliver positive ROI</strong> and <strong>grow donor bases</strong> that stick.',
+          'about.bio.p4': 'Now I want to bring all of that to your nonprofit - and help you <strong>build a digital fundraising channel that actually works</strong>.',
+          'about.recog.title': 'Awards &amp; Recognition',
+          'about.recog.personal': 'Personal',
+          'about.recog.team': 'With Kaufland Czech Republic team (part of Schwarz Gruppe)',
+          'about.recog.item1': '<strong>Board Member of Czech Radio Foundation</strong> · one of the largest NGOs in Czechia',
+          'about.recog.item2': '<strong>TEDx, PechaKucha Nights &amp; conference speaker</strong> · more than 20 events',
+          'about.recog.item3': '<strong>The Kind Heart Award</strong> · Karel Janeček Foundation',
+          'about.recog.item4': '<strong>Personality of Philanthropy</strong> · Czech Donors Forum',
+          'about.recog.item5': '<strong>Personality of the Year</strong> · Wheelchair Sport Club Prague',
+          'about.recog.item6': '<strong>Czech National Quality Award 2022 for Sustainability</strong> · Ministry of Industry &amp; Trade',
+          'about.recog.item7': '<strong>Four-time Responsible Retailer of the Year</strong> (2020, 2022, 2024, 2025) · Czech Confederation of Commerce and Tourism',
+          // Prague card
+          'prague.pill': 'Prague tips from Peter',
+          'prague.title': 'Coming to Prague?<br><em>Let me help.</em>',
+          'prague.text': 'This is my city. If you\'re flying in for work or just a weekend, I\'ve made a small guide - the places I send my own friends. Coffee, food, beer, a few quiet corners.',
+          'prague.cta': 'Get my Prague tips <span class="prague-arrow">→</span>',
+        },
+        de: {
+          'nav.cta': 'QuickCheck buchen →',
+          'hero.line1': 'Digital Fundraising,',
+          'hero.line2': 'das wirklich',
+          'hero.rotate.0': 'Geld einbringt<span class="lime-dot">.</span>',
+          'hero.rotate.1': 'Spender gewinnt<span class="lime-dot">.</span>',
+          'hero.rotate.2': 'Beziehungen schafft<span class="lime-dot">.</span>',
+          'hero.rotate.3': 'Wirkung zeigt<span class="lime-dot">.</span>',
+          'hero.lead': '<strong style="color: #1A1A1A; font-weight: 700;">Die meisten Non-Profits lassen jeden Monat Geld liegen.</strong> Mit digitalem Fundraising lässt sich das ändern - und in <strong style="color: #1A1A1A; font-weight: 700;">echte Spenden</strong> verwandeln.',
+          'hero.cta_primary': 'Mit dem QuickCheck starten <span>→</span>',
+          'hero.cta_secondary': 'Alle Leistungen ansehen →',
+          'about.eyebrow': 'Über mich',
+          'about.title': 'Ich helfe Non-Profits<br>in ganz Europa,<br><em>echtes Geld</em> zu sammeln -<br>nicht nur Engagement<span class="lime-dot">.</span>',
+          'qc.eyebrow': 'Hier starten · Null Aufwand für Ihr Team',
+          'qc.title': 'QuickCheck - <em>finden wir</em><br><em>heraus, was Ihrem</em><br>Fundraising<br>fehlt<span class="lime-dot">.</span>',
+          'qc.lead': 'Innerhalb von 15 Arbeitstagen führe ich einen kompletten externen Audit Ihres digitalen Fundraisings durch - ohne dass Ihr Team einen Finger rühren muss. Sie erhalten einen <strong>vollständigen Bericht</strong>, ein <strong>Video-Walkthrough</strong>, Ihre <strong>eigene Microsite mit der Zusammenfassung</strong> und eine Liste mit <strong>konkreten Quick Wins</strong>, die Sie nächste Woche umsetzen können.',
+          'qc.cta': 'Meinen QuickCheck buchen <span>→</span>',
+          'services.eyebrow': 'Wie ich sonst noch helfen kann',
+          'services.title': 'Sechs Wege,<br><em>wie wir</em><br>zusammenarbeiten<span class="lime-dot">.</span>',
+          'services.lead': 'Vom schnellen externen Audit bis zur vollen strategischen Partnerschaft. Wählen Sie die Tiefe, die Ihre Organisation braucht - von der einmaligen Beratung bis zur langfristigen Zusammenarbeit.',
+          'cases.eyebrow': 'Cases',
+          'cases.title': 'Zahlen, die <em>wirklich</em> bewegen<span class="lime-dot">.</span>',
+          'testimonial.eyebrow': 'Referenzen',
+          'testimonial.quote': '"Mit einem Team von Freiwilligen hat Peter die <strong style="color: #C9F31D; font-weight: 700;">erfolgreichste Weihnachtskampagne</strong> in der Tschechischen Republik im letzten Jahr aufgebaut. Durch Einfachheit und Gamification erreichte er <strong style="color: #C9F31D; font-weight: 700;">über 60 000 Spender</strong>."',
+          'testimonial.role': 'Direktor, Nadace Via',
+          'contact.pill': 'Sprechen wir',
+          'contact.title': 'Erzählen Sie mir <em>mehr</em><br>über Ihre Organisation<span style="color: #000;">.</span>',
+          'contact.lead': 'Ein paar kurze Fragen, ohne Verpflichtung. Ich melde mich innerhalb von 24 Stunden - einfach ein echtes Gespräch, kein Verkaufsgespräch.',
+          'contact.fallback.before': 'Oder schreiben Sie mir direkt an ',
+          'wizard.step0.q': 'Was führt Sie <em>hierher</em>?',
+          'wizard.step0.hint': 'Wählen Sie, was passt - wir verfeinern es später.',
+          'wizard.chip.exploring': 'Nur stöbern',
+          'wizard.step1.q': 'Wie ist Ihr <em>Name</em>?',
+          'wizard.step1.hint': 'Damit ich weiß, mit wem ich spreche.',
+          'wizard.step1.placeholder': 'Ihr Name…',
+          'wizard.step2.q': 'Welche <em>Organisation</em>?',
+          'wizard.step2.hint': 'Wenn Sie noch keine haben, ist das okay - schreiben Sie einfach "privat".',
+          'wizard.step2.placeholder': 'Name der Organisation',
+          'wizard.step3.q': 'Wohin darf ich <em>antworten</em>?',
+          'wizard.step3.hint': 'Kein Spam, kein Newsletter - es sei denn, Sie möchten später einen.',
+          'wizard.step3.placeholder': 'ihre@email.com',
+          'wizard.step4.q': 'Möchten Sie noch <em>etwas teilen</em>?',
+          'wizard.step4.hint': 'Optional - aber ein bis zwei Sätze helfen mir, mich vorzubereiten.',
+          'wizard.step4.placeholder': 'Ein paar Zeilen zu Ihrem Vorhaben…',
+          'wizard.success.title': 'Alles klar. <em>Bis bald.</em>',
+          'wizard.success.msg': 'Ich melde mich innerhalb von 24 Stunden - werktags meist schneller.',
+          'wizard.success.tpl': 'Danke {name} - ich melde mich bezüglich <strong>{interest}</strong> innerhalb von 24 Stunden.',
+          'wizard.btn.ok': 'OK',
+          'wizard.btn.send': 'Senden',
+          'wizard.btn.sending': 'Wird gesendet…',
+          'wizard.btn.back': '← Zurück',
+          'wizard.btn.skip': 'Überspringen',
+          'wizard.press_enter': 'drücken Sie',
+          'wizard.prefill.before': 'Danke für die Wahl von ',
+          'wizard.prefill.after': '. Lassen Sie uns starten.',
+          'wizard.prefill.change': 'Ändern',
+          'wizard.error.interest': 'Wählen Sie eine Option, um fortzufahren.',
+          'wizard.error.name': 'Bitte geben Sie Ihren Namen ein.',
+          'wizard.error.org': 'Der Name der Organisation (oder einfach "privat") hilft mir bei der Vorbereitung.',
+          'wizard.error.email': 'Diese E-Mail sieht seltsam aus - können Sie sie nochmal prüfen?',
+          'footer.tag': 'Digital-Fundraising-Beratung für europäische Non-Profits, die wachsen wollen. Made in Prague.',
+          'footer.col.services': 'Leistungen',
+          'footer.col.company': 'Über',
+          'footer.col.prague': 'Prag besuchen',
+          'footer.link.retainer': 'Retainer',
+          'footer.link.strategy': 'Strategie',
+          'footer.link.consulting': 'Beratung',
+          'footer.link.about': 'Über Peter',
+          'footer.link.cases': 'Case Studies',
+          'footer.link.contact': 'Kontakt',
+          'footer.link.prague': 'Prag Tipps',
+          'footer.bottom_made': 'Made in Prague',
+          'footer.imprint': 'Impressum',
+          // QuickCheck features
+          'qc.feat.1.title': 'Donor Journey Audit',
+          'qc.feat.1.sub': 'Wo Ihre Besucher abspringen - und warum',
+          'qc.feat.2.title': 'Social-Media- und Kampagnen-Analyse',
+          'qc.feat.2.sub': 'Was funktioniert, was Budget verschwendet',
+          'qc.feat.3.title': 'Quick Wins',
+          'qc.feat.3.sub': 'Konkrete Aktionen für nächste Woche',
+          'qc.feat.4.title': 'Benchmark vergleichbarer Non-Profits',
+          'qc.feat.4.sub': 'Wie 3-5 Peers in Ihrem Bereich abschneiden',
+          // QC pricing block
+          'qc.price.pill_limited': 'Begrenztes Angebot',
+          'qc.price.pill_until': 'Bis 31. Mai',
+          'qc.price.meta': 'Sonderpreis für die ersten <em>5 Schweizer Non-Profits</em> · Gleicher Umfang, gleiche Qualität.',
+          'qc.price.body': 'Wenn man in einen neuen Markt eintritt, ist nichts wertvoller als eine gute Referenz. Deshalb biete ich den ersten <strong>fünf Schweizer Organisationen</strong> bis Ende Mai CHF 1.500 Rabatt - im Austausch für Ihr <strong>ehrliches Feedback</strong>. Ich tue alles dafür, dass Sie zufrieden sind und Ihr digitales Fundraising vorankommt.',
+          // QC CTA meta
+          'qc.meta.duration': 'Bis zu 15 Arbeitstage',
+          'qc.meta.no_meetings': 'Keine Meetings',
+          'qc.meta.zero_effort': 'Null Aufwand für Sie',
+          // QC right card
+          'qc.card.eyebrow': 'Was ich prüfe',
+          'qc.card.status': 'Bis zu 15 Arbeitstage',
+          'qc.card.title': '9 Bereiche unter der Lupe',
+          'qc.card.subtitle': 'Alles, was Ihnen online hilft, Geld zu sammeln',
+          'qc.card.footer': 'Keine Interviews, keine Zugangsdaten, keine Meetings. Ich&nbsp;arbeite ausschliesslich mit öffentlichen Quellen<span class="lime-dot">.</span> So wie Ihre Spender.',
+          // QC pillars (9)
+          'qc.pillar.1.title': 'Ihre Website &amp; Spendenseite',
+          'qc.pillar.1.sub': 'Wo Spender geben - und wo sie abspringen',
+          'qc.pillar.2.title': 'Wie Spender Sie erleben',
+          'qc.pillar.2.sub': 'Schritt für Schritt - wie ein Mystery Shopper',
+          'qc.pillar.3.title': 'Ihre Social-Media-Kanäle',
+          'qc.pillar.3.sub': 'Was funktioniert, was nicht',
+          'qc.pillar.4.title': 'Ihre Anzeigen &amp; Kampagnen',
+          'qc.pillar.4.sub': 'Facebook, Instagram, Google Ads',
+          'qc.pillar.5.title': 'Ihre E-Mails &amp; Newsletter',
+          'qc.pillar.5.sub': 'Welcome-Mails, regelmässige Updates',
+          'qc.pillar.6.title': 'Wie Sie im Vergleich abschneiden',
+          'qc.pillar.6.sub': 'Gegen 3-5 ähnliche Non-Profits',
+          'qc.pillar.7.title': 'Ihre Kampagnen-Performance',
+          'qc.pillar.7.sub': 'Jahresend-, Saison- und einmalige Fundraising-Kampagnen',
+          'qc.pillar.8.title': 'Dauerspender &amp; Bindung',
+          'qc.pillar.8.sub': 'Wie Sie sie zum Weiterspenden bringen',
+          'qc.pillar.9.title': 'Wie Sie Ihre Geschichte erzählen',
+          'qc.pillar.9.sub': 'Ton, Marke, Spender-Stories',
+          // Services 6 cards
+          'srv.tailored': 'Auf Ihre Bedürfnisse zugeschnitten',
+          'srv.1.num': '01 · Diagnose', 'srv.1.tag': 'AM BELIEBTESTEN', 'srv.1.title': 'QuickCheck',
+          'srv.1.desc': 'Ein kompletter externer Audit Ihres digitalen Fundraisings innerhalb von 15 Arbeitstagen. PDF-Bericht, Video-Walkthrough, Microsite - und konkrete Quick Wins für nächste Woche.',
+          'srv.1.meta': 'Bereit in 15 Arbeitstagen', 'srv.1.cta': 'QuickCheck buchen →',
+          'srv.2.num': '02 · Strategie', 'srv.2.tag': '4–8 Wochen', 'srv.2.title': 'Vollstrategie',
+          'srv.2.desc': 'Mittelfristige Strategie für Ihr digitales Fundraising, Spenderbetreuung und Social Media. Das Dokument, das Ihr Fundraising wirklich anschiebt und ihm für die nächsten 12-24 Monate eine echte Richtung gibt.',
+          'srv.2.cta': 'Gemeinsam planen →',
+          'srv.3.num': '03 · Partnerschaft', 'srv.3.title': 'Laufende Partnerschaft',
+          'srv.3.desc': 'Langfristige Zusammenarbeit als Ihr Fractional Fundraising Manager. Strategie, Umsetzung, Donor Journey - alles im selben Rhythmus. Stundenumfang flexibel nach Ihrem Bedarf.',
+          'srv.3.meta': 'Stunden nach Bedarf', 'srv.3.cta': 'Partnerschaft starten →',
+          'srv.4.num': '04 · Beratung', 'srv.4.tag': 'Pro Session', 'srv.4.title': 'Consulting',
+          'srv.4.desc': 'Einmalige Beratung zu einer Fundraising-Kampagne, Social-Media-Strategie oder Spenderbetreuung. Plus ehrliches Feedback zu Ihren Plänen, bevor Sie loslegen.',
+          'srv.4.cta': 'Session buchen →',
+          'srv.5.num': '05 · Build', 'srv.5.tag': '3–8 Wochen', 'srv.5.title': 'Neue Website',
+          'srv.5.desc': 'Mit meinen vertrauten Experten baue ich moderne Websites für Ihre Organisation - oder eine eigenständige Spender-Microsite für eine spezifische Kampagne. Optimierte Donor Journey, Gamification, Zahlungsanbindung und Analytics out of the box.',
+          'srv.5.cta': 'Umfang abstecken →',
+          'srv.6.num': '06 · Brand', 'srv.6.tag': 'Mit Partner', 'srv.6.title': 'Visuelle Identität',
+          'srv.6.desc': 'Ehrlich gesagt: Ich bin selbst kein Designer - aber ich leite das gemeinsam mit meinem vertrauten externen Grafikdesigner. Sie bekommen einen Projektleiter, zwei Köpfe, null Übergabe-Probleme.',
+          'srv.6.cta': 'Team briefen →',
+          // Cases
+          'case.big.tag': 'FEATURED',
+          'case.big.title': 'Tschechiens #1 Weihnachtskampagne 2025',
+          'case.big.desc': 'Mit einem Team von Freiwilligen aufgebaut - die erfolgreichste Weihnachts-Spendenaktion des Landes in jenem Jahr. Mit Gamification, Donor-Journey-Design und Medienpartnerschaften.',
+          'case.big.stat1': 'eingenommen', 'case.big.stat2': 'Spender', 'case.big.stat3': 'ROI in 1 Monat',
+          'case.small.tag': 'REGIONALE KAMPAGNE',
+          'case.small.tagline': 'Tschechisches Sozialunternehmen für Menschen mit Behinderungen',
+          'case.small.desc': 'Eine zweimonatige regionale Fundraising-Kampagne - gebaut, um Spender in den Gemeinden zu erreichen, in denen die Organisation tatsächlich tätig ist. Mit Donor-Journey-Design, Gamification und Meta Ads.',
+          'case.small.stat1': 'ROI in 2 Monaten', 'case.small.stat2': 'eingenommen aus CHF 1.4K Investment', 'case.small.stat3': 'neue Spender in der Region',
+          // About bio
+          'about.bio.p1': 'Ich bin Peter Chalupiansky, ein Fundraising-Berater mit Sitz in Prag. In den letzten <strong>zehn Jahren</strong> habe ich mit Non-Profits gearbeitet und ihnen geholfen, digitale Spenden in einen nachhaltigen Einnahmekanal zu verwandeln.',
+          'about.bio.p2': 'Meine Arbeit verläuft auf zwei Schienen. Als CSR- &amp; ESG-Lead bei <strong>Kaufland Tschechien - Teil der Schwarz Gruppe, Europas grösstem Einzelhändler</strong> - habe ich die Weihnachtskampagne für <em>Světluška</em> in eine <strong>4,9-Mio.-€-Fundraising-Maschine über sieben Jahre</strong> verwandelt. Als unabhängiger Berater leite ich digitale Fundraising-Kampagnen für europäische Non-Profits - zuletzt die <strong>erfolgreichste Weihnachtskampagne in Tschechien 2025</strong>.',
+          'about.bio.p3': 'Meine Kampagnen liefern konsequent <strong>positiven ROI</strong> und bauen <strong>Spenderbasen auf</strong>, die bleiben.',
+          'about.bio.p4': 'Jetzt möchte ich all das zu Ihrer Non-Profit bringen - und Ihnen helfen, einen <strong>digitalen Fundraising-Kanal zu bauen, der wirklich funktioniert</strong>.',
+          'about.recog.title': 'Auszeichnungen &amp; Anerkennungen',
+          'about.recog.personal': 'Persönlich',
+          'about.recog.team': 'Mit dem Kaufland-Tschechien-Team (Teil der Schwarz Gruppe)',
+          'about.recog.item1': '<strong>Vorstandsmitglied der Czech Radio Foundation</strong> · eine der grössten NGOs in Tschechien',
+          'about.recog.item2': '<strong>TEDx, PechaKucha Nights &amp; Konferenz-Speaker</strong> · über 20 Events',
+          'about.recog.item3': '<strong>The Kind Heart Award</strong> · Karel-Janeček-Stiftung',
+          'about.recog.item4': '<strong>Persönlichkeit der Philanthropie</strong> · Czech Donors Forum',
+          'about.recog.item5': '<strong>Persönlichkeit des Jahres</strong> · Wheelchair Sport Club Prag',
+          'about.recog.item6': '<strong>Tschechischer Nationaler Qualitätspreis 2022 für Nachhaltigkeit</strong> · Ministerium für Industrie und Handel',
+          'about.recog.item7': '<strong>Viermaliger Verantwortungsvoller Einzelhändler des Jahres</strong> (2020, 2022, 2024, 2025) · Tschechischer Handels- und Tourismusverband',
+          // Prague card
+          'prague.pill': 'Prag-Tipps von Peter',
+          'prague.title': 'Kommen Sie nach Prag?<br><em>Ich helfe gerne.</em>',
+          'prague.text': 'Das ist meine Stadt. Wenn Sie geschäftlich oder fürs Wochenende einfliegen, habe ich einen kleinen Guide gemacht - die Orte, die ich meinen eigenen Freunden empfehle. Kaffee, Essen, Bier, ein paar ruhige Ecken.',
+          'prague.cta': 'Meine Prag-Tipps holen <span class="prague-arrow">→</span>',
+        },
+        ch: {
+          'nav.cta': 'QuickCheck buchen →',
+          'hero.line1': 'Digital Fundraising,',
+          'hero.line2': 'das wirklich',
+          'hero.rotate.0': 'Geld einbringt<span class="lime-dot">.</span>',
+          'hero.rotate.1': 'Spender gewinnt<span class="lime-dot">.</span>',
+          'hero.rotate.2': 'Beziehungen schafft<span class="lime-dot">.</span>',
+          'hero.rotate.3': 'Wirkung zeigt<span class="lime-dot">.</span>',
+          'hero.lead': '<strong style="color: #1A1A1A; font-weight: 700;">Die meisten Non-Profits lassen jeden Monat Geld liegen.</strong> Mit digitalem Fundraising lässt sich das ändern - und in <strong style="color: #1A1A1A; font-weight: 700;">echte Spenden</strong> verwandeln.',
+          'hero.cta_primary': 'Mit dem QuickCheck starten <span>→</span>',
+          'hero.cta_secondary': 'Alle Leistungen ansehen →',
+          'about.eyebrow': 'Über mich',
+          'about.title': 'Ich helfe Non-Profits<br>in ganz Europa,<br><em>echtes Geld</em> zu sammeln -<br>nicht nur Engagement<span class="lime-dot">.</span>',
+          'qc.eyebrow': 'Hier starten · Null Aufwand für Ihr Team',
+          'qc.title': 'QuickCheck - <em>finden wir</em><br><em>heraus, was Ihrem</em><br>Fundraising<br>fehlt<span class="lime-dot">.</span>',
+          'qc.lead': 'Innerhalb von 15 Arbeitstagen führe ich einen kompletten externen Audit Ihres digitalen Fundraisings durch - ohne dass Ihr Team einen Finger rühren muss. Sie erhalten einen <strong>vollständigen Bericht</strong>, ein <strong>Video-Walkthrough</strong>, Ihre <strong>eigene Microsite mit der Zusammenfassung</strong> und eine Liste mit <strong>konkreten Quick Wins</strong>, die Sie nächste Woche umsetzen können.',
+          'qc.cta': 'Meinen QuickCheck buchen <span>→</span>',
+          'services.eyebrow': 'Wie ich sonst noch helfen kann',
+          'services.title': 'Sechs Wege,<br><em>wie wir</em><br>zusammenarbeiten<span class="lime-dot">.</span>',
+          'services.lead': 'Vom schnellen externen Audit bis zur vollen strategischen Partnerschaft. Wählen Sie die Tiefe, die Ihre Organisation braucht - von der einmaligen Beratung bis zur langfristigen Zusammenarbeit.',
+          'cases.eyebrow': 'Cases',
+          'cases.title': 'Zahlen, die <em>wirklich</em> bewegen<span class="lime-dot">.</span>',
+          'testimonial.eyebrow': 'Referenzen',
+          'testimonial.quote': '"Mit einem Team von Freiwilligen hat Peter die <strong style="color: #C9F31D; font-weight: 700;">erfolgreichste Weihnachtskampagne</strong> in der Tschechischen Republik im letzten Jahr aufgebaut. Durch Einfachheit und Gamification erreichte er <strong style="color: #C9F31D; font-weight: 700;">über 60 000 Spender</strong>."',
+          'testimonial.role': 'Direktor, Nadace Via',
+          'contact.pill': 'Sprechen wir',
+          'contact.title': 'Erzählen Sie mir <em>mehr</em><br>über Ihre Organisation<span style="color: #000;">.</span>',
+          'contact.lead': 'Ein paar kurze Fragen, ohne Verpflichtung. Ich melde mich innerhalb von 24 Stunden - einfach ein echtes Gespräch, kein Verkaufsgespräch.',
+          'contact.fallback.before': 'Oder schreiben Sie mir direkt an ',
+          'wizard.step0.q': 'Was führt Sie <em>hierher</em>?',
+          'wizard.step0.hint': 'Wählen Sie, was passt - wir verfeinern es später.',
+          'wizard.chip.exploring': 'Nur stöbern',
+          'wizard.step1.q': 'Wie ist Ihr <em>Name</em>?',
+          'wizard.step1.hint': 'Damit ich weiss, mit wem ich spreche.',
+          'wizard.step1.placeholder': 'Ihr Name…',
+          'wizard.step2.q': 'Welche <em>Organisation</em>?',
+          'wizard.step2.hint': 'Wenn Sie noch keine haben, ist das okay - schreiben Sie einfach "privat".',
+          'wizard.step2.placeholder': 'Name der Organisation',
+          'wizard.step3.q': 'Wohin darf ich <em>antworten</em>?',
+          'wizard.step3.hint': 'Kein Spam, kein Newsletter - es sei denn, Sie möchten später einen.',
+          'wizard.step3.placeholder': 'ihre@email.com',
+          'wizard.step4.q': 'Möchten Sie noch <em>etwas teilen</em>?',
+          'wizard.step4.hint': 'Optional - aber ein bis zwei Sätze helfen mir, mich vorzubereiten.',
+          'wizard.step4.placeholder': 'Ein paar Zeilen zu Ihrem Vorhaben…',
+          'wizard.success.title': 'Alles klar. <em>Bis bald.</em>',
+          'wizard.success.msg': 'Ich melde mich innerhalb von 24 Stunden - werktags meist schneller.',
+          'wizard.success.tpl': 'Danke {name} - ich melde mich bezüglich <strong>{interest}</strong> innerhalb von 24 Stunden.',
+          'wizard.btn.ok': 'OK',
+          'wizard.btn.send': 'Senden',
+          'wizard.btn.sending': 'Wird gesendet…',
+          'wizard.btn.back': '← Zurück',
+          'wizard.btn.skip': 'Überspringen',
+          'wizard.press_enter': 'drücken Sie',
+          'wizard.prefill.before': 'Danke für die Wahl von ',
+          'wizard.prefill.after': '. Lassen Sie uns starten.',
+          'wizard.prefill.change': 'Ändern',
+          'wizard.error.interest': 'Wählen Sie eine Option, um fortzufahren.',
+          'wizard.error.name': 'Bitte geben Sie Ihren Namen ein.',
+          'wizard.error.org': 'Der Name der Organisation (oder einfach "privat") hilft mir bei der Vorbereitung.',
+          'wizard.error.email': 'Diese E-Mail sieht seltsam aus - können Sie sie nochmals prüfen?',
+          'footer.tag': 'Digital-Fundraising-Beratung für europäische Non-Profits, die wachsen wollen. Made in Prague.',
+          'footer.col.services': 'Leistungen',
+          'footer.col.company': 'Über',
+          'footer.col.prague': 'Prag besuchen',
+          'footer.link.retainer': 'Retainer',
+          'footer.link.strategy': 'Strategie',
+          'footer.link.consulting': 'Beratung',
+          'footer.link.about': 'Über Peter',
+          'footer.link.cases': 'Case Studies',
+          'footer.link.contact': 'Kontakt',
+          'footer.link.prague': 'Prag Tipps',
+          'footer.bottom_made': 'Made in Prague',
+          'footer.imprint': 'Impressum',
+          // QuickCheck features
+          'qc.feat.1.title': 'Donor Journey Audit',
+          'qc.feat.1.sub': 'Wo Ihre Besucher abspringen - und warum',
+          'qc.feat.2.title': 'Social-Media- und Kampagnen-Analyse',
+          'qc.feat.2.sub': 'Was funktioniert, was Budget verschwendet',
+          'qc.feat.3.title': 'Quick Wins',
+          'qc.feat.3.sub': 'Konkrete Aktionen für nächste Woche',
+          'qc.feat.4.title': 'Benchmark vergleichbarer Non-Profits',
+          'qc.feat.4.sub': 'Wie 3-5 Peers in Ihrem Bereich abschneiden',
+          // QC pricing block
+          'qc.price.pill_limited': 'Begrenztes Angebot',
+          'qc.price.pill_until': 'Bis 31. Mai',
+          'qc.price.meta': 'Sonderpreis für die ersten <em>5 Schweizer Non-Profits</em> · Gleicher Umfang, gleiche Qualität.',
+          'qc.price.body': 'Wenn man in einen neuen Markt eintritt, ist nichts wertvoller als eine gute Referenz. Deshalb biete ich den ersten <strong>fünf Schweizer Organisationen</strong> bis Ende Mai CHF 1\'500 Rabatt - im Austausch für Ihr <strong>ehrliches Feedback</strong>. Ich tue alles dafür, dass Sie zufrieden sind und Ihr digitales Fundraising vorankommt.',
+          // QC CTA meta
+          'qc.meta.duration': 'Bis zu 15 Arbeitstage',
+          'qc.meta.no_meetings': 'Keine Meetings',
+          'qc.meta.zero_effort': 'Null Aufwand für Sie',
+          // QC right card
+          'qc.card.eyebrow': 'Was ich prüfe',
+          'qc.card.status': 'Bis zu 15 Arbeitstage',
+          'qc.card.title': '9 Bereiche unter der Lupe',
+          'qc.card.subtitle': 'Alles, was Ihnen online hilft, Geld zu sammeln',
+          'qc.card.footer': 'Keine Interviews, keine Zugangsdaten, keine Meetings. Ich&nbsp;arbeite ausschliesslich mit öffentlichen Quellen<span class="lime-dot">.</span> So wie Ihre Spender.',
+          // QC pillars (9)
+          'qc.pillar.1.title': 'Ihre Website &amp; Spendenseite',
+          'qc.pillar.1.sub': 'Wo Spender geben - und wo sie abspringen',
+          'qc.pillar.2.title': 'Wie Spender Sie erleben',
+          'qc.pillar.2.sub': 'Schritt für Schritt - wie ein Mystery Shopper',
+          'qc.pillar.3.title': 'Ihre Social-Media-Kanäle',
+          'qc.pillar.3.sub': 'Was funktioniert, was nicht',
+          'qc.pillar.4.title': 'Ihre Anzeigen &amp; Kampagnen',
+          'qc.pillar.4.sub': 'Facebook, Instagram, Google Ads',
+          'qc.pillar.5.title': 'Ihre E-Mails &amp; Newsletter',
+          'qc.pillar.5.sub': 'Welcome-Mails, regelmässige Updates',
+          'qc.pillar.6.title': 'Wie Sie im Vergleich abschneiden',
+          'qc.pillar.6.sub': 'Gegen 3-5 ähnliche Non-Profits',
+          'qc.pillar.7.title': 'Ihre Kampagnen-Performance',
+          'qc.pillar.7.sub': 'Jahresend-, Saison- und einmalige Fundraising-Kampagnen',
+          'qc.pillar.8.title': 'Dauerspender &amp; Bindung',
+          'qc.pillar.8.sub': 'Wie Sie sie zum Weiterspenden bringen',
+          'qc.pillar.9.title': 'Wie Sie Ihre Geschichte erzählen',
+          'qc.pillar.9.sub': 'Ton, Marke, Spender-Stories',
+          // Services 6 cards
+          'srv.tailored': 'Auf Ihre Bedürfnisse zugeschnitten',
+          'srv.1.num': '01 · Diagnose', 'srv.1.tag': 'AM BELIEBTESTEN', 'srv.1.title': 'QuickCheck',
+          'srv.1.desc': 'Ein kompletter externer Audit Ihres digitalen Fundraisings innerhalb von 15 Arbeitstagen. PDF-Bericht, Video-Walkthrough, Microsite - und konkrete Quick Wins für nächste Woche.',
+          'srv.1.meta': 'Bereit in 15 Arbeitstagen', 'srv.1.cta': 'QuickCheck buchen →',
+          'srv.2.num': '02 · Strategie', 'srv.2.tag': '4–8 Wochen', 'srv.2.title': 'Vollstrategie',
+          'srv.2.desc': 'Mittelfristige Strategie für Ihr digitales Fundraising, Spenderbetreuung und Social Media. Das Dokument, das Ihr Fundraising wirklich anschiebt und ihm für die nächsten 12-24 Monate eine echte Richtung gibt.',
+          'srv.2.cta': 'Gemeinsam planen →',
+          'srv.3.num': '03 · Partnerschaft', 'srv.3.title': 'Laufende Partnerschaft',
+          'srv.3.desc': 'Langfristige Zusammenarbeit als Ihr Fractional Fundraising Manager. Strategie, Umsetzung, Donor Journey - alles im selben Rhythmus. Stundenumfang flexibel nach Ihrem Bedarf.',
+          'srv.3.meta': 'Stunden nach Bedarf', 'srv.3.cta': 'Partnerschaft starten →',
+          'srv.4.num': '04 · Beratung', 'srv.4.tag': 'Pro Session', 'srv.4.title': 'Consulting',
+          'srv.4.desc': 'Einmalige Beratung zu einer Fundraising-Kampagne, Social-Media-Strategie oder Spenderbetreuung. Plus ehrliches Feedback zu Ihren Plänen, bevor Sie loslegen.',
+          'srv.4.cta': 'Session buchen →',
+          'srv.5.num': '05 · Build', 'srv.5.tag': '3–8 Wochen', 'srv.5.title': 'Neue Website',
+          'srv.5.desc': 'Mit meinen vertrauten Experten baue ich moderne Websites für Ihre Organisation - oder eine eigenständige Spender-Microsite für eine spezifische Kampagne. Optimierte Donor Journey, Gamification, Zahlungsanbindung und Analytics out of the box.',
+          'srv.5.cta': 'Umfang abstecken →',
+          'srv.6.num': '06 · Brand', 'srv.6.tag': 'Mit Partner', 'srv.6.title': 'Visuelle Identität',
+          'srv.6.desc': 'Ehrlich gesagt: Ich bin selbst kein Designer - aber ich leite das gemeinsam mit meinem vertrauten externen Grafikdesigner. Sie bekommen einen Projektleiter, zwei Köpfe, null Übergabe-Probleme.',
+          'srv.6.cta': 'Team briefen →',
+          // Cases
+          'case.big.tag': 'FEATURED',
+          'case.big.title': 'Tschechiens #1 Weihnachtskampagne 2025',
+          'case.big.desc': 'Mit einem Team von Freiwilligen aufgebaut - die erfolgreichste Weihnachts-Spendenaktion des Landes in jenem Jahr. Mit Gamification, Donor-Journey-Design und Medienpartnerschaften.',
+          'case.big.stat1': 'eingenommen', 'case.big.stat2': 'Spender', 'case.big.stat3': 'ROI in 1 Monat',
+          'case.small.tag': 'REGIONALE KAMPAGNE',
+          'case.small.tagline': 'Tschechisches Sozialunternehmen für Menschen mit Behinderungen',
+          'case.small.desc': 'Eine zweimonatige regionale Fundraising-Kampagne - gebaut, um Spender in den Gemeinden zu erreichen, in denen die Organisation tatsächlich tätig ist. Mit Donor-Journey-Design, Gamification und Meta Ads.',
+          'case.small.stat1': 'ROI in 2 Monaten', 'case.small.stat2': 'eingenommen aus CHF 1\'400 Investment', 'case.small.stat3': 'neue Spender in der Region',
+          // About bio
+          'about.bio.p1': 'Ich bin Peter Chalupiansky, ein Fundraising-Berater mit Sitz in Prag. In den letzten <strong>zehn Jahren</strong> habe ich mit Non-Profits gearbeitet und ihnen geholfen, digitale Spenden in einen nachhaltigen Einnahmekanal zu verwandeln.',
+          'about.bio.p2': 'Meine Arbeit verläuft auf zwei Schienen. Als CSR- &amp; ESG-Lead bei <strong>Kaufland Tschechien - Teil der Schwarz Gruppe, Europas grösstem Einzelhändler</strong> - habe ich die Weihnachtskampagne für <em>Světluška</em> in eine <strong>4,9-Mio.-€-Fundraising-Maschine über sieben Jahre</strong> verwandelt. Als unabhängiger Berater leite ich digitale Fundraising-Kampagnen für europäische Non-Profits - zuletzt die <strong>erfolgreichste Weihnachtskampagne in Tschechien 2025</strong>.',
+          'about.bio.p3': 'Meine Kampagnen liefern konsequent <strong>positiven ROI</strong> und bauen <strong>Spenderbasen auf</strong>, die bleiben.',
+          'about.bio.p4': 'Jetzt möchte ich all das zu Ihrer Non-Profit bringen - und Ihnen helfen, einen <strong>digitalen Fundraising-Kanal zu bauen, der wirklich funktioniert</strong>.',
+          'about.recog.title': 'Auszeichnungen &amp; Anerkennungen',
+          'about.recog.personal': 'Persönlich',
+          'about.recog.team': 'Mit dem Kaufland-Tschechien-Team (Teil der Schwarz Gruppe)',
+          'about.recog.item1': '<strong>Vorstandsmitglied der Czech Radio Foundation</strong> · eine der grössten NGOs in Tschechien',
+          'about.recog.item2': '<strong>TEDx, PechaKucha Nights &amp; Konferenz-Speaker</strong> · über 20 Events',
+          'about.recog.item3': '<strong>The Kind Heart Award</strong> · Karel-Janeček-Stiftung',
+          'about.recog.item4': '<strong>Persönlichkeit der Philanthropie</strong> · Czech Donors Forum',
+          'about.recog.item5': '<strong>Persönlichkeit des Jahres</strong> · Wheelchair Sport Club Prag',
+          'about.recog.item6': '<strong>Tschechischer Nationaler Qualitätspreis 2022 für Nachhaltigkeit</strong> · Ministerium für Industrie und Handel',
+          'about.recog.item7': '<strong>Viermaliger Verantwortungsvoller Einzelhändler des Jahres</strong> (2020, 2022, 2024, 2025) · Tschechischer Handels- und Tourismusverband',
+          // Prague card
+          'prague.pill': 'Prag-Tipps von Peter',
+          'prague.title': 'Kommen Sie nach Prag?<br><em>Ich helfe gerne.</em>',
+          'prague.text': 'Das ist meine Stadt. Wenn Sie geschäftlich oder fürs Wochenende einfliegen, habe ich einen kleinen Guide gemacht - die Orte, die ich meinen eigenen Freunden empfehle. Kaffee, Essen, Bier, ein paar ruhige Ecken.',
+          'prague.cta': 'Meine Prag-Tipps holen <span class="prague-arrow">→</span>',
+        },
+        fr: {
+          'nav.cta': 'Réserver mon QuickCheck →',
+          'hero.line1': 'Le fundraising digital,',
+          'hero.line2': 'qui rapporte vraiment',
+          'hero.rotate.0': 'de l\'argent<span class="lime-dot">.</span>',
+          'hero.rotate.1': 'des donateurs<span class="lime-dot">.</span>',
+          'hero.rotate.2': 'des relations<span class="lime-dot">.</span>',
+          'hero.rotate.3': 'des résultats<span class="lime-dot">.</span>',
+          'hero.lead': '<strong style="color: #1A1A1A; font-weight: 700;">La plupart des associations laissent de l\'argent sur la table chaque mois.</strong> Réglons cela avec le fundraising digital - et transformons-le en <strong style="color: #1A1A1A; font-weight: 700;">vrais dons</strong>.',
+          'hero.cta_primary': 'Commencer par un QuickCheck <span>→</span>',
+          'hero.cta_secondary': 'Voir toutes les prestations →',
+          'about.eyebrow': 'À propos',
+          'about.title': 'J\'aide les associations<br>en Europe à lever<br><em>du vrai argent</em> -<br>pas juste de l\'engagement<span class="lime-dot">.</span>',
+          'qc.eyebrow': 'Commencez ici · Zéro effort pour votre équipe',
+          'qc.title': 'QuickCheck - <em>découvrons</em><br><em>ce qui manque à</em><br>votre fundraising<span class="lime-dot">.</span>',
+          'qc.lead': 'En 15 jours ouvrés, je réalise un audit externe complet de votre fundraising digital - sans que votre équipe lève le petit doigt. Vous recevez un <strong>rapport complet</strong>, une <strong>vidéo explicative</strong>, votre <strong>microsite dédié avec le résumé</strong>, et une liste de <strong>quick wins concrets</strong> à livrer dès la semaine prochaine.',
+          'qc.cta': 'Réserver mon QuickCheck <span>→</span>',
+          'services.eyebrow': 'Comment je peux aussi vous aider',
+          'services.title': 'Six façons<br><em>de travailler</em><br>ensemble<span class="lime-dot">.</span>',
+          'services.lead': 'D\'un audit externe rapide à un partenariat stratégique complet. Choisissez la profondeur dont votre association a besoin - de la consultation ponctuelle au partenariat long terme.',
+          'cases.eyebrow': 'Cas',
+          'cases.title': 'Des chiffres qui <em>bougent vraiment</em><span class="lime-dot">.</span>',
+          'testimonial.eyebrow': 'Références',
+          'testimonial.quote': '"Avec une équipe de bénévoles, Peter a construit la <strong style="color: #C9F31D; font-weight: 700;">campagne de Noël la plus réussie</strong> en République tchèque l\'an dernier. Grâce à la simplicité et à la gamification, il a touché <strong style="color: #C9F31D; font-weight: 700;">plus de 60 000 donateurs</strong>."',
+          'testimonial.role': 'Directeur, Nadace Via',
+          'contact.pill': 'Parlons-en',
+          'contact.title': 'Parlez-moi <em>de</em><br>votre organisation<span style="color: #000;">.</span>',
+          'contact.lead': 'Quelques questions courtes, sans engagement. Je reviens vers vous dans les 24 heures - juste une vraie conversation, pas un argumentaire commercial.',
+          'contact.fallback.before': 'Ou écrivez-moi directement à ',
+          'wizard.step0.q': 'Qu\'est-ce qui vous <em>amène</em> ici ?',
+          'wizard.step0.hint': 'Choisissez ce qui correspond - on affinera plus tard.',
+          'wizard.chip.exploring': 'Juste explorer',
+          'wizard.step1.q': 'Quel est votre <em>nom</em> ?',
+          'wizard.step1.hint': 'Pour savoir à qui je m\'adresse.',
+          'wizard.step1.placeholder': 'Tapez votre nom ici…',
+          'wizard.step2.q': 'Quelle <em>organisation</em> ?',
+          'wizard.step2.hint': 'Si vous n\'en avez pas encore, écrivez simplement "personnel".',
+          'wizard.step2.placeholder': 'Nom de l\'organisation',
+          'wizard.step3.q': 'Où puis-je <em>répondre</em> ?',
+          'wizard.step3.hint': 'Pas de spam, pas de newsletter - sauf si vous en voulez une plus tard.',
+          'wizard.step3.placeholder': 'votre@email.com',
+          'wizard.step4.q': 'Quelque chose à <em>partager</em> ?',
+          'wizard.step4.hint': 'Facultatif - mais une ou deux phrases m\'aident à préparer.',
+          'wizard.step4.placeholder': 'Quelques lignes sur votre projet…',
+          'wizard.success.title': 'Bien reçu. <em>À très vite.</em>',
+          'wizard.success.msg': 'Je reviens vers vous dans les 24 heures - généralement plus rapide en semaine.',
+          'wizard.success.tpl': 'Merci {name} - je reviens vers vous au sujet de <strong>{interest}</strong> sous 24 heures.',
+          'wizard.btn.ok': 'OK',
+          'wizard.btn.send': 'Envoyer',
+          'wizard.btn.sending': 'Envoi…',
+          'wizard.btn.back': '← Retour',
+          'wizard.btn.skip': 'Passer',
+          'wizard.press_enter': 'appuyez sur',
+          'wizard.prefill.before': 'Merci d\'avoir choisi ',
+          'wizard.prefill.after': '. Passons à l\'essentiel.',
+          'wizard.prefill.change': 'Changer',
+          'wizard.error.interest': 'Choisissez une option pour continuer.',
+          'wizard.error.name': 'Veuillez saisir votre nom.',
+          'wizard.error.org': 'Le nom de l\'organisation (ou simplement "personnel") m\'aide à préparer.',
+          'wizard.error.email': 'Cet email semble incorrect - pouvez-vous vérifier ?',
+          'footer.tag': 'Conseil en fundraising digital pour les associations européennes prêtes à grandir. Made in Prague.',
+          'footer.col.services': 'Services',
+          'footer.col.company': 'À propos',
+          'footer.col.prague': 'Visiter Prague',
+          'footer.link.retainer': 'Retainer',
+          'footer.link.strategy': 'Stratégie',
+          'footer.link.consulting': 'Conseil',
+          'footer.link.about': 'À propos de Peter',
+          'footer.link.cases': 'Études de cas',
+          'footer.link.contact': 'Contact',
+          'footer.link.prague': 'Conseils Prague',
+          'footer.bottom_made': 'Made in Prague',
+          'footer.imprint': 'Mentions légales',
+          // QuickCheck features
+          'qc.feat.1.title': 'Audit du parcours donateur',
+          'qc.feat.1.sub': 'Où vos visiteurs décrochent - et pourquoi',
+          'qc.feat.2.title': 'Analyse social &amp; campagnes',
+          'qc.feat.2.sub': 'Ce qui marche, ce qui gaspille du budget',
+          'qc.feat.3.title': 'Quick wins',
+          'qc.feat.3.sub': 'Actions concrètes à livrer la semaine prochaine',
+          'qc.feat.4.title': 'Benchmark d\'associations similaires',
+          'qc.feat.4.sub': 'Comment 3-5 pairs de votre secteur se positionnent',
+          // QC pricing block
+          'qc.price.pill_limited': 'Offre limitée',
+          'qc.price.pill_until': 'Jusqu\'au 31 mai',
+          'qc.price.meta': 'Tarif d\'introduction pour les premières <em>5 associations suisses</em> · Même périmètre, mêmes standards.',
+          'qc.price.body': 'Quand on entre sur un nouveau marché, rien n\'est plus précieux qu\'une bonne référence. Je propose donc aux <strong>cinq premières organisations suisses</strong> CHF 1\'500 de réduction jusqu\'à fin mai, en échange de votre <strong>retour honnête</strong>. Je ferai tout pour que vous soyez satisfait et que votre fundraising digital avance.',
+          // QC CTA meta
+          'qc.meta.duration': 'Jusqu\'à 15 jours ouvrés',
+          'qc.meta.no_meetings': 'Aucune réunion',
+          'qc.meta.zero_effort': 'Zéro effort de votre part',
+          // QC right card
+          'qc.card.eyebrow': 'Ce que je vérifie',
+          'qc.card.status': 'Jusqu\'à 15 jours ouvrés',
+          'qc.card.title': '9 points sous la loupe',
+          'qc.card.subtitle': 'Tout ce qui vous aide à lever des fonds en ligne',
+          'qc.card.footer': 'Aucun entretien, aucune demande d\'accès, aucune réunion. Je&nbsp;travaille uniquement à partir de sources publiques<span class="lime-dot">.</span> Comme vos donateurs.',
+          // QC pillars (9)
+          'qc.pillar.1.title': 'Votre site &amp; page de don',
+          'qc.pillar.1.sub': 'Où les donateurs donnent - et où ils partent',
+          'qc.pillar.2.title': 'L\'expérience de vos donateurs',
+          'qc.pillar.2.sub': 'Étape par étape - comme un client mystère',
+          'qc.pillar.3.title': 'Vos réseaux sociaux',
+          'qc.pillar.3.sub': 'Ce qui marche, ce qui ne marche pas',
+          'qc.pillar.4.title': 'Vos pubs &amp; campagnes',
+          'qc.pillar.4.sub': 'Facebook, Instagram, Google Ads',
+          'qc.pillar.5.title': 'Vos emails &amp; newsletters',
+          'qc.pillar.5.sub': 'Mails de bienvenue, mises à jour régulières',
+          'qc.pillar.6.title': 'Comment vous vous comparez',
+          'qc.pillar.6.sub': 'Face à 3-5 associations similaires',
+          'qc.pillar.7.title': 'La performance de vos campagnes',
+          'qc.pillar.7.sub': 'Fin d\'année, saisonnières et campagnes ponctuelles',
+          'qc.pillar.8.title': 'Donateurs mensuels &amp; fidélisation',
+          'qc.pillar.8.sub': 'Comment vous les gardez',
+          'qc.pillar.9.title': 'Comment vous racontez votre histoire',
+          'qc.pillar.9.sub': 'Ton, marque, témoignages de donateurs',
+          // Services 6 cards
+          'srv.tailored': 'Sur mesure selon vos besoins',
+          'srv.1.num': '01 · Diagnostic', 'srv.1.tag': 'LE PLUS POPULAIRE', 'srv.1.title': 'QuickCheck',
+          'srv.1.desc': 'Un audit externe complet de votre fundraising digital en 15 jours ouvrés. Rapport PDF, vidéo explicative, microsite - et des quick wins concrets à livrer la semaine prochaine.',
+          'srv.1.meta': 'Prêt en 15 jours ouvrés', 'srv.1.cta': 'Réserver un QuickCheck →',
+          'srv.2.num': '02 · Stratégie', 'srv.2.tag': '4–8 semaines', 'srv.2.title': 'Stratégie complète',
+          'srv.2.desc': 'Stratégie à moyen terme pour votre fundraising digital, le soin des donateurs et les réseaux sociaux. Le document qui lance vraiment votre fundraising et lui donne une vraie direction pour les 12-24 prochains mois.',
+          'srv.2.cta': 'Planifier ensemble →',
+          'srv.3.num': '03 · Partenariat', 'srv.3.title': 'Partenariat continu',
+          'srv.3.desc': 'Collaboration long terme en tant que votre fractional fundraising manager. Stratégie, exécution, parcours donateur - tout dans le même rythme. Volume d\'heures flexible selon vos besoins.',
+          'srv.3.meta': 'Heures flexibles selon vos besoins', 'srv.3.cta': 'Démarrer le partenariat →',
+          'srv.4.num': '04 · Conseil', 'srv.4.tag': 'Par session', 'srv.4.title': 'Conseil',
+          'srv.4.desc': 'Consultation ponctuelle sur une campagne de fundraising, stratégie de réseaux sociaux ou soin des donateurs. Plus un retour honnête sur les plans de votre association avant que vous ne lanciez.',
+          'srv.4.cta': 'Réserver une session →',
+          'srv.5.num': '05 · Build', 'srv.5.tag': '3–8 semaines', 'srv.5.title': 'Nouveau site',
+          'srv.5.desc': 'Avec mes experts de confiance, je construis des sites modernes pour votre organisation - ou un microsite donateur dédié pour une campagne spécifique. Parcours donateur optimisé, gamification, intégration de paiement et analytics prêts à l\'emploi.',
+          'srv.5.cta': 'Cadrer le projet →',
+          'srv.6.num': '06 · Brand', 'srv.6.tag': 'Avec partenaire', 'srv.6.title': 'Identité visuelle',
+          'srv.6.desc': 'Note honnête : je ne suis pas designer moi-même - mais je pilote cela avec mon graphiste externe de confiance. Vous avez un chef de projet, deux esprits, zéro problème de transmission.',
+          'srv.6.cta': 'Briefer l\'équipe →',
+          // Cases
+          'case.big.tag': 'FEATURED',
+          'case.big.title': 'La campagne de Noël n°1 en Tchéquie 2025',
+          'case.big.desc': 'Construite avec une équipe de bénévoles - la collecte de Noël la plus réussie du pays cette année-là. Portée par la gamification, le design du parcours donateur et des partenariats média.',
+          'case.big.stat1': 'collectés', 'case.big.stat2': 'donateurs', 'case.big.stat3': 'ROI en 1 mois',
+          'case.small.tag': 'CAMPAGNE RÉGIONALE',
+          'case.small.tagline': 'Entreprise sociale tchèque pour personnes en situation de handicap',
+          'case.small.desc': 'Une campagne de fundraising régionale de 2 mois - construite pour atteindre les donateurs dans les communautés où l\'organisation travaille vraiment. Portée par le design du parcours donateur, la gamification et les Meta Ads.',
+          'case.small.stat1': 'ROI en 2 mois', 'case.small.stat2': 'collectés à partir de CHF 1\'400 investis', 'case.small.stat3': 'nouveaux donateurs dans la région',
+          // About bio
+          'about.bio.p1': 'Je suis Peter Chalupiansky, consultant en fundraising basé à Prague. Depuis <strong>dix ans</strong>, je travaille avec des associations pour transformer les dons digitaux en un canal de revenus durable.',
+          'about.bio.p2': 'Mon travail se déploie sur deux fronts. En tant que responsable RSE &amp; ESG chez <strong>Kaufland République tchèque - filiale du Schwarz Gruppe, le plus grand distributeur d\'Europe</strong> - j\'ai transformé la campagne de Noël pour <em>Světluška</em> en une <strong>machine de fundraising de 4,9 M€ sur sept ans</strong>. En tant que consultant indépendant, je dirige des campagnes de fundraising digital pour des associations européennes - dernièrement la <strong>campagne de Noël la plus réussie en Tchéquie en 2025</strong>.',
+          'about.bio.p3': 'Mes campagnes livrent systématiquement <strong>un ROI positif</strong> et font <strong>grandir des bases de donateurs</strong> qui restent.',
+          'about.bio.p4': 'Maintenant, je veux apporter tout cela à votre association - et vous aider à <strong>construire un canal de fundraising digital qui marche vraiment</strong>.',
+          'about.recog.title': 'Distinctions &amp; reconnaissance',
+          'about.recog.personal': 'Personnel',
+          'about.recog.team': 'Avec l\'équipe Kaufland République tchèque (filiale du Schwarz Gruppe)',
+          'about.recog.item1': '<strong>Membre du conseil de la Czech Radio Foundation</strong> · l\'une des plus grandes ONG en Tchéquie',
+          'about.recog.item2': '<strong>Conférencier TEDx, PechaKucha Nights &amp; conférences</strong> · plus de 20 événements',
+          'about.recog.item3': '<strong>The Kind Heart Award</strong> · Fondation Karel Janeček',
+          'about.recog.item4': '<strong>Personnalité de la Philanthropie</strong> · Czech Donors Forum',
+          'about.recog.item5': '<strong>Personnalité de l\'année</strong> · Wheelchair Sport Club Prague',
+          'about.recog.item6': '<strong>Prix national tchèque de la qualité 2022 pour la durabilité</strong> · Ministère de l\'Industrie et du Commerce',
+          'about.recog.item7': '<strong>Quadruple Détaillant Responsable de l\'Année</strong> (2020, 2022, 2024, 2025) · Confédération tchèque du commerce et du tourisme',
+          // Prague card
+          'prague.pill': 'Conseils Prague de Peter',
+          'prague.title': 'Vous venez à Prague ?<br><em>Laissez-moi vous aider.</em>',
+          'prague.text': 'C\'est ma ville. Si vous venez pour le travail ou juste un week-end, j\'ai préparé un petit guide - les endroits que j\'envoie à mes propres amis. Café, nourriture, bière, quelques coins tranquilles.',
+          'prague.cta': 'Obtenir mes conseils Prague <span class="prague-arrow">→</span>',
+        },
+        it: {
+          'nav.cta': 'Prenota un QuickCheck →',
+          'hero.line1': 'Fundraising digitale,',
+          'hero.line2': 'che davvero',
+          'hero.rotate.0': 'porta soldi<span class="lime-dot">.</span>',
+          'hero.rotate.1': 'porta donatori<span class="lime-dot">.</span>',
+          'hero.rotate.2': 'crea relazioni<span class="lime-dot">.</span>',
+          'hero.rotate.3': 'fa crescere<span class="lime-dot">.</span>',
+          'hero.lead': '<strong style="color: #1A1A1A; font-weight: 700;">La maggior parte delle non profit lascia soldi sul tavolo ogni mese.</strong> Risolviamolo con il fundraising digitale - e trasformiamolo in <strong style="color: #1A1A1A; font-weight: 700;">donazioni reali</strong>.',
+          'hero.cta_primary': 'Inizia con un QuickCheck <span>→</span>',
+          'hero.cta_secondary': 'Vedi tutti i servizi →',
+          'about.eyebrow': 'Chi sono',
+          'about.title': 'Aiuto le non profit<br>in tutta Europa a raccogliere<br><em>soldi veri</em> -<br>non solo engagement<span class="lime-dot">.</span>',
+          'qc.eyebrow': 'Inizia qui · Zero impegno per il tuo team',
+          'qc.title': 'QuickCheck - <em>scopriamo</em><br><em>cosa manca al</em><br>tuo fundraising<span class="lime-dot">.</span>',
+          'qc.lead': 'In 15 giorni lavorativi realizzo un audit esterno completo del tuo fundraising digitale - senza che il tuo team alzi un dito. Ricevi un <strong>report completo</strong>, una <strong>video-spiegazione</strong>, una <strong>microsite dedicata con il riepilogo</strong>, e una lista di <strong>quick win concreti</strong> da implementare la settimana prossima.',
+          'qc.cta': 'Prenota il mio QuickCheck <span>→</span>',
+          'services.eyebrow': 'Come altro posso aiutarti',
+          'services.title': 'Sei modi<br><em>di lavorare</em><br>insieme<span class="lime-dot">.</span>',
+          'services.lead': 'Da un audit esterno rapido a una partnership strategica completa. Scegli la profondità di cui la tua organizzazione ha bisogno - dalla consulenza singola alla partnership a lungo termine.',
+          'cases.eyebrow': 'Casi',
+          'cases.title': 'Numeri che <em>davvero</em> contano<span class="lime-dot">.</span>',
+          'testimonial.eyebrow': 'Referenze',
+          'testimonial.quote': '"Con un team di volontari, Peter ha costruito la <strong style="color: #C9F31D; font-weight: 700;">campagna natalizia di maggior successo</strong> nella Repubblica Ceca lo scorso anno. Grazie a semplicità e gamification, ha raggiunto <strong style="color: #C9F31D; font-weight: 700;">oltre 60 000 donatori</strong>."',
+          'testimonial.role': 'Direttore, Nadace Via',
+          'contact.pill': 'Parliamone',
+          'contact.title': 'Raccontami <em>di più</em><br>sulla tua organizzazione<span style="color: #000;">.</span>',
+          'contact.lead': 'Qualche domanda breve, senza impegno. Ti rispondo entro 24 ore - solo una vera conversazione, niente vendite forzate.',
+          'contact.fallback.before': 'O scrivimi direttamente a ',
+          'wizard.step0.q': 'Cosa ti porta <em>qui</em>?',
+          'wizard.step0.hint': 'Scegli ciò che si adatta - possiamo affinare dopo.',
+          'wizard.chip.exploring': 'Solo esplorando',
+          'wizard.step1.q': 'Qual è il tuo <em>nome</em>?',
+          'wizard.step1.hint': 'Così so con chi sto parlando.',
+          'wizard.step1.placeholder': 'Scrivi il tuo nome qui…',
+          'wizard.step2.q': 'Quale <em>organizzazione</em>?',
+          'wizard.step2.hint': 'Se non ne hai ancora una, va bene - scrivi semplicemente "personale".',
+          'wizard.step2.placeholder': 'Nome dell\'organizzazione',
+          'wizard.step3.q': 'Dove posso <em>risponderti</em>?',
+          'wizard.step3.hint': 'Niente spam, niente newsletter - a meno che tu non ne voglia una poi.',
+          'wizard.step3.placeholder': 'tua@email.com',
+          'wizard.step4.q': 'Vuoi <em>condividere qualcosa</em>?',
+          'wizard.step4.hint': 'Opzionale - ma una o due frasi mi aiutano a prepararmi.',
+          'wizard.step4.placeholder': 'Una o due righe sul tuo progetto…',
+          'wizard.success.title': 'Ricevuto. <em>A presto.</em>',
+          'wizard.success.msg': 'Ti scrivo entro 24 ore - di solito più veloce nei giorni lavorativi.',
+          'wizard.success.tpl': 'Grazie {name} - ti rispondo riguardo a <strong>{interest}</strong> entro 24 ore.',
+          'wizard.btn.ok': 'OK',
+          'wizard.btn.send': 'Invia',
+          'wizard.btn.sending': 'Invio in corso…',
+          'wizard.btn.back': '← Indietro',
+          'wizard.btn.skip': 'Salta',
+          'wizard.press_enter': 'premi',
+          'wizard.prefill.before': 'Grazie per aver scelto ',
+          'wizard.prefill.after': '. Iniziamo dalle basi.',
+          'wizard.prefill.change': 'Cambia',
+          'wizard.error.interest': 'Scegli un\'opzione per continuare.',
+          'wizard.error.name': 'Inserisci il tuo nome.',
+          'wizard.error.org': 'Il nome dell\'organizzazione (o semplicemente "personale") mi aiuta a prepararmi.',
+          'wizard.error.email': 'Questa email sembra strana - puoi ricontrollarla?',
+          'footer.tag': 'Consulenza di fundraising digitale per le non profit europee pronte a crescere. Made in Prague.',
+          'footer.col.services': 'Servizi',
+          'footer.col.company': 'Chi sono',
+          'footer.col.prague': 'Visita Praga',
+          'footer.link.retainer': 'Retainer',
+          'footer.link.strategy': 'Strategia',
+          'footer.link.consulting': 'Consulenza',
+          'footer.link.about': 'Su Peter',
+          'footer.link.cases': 'Case study',
+          'footer.link.contact': 'Contatti',
+          'footer.link.prague': 'Consigli Praga',
+          'footer.bottom_made': 'Made in Prague',
+          'footer.imprint': 'Impressum',
+          // QuickCheck features
+          'qc.feat.1.title': 'Audit del donor journey',
+          'qc.feat.1.sub': 'Dove i tuoi visitatori abbandonano - e perché',
+          'qc.feat.2.title': 'Analisi social &amp; campagne',
+          'qc.feat.2.sub': 'Cosa funziona, cosa spreca budget',
+          'qc.feat.3.title': 'Quick win',
+          'qc.feat.3.sub': 'Azioni concrete da implementare la prossima settimana',
+          'qc.feat.4.title': 'Benchmark di non profit simili',
+          'qc.feat.4.sub': 'Come 3-5 peer del tuo settore si posizionano',
+          // QC pricing block
+          'qc.price.pill_limited': 'Offerta limitata',
+          'qc.price.pill_until': 'Fino al 31 maggio',
+          'qc.price.meta': 'Prezzo introduttivo speciale per le prime <em>5 non profit svizzere</em> · Stesso scope, stessi standard.',
+          'qc.price.body': 'Quando entri in un nuovo mercato, niente è più prezioso di una buona referenza. Per questo offro alle prime <strong>cinque organizzazioni svizzere</strong> CHF 1\'500 di sconto fino a fine maggio, in cambio del tuo <strong>feedback onesto</strong>. Farò di tutto per assicurarmi che tu sia soddisfatto e che il tuo fundraising digitale vada avanti.',
+          // QC CTA meta
+          'qc.meta.duration': 'Fino a 15 giorni lavorativi',
+          'qc.meta.no_meetings': 'Nessuna riunione',
+          'qc.meta.zero_effort': 'Zero impegno per te',
+          // QC right card
+          'qc.card.eyebrow': 'Cosa controllo',
+          'qc.card.status': 'Fino a 15 giorni lavorativi',
+          'qc.card.title': '9 punti sotto la lente',
+          'qc.card.subtitle': 'Tutto ciò che ti aiuta a raccogliere fondi online',
+          'qc.card.footer': 'Niente interviste, niente richieste di accesso, niente riunioni. Lavoro&nbsp;esclusivamente da fonti pubbliche<span class="lime-dot">.</span> Come fanno i tuoi donatori.',
+          // QC pillars (9)
+          'qc.pillar.1.title': 'Il tuo sito &amp; pagina di donazione',
+          'qc.pillar.1.sub': 'Dove donano - e dove abbandonano',
+          'qc.pillar.2.title': 'L\'esperienza dei donatori',
+          'qc.pillar.2.sub': 'Passo per passo - come un mystery shopper',
+          'qc.pillar.3.title': 'I tuoi social media',
+          'qc.pillar.3.sub': 'Cosa funziona, cosa no',
+          'qc.pillar.4.title': 'Le tue ads &amp; campagne',
+          'qc.pillar.4.sub': 'Facebook, Instagram, Google Ads',
+          'qc.pillar.5.title': 'Le tue email &amp; newsletter',
+          'qc.pillar.5.sub': 'Welcome email, aggiornamenti regolari',
+          'qc.pillar.6.title': 'Come ti confronti',
+          'qc.pillar.6.sub': 'Contro 3-5 non profit simili',
+          'qc.pillar.7.title': 'Performance delle campagne',
+          'qc.pillar.7.sub': 'Fine anno, stagionali e campagne occasionali',
+          'qc.pillar.8.title': 'Donatori mensili &amp; retention',
+          'qc.pillar.8.sub': 'Come li mantieni a donare',
+          'qc.pillar.9.title': 'Come racconti la tua storia',
+          'qc.pillar.9.sub': 'Voce, brand, storie dei donatori',
+          // Services 6 cards
+          'srv.tailored': 'Su misura per le tue esigenze',
+          'srv.1.num': '01 · Diagnostica', 'srv.1.tag': 'IL PIÙ POPOLARE', 'srv.1.title': 'QuickCheck',
+          'srv.1.desc': 'Un audit esterno completo del tuo fundraising digitale in 15 giorni lavorativi. Report PDF, video-spiegazione, microsite - e quick win concreti da implementare la prossima settimana.',
+          'srv.1.meta': 'Pronto in 15 giorni lavorativi', 'srv.1.cta': 'Prenota un QuickCheck →',
+          'srv.2.num': '02 · Strategia', 'srv.2.tag': '4–8 settimane', 'srv.2.title': 'Strategia completa',
+          'srv.2.desc': 'Strategia a medio termine per il tuo fundraising digitale, donor care e social media. Il documento che davvero fa partire il tuo fundraising e gli dà una vera direzione per i prossimi 12-24 mesi.',
+          'srv.2.cta': 'Pianifichiamo insieme →',
+          'srv.3.num': '03 · Partnership', 'srv.3.title': 'Partnership continua',
+          'srv.3.desc': 'Collaborazione a lungo termine come tuo fractional fundraising manager. Strategia, esecuzione, donor journey - tutto nello stesso ritmo. Le ore si adattano alle tue esigenze.',
+          'srv.3.meta': 'Ore flessibili secondo necessità', 'srv.3.cta': 'Avvia la partnership →',
+          'srv.4.num': '04 · Advisory', 'srv.4.tag': 'A sessione', 'srv.4.title': 'Consulenza',
+          'srv.4.desc': 'Consulenza singola su una campagna di fundraising, strategia social media o donor care. Più feedback onesto sui piani della tua organizzazione prima di lanciare.',
+          'srv.4.cta': 'Prenota una sessione →',
+          'srv.5.num': '05 · Build', 'srv.5.tag': '3–8 settimane', 'srv.5.title': 'Nuovo sito',
+          'srv.5.desc': 'Insieme ai miei esperti di fiducia, costruisco siti moderni per la tua organizzazione - o un microsite donatori dedicato per una campagna specifica. Donor journey ottimizzato, gamification, integrazione pagamenti e analytics pronti all\'uso.',
+          'srv.5.cta': 'Definiamo lo scope →',
+          'srv.6.num': '06 · Brand', 'srv.6.tag': 'Con partner', 'srv.6.title': 'Identità visiva',
+          'srv.6.desc': 'Nota onesta: non sono io stesso un designer - ma guido questo insieme al mio grafico esterno di fiducia. Hai un project lead, due menti, zero problemi di passaggio.',
+          'srv.6.cta': 'Briefare il team →',
+          // Cases
+          'case.big.tag': 'FEATURED',
+          'case.big.title': 'La campagna di Natale n°1 in Cechia 2025',
+          'case.big.desc': 'Costruita con un team di volontari - la raccolta natalizia di maggior successo del paese in quell\'anno. Alimentata da gamification, design del donor journey e partnership media.',
+          'case.big.stat1': 'raccolti', 'case.big.stat2': 'donatori', 'case.big.stat3': 'ROI in 1 mese',
+          'case.small.tag': 'CAMPAGNA REGIONALE',
+          'case.small.tagline': 'Impresa sociale ceca per persone con disabilità',
+          'case.small.desc': 'Una campagna di fundraising regionale di 2 mesi - costruita per raggiungere i donatori nelle comunità dove l\'organizzazione opera davvero. Alimentata da design del donor journey, gamification e Meta Ads.',
+          'case.small.stat1': 'ROI in 2 mesi', 'case.small.stat2': 'raccolti da CHF 1\'400 investiti', 'case.small.stat3': 'nuovi donatori nella regione',
+          // About bio
+          'about.bio.p1': 'Sono Peter Chalupiansky, un consulente di fundraising con base a Praga. Negli ultimi <strong>dieci anni</strong>, ho lavorato con non profit, aiutandole a trasformare le donazioni digitali in un canale di reddito sostenibile.',
+          'about.bio.p2': 'Il mio lavoro si svolge su due fronti. Come responsabile CSR &amp; ESG presso <strong>Kaufland Repubblica Ceca - parte del Schwarz Gruppe, il più grande retailer d\'Europa</strong> - ho trasformato la campagna natalizia per <em>Světluška</em> in una <strong>macchina di fundraising da 4,9 milioni di € in sette anni</strong>. Come consulente indipendente, dirigo campagne di fundraising digitale per non profit europee - più recentemente la <strong>campagna natalizia di maggior successo in Cechia del 2025</strong>.',
+          'about.bio.p3': 'Le mie campagne offrono costantemente <strong>ROI positivo</strong> e fanno <strong>crescere basi di donatori</strong> che restano.',
+          'about.bio.p4': 'Ora voglio portare tutto questo alla tua non profit - e aiutarti a <strong>costruire un canale di fundraising digitale che davvero funziona</strong>.',
+          'about.recog.title': 'Premi &amp; Riconoscimenti',
+          'about.recog.personal': 'Personali',
+          'about.recog.team': 'Con il team Kaufland Repubblica Ceca (parte del Schwarz Gruppe)',
+          'about.recog.item1': '<strong>Membro del consiglio della Czech Radio Foundation</strong> · una delle più grandi ONG in Cechia',
+          'about.recog.item2': '<strong>Speaker TEDx, PechaKucha Nights &amp; conferenze</strong> · oltre 20 eventi',
+          'about.recog.item3': '<strong>The Kind Heart Award</strong> · Fondazione Karel Janeček',
+          'about.recog.item4': '<strong>Personalità della Filantropia</strong> · Czech Donors Forum',
+          'about.recog.item5': '<strong>Personalità dell\'Anno</strong> · Wheelchair Sport Club Praga',
+          'about.recog.item6': '<strong>Premio Nazionale Ceco per la Qualità 2022 per la Sostenibilità</strong> · Ministero dell\'Industria e del Commercio',
+          'about.recog.item7': '<strong>Quattro volte Retailer Responsabile dell\'Anno</strong> (2020, 2022, 2024, 2025) · Confederazione Ceca del Commercio e del Turismo',
+          // Prague card
+          'prague.pill': 'Consigli su Praga da Peter',
+          'prague.title': 'Vieni a Praga?<br><em>Lascia che ti aiuti.</em>',
+          'prague.text': 'È la mia città. Se voli qui per lavoro o solo per un weekend, ho preparato una piccola guida - i posti che mando ai miei stessi amici. Caffè, cibo, birra, qualche angolo tranquillo.',
+          'prague.cta': 'Ottieni i miei consigli su Praga <span class="prague-arrow">→</span>',
+        },
+      };
+
+      let currentLang = 'en';
+
+      function setLang(lang) {
+        if (!LANGS.includes(lang)) lang = 'en';
+        currentLang = lang;
+        const dict = T[lang];
+        document.documentElement.lang = lang === 'ch' ? 'de-CH' : lang;
+
+        // Aktualizace state tlačítek
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          const isActive = btn.dataset.lang === lang;
+          btn.classList.toggle('is-active', isActive);
+          btn.setAttribute('aria-pressed', String(isActive));
+        });
+
+        // Aplikace překladů na všechny prvky s data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.dataset.i18n;
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        // Placeholdery (data-i18n-placeholder)
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const key = el.dataset.i18nPlaceholder;
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        // Persistence
+        try { localStorage.setItem('ngo_lang', lang); } catch(e) {}
+
+        // Vyhlásit změnu, aby si dynamické UI (wizard tlačítka) mohlo přepsat texty
+        window.dispatchEvent(new CustomEvent('ngolangchange', { detail: { lang } }));
+      }
+
+      // Vystavit jako globální API pro wizard JS (errors, success message)
+      window.NgoI18n = {
+        t: function(key, vars) {
+          let s = (T[currentLang] && T[currentLang][key]) || (T.en[key] || '');
+          if (vars) Object.keys(vars).forEach(k => { s = s.replace('{' + k + '}', vars[k]); });
+          return s;
+        },
+        get currentLang() { return currentLang; }
+      };
+
+      // Init: URL > localStorage > default 'en'
+      let initLang = 'en';
+      try {
+        const saved = localStorage.getItem('ngo_lang');
+        if (saved && LANGS.includes(saved)) initLang = saved;
+      } catch(e) {}
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      if (urlLang && LANGS.includes(urlLang)) initLang = urlLang;
+
+      // Drátování tlačítek
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLang(btn.dataset.lang));
+      });
+
+      // Aplikace na startu
+      setLang(initLang);
     })();
   </script>
 
@@ -2847,4 +3770,3 @@
   <script type="text/javascript" src="https://embeds.iubenda.com/widgets/daa30d60-bbae-4dec-89b8-7bfa02fca315.js"></script>
 </body>
 </html>
-  
