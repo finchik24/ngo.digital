@@ -1487,9 +1487,7 @@
         align-self: flex-start;
       }
       .nav-links .btn-primary {
-        text-align: center;
-        justify-content: center;
-        display: flex;
+        display: none;       /* hide QuickCheck CTA in hamburger panel on mobile */
       }
 
       /* Hero */
@@ -1506,10 +1504,15 @@
       /* Stats / grids */
       .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
       .stat-num { font-size: 36px; }
+      /* Flatten left column so photo + Prague card become direct grid children,
+         then reorder: photo → about-bio → Prague card (Prague card lands just
+         above the QuickCheck section on mobile). Sticky disables automatically
+         since .about-left-col no longer has its own layout box. */
       .about-left-col {
-        position: static;       /* disable sticky on mobile */
-        top: auto;
+        display: contents;
       }
+      .about-bio { order: 1; }
+      .about-left-col .prague-card { order: 2; }
       .prague-card { padding: 18px; }
       .prague-title { font-size: 20px; }
       .recognition-list li { font-size: 14px; }
