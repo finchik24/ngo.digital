@@ -75,7 +75,22 @@
 
   .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
   .place-card { background: white; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 16px; overflow: hidden; }
-  .place-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; background: #2A2A2A; }
+  .place-photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    background:
+      linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+    /* Subtle hint that placeholder is intentional, not broken */
+    color: transparent; /* hides "broken image" alt text icon in some browsers */
+  }
+  /* When image fails to load, show a clean placeholder with lime accent */
+  .place-photo:not([src]),
+  .place-photo[src=""],
+  img.place-photo[alt]:after {
+    content: "";
+  }
   .place-content { padding: 24px; }
   .neighborhood-pill { display: inline-block; background: #C9F31D; color: #1A1A1A; padding: 5px 11px; border-radius: 999px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
   .place-name { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.2; color: #1A1A1A; margin-bottom: 10px; }
@@ -243,7 +258,7 @@
     <div class="cards-grid">
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/kavarna-misto.jpg" alt="Kavárna Místo, Dejvice, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Dejvice</span>
           <div class="place-name">Kavárna Místo</div>
@@ -253,7 +268,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/loka-espresso.jpg" alt="Loka Espresso Bar, Karlín, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Karlín</span>
           <div class="place-name">Loka Espresso Bar</div>
@@ -263,7 +278,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/muj-salek-kavy.jpg" alt="Můj šálek kávy, Karlín, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Karlín</span>
           <div class="place-name">Můj šálek kávy</div>
@@ -273,7 +288,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/kavarna-slavia.jpg" alt="Kavárna Slavia, Old Town, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Old Town</span>
           <div class="place-name">Kavárna Slavia</div>
@@ -301,7 +316,7 @@
     <div class="cards-grid">
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/cafe-palanda.jpg" alt="Café Palanda, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Nové Město</span>
           <div class="place-name">Café Palanda</div>
@@ -311,7 +326,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/cafe-louvre.jpg" alt="Café Louvre, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Nové Město</span>
           <div class="place-name">Café Louvre</div>
@@ -321,7 +336,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/cestr.jpg" alt="Čestr restaurace, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Vinohrady</span>
           <div class="place-name">Čestr</div>
@@ -331,7 +346,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/kuchyn.jpg" alt="Kuchyň, Pražský hrad, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Hradčany</span>
           <div class="place-name">Kuchyň</div>
@@ -341,7 +356,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/tonkin.jpg" alt="Tonkin restaurace, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Dejvice</span>
           <div class="place-name">Tonkin</div>
@@ -351,7 +366,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/stejkarna.jpg" alt="Stejkárna, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Holešovice</span>
           <div class="place-name">Stejkárna</div>
@@ -361,7 +376,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/cerveny-jelen.jpg" alt="Červený Jelen, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Nové Město</span>
           <div class="place-name">Červený Jelen</div>
@@ -371,7 +386,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/brasileiro.jpg" alt="Brasileiro U Zelené žáby, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Old Town</span>
           <div class="place-name">Brasileiro U Zelené žáby</div>
@@ -399,7 +414,7 @@
     <div class="cards-grid">
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1546726747-421c6d69c929?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/u-pinkasu.jpg" alt="U Pinkasů, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Nové Město</span>
           <div class="place-name">U Pinkasů</div>
@@ -409,7 +424,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/dva-kohouti.jpg" alt="Dva Kohouti pivovar, Karlín, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Karlín</span>
           <div class="place-name">Dva Kohouti</div>
@@ -419,7 +434,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1546726747-421c6d69c929?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/lokal-dlouha.jpg" alt="Lokál Dlouhááá, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Old Town</span>
           <div class="place-name">Lokál Dlouhááá</div>
@@ -429,7 +444,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/automat-matuska.jpg" alt="Automat Matuška, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Dejvice</span>
           <div class="place-name">Automat Matuška</div>
@@ -457,7 +472,7 @@
     <div class="cards-grid">
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/stromovka.jpg" alt="Stromovka park, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Bubeneč</span>
           <div class="place-name">Stromovka</div>
@@ -467,7 +482,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/divoka-sarka.jpg" alt="Divoká Šárka, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Praha 6</span>
           <div class="place-name">Divoká Šárka</div>
@@ -477,7 +492,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/grebovka.jpg" alt="Grébovka (Havlíčkovy sady), Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Vinohrady</span>
           <div class="place-name">Grébovka (Havlíčkovy sady)</div>
@@ -487,7 +502,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/obora-hvezda.jpg" alt="Obora Hvězda, Praha" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">Liboc</span>
           <div class="place-name">Obora Hvězda</div>
@@ -566,7 +581,7 @@
     <div class="cards-grid">
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/karlstejn.jpg" alt="Hrad Karlštejn, Česká republika" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">30 min by train</span>
           <div class="place-name">Karlštejn</div>
@@ -576,7 +591,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/kutna-hora.jpg" alt="Kutná Hora, Česká republika" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">1 hr by train</span>
           <div class="place-name">Kutná Hora</div>
@@ -586,7 +601,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/cesky-krumlov.jpg" alt="Český Krumlov, Česká republika" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">3 hrs by train</span>
           <div class="place-name">Český Krumlov</div>
@@ -596,7 +611,7 @@
       </div>
 
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?w=600&auto=format&fit=crop&q=80" class="place-photo">
+        <img src="/images/prague/olomouc.jpg" alt="Olomouc, Česká republika" class="place-photo" loading="lazy">
         <div class="place-content">
           <span class="neighborhood-pill">2.5 hrs by train</span>
           <div class="place-name">Olomouc</div>
