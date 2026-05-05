@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1904,9 +1904,8 @@
     <a href="#" class="logo">ngo<span class="dot">.</span>digital</a>
     <div class="nav-links">
       <div class="lang-switcher" role="group" aria-label="Language">
-        <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" class="lang-btn" data-lang="de" aria-pressed="false">DE</button>
-        <button type="button" class="lang-btn" data-lang="ch" aria-pressed="false" title="Swiss German">CH</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="lang-btn is-active" data-lang="de" aria-pressed="true">DE</button>
         <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
         <button type="button" class="lang-btn" data-lang="it" aria-pressed="false">IT</button>
       </div>
@@ -2855,7 +2854,7 @@
        Volba se ukládá do localStorage. Lze předat i ?lang=de v URL. -->
   <script>
     (function() {
-      const LANGS = ['en', 'de', 'ch', 'fr', 'it'];
+      const LANGS = ['en', 'de', 'fr', 'it'];
       const T = {
         en: {
           'nav.cta': 'Get a QuickCheck →',
@@ -3168,172 +3167,6 @@
           'case.small.tagline': 'Tschechisches Sozialunternehmen für Menschen mit Behinderungen',
           'case.small.desc': 'Eine zweimonatige regionale Fundraising-Kampagne - gebaut, um Spender in den Gemeinden zu erreichen, in denen die Organisation tatsächlich tätig ist. Mit Donor-Journey-Design, Gamification und Meta Ads.',
           'case.small.stat1': 'ROI in 2 Monaten', 'case.small.stat2': 'eingenommen aus CHF 1.4K Investment', 'case.small.stat3': 'neue Spender in der Region',
-          // About bio
-          'about.bio.p1': 'Ich bin Peter Chalupiansky, ein Fundraising-Berater mit Sitz in Prag. In den letzten <strong>zehn Jahren</strong> habe ich mit Non-Profits gearbeitet und ihnen geholfen, digitale Spenden in einen nachhaltigen Einnahmekanal zu verwandeln.',
-          'about.bio.p2': 'Meine Arbeit verläuft auf zwei Schienen. Als CSR- &amp; ESG-Lead bei <strong>Kaufland Tschechien - Teil der Schwarz Gruppe, Europas grösstem Einzelhändler</strong> - habe ich die Weihnachtskampagne für <em>Světluška</em> in eine <strong>4,9-Mio.-€-Fundraising-Maschine über sieben Jahre</strong> verwandelt. Als unabhängiger Berater leite ich digitale Fundraising-Kampagnen für europäische Non-Profits - zuletzt die <strong>erfolgreichste Weihnachtskampagne in Tschechien 2025</strong>.',
-          'about.bio.p3': 'Meine Kampagnen liefern konsequent <strong>positiven ROI</strong> und bauen <strong>Spenderbasen auf</strong>, die bleiben.',
-          'about.bio.p4': 'Jetzt möchte ich all das zu Ihrer Non-Profit bringen - und Ihnen helfen, einen <strong>digitalen Fundraising-Kanal zu bauen, der wirklich funktioniert</strong>.',
-          'about.recog.title': 'Auszeichnungen &amp; Anerkennungen',
-          'about.recog.personal': 'Persönlich',
-          'about.recog.team': 'Mit dem Kaufland-Tschechien-Team (Teil der Schwarz Gruppe)',
-          'about.recog.item1': '<strong>Vorstandsmitglied der Czech Radio Foundation</strong> · eine der grössten NGOs in Tschechien',
-          'about.recog.item2': '<strong>TEDx, PechaKucha Nights &amp; Konferenz-Speaker</strong> · über 20 Events',
-          'about.recog.item3': '<strong>The Kind Heart Award</strong> · Karel-Janeček-Stiftung',
-          'about.recog.item4': '<strong>Persönlichkeit der Philanthropie</strong> · Czech Donors Forum',
-          'about.recog.item5': '<strong>Persönlichkeit des Jahres</strong> · Wheelchair Sport Club Prag',
-          'about.recog.item6': '<strong>Tschechischer Nationaler Qualitätspreis 2022 für Nachhaltigkeit</strong> · Ministerium für Industrie und Handel',
-          'about.recog.item7': '<strong>Viermaliger Verantwortungsvoller Einzelhändler des Jahres</strong> (2020, 2022, 2024, 2025) · Tschechischer Handels- und Tourismusverband',
-          // Prague card
-          'prague.pill': 'Prag-Tipps von Peter',
-          'prague.title': 'Kommen Sie nach Prag?<br><em>Ich helfe gerne.</em>',
-          'prague.text': 'Das ist meine Stadt. Wenn Sie geschäftlich oder fürs Wochenende einfliegen, habe ich einen kleinen Guide gemacht - die Orte, die ich meinen eigenen Freunden empfehle. Kaffee, Essen, Bier, ein paar ruhige Ecken.',
-          'prague.cta': 'Meine Prag-Tipps holen <span class="prague-arrow">→</span>',
-        },
-        ch: {
-          'nav.cta': 'QuickCheck buchen →',
-          'hero.line1': 'Digital Fundraising,',
-          'hero.line2': 'das wirklich',
-          'hero.rotate.0': 'Geld einbringt<span class="lime-dot">.</span>',
-          'hero.rotate.1': 'Spender gewinnt<span class="lime-dot">.</span>',
-          'hero.rotate.2': 'Beziehungen schafft<span class="lime-dot">.</span>',
-          'hero.rotate.3': 'Wirkung zeigt<span class="lime-dot">.</span>',
-          'hero.lead': '<strong style="color: #1A1A1A; font-weight: 700;">Die meisten Non-Profits lassen jeden Monat Geld liegen.</strong> Mit digitalem Fundraising lässt sich das ändern - und in <strong style="color: #1A1A1A; font-weight: 700;">echte Spenden</strong> verwandeln.',
-          'hero.cta_primary': 'Mit dem QuickCheck starten <span>→</span>',
-          'hero.cta_secondary': 'Alle Leistungen ansehen →',
-          'about.eyebrow': 'Über mich',
-          'about.title': 'Ich helfe Non-Profits<br>in ganz Europa,<br><em>echtes Geld</em> zu sammeln -<br>nicht nur Engagement<span class="lime-dot">.</span>',
-          'qc.eyebrow': 'Hier starten · Null Aufwand für Ihr Team',
-          'qc.title': 'QuickCheck - <em>finden wir</em><br><em>heraus, was Ihrem</em><br>Fundraising<br>fehlt<span class="lime-dot">.</span>',
-          'qc.lead': 'Innerhalb von 15 Arbeitstagen führe ich einen kompletten externen Audit Ihres digitalen Fundraisings durch - ohne dass Ihr Team einen Finger rühren muss. Sie erhalten einen <strong>vollständigen Bericht</strong>, ein <strong>Video-Walkthrough</strong>, Ihre <strong>eigene Microsite mit der Zusammenfassung</strong> und eine Liste mit <strong>konkreten Quick Wins</strong>, die Sie nächste Woche umsetzen können.',
-          'qc.cta': 'Meinen QuickCheck buchen <span>→</span>',
-          'services.eyebrow': 'Wie ich sonst noch helfen kann',
-          'services.title': 'Sechs Wege,<br><em>wie wir</em><br>zusammenarbeiten<span class="lime-dot">.</span>',
-          'services.lead': 'Vom schnellen externen Audit bis zur vollen strategischen Partnerschaft. Wählen Sie die Tiefe, die Ihre Organisation braucht - von der einmaligen Beratung bis zur langfristigen Zusammenarbeit.',
-          'cases.eyebrow': 'Cases',
-          'cases.title': 'Zahlen, die <em>wirklich</em> bewegen<span class="lime-dot">.</span>',
-          'testimonial.eyebrow': 'Referenzen',
-          'testimonial.quote': '"Mit einem Team von Freiwilligen hat Peter die <strong style="color: #C9F31D; font-weight: 700;">erfolgreichste Weihnachtskampagne</strong> in der Tschechischen Republik im letzten Jahr aufgebaut. Durch Einfachheit und Gamification erreichte er <strong style="color: #C9F31D; font-weight: 700;">über 60 000 Spender</strong>."',
-          'testimonial.role': 'Direktor, Nadace Via',
-          'contact.pill': 'Sprechen wir',
-          'contact.title': 'Erzählen Sie mir <em>mehr</em><br>über Ihre Organisation<span style="color: #000;">.</span>',
-          'contact.lead': 'Ein paar kurze Fragen, ohne Verpflichtung. Ich melde mich innerhalb von 24 Stunden - einfach ein echtes Gespräch, kein Verkaufsgespräch.',
-          'contact.fallback.before': 'Oder schreiben Sie mir direkt an ',
-          'wizard.step0.q': 'Was führt Sie <em>hierher</em>?',
-          'wizard.step0.hint': 'Wählen Sie, was passt - wir verfeinern es später.',
-          'wizard.chip.exploring': 'Nur stöbern',
-          'wizard.step1.q': 'Wie ist Ihr <em>Name</em>?',
-          'wizard.step1.hint': 'Damit ich weiss, mit wem ich spreche.',
-          'wizard.step1.placeholder': 'Ihr Name…',
-          'wizard.step2.q': 'Welche <em>Organisation</em>?',
-          'wizard.step2.hint': 'Wenn Sie noch keine haben, ist das okay - schreiben Sie einfach "privat".',
-          'wizard.step2.placeholder': 'Name der Organisation',
-          'wizard.step3.q': 'Wohin darf ich <em>antworten</em>?',
-          'wizard.step3.hint': 'Kein Spam, kein Newsletter - es sei denn, Sie möchten später einen.',
-          'wizard.step3.placeholder': 'ihre@email.com',
-          'wizard.step4.q': 'Möchten Sie noch <em>etwas teilen</em>?',
-          'wizard.step4.hint': 'Optional - aber ein bis zwei Sätze helfen mir, mich vorzubereiten.',
-          'wizard.step4.placeholder': 'Ein paar Zeilen zu Ihrem Vorhaben…',
-          'wizard.success.title': 'Alles klar. <em>Bis bald.</em>',
-          'wizard.success.msg': 'Ich melde mich innerhalb von 24 Stunden - werktags meist schneller.',
-          'wizard.success.tpl': 'Danke {name} - ich melde mich bezüglich <strong>{interest}</strong> innerhalb von 24 Stunden.',
-          'wizard.btn.ok': 'OK',
-          'wizard.btn.send': 'Senden',
-          'wizard.btn.sending': 'Wird gesendet…',
-          'wizard.btn.back': '← Zurück',
-          'wizard.btn.skip': 'Überspringen',
-          'wizard.press_enter': 'drücken Sie',
-          'wizard.prefill.before': 'Danke für die Wahl von ',
-          'wizard.prefill.after': '. Lassen Sie uns starten.',
-          'wizard.prefill.change': 'Ändern',
-          'wizard.error.interest': 'Wählen Sie eine Option, um fortzufahren.',
-          'wizard.error.name': 'Bitte geben Sie Ihren Namen ein.',
-          'wizard.error.org': 'Der Name der Organisation (oder einfach "privat") hilft mir bei der Vorbereitung.',
-          'wizard.error.email': 'Diese E-Mail sieht seltsam aus - können Sie sie nochmals prüfen?',
-          'footer.tag': 'Digital-Fundraising-Beratung für europäische Non-Profits, die wachsen wollen. Made in Prague.',
-          'footer.col.services': 'Leistungen',
-          'footer.col.company': 'Über',
-          'footer.col.prague': 'Prag besuchen',
-          'footer.link.retainer': 'Retainer',
-          'footer.link.strategy': 'Strategie',
-          'footer.link.consulting': 'Beratung',
-          'footer.link.about': 'Über Peter',
-          'footer.link.cases': 'Case Studies',
-          'footer.link.contact': 'Kontakt',
-          'footer.link.prague': 'Prag Tipps',
-          'footer.bottom_made': 'Made in Prague',
-          'footer.imprint': 'Impressum',
-          // QuickCheck features
-          'qc.feat.1.title': 'Donor Journey Audit',
-          'qc.feat.1.sub': 'Wo Ihre Besucher abspringen - und warum',
-          'qc.feat.2.title': 'Social-Media- und Kampagnen-Analyse',
-          'qc.feat.2.sub': 'Was funktioniert, was Budget verschwendet',
-          'qc.feat.3.title': 'Quick Wins',
-          'qc.feat.3.sub': 'Konkrete Aktionen für nächste Woche',
-          'qc.feat.4.title': 'Benchmark vergleichbarer Non-Profits',
-          'qc.feat.4.sub': 'Wie 3-5 Peers in Ihrem Bereich abschneiden',
-          // QC pricing block
-          'qc.price.pill_limited': 'Begrenztes Angebot',
-          'qc.price.pill_until': 'Bis 31. Mai',
-          'qc.price.meta': 'Sonderpreis für die ersten <em>5 Organisationen</em> · Gleicher Umfang, gleiche Qualität.',
-          'qc.price.body': 'Ich biete den ersten <strong>fünf Organisationen</strong> bis Ende Mai CHF 1\'500 Rabatt - im Austausch für Ihr <strong>ehrliches Feedback</strong>. Ich tue alles dafür, dass Sie zufrieden sind und Ihr digitales Fundraising vorankommt.',
-          // QC CTA meta
-          'qc.meta.duration': 'Bis zu 15 Arbeitstage',
-          'qc.meta.no_meetings': 'Keine Meetings',
-          'qc.meta.zero_effort': 'Null Aufwand für Sie',
-          // QC right card
-          'qc.card.eyebrow': 'Was ich prüfe',
-          'qc.card.status': 'Bis zu 15 Arbeitstage',
-          'qc.card.title': '9 Bereiche unter der Lupe',
-          'qc.card.subtitle': 'Alles, was Ihnen online hilft, Geld zu sammeln',
-          'qc.card.footer': 'Keine Interviews, keine Zugangsdaten, keine Meetings. Ich&nbsp;arbeite ausschliesslich mit öffentlichen Quellen<span class="lime-dot">.</span> So wie Ihre Spender.',
-          // QC pillars (9)
-          'qc.pillar.1.title': 'Ihre Website &amp; Spendenseite',
-          'qc.pillar.1.sub': 'Wo Spender geben - und wo sie abspringen',
-          'qc.pillar.2.title': 'Wie Spender Sie erleben',
-          'qc.pillar.2.sub': 'Schritt für Schritt - wie ein Mystery Shopper',
-          'qc.pillar.3.title': 'Ihre Social-Media-Kanäle',
-          'qc.pillar.3.sub': 'Was funktioniert, was nicht',
-          'qc.pillar.4.title': 'Ihre Anzeigen &amp; Kampagnen',
-          'qc.pillar.4.sub': 'Facebook, Instagram, Google Ads',
-          'qc.pillar.5.title': 'Ihre E-Mails &amp; Newsletter',
-          'qc.pillar.5.sub': 'Welcome-Mails, regelmässige Updates',
-          'qc.pillar.6.title': 'Wie Sie im Vergleich abschneiden',
-          'qc.pillar.6.sub': 'Gegen 3-5 ähnliche Non-Profits',
-          'qc.pillar.7.title': 'Ihre Kampagnen-Performance',
-          'qc.pillar.7.sub': 'Jahresend-, Saison- und einmalige Fundraising-Kampagnen',
-          'qc.pillar.8.title': 'Dauerspender &amp; Bindung',
-          'qc.pillar.8.sub': 'Wie Sie sie zum Weiterspenden bringen',
-          'qc.pillar.9.title': 'Wie Sie Ihre Geschichte erzählen',
-          'qc.pillar.9.sub': 'Ton, Marke, Spender-Stories',
-          // Services 6 cards
-          'srv.tailored': 'Auf Ihre Bedürfnisse zugeschnitten',
-          'srv.1.num': '01 · Diagnose', 'srv.1.tag': 'AM BELIEBTESTEN', 'srv.1.title': 'QuickCheck',
-          'srv.1.desc': 'Ein kompletter externer Audit Ihres digitalen Fundraisings innerhalb von 15 Arbeitstagen. PDF-Bericht, Video-Walkthrough, Microsite - und konkrete Quick Wins für nächste Woche.',
-          'srv.1.meta': 'Bereit in 15 Arbeitstagen', 'srv.1.cta': 'QuickCheck buchen →',
-          'srv.2.num': '02 · Strategie', 'srv.2.tag': '4–8 Wochen', 'srv.2.title': 'Vollstrategie',
-          'srv.2.desc': 'Mittelfristige Strategie für Ihr digitales Fundraising, Spenderbetreuung und Social Media. Das Dokument, das Ihr Fundraising wirklich anschiebt und ihm für die nächsten 12-24 Monate eine echte Richtung gibt.',
-          'srv.2.cta': 'Gemeinsam planen →',
-          'srv.3.num': '03 · Partnerschaft', 'srv.3.title': 'Laufende Partnerschaft',
-          'srv.3.desc': 'Langfristige Zusammenarbeit als Ihr Fractional Fundraising Manager. Strategie, Umsetzung, Donor Journey - alles im selben Rhythmus. Stundenumfang flexibel nach Ihrem Bedarf.',
-          'srv.3.meta': 'Stunden nach Bedarf', 'srv.3.cta': 'Partnerschaft starten →',
-          'srv.4.num': '04 · Beratung', 'srv.4.tag': 'Pro Session', 'srv.4.title': 'Consulting',
-          'srv.4.desc': 'Einmalige Beratung zu einer Fundraising-Kampagne, Social-Media-Strategie oder Spenderbetreuung. Plus ehrliches Feedback zu Ihren Plänen, bevor Sie loslegen.',
-          'srv.4.cta': 'Session buchen →',
-          'srv.5.num': '05 · Build', 'srv.5.tag': '3–8 Wochen', 'srv.5.title': 'Neue Website',
-          'srv.5.desc': 'Mit meinen vertrauten Experten baue ich moderne Websites für Ihre Organisation - oder eine eigenständige Spender-Microsite für eine spezifische Kampagne. Optimierte Donor Journey, Gamification, Zahlungsanbindung und Analytics out of the box.',
-          'srv.5.cta': 'Umfang abstecken →',
-          'srv.6.num': '06 · Brand', 'srv.6.tag': 'Mit Partner', 'srv.6.title': 'Visuelle Identität',
-          'srv.6.desc': 'Ehrlich gesagt: Ich bin selbst kein Designer - aber ich leite das gemeinsam mit meinem vertrauten externen Grafikdesigner. Sie bekommen einen Projektleiter, zwei Köpfe, null Übergabe-Probleme.',
-          'srv.6.cta': 'Team briefen →',
-          // Cases
-          'case.big.tag': 'FEATURED',
-          'case.big.title': 'Tschechiens #1 Weihnachtskampagne 2025',
-          'case.big.desc': 'Mit einem Team von Freiwilligen aufgebaut - die erfolgreichste Weihnachts-Spendenaktion des Landes in jenem Jahr. Mit Gamification, Donor-Journey-Design und Medienpartnerschaften.',
-          'case.big.stat1': 'eingenommen', 'case.big.stat2': 'Spender', 'case.big.stat3': 'ROI in 1 Monat',
-          'case.small.tag': 'REGIONALE KAMPAGNE',
-          'case.small.tagline': 'Tschechisches Sozialunternehmen für Menschen mit Behinderungen',
-          'case.small.desc': 'Eine zweimonatige regionale Fundraising-Kampagne - gebaut, um Spender in den Gemeinden zu erreichen, in denen die Organisation tatsächlich tätig ist. Mit Donor-Journey-Design, Gamification und Meta Ads.',
-          'case.small.stat1': 'ROI in 2 Monaten', 'case.small.stat2': 'eingenommen aus CHF 1\'400 Investment', 'case.small.stat3': 'neue Spender in der Region',
           // About bio
           'about.bio.p1': 'Ich bin Peter Chalupiansky, ein Fundraising-Berater mit Sitz in Prag. In den letzten <strong>zehn Jahren</strong> habe ich mit Non-Profits gearbeitet und ihnen geholfen, digitale Spenden in einen nachhaltigen Einnahmekanal zu verwandeln.',
           'about.bio.p2': 'Meine Arbeit verläuft auf zwei Schienen. Als CSR- &amp; ESG-Lead bei <strong>Kaufland Tschechien - Teil der Schwarz Gruppe, Europas grösstem Einzelhändler</strong> - habe ich die Weihnachtskampagne für <em>Světluška</em> in eine <strong>4,9-Mio.-€-Fundraising-Maschine über sieben Jahre</strong> verwandelt. Als unabhängiger Berater leite ich digitale Fundraising-Kampagnen für europäische Non-Profits - zuletzt die <strong>erfolgreichste Weihnachtskampagne in Tschechien 2025</strong>.',
@@ -3689,13 +3522,13 @@
         },
       };
 
-      let currentLang = 'en';
+      let currentLang = 'de';
 
       function setLang(lang) {
-        if (!LANGS.includes(lang)) lang = 'en';
+        if (!LANGS.includes(lang)) lang = 'de';
         currentLang = lang;
         const dict = T[lang];
-        document.documentElement.lang = lang === 'ch' ? 'de-CH' : lang;
+        document.documentElement.lang = lang;
 
         // Aktualizace state tlačítek
         document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -3733,8 +3566,8 @@
         get currentLang() { return currentLang; }
       };
 
-      // Init: URL > localStorage > default 'en'
-      let initLang = 'en';
+      // Init: URL > localStorage > default 'de'
+      let initLang = 'de';
       try {
         const saved = localStorage.getItem('ngo_lang');
         if (saved && LANGS.includes(saved)) initLang = saved;
