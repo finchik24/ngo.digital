@@ -1174,7 +1174,7 @@
       margin-bottom: 32px;
     }
     .case-card {
-      background: #C9F31D;
+      background: #1A1A1A;
       border-radius: 20px;
       padding: 48px;
       min-height: 360px;
@@ -1186,6 +1186,12 @@
       background: #FAFAFA;
       border: 0.5px solid #00000015;
     }
+    /* Big case (non-muted) — dark variant: white text + lime number accents */
+    .case-card:not(.muted) .case-tag { color: #FFFFFF; }
+    .case-card:not(.muted) h3 { color: #FFFFFF; }
+    .case-card:not(.muted) .case-desc { color: #C0C0C0; }
+    .case-card:not(.muted) .case-stat-num { color: #C9F31D; }
+    .case-card:not(.muted) .case-stat-label { color: #888; }
     .case-tag {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 12px;
