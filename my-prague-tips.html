@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de-CH">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,13 +22,12 @@
   <title>Mein Prag — ein Insider-Guide | ngo.digital</title>
 
   <!-- SEO -->
-  <meta name="description" content="Mein Prag — ein Insider-Guide von Peter Chalupiansky. Cafés, Restaurants, Bier, Parks und Tagesausflüge. Wo ich wirklich hingehe, was Sie auslassen sollten, was Ihre Zeit wert ist.">
+  <meta name="description" content="Mein Prag — ein Insider-Guide von Peter Chalupiansky. Cafés, Restaurants, Bier, Parks und Tagesausflüge.">
 
-  <!-- hreflang for EN/DE/FR/IT versions -->
-  <link rel="alternate" hreflang="en" href="https://ngo.digital/my-prague-tips.html">
-  <link rel="alternate" hreflang="de" href="https://ngo.digital/de/my-prague-tips.html">
-  <link rel="alternate" hreflang="fr" href="https://ngo.digital/fr/my-prague-tips.html">
-  <link rel="alternate" hreflang="it" href="https://ngo.digital/it/my-prague-tips.html">
+  <!-- hreflang — single-page i18n: same URL, lang switch via JS -->
+  <link rel="alternate" hreflang="en" href="https://ngo.digital/my-prague-tips.html?lang=en">
+  <link rel="alternate" hreflang="de" href="https://ngo.digital/my-prague-tips.html?lang=de">
+  <link rel="alternate" hreflang="fr" href="https://ngo.digital/my-prague-tips.html?lang=fr">
   <link rel="alternate" hreflang="x-default" href="https://ngo.digital/my-prague-tips.html">
 
   <!-- Open Graph -->
@@ -36,8 +35,6 @@
   <meta property="og:description" content="Wo ich in Prag wirklich hingehe — Cafés, Restaurants, Bier, Parks und Tagesausflüge.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_CH">
-  <!-- PETER: až budeš mít OG image, vlož sem URL (ideálně 1200×630px) -->
-  <!-- <meta property="og:image" content="https://ngo.digital/og-prague.jpg"> -->
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -51,12 +48,11 @@
   <style>
     /* ============================================================
        HEADER + FOOTER + ZÁKLADNÍ STYLY 1:1 S HOMEPAGE preview_3_2
-       Vlastní (specifické) styly pro Prague-Tips jsou v sekci níže
        ============================================================ */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px; /* offset for sticky top-nav */
+      scroll-padding-top: 80px;
     }
     body {
       font-family: 'Source Sans 3', sans-serif;
@@ -67,31 +63,10 @@
     }
     a { text-decoration: none; color: inherit; }
 
-    /* ============ COMMON ELEMENTS (z homepage) ============ */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 64px;
-    }
-    .eyebrow {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      color: #777;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .eyebrow::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: #C9F31D;
-      border-radius: 50%;
-      display: inline-block;
     }
     .eyebrow-pill {
       font-family: 'Bricolage Grotesque', sans-serif;
@@ -107,7 +82,6 @@
       margin-bottom: 24px;
     }
 
-    /* ============ BUTTONS (z homepage) ============ */
     .btn-primary {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 15px;
@@ -127,18 +101,6 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 0 #00000010;
     }
-    .btn-secondary {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: #000;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1.5px solid #000;
-      padding-bottom: 3px;
-    }
-    /* Dark variant for use on dark backgrounds (CTA section) */
     .btn-secondary-light {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 15px;
@@ -151,7 +113,6 @@
       padding-bottom: 3px;
     }
 
-    /* ============ TOP NAV (1:1 z homepage) ============ */
     nav.top-nav {
       position: sticky;
       top: 0;
@@ -182,11 +143,9 @@
       font-weight: 500;
       letter-spacing: -0.01em;
     }
-    .nav-links a:not(.btn-primary):hover {
-      color: #555;
-    }
+    .nav-links a:not(.btn-primary):hover { color: #555; }
 
-    /* ============ LANGUAGE SWITCHER (z homepage) ============ */
+    /* ============ LANGUAGE SWITCHER (1:1 s homepage — buttons, ne anchors) ============ */
     .lang-switcher {
       display: inline-flex;
       align-items: stretch;
@@ -206,9 +165,6 @@
       letter-spacing: 0.1em;
       transition: background 0.15s ease, color 0.15s ease;
       line-height: 1.2;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
     }
     .lang-btn:hover { color: #000; }
     .lang-btn.is-active {
@@ -220,7 +176,6 @@
       outline-offset: 2px;
     }
 
-    /* ============ NAV HAMBURGER (mobile only, z homepage) ============ */
     .nav-hamburger {
       display: none;
       background: transparent;
@@ -244,14 +199,8 @@
       outline-offset: 2px;
     }
 
-    /* ============================================================
-       PRAGUE-TIPS specific styly
-       ============================================================ */
-
     /* ============ HERO ============ */
-    .hero {
-      padding: 100px 0 80px;
-    }
+    .hero { padding: 100px 0 80px; }
     .hero h1 {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 88px;
@@ -284,7 +233,7 @@
       color: #888;
     }
 
-    /* ============ PILL BAR (kategorie) ============ */
+    /* ============ PILL BAR ============ */
     .pill-bar {
       position: sticky;
       top: 70px;
@@ -319,11 +268,7 @@
     .pill.active { background: #C9F31D; }
     .pill.active:hover { background: #C9F31D; }
 
-    /* ============ KATEGORIE SEKCE ============ */
-    .cat-section {
-      padding: 96px 0;
-      scroll-margin-top: 140px;
-    }
+    .cat-section { padding: 96px 0; scroll-margin-top: 140px; }
     .cat-section.alt { background: #FAFAFA; }
     .cat-header { max-width: 720px; margin-bottom: 48px; }
     .cat-icon-row {
@@ -367,7 +312,6 @@
       max-width: 640px;
     }
 
-    /* ============ KARTY MÍST ============ */
     .cards-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -428,7 +372,6 @@
       color: #888;
     }
 
-    /* ============ KARTY "AUSLASSEN" (skip) ============ */
     .skip-card {
       background: white;
       border: 0.5px solid #00000010;
@@ -477,7 +420,6 @@
       border-radius: 4px;
     }
 
-    /* ============ INFO KARTY (Unterwegs) ============ */
     .info-card {
       background: white;
       border: 0.5px solid #00000010;
@@ -527,7 +469,6 @@
       border-radius: 4px;
     }
 
-    /* ============ CTA SECTION (dark, na konci) ============ */
     .cta-section {
       background: #1A1A1A;
       padding: 96px 0;
@@ -584,7 +525,6 @@
       flex-wrap: wrap;
     }
 
-    /* ============ FOOTER (1:1 z homepage) ============ */
     footer {
       padding: 80px 0 56px;
       background: #FFFFFF;
@@ -656,9 +596,6 @@
       color: #C9F31D;
     }
 
-    /* ============================================================
-       RESPONSIVE (1:1 break-pointy z homepage + úpravy pro Prague)
-       ============================================================ */
     @media (max-width: 1024px) {
       .container { padding: 0 32px; }
       nav.top-nav { padding: 18px 32px; }
@@ -680,43 +617,27 @@
         gap: 12px;
         align-items: center;
       }
-      .nav-links .btn-primary {
-        display: none; /* CTA na mobilu schované, jako na homepage */
-      }
+      .nav-links .btn-primary { display: none; }
       .logo { font-size: 19px; }
 
-      /* Hero */
       .hero { padding: 56px 0 48px; }
       .hero h1 { font-size: 48px; line-height: 1.05; }
       .hero-lead { font-size: 17px; }
 
-      /* Pill bar - schovat na mobilu (jako v původním kódu) */
       .pill-bar { display: none; }
 
-      /* Sections */
-      .cat-section {
-        padding: 64px 0;
-        scroll-margin-top: 80px;
-      }
+      .cat-section { padding: 64px 0; scroll-margin-top: 80px; }
       .cat-section h2 { font-size: 36px; }
-      .cards-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
+      .cards-grid { grid-template-columns: 1fr; gap: 24px; }
 
-      /* CTA */
       .cta-section { padding: 64px 0; }
       .cta-section h2 { font-size: 36px; }
       .cta-buttons { flex-direction: column; align-items: stretch; gap: 16px; }
       .cta-buttons .btn-primary { justify-content: center; }
       .cta-buttons .btn-secondary-light { justify-content: center; }
 
-      /* Footer stack */
       footer { padding: 48px 0 36px; }
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-      }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
       .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
     }
 
@@ -738,104 +659,100 @@
 </head>
 <body>
 
-  <!-- ============ TOP NAV (1:1 z homepage; CTA odkazuje zpět na homepage QuickCheck) ============ -->
+  <!-- ============ TOP NAV ============ -->
   <nav class="top-nav">
     <a href="/" class="logo">ngo<span class="dot">.</span>digital</a>
     <div class="nav-links">
       <div class="lang-switcher" role="group" aria-label="Language">
-        <a href="/my-prague-tips.html" class="lang-btn" hreflang="en">EN</a>
-        <a href="/de/my-prague-tips.html" class="lang-btn is-active" hreflang="de" aria-current="page">DE</a>
-        <a href="/fr/my-prague-tips.html" class="lang-btn" hreflang="fr">FR</a>
-        <a href="/it/my-prague-tips.html" class="lang-btn" hreflang="it">IT</a>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="lang-btn is-active" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
       </div>
-      <a href="/#quickcheck"
-         class="btn-primary" style="padding: 11px 20px; font-size: 14px;">QuickCheck holen →</a>
+      <a href="/#quickcheck" class="btn-primary" style="padding: 11px 20px; font-size: 14px;" data-i18n="nav.cta">QuickCheck holen →</a>
     </div>
     <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </nav>
 
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="container">
-      <span class="eyebrow-pill">Prag-Tipps von Peter</span>
-      <h1>
+      <span class="eyebrow-pill" data-i18n="hero.eyebrow">Prag-Tipps von Peter</span>
+      <h1 data-i18n="hero.title">
         Ein Insider-Guide<br>
         für <em>mein Prag</em><span class="lime-dot">.</span>
       </h1>
-      <p class="hero-lead">Das ist meine Stadt. Hier bin ich aufgewachsen. Wenn Sie für ein Meeting, einen Workshop oder ein langes Wochenende einfliegen — das sind die Ecken, in die ich Freunde wirklich schicke. Keine Touristenfallen. Keine Klischees. Nur Orte, die ich tatsächlich liebe.</p>
-      <div class="last-updated">Letzte Aktualisierung: Mai 2026</div>
+      <p class="hero-lead" data-i18n="hero.lead">Das ist meine Stadt. Hier bin ich aufgewachsen. Wenn Sie für ein Meeting, einen Workshop oder ein langes Wochenende einfliegen — das sind die Ecken, in die ich Freunde wirklich schicke. Keine Touristenfallen. Keine Klischees. Nur Orte, die ich tatsächlich liebe.</p>
+      <div class="last-updated" data-i18n="hero.updated">Letzte Aktualisierung: Mai 2026</div>
     </div>
   </section>
 
-  <!-- ============ PILL BAR (kategorie) ============ -->
+  <!-- ============ PILL BAR ============ -->
   <div class="pill-bar">
     <div class="container">
-      <a href="#coffee" class="pill active">Kaffee</a>
-      <a href="#food" class="pill">Essen</a>
-      <a href="#beer" class="pill">Bier</a>
-      <a href="#nature" class="pill">Natur</a>
-      <a href="#hidden-gems" class="pill">Hidden Gems</a>
-      <a href="#skip" class="pill">Auslassen</a>
-      <a href="#day-trip" class="pill">Ausflug</a>
-      <a href="#getting-around" class="pill">Unterwegs</a>
+      <a href="#coffee" class="pill active" data-i18n="pill.coffee">Kaffee</a>
+      <a href="#food" class="pill" data-i18n="pill.food">Essen</a>
+      <a href="#beer" class="pill" data-i18n="pill.beer">Bier</a>
+      <a href="#nature" class="pill" data-i18n="pill.nature">Natur</a>
+      <a href="#hidden-gems" class="pill" data-i18n="pill.gems">Hidden Gems</a>
+      <a href="#skip" class="pill" data-i18n="pill.skip">Auslassen</a>
+      <a href="#day-trip" class="pill" data-i18n="pill.trip">Ausflug</a>
+      <a href="#getting-around" class="pill" data-i18n="pill.around">Unterwegs</a>
     </div>
   </div>
 
-  <!-- ═══ KAFFEE ═══ -->
+  <!-- ═══ KAFFEE / COFFEE / CAFÉ ═══ -->
   <section class="cat-section" id="coffee">
     <div class="container">
       <div class="cat-header">
         <div class="cat-icon-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
-          <span class="cat-eyebrow"><span class="lime-dot-small"></span>01 · Kaffee</span>
+          <span class="cat-eyebrow"><span class="lime-dot-small"></span><span data-i18n="cat.coffee.eyebrow">01 · Kaffee</span></span>
         </div>
-        <h2>Wo ich meine Morgen beginne<span class="lime-dot">.</span></h2>
-        <p class="cat-subhead">Der tschechische Specialty-Coffee-Markt hat in den letzten zehn Jahren einen weiten Weg zurückgelegt. Das sind die vier Orte, zwischen denen ich rotiere — je nachdem, ob ich arbeiten, reden oder einfach eine Stunde lang ruhig sein möchte.</p>
+        <h2 data-i18n="cat.coffee.title">Wo ich meine Morgen beginne<span class="lime-dot">.</span></h2>
+        <p class="cat-subhead" data-i18n="cat.coffee.sub">Der tschechische Specialty-Coffee-Markt hat in den letzten zehn Jahren einen weiten Weg zurückgelegt. Das sind die vier Orte, zwischen denen ich rotiere — je nachdem, ob ich arbeiten, reden oder einfach eine Stunde lang ruhig sein möchte.</p>
       </div>
 
       <div class="cards-grid">
 
         <div class="place-card">
-          <img src="/images/prague/kavarna-misto.jpg" alt="Kavárna Místo, Dejvice, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/kavarna-misto.jpg" alt="Kavárna Místo" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Dejvice</span>
             <div class="place-name">Kavárna Místo</div>
-            <p class="place-desc">Der Quartier-Treff der Doubleshot-Familie — ruhiger als Můj šálek, weniger gehetzt als Loka. Es gibt einen Gemeinschaftstisch, ein Sofa, eine kleine Bibliotheksecke, sogar Stufen, die für einen schnellen Kaffee mit dem Hund konzipiert sind. Der Brunch ist ausgezeichnet. Mein liebster Kaffeestopp, wenn ich mich im Zentrum bewege — und wo ich nach meinem Box-Training lande. Die Atmosphäre ist genau richtig.</p>
-            <div class="place-address">Bubenečská 12, Dejvice, Prag 6</div>
+            <p class="place-desc" data-i18n="coffee.misto.desc">Der Quartier-Treff der Doubleshot-Familie — ruhiger als Můj šálek, weniger gehetzt als Loka. Es gibt einen Gemeinschaftstisch, ein Sofa, eine kleine Bibliotheksecke, sogar Stufen, die für einen schnellen Kaffee mit dem Hund konzipiert sind. Der Brunch ist ausgezeichnet. Mein liebster Kaffeestopp, wenn ich mich im Zentrum bewege — und wo ich nach meinem Box-Training lande. Die Atmosphäre ist genau richtig.</p>
+            <div class="place-address" data-i18n="coffee.misto.addr">Bubenečská 12, Dejvice, Prag 6</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/loka-espresso.jpg" alt="Loka Espresso Bar, Karlín, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/loka-espresso.jpg" alt="Loka Espresso Bar" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Karlín</span>
             <div class="place-name">Loka Espresso Bar</div>
-            <p class="place-desc">Doubleshots Espresso-Bar im neuen Masaryčka-Gebäude. Schickes Interieur, wunderschöne Patisserie, Kaffee, der sich ernst nimmt, ohne prätentiös zu sein. Meine Wahl, wenn der Kaffee mit einem Stück Kuchen kommt.</p>
-            <div class="place-address">Ke Štvanici 371/4, Karlín, Prag 8</div>
+            <p class="place-desc" data-i18n="coffee.loka.desc">Doubleshots Espresso-Bar im neuen Masaryčka-Gebäude. Schickes Interieur, wunderschöne Patisserie, Kaffee, der sich ernst nimmt, ohne prätentiös zu sein. Meine Wahl, wenn der Kaffee mit einem Stück Kuchen kommt.</p>
+            <div class="place-address" data-i18n="coffee.loka.addr">Ke Štvanici 371/4, Karlín, Prag 8</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/muj-salek-kavy.jpg" alt="Můj šálek kávy, Karlín, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/muj-salek-kavy.jpg" alt="Můj šálek kávy" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Karlín</span>
             <div class="place-name">Můj šálek kávy</div>
-            <p class="place-desc">Doubleshots Flaggschiff in Karlín und wahrscheinlich der meistgenannte Specialty-Coffee-Ort in Prag — und das aus gutem Grund. Der Brunch ist ausgezeichnet. Kommen Sie früh oder rechnen Sie mit Wartezeit. Mein liebster Stopp, wenn ich in Karlín bin.</p>
-            <div class="place-address">Křižíkova 105, Karlín, Prag 8</div>
+            <p class="place-desc" data-i18n="coffee.salek.desc">Doubleshots Flaggschiff in Karlín und wahrscheinlich der meistgenannte Specialty-Coffee-Ort in Prag — und das aus gutem Grund. Der Brunch ist ausgezeichnet. Kommen Sie früh oder rechnen Sie mit Wartezeit. Mein liebster Stopp, wenn ich in Karlín bin.</p>
+            <div class="place-address" data-i18n="coffee.salek.addr">Křižíkova 105, Karlín, Prag 8</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/kavarna-slavia.jpg" alt="Kavárna Slavia, Altstadt, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/kavarna-slavia.jpg" alt="Kavárna Slavia" class="place-photo" loading="lazy">
           <div class="place-content">
-            <span class="neighborhood-pill">Altstadt</span>
+            <span class="neighborhood-pill" data-i18n="hood.oldtown">Altstadt</span>
             <div class="place-name">Kavárna Slavia</div>
-            <p class="place-desc">Geöffnet seit 1884. Kafka, Rilke, Havel und ein Grossteil der tschechischen Literaturgeschichte sassen hier. Lassen Sie das Kaffee-Snobtum für einen Morgen sein — der eigentliche Grund herzukommen ist der Blick über den Fluss zur Prager Burg. Ich werde dessen nie müde. Bestellen Sie eine heisse Schokolade.</p>
-            <div class="place-address">Smetanovo nábřeží 1012/2, Altstadt, Prag 1</div>
+            <p class="place-desc" data-i18n="coffee.slavia.desc">Geöffnet seit 1884. Kafka, Rilke, Havel und ein Grossteil der tschechischen Literaturgeschichte sassen hier. Lassen Sie das Kaffee-Snobtum für einen Morgen sein — der eigentliche Grund herzukommen ist der Blick über den Fluss zur Prager Burg. Ich werde dessen nie müde. Bestellen Sie eine heisse Schokolade.</p>
+            <div class="place-address" data-i18n="coffee.slavia.addr">Smetanovo nábřeží 1012/2, Altstadt, Prag 1</div>
           </div>
         </div>
 
@@ -843,97 +760,97 @@
     </div>
   </section>
 
-  <!-- ═══ ESSEN ═══ -->
+  <!-- ═══ ESSEN / FOOD / CUISINE ═══ -->
   <section class="cat-section alt" id="food">
     <div class="container">
       <div class="cat-header">
         <div class="cat-icon-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
-          <span class="cat-eyebrow"><span class="lime-dot-small"></span>02 · Essen</span>
+          <span class="cat-eyebrow"><span class="lime-dot-small"></span><span data-i18n="cat.food.eyebrow">02 · Essen</span></span>
         </div>
-        <h2>Wo ich Freunde hinführe<span class="lime-dot">.</span></h2>
-        <p class="cat-subhead">Vergessen Sie die Touristenmenüs mit Gulasch und Knödeln. Die Prager Gastronomie-Szene gehört derzeit ehrlich gesagt zu den besten in Mitteleuropa — modern, zutatenorientiert, unprätentiös. Acht Lokale, zwischen denen ich rotiere — je nachdem, wer zu Besuch ist und was wir feiern.</p>
+        <h2 data-i18n="cat.food.title">Wo ich Freunde hinführe<span class="lime-dot">.</span></h2>
+        <p class="cat-subhead" data-i18n="cat.food.sub">Vergessen Sie die Touristenmenüs mit Gulasch und Knödeln. Die Prager Gastronomie-Szene gehört derzeit ehrlich gesagt zu den besten in Mitteleuropa — modern, zutatenorientiert, unprätentiös. Acht Lokale, zwischen denen ich rotiere — je nachdem, wer zu Besuch ist und was wir feiern.</p>
       </div>
 
       <div class="cards-grid">
 
         <div class="place-card">
-          <img src="/images/prague/cafe-palanda.jpg" alt="Café Palanda, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/cafe-palanda.jpg" alt="Café Palanda" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Nové Město</span>
             <div class="place-name">Café Palanda</div>
-            <p class="place-desc">Wenn Sie mich fragen, wo Sie den besten Burger in Prag finden — das ist er. Kein Schnickschnack, kein Aufhebens, einfach ein kleines Lokal ein paar Minuten abseits der Touristenroute, das eine Sache extrem gut macht.</p>
-            <div class="place-address">Zlatnická 1122/11, Nové Město, Prag 1</div>
+            <p class="place-desc" data-i18n="food.palanda.desc">Wenn Sie mich fragen, wo Sie den besten Burger in Prag finden — das ist er. Kein Schnickschnack, kein Aufhebens, einfach ein kleines Lokal ein paar Minuten abseits der Touristenroute, das eine Sache extrem gut macht.</p>
+            <div class="place-address" data-i18n="food.palanda.addr">Zlatnická 1122/11, Nové Město, Prag 1</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/cafe-louvre.jpg" alt="Café Louvre, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/cafe-louvre.jpg" alt="Café Louvre" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Nové Město</span>
             <div class="place-name">Café Louvre</div>
-            <p class="place-desc">Geöffnet seit 1902. Kafka, Einstein und Masaryk hatten alle hier ihren Stammtisch. Die Atmosphäre ist wirklich einzigartig — und die Preise sind erstaunlich fair für das, was man bekommt. Kommen Sie für das Schnitzel, das Wiener Frühstück oder einfach, um oben zu sitzen und so zu tun, als wäre es noch die Erste Republik. Billard im hinteren Raum, falls Sie einen Abend daraus machen möchten.</p>
-            <div class="place-address">Národní 22, Nové Město, Prag 1</div>
+            <p class="place-desc" data-i18n="food.louvre.desc">Geöffnet seit 1902. Kafka, Einstein und Masaryk hatten alle hier ihren Stammtisch. Die Atmosphäre ist wirklich einzigartig — und die Preise sind erstaunlich fair für das, was man bekommt. Kommen Sie für das Schnitzel, das Wiener Frühstück oder einfach, um oben zu sitzen und so zu tun, als wäre es noch die Erste Republik. Billard im hinteren Raum, falls Sie einen Abend daraus machen möchten.</p>
+            <div class="place-address" data-i18n="food.louvre.addr">Národní 22, Nové Město, Prag 1</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/cestr.jpg" alt="Čestr Restaurant, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/cestr.jpg" alt="Čestr" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Vinohrady</span>
             <div class="place-name">Čestr</div>
-            <p class="place-desc">Steakhouse der Ambiente-Gruppe, benannt nach der tschechischen Rinderrasse. Dry-aged tschechisches Rindfleisch, Pilsner vom Tank, eine offene Küche, der Sie zuschauen können. Meine Wahl für ein seriöses Geschäftsessen — das Essen spricht für sich. Reservieren Sie im Voraus — immer.</p>
-            <div class="place-address">Legerova 57/75, Vinohrady, Prag 1</div>
+            <p class="place-desc" data-i18n="food.cestr.desc">Steakhouse der Ambiente-Gruppe, benannt nach der tschechischen Rinderrasse. Dry-aged tschechisches Rindfleisch, Pilsner vom Tank, eine offene Küche, der Sie zuschauen können. Meine Wahl für ein seriöses Geschäftsessen — das Essen spricht für sich. Reservieren Sie im Voraus — immer.</p>
+            <div class="place-address" data-i18n="food.cestr.addr">Legerova 57/75, Vinohrady, Prag 1</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/kuchyn.jpg" alt="Kuchyň, Prager Burg" class="place-photo" loading="lazy">
+          <img src="/images/prague/kuchyn.jpg" alt="Kuchyň" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Hradčany</span>
             <div class="place-name">Kuchyň</div>
-            <p class="place-desc">Tschechische Hausmannskost, in Ambiente-Qualität, im Salm-Palais direkt neben der Burg. Die Küche bringt die Töpfe an Ihren Tisch — Sie heben die Deckel und wählen aus. Die schönste Terrasse mit Aussicht in der Stadt. Mein Standard-Mittagessen, wenn ich auf der Prager Burg bin.</p>
-            <div class="place-address">Hradčanské náměstí 186/1, Hradčany, Prag 1</div>
+            <p class="place-desc" data-i18n="food.kuchyn.desc">Tschechische Hausmannskost, in Ambiente-Qualität, im Salm-Palais direkt neben der Burg. Die Küche bringt die Töpfe an Ihren Tisch — Sie heben die Deckel und wählen aus. Die schönste Terrasse mit Aussicht in der Stadt. Mein Standard-Mittagessen, wenn ich auf der Prager Burg bin.</p>
+            <div class="place-address" data-i18n="food.kuchyn.addr">Hradčanské náměstí 186/1, Hradčany, Prag 1</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/tonkin.jpg" alt="Tonkin Restaurant, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/tonkin.jpg" alt="Tonkin" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Dejvice</span>
             <div class="place-name">Tonkin</div>
-            <p class="place-desc">Vietnamesisch-thailändisches Essen, wie es sein soll — ohne Kompromisse für tschechische Gaumen. Phở mit klarer, tiefer Brühe, echtes bún bò nam bộ, Currys, die wirklich Schärfe haben. Ich liebe vietnamesisches Essen, und das ist mein Top-Stopp in Prag. Hier ist das Essen der Star, nicht das Interieur.</p>
-            <div class="place-address">Na Hutích 661/9, Dejvice, Prag 6</div>
+            <p class="place-desc" data-i18n="food.tonkin.desc">Vietnamesisch-thailändisches Essen, wie es sein soll — ohne Kompromisse für tschechische Gaumen. Phở mit klarer, tiefer Brühe, echtes bún bò nam bộ, Currys, die wirklich Schärfe haben. Ich liebe vietnamesisches Essen, und das ist mein Top-Stopp in Prag. Hier ist das Essen der Star, nicht das Interieur.</p>
+            <div class="place-address" data-i18n="food.tonkin.addr">Na Hutích 661/9, Dejvice, Prag 6</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/stejkarna.jpg" alt="Stejkárna, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/stejkarna.jpg" alt="Stejkárna" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Holešovice</span>
             <div class="place-name">Stejkárna</div>
-            <p class="place-desc">Ein unprätentiöses Steakhouse, das weit über seinem Preis spielt. Aberdeen Angus aus Südamerika, US Black Angus, fachgerecht dry-aged, exakt so zubereitet, wie Sie es wünschen. Holztische, gedämpftes Licht, kein Affenzirkus. Wo ich hingehe, wenn es etwas zu feiern gibt.</p>
-            <div class="place-address">Veletržní 246/5, Holešovice, Prag 7</div>
+            <p class="place-desc" data-i18n="food.stejkarna.desc">Ein unprätentiöses Steakhouse, das weit über seinem Preis spielt. Aberdeen Angus aus Südamerika, US Black Angus, fachgerecht dry-aged, exakt so zubereitet, wie Sie es wünschen. Holztische, gedämpftes Licht, kein Affenzirkus. Wo ich hingehe, wenn es etwas zu feiern gibt.</p>
+            <div class="place-address" data-i18n="food.stejkarna.addr">Veletržní 246/5, Holešovice, Prag 7</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/cerveny-jelen.jpg" alt="Červený Jelen, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/cerveny-jelen.jpg" alt="Červený Jelen" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Nové Město</span>
             <div class="place-name">Červený Jelen</div>
-            <p class="place-desc">Das grösste Restaurant in Prag, untergebracht in Josef Gočárs kubistischer ehemaliger Anglo-Tschechischer Bank — neu interpretiert vom Architekten Stanislav Fiala. Ein 12-Tank-Pilsner-Turm über drei Stockwerke, ein Inferno-Holzgrill, die originale 800-kg-Tresortür, umgewandelt in einen Stammgästetisch. Der Raum fasziniert mich wirklich — bringen Sie eine Gruppe mit, das ist ein Erlebnis.</p>
-            <div class="place-address">Hybernská 1034/5, Nové Město, Prag 1</div>
+            <p class="place-desc" data-i18n="food.jelen.desc">Das grösste Restaurant in Prag, untergebracht in Josef Gočárs kubistischer ehemaliger Anglo-Tschechischer Bank — neu interpretiert vom Architekten Stanislav Fiala. Ein 12-Tank-Pilsner-Turm über drei Stockwerke, ein Inferno-Holzgrill, die originale 800-kg-Tresortür, umgewandelt in einen Stammgästetisch. Der Raum fasziniert mich wirklich — bringen Sie eine Gruppe mit, das ist ein Erlebnis.</p>
+            <div class="place-address" data-i18n="food.jelen.addr">Hybernská 1034/5, Nové Město, Prag 1</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/brasileiro.jpg" alt="Brasileiro U Zelené žáby, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/brasileiro.jpg" alt="Brasileiro U Zelené žáby" class="place-photo" loading="lazy">
           <div class="place-content">
-            <span class="neighborhood-pill">Altstadt</span>
+            <span class="neighborhood-pill" data-i18n="hood.oldtown">Altstadt</span>
             <div class="place-name">Brasileiro U Zelené žáby</div>
-            <p class="place-desc">Brasilianisches Churrasco-Rodízio von Ambiente, in einem Keller aus dem 15. Jahrhundert eine Minute vom Altstädter Ring. Passadores schneiden gegrilltes Fleisch direkt auf Ihren Teller, Salatbar mit Nikkei-Sushi inklusive, all you can eat zum Festpreis. Wo ich die Familie zu besonderen Anlässen hinführe. Laut, grosszügig, fröhlich. Caipirinha ist Pflicht.</p>
-            <div class="place-address">U Radnice 8/13, Altstadt, Prag 1</div>
+            <p class="place-desc" data-i18n="food.brasileiro.desc">Brasilianisches Churrasco-Rodízio von Ambiente, in einem Keller aus dem 15. Jahrhundert eine Minute vom Altstädter Ring. Passadores schneiden gegrilltes Fleisch direkt auf Ihren Teller, Salatbar mit Nikkei-Sushi inklusive, all you can eat zum Festpreis. Wo ich die Familie zu besonderen Anlässen hinführe. Laut, grosszügig, fröhlich. Caipirinha ist Pflicht.</p>
+            <div class="place-address" data-i18n="food.brasileiro.addr">U Radnice 8/13, Altstadt, Prag 1</div>
           </div>
         </div>
 
@@ -941,57 +858,57 @@
     </div>
   </section>
 
-  <!-- ═══ BIER ═══ -->
+  <!-- ═══ BIER / BEER / BIÈRE ═══ -->
   <section class="cat-section" id="beer">
     <div class="container">
       <div class="cat-header">
         <div class="cat-icon-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11h1a3 3 0 0 1 0 6h-1"/><path d="M9 12v6"/><path d="M13 12v6"/><path d="M14 7.5c-1 0-1.44.5-3 .5s-2-.5-3-.5-1.72.5-2.5.5a2.5 2.5 0 0 1 0-5c.78 0 1.57.5 2.5.5C9.44 3.5 10 3 12 3s2.56.5 3.5.5c.93 0 1.72-.5 2.5-.5a2.5 2.5 0 0 1 0 5c-.78 0-1.5-.5-2.5-.5Z"/><path d="M5 8v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/></svg>
-          <span class="cat-eyebrow"><span class="lime-dot-small"></span>03 · Bier</span>
+          <span class="cat-eyebrow"><span class="lime-dot-small"></span><span data-i18n="cat.beer.eyebrow">03 · Bier</span></span>
         </div>
-        <h2>Jenseits der Touristenkneipe<span class="lime-dot">.</span></h2>
-        <p class="cat-subhead">Tschechen trinken pro Kopf am meisten Bier weltweit. Das heisst nicht, dass jede Beiz weiss, wie man es zapft. Hier sind vier, die es können — von einer 180-jährigen Institution bis zu einer Kleinbrauerei aus dem Jahr 2018.</p>
+        <h2 data-i18n="cat.beer.title">Jenseits der Touristenkneipe<span class="lime-dot">.</span></h2>
+        <p class="cat-subhead" data-i18n="cat.beer.sub">Tschechen trinken pro Kopf am meisten Bier weltweit. Das heisst nicht, dass jede Beiz weiss, wie man es zapft. Hier sind vier, die es können — von einer 180-jährigen Institution bis zu einer Kleinbrauerei aus dem Jahr 2018.</p>
       </div>
 
       <div class="cards-grid">
 
         <div class="place-card">
-          <img src="/images/prague/u-pinkasu.jpg" alt="U Pinkasů, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/u-pinkasu.jpg" alt="U Pinkasů" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Nové Město</span>
             <div class="place-name">U Pinkasů</div>
-            <p class="place-desc">Das erste Lokal in Prag, das Pilsner ausschenkte, im Jahr 1843. Hrabal kam jeden Morgen um 7 Uhr für Gulasch und ein Bier. Václav Havel beschloss hier im Dezember 1989 beim Mittagessen, für das Präsidentenamt zu kandidieren. Das Pilsner wird immer noch so gezapft, wie es gemeint war — und die Atmosphäre ist etwas, das ich aufrichtig liebe. Mitten im Zentrum, schwer zu schlagen.</p>
-            <div class="place-address">Jungmannovo náměstí 16, Nové Město, Prag 1</div>
+            <p class="place-desc" data-i18n="beer.pinkasu.desc">Das erste Lokal in Prag, das Pilsner ausschenkte, im Jahr 1843. Hrabal kam jeden Morgen um 7 Uhr für Gulasch und ein Bier. Václav Havel beschloss hier im Dezember 1989 beim Mittagessen, für das Präsidentenamt zu kandidieren. Das Pilsner wird immer noch so gezapft, wie es gemeint war — und die Atmosphäre ist etwas, das ich aufrichtig liebe. Mitten im Zentrum, schwer zu schlagen.</p>
+            <div class="place-address" data-i18n="beer.pinkasu.addr">Jungmannovo náměstí 16, Nové Město, Prag 1</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/dva-kohouti.jpg" alt="Dva Kohouti Brauerei, Karlín, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/dva-kohouti.jpg" alt="Dva Kohouti" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Karlín</span>
             <div class="place-name">Dva Kohouti</div>
-            <p class="place-desc">Eine Kleinbrauerei und ein Tap Room unter einem Dach — 2018 vom Braumeister Adam Matuška und Lukáš Svoboda von Lokál eröffnet. Eigenes Místní ležák, am Morgen gebraut, am Nachmittag ausgeschenkt, dazu wechselnde Biere anderer tschechischer Kleinbrauereien. Industrieraum, abends DJs, ein Hof, der den ganzen Sommer voll ist. Hierher komme ich für die Stimmung und die ungewöhnlichen Biere.</p>
-            <div class="place-address">Sokolovská 81/55, Karlín, Prag 8</div>
+            <p class="place-desc" data-i18n="beer.kohouti.desc">Eine Kleinbrauerei und ein Tap Room unter einem Dach — 2018 vom Braumeister Adam Matuška und Lukáš Svoboda von Lokál eröffnet. Eigenes Místní ležák, am Morgen gebraut, am Nachmittag ausgeschenkt, dazu wechselnde Biere anderer tschechischer Kleinbrauereien. Industrieraum, abends DJs, ein Hof, der den ganzen Sommer voll ist. Hierher komme ich für die Stimmung und die ungewöhnlichen Biere.</p>
+            <div class="place-address" data-i18n="beer.kohouti.addr">Sokolovská 81/55, Karlín, Prag 8</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/lokal-dlouha.jpg" alt="Lokál Dlouhááá, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/lokal-dlouha.jpg" alt="Lokál Dlouhááá" class="place-photo" loading="lazy">
           <div class="place-content">
-            <span class="neighborhood-pill">Altstadt</span>
+            <span class="neighborhood-pill" data-i18n="hood.oldtown">Altstadt</span>
             <div class="place-name">Lokál Dlouhááá</div>
-            <p class="place-desc">Der Original-Lokál — und der längste. 70 Meter Bar, 12 Pilsner-Tanks, 270 Stühle, 1'500 Gäste pro Tag. Ambiente führt das Lokal mit ihrer üblichen besessenen Qualitätskontrolle. Bestellen Sie den smažák — den panierten Käse. Der tschechische Klassiker, der nie enttäuscht. Lassen Sie sich von der Grösse nicht abschrecken; das Bier ist genau dasselbe.</p>
-            <div class="place-address">Dlouhá 33, Altstadt, Prag 1</div>
+            <p class="place-desc" data-i18n="beer.lokal.desc">Der Original-Lokál — und der längste. 70 Meter Bar, 12 Pilsner-Tanks, 270 Stühle, 1'500 Gäste pro Tag. Ambiente führt das Lokal mit ihrer üblichen besessenen Qualitätskontrolle. Bestellen Sie den smažák — den panierten Käse. Der tschechische Klassiker, der nie enttäuscht. Lassen Sie sich von der Grösse nicht abschrecken; das Bier ist genau dasselbe.</p>
+            <div class="place-address" data-i18n="beer.lokal.addr">Dlouhá 33, Altstadt, Prag 1</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/automat-matuska.jpg" alt="Automat Matuška, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/automat-matuska.jpg" alt="Automat Matuška" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Dejvice</span>
             <div class="place-name">Automat Matuška</div>
-            <p class="place-desc">Der erste eigene Tap Room der Brauerei Matuška — eine meiner liebsten tschechischen Brauereien, mit Sitz in Broumy. Zehn Hähne, eine kleine experimentelle Nano-Brauerei im hinteren Bereich, BBQ-Smoker davor. Direkt neben der Metrostation Hradčanská. Hier bringe ich Craft-Beer-Geeks hin.</p>
-            <div class="place-address">Dejvická 4, Dejvice, Prag 6</div>
+            <p class="place-desc" data-i18n="beer.matuska.desc">Der erste eigene Tap Room der Brauerei Matuška — eine meiner liebsten tschechischen Brauereien, mit Sitz in Broumy. Zehn Hähne, eine kleine experimentelle Nano-Brauerei im hinteren Bereich, BBQ-Smoker davor. Direkt neben der Metrostation Hradčanská. Hier bringe ich Craft-Beer-Geeks hin.</p>
+            <div class="place-address" data-i18n="beer.matuska.addr">Dejvická 4, Dejvice, Prag 6</div>
           </div>
         </div>
 
@@ -999,57 +916,57 @@
     </div>
   </section>
 
-  <!-- ═══ NATUR ═══ -->
+  <!-- ═══ NATUR / NATURE ═══ -->
   <section class="cat-section alt" id="nature">
     <div class="container">
       <div class="cat-header">
         <div class="cat-icon-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L8 7h2v3H6l4 5h-2l4 5 4-5h-2l4-5h-4V7h2L12 2z"/></svg>
-          <span class="cat-eyebrow"><span class="lime-dot-small"></span>04 · Natur</span>
+          <span class="cat-eyebrow"><span class="lime-dot-small"></span><span data-i18n="cat.nature.eyebrow">04 · Natur</span></span>
         </div>
-        <h2>Grünflächen, in die ich entfliehe<span class="lime-dot">.</span></h2>
-        <p class="cat-subhead">Prag ist eine der grünsten Hauptstädte Europas. Die meisten Besucher verlassen das Kopfsteinpflaster nie. In diesen vier Parks finden Sie Einheimische — beim Joggen, Picknicken, Wein trinken oder einfach unter einem Baum sitzend.</p>
+        <h2 data-i18n="cat.nature.title">Grünflächen, in die ich entfliehe<span class="lime-dot">.</span></h2>
+        <p class="cat-subhead" data-i18n="cat.nature.sub">Prag ist eine der grünsten Hauptstädte Europas. Die meisten Besucher verlassen das Kopfsteinpflaster nie. In diesen vier Parks finden Sie Einheimische — beim Joggen, Picknicken, Wein trinken oder einfach unter einem Baum sitzend.</p>
       </div>
 
       <div class="cards-grid">
 
         <div class="place-card">
-          <img src="/images/prague/stromovka.jpg" alt="Stromovka Park, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/stromovka.jpg" alt="Stromovka" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Bubeneč</span>
             <div class="place-name">Stromovka</div>
-            <p class="place-desc">95 Hektar ehemaliges königliches Jagdrevier — Prags Central Park. Alte Bäume, Teiche, Joggingwege, ein Planetarium und ein Renaissance-Sommerpalais auf dem Hügel. Bequeme zehn Minuten vom Stadtzentrum mit dem Tram, aber es fühlt sich an wie eine andere Welt. Hier jogge ich.</p>
-            <div class="place-address">Královská obora, Bubeneč, Prag 7</div>
+            <p class="place-desc" data-i18n="nature.stromovka.desc">95 Hektar ehemaliges königliches Jagdrevier — Prags Central Park. Alte Bäume, Teiche, Joggingwege, ein Planetarium und ein Renaissance-Sommerpalais auf dem Hügel. Bequeme zehn Minuten vom Stadtzentrum mit dem Tram, aber es fühlt sich an wie eine andere Welt. Hier jogge ich.</p>
+            <div class="place-address" data-i18n="nature.stromovka.addr">Královská obora, Bubeneč, Prag 7</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/divoka-sarka.jpg" alt="Divoká Šárka, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/divoka-sarka.jpg" alt="Divoká Šárka" class="place-photo" loading="lazy">
           <div class="place-content">
-            <span class="neighborhood-pill">Prag 6</span>
+            <span class="neighborhood-pill" data-i18n="hood.prag6">Prag 6</span>
             <div class="place-name">Divoká Šárka</div>
-            <p class="place-desc">Ein wilder Felsencanyon am Stadtrand — kaum zu glauben, dass man 20 Minuten vom Wenzelsplatz entfernt ist. Wanderwege, ein Freibad, das von einem Bach gespeist wird, Sandsteinklippen. Nehmen Sie das Tram 26 bis zur Endstation. Tragen Sie ordentliche Schuhe; das ist kein Spaziergang. Das Gefühl, in einem echten Wald zu sein, zehn Minuten von meinem Zuhause und vom Flughafen entfernt.</p>
-            <div class="place-address">Prag 6, Vokovice/Liboc</div>
+            <p class="place-desc" data-i18n="nature.sarka.desc">Ein wilder Felsencanyon am Stadtrand — kaum zu glauben, dass man 20 Minuten vom Wenzelsplatz entfernt ist. Wanderwege, ein Freibad, das von einem Bach gespeist wird, Sandsteinklippen. Nehmen Sie das Tram 26 bis zur Endstation. Tragen Sie ordentliche Schuhe; das ist kein Spaziergang. Das Gefühl, in einem echten Wald zu sein, zehn Minuten von meinem Zuhause und vom Flughafen entfernt.</p>
+            <div class="place-address" data-i18n="nature.sarka.addr">Prag 6, Vokovice/Liboc</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/grebovka.jpg" alt="Grébovka (Havlíčkovy sady), Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/grebovka.jpg" alt="Grébovka" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Vinohrady</span>
             <div class="place-name">Grébovka (Havlíčkovy sady)</div>
-            <p class="place-desc">Der einzige funktionierende Weinberg innerhalb der Stadtgrenzen Prags. Italienischer neoklassizistischer Garten, eine in den Hügel gehauene Grotte und ein kleiner Wein-Pavillon, in dem Sie den Wein trinken können, der 50 Meter weiter wächst. Mein liebster Ort in Prag für ein Date — der Sonnenuntergang hier im September ist eines der bestgehüteten Geheimnisse der Stadt.</p>
-            <div class="place-address">Havlíčkovy sady, Vinohrady, Prag 2</div>
+            <p class="place-desc" data-i18n="nature.grebovka.desc">Der einzige funktionierende Weinberg innerhalb der Stadtgrenzen Prags. Italienischer neoklassizistischer Garten, eine in den Hügel gehauene Grotte und ein kleiner Wein-Pavillon, in dem Sie den Wein trinken können, der 50 Meter weiter wächst. Mein liebster Ort in Prag für ein Date — der Sonnenuntergang hier im September ist eines der bestgehüteten Geheimnisse der Stadt.</p>
+            <div class="place-address" data-i18n="nature.grebovka.addr">Havlíčkovy sady, Vinohrady, Prag 2</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/obora-hvezda.jpg" alt="Obora Hvězda, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/obora-hvezda.jpg" alt="Obora Hvězda" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Liboc</span>
             <div class="place-name">Obora Hvězda</div>
-            <p class="place-desc">Ein Renaissance-Jagdpark aus dem Jahr 1530, angelegt um ein sechszackiges sternförmiges Sommerpalais — ja, buchstäblich sternförmig. Stiller Buchenwald, gerade Alleen, fast keine Touristen. Ein weiteres Stück Wald in der Nähe meines Zuhauses. Insider-Tipp: Spazieren Sie zur Konditorei Sladká dílna in der Na Petřinách 82 — eine familiengeführte Patisserie zehn Minuten entfernt. Die Kuchen sind den Umweg wert.</p>
-            <div class="place-address">Liboc, Prag 6</div>
+            <p class="place-desc" data-i18n="nature.hvezda.desc">Ein Renaissance-Jagdpark aus dem Jahr 1530, angelegt um ein sechszackiges sternförmiges Sommerpalais — ja, buchstäblich sternförmig. Stiller Buchenwald, gerade Alleen, fast keine Touristen. Ein weiteres Stück Wald in der Nähe meines Zuhauses. Insider-Tipp: Spazieren Sie zur Konditorei Sladká dílna in der Na Petřinách 82 — eine familiengeführte Patisserie zehn Minuten entfernt. Die Kuchen sind den Umweg wert.</p>
+            <div class="place-address" data-i18n="nature.hvezda.addr">Liboc, Prag 6</div>
           </div>
         </div>
 
@@ -1063,31 +980,31 @@
       <div class="cat-header">
         <div class="cat-icon-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
-          <span class="cat-eyebrow"><span class="lime-dot-small"></span>05 · Hidden Gems</span>
+          <span class="cat-eyebrow"><span class="lime-dot-small"></span><span data-i18n="cat.gems.eyebrow">05 · Hidden Gems</span></span>
         </div>
-        <h2>Orte, die Sie auf keiner Karte finden<span class="lime-dot">.</span></h2>
-        <p class="cat-subhead">Zwei Adressen, die kein Reiseführer auf den ersten Seiten hat — und genau deshalb funktionieren sie. Hierher gehen Pragerinnen und Prager, wenn sie etwas suchen, das sich nicht wie eine Sehenswürdigkeit anfühlt. Beide sind ehemalige Institutsgebäude, beide haben mehrere Etagen, beide entdeckt man besser ohne Eile.</p>
+        <h2 data-i18n="cat.gems.title">Orte, die Sie auf keiner Karte finden<span class="lime-dot">.</span></h2>
+        <p class="cat-subhead" data-i18n="cat.gems.sub">Zwei Adressen, die kein Reiseführer auf den ersten Seiten hat — und genau deshalb funktionieren sie. Hierher gehen Pragerinnen und Prager, wenn sie etwas suchen, das sich nicht wie eine Sehenswürdigkeit anfühlt. Beide sind ehemalige Institutsgebäude, beide haben mehrere Etagen, beide entdeckt man besser ohne Eile.</p>
       </div>
 
       <div class="cards-grid">
 
         <div class="place-card">
-          <img src="/images/prague/kasarna-karlin.jpg" alt="Kasárna Karlín, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/kasarna-karlin.jpg" alt="Kasárna Karlín" class="place-photo" loading="lazy">
           <div class="place-content">
             <span class="neighborhood-pill">Karlín</span>
             <div class="place-name">Kasárna Karlín</div>
-            <p class="place-desc">Eine ehemalige k.u.k. Militärkaserne aus den 1840er-Jahren, vom Verein Pražské centrum in einen weitläufigen Kulturhof verwandelt. Im Sommer ein riesiger Sandinnenhof mit Liegestühlen, Outdoor-Bar und Open-Air-Kino, im Winter eine Eisbahn. Konzerte, Workshops, Diskussionen, Buchpräsentationen — täglich passiert hier irgendetwas. Das Beste: keine Touristen, nur Einheimische, die ihren Feierabend hier verbringen. Mein liebster Sommerabend-Spot in der Stadt.</p>
-            <div class="place-address">Prvního pluku 20/2, Karlín, Prag 8</div>
+            <p class="place-desc" data-i18n="gems.kasarna.desc">Eine ehemalige k.u.k. Militärkaserne aus den 1840er-Jahren, vom Verein Pražské centrum in einen weitläufigen Kulturhof verwandelt. Im Sommer ein riesiger Sandinnenhof mit Liegestühlen, Outdoor-Bar und Open-Air-Kino, im Winter eine Eisbahn. Konzerte, Workshops, Diskussionen, Buchpräsentationen — täglich passiert hier irgendetwas. Das Beste: keine Touristen, nur Einheimische, die ihren Feierabend hier verbringen. Mein liebster Sommerabend-Spot in der Stadt.</p>
+            <div class="place-address" data-i18n="gems.kasarna.addr">Prvního pluku 20/2, Karlín, Prag 8</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/skautsky-institut.jpg" alt="Skautský institut, Altstädter Ring, Prag" class="place-photo" loading="lazy">
+          <img src="/images/prague/skautsky-institut.jpg" alt="Skautský institut" class="place-photo" loading="lazy">
           <div class="place-content">
-            <span class="neighborhood-pill">Altstadt</span>
+            <span class="neighborhood-pill" data-i18n="hood.oldtown">Altstadt</span>
             <div class="place-name">Skautský institut</div>
-            <p class="place-desc">Direkt am Altstädter Ring, im Palác Dům U Minuty neben dem Rathaus mit der Astronomischen Uhr — und doch übersehen die meisten Touristen diesen Ort komplett. Das Institut der tschechischen Pfadfinder betreibt hier ein Café, eine Galerie und einen Veranstaltungsraum. Hervorragender Specialty-Coffee, ehrliche Sandwiches, regelmässige Ausstellungen junger tschechischer Künstler, im Sommer eine Terrasse mit einem der schönsten Blicke auf die Týnkirche, die man gratis bekommt. Genau die Art Ort, an den ich Freunde schicke, wenn sie das Zentrum besuchen, aber das Touristengetümmel überleben wollen.</p>
-            <div class="place-address">Staroměstské náměstí 4/1, Altstadt, Prag 1</div>
+            <p class="place-desc" data-i18n="gems.skaut.desc">Direkt am Altstädter Ring, im Palác Dům U Minuty neben dem Rathaus mit der Astronomischen Uhr — und doch übersehen die meisten Touristen diesen Ort komplett. Das Institut der tschechischen Pfadfinder betreibt hier ein Café, eine Galerie und einen Veranstaltungsraum. Hervorragender Specialty-Coffee, ehrliche Sandwiches, regelmässige Ausstellungen junger tschechischer Künstler, im Sommer eine Terrasse mit einem der schönsten Blicke auf die Týnkirche, die man gratis bekommt. Genau die Art Ort, an den ich Freunde schicke, wenn sie das Zentrum besuchen, aber das Touristengetümmel überleben wollen.</p>
+            <div class="place-address" data-i18n="gems.skaut.addr">Staroměstské náměstí 4/1, Altstadt, Prag 1</div>
           </div>
         </div>
 
@@ -1095,16 +1012,16 @@
     </div>
   </section>
 
-  <!-- ═══ AUSLASSEN / TOURIST TRAPS ═══ -->
+  <!-- ═══ AUSLASSEN / SKIP / À ÉVITER ═══ -->
   <section class="cat-section alt" id="skip">
     <div class="container">
       <div class="cat-header">
         <div class="cat-icon-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-          <span class="cat-eyebrow"><span class="lime-dot-small"></span>06 · Auslassen</span>
+          <span class="cat-eyebrow"><span class="lime-dot-small"></span><span data-i18n="cat.skip.eyebrow">06 · Auslassen</span></span>
         </div>
-        <h2>Was Sie in meiner Stadt meiden sollten<span class="lime-dot">.</span></h2>
-        <p class="cat-subhead">Drei Touristenfallen, die jeder Prager Einheimische Ihnen ersparen möchte — und was Sie stattdessen tun sollten. Sparen Sie Ihr Geld für die Orte, die ich tatsächlich empfehle.</p>
+        <h2 data-i18n="cat.skip.title">Was Sie in meiner Stadt meiden sollten<span class="lime-dot">.</span></h2>
+        <p class="cat-subhead" data-i18n="cat.skip.sub">Drei Touristenfallen, die jeder Prager Einheimische Ihnen ersparen möchte — und was Sie stattdessen tun sollten. Sparen Sie Ihr Geld für die Orte, die ich tatsächlich empfehle.</p>
       </div>
 
       <div class="cards-grid">
@@ -1113,8 +1030,8 @@
           <div class="skip-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
           </div>
-          <div class="skip-card-title">Strassentaxis</div>
-          <div class="skip-card-body">
+          <div class="skip-card-title" data-i18n="skip.taxi.title">Strassentaxis</div>
+          <div class="skip-card-body" data-i18n="skip.taxi.body">
             Der klassische Prag-Schwindel. Ein Taxi, das vor dem Altstädter Ring oder der Karlsbrücke wartet, nennt Ihnen einen pauschalen «Touristenpreis» oder lässt das Taxameter kreativ laufen. Sie zahlen das 3- bis 4-Fache dessen, was Einheimische zahlen. <strong>Es passiert jeden Tag jemandem.</strong>
             <div class="skip-card-do">✓ Nutzen Sie Uber oder Bolt — feste Preise vor der Fahrt, bewertete Fahrer, funktioniert in der ganzen Stadt. Bolt ist meist günstiger.</div>
           </div>
@@ -1124,8 +1041,8 @@
           <div class="skip-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <div class="skip-card-title">Wechselstuben</div>
-          <div class="skip-card-body">
+          <div class="skip-card-title" data-i18n="skip.exchange.title">Wechselstuben</div>
+          <div class="skip-card-body" data-i18n="skip.exchange.body">
             Die Schilder mit «0 % Kommission» im Zentrum? Die Kurse sind 30–40 % schlechter als auf Ihrer Bankkarte. <strong>Meiden Sie besonders die freistehenden gelben Geldautomaten (Euronet) — die Kurse sind deutlich schlechter als an Bankautomaten.</strong> Dasselbe gilt für die Kioske, die in der Nähe des Wenzelsplatzes traumhafte Kurse versprechen.
             <div class="skip-card-do">✓ Bezahlen Sie fast überall mit Karte — Restaurants, Cafés, ÖV. Nutzen Sie Revolut oder Ihre Schweizer Bankkarte (UBS, Raiffeisen, ZKB) für die beste Umrechnung. Wenn Sie Bargeld brauchen, nutzen Sie nur Geldautomaten der grossen tschechischen Banken: ČSOB, Komerční banka, Raiffeisenbank, Česká spořitelna.</div>
           </div>
@@ -1135,8 +1052,8 @@
           <div class="skip-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2l1.5 16.5L12 22l7.5-3.5L21 2H3z"/><path d="M8 7h8"/><path d="M9 11h6"/></svg>
           </div>
-          <div class="skip-card-title">Essensstände im Zentrum</div>
-          <div class="skip-card-body">
+          <div class="skip-card-title" data-i18n="skip.food.title">Essensstände im Zentrum</div>
+          <div class="skip-card-body" data-i18n="skip.food.body">
             Die Trdelník-Stände, Wurstwagen und «traditionelle tschechische Küche»-Buden rund um den Altstädter Ring und den Wenzelsplatz. Trdelník ist nicht einmal tschechisch (es ist ungarisch-slowakisch). Würste kosten das Vierfache des Supermarktpreises. Der «Gulasch in der Brotschüssel» ist eine Touristenerfindung.
             <div class="skip-card-do">✓ Gehen Sie fünf Minuten zu einem der Restaurants im Essens-Bereich oben. Für dasselbe Geld bekommen Sie echte tschechische Küche, fachgerecht zubereitet — und Sie sitzen.</div>
           </div>
@@ -1146,57 +1063,57 @@
     </div>
   </section>
 
-  <!-- ═══ TAGESAUSFLÜGE ═══ -->
+  <!-- ═══ TAGESAUSFLÜGE / DAY TRIP / ESCAPADES ═══ -->
   <section class="cat-section" id="day-trip">
     <div class="container">
       <div class="cat-header">
         <div class="cat-icon-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1M9 17h1M14 17h1"/></svg>
-          <span class="cat-eyebrow"><span class="lime-dot-small"></span>07 · Ausflug</span>
+          <span class="cat-eyebrow"><span class="lime-dot-small"></span><span data-i18n="cat.trip.eyebrow">07 · Ausflug</span></span>
         </div>
-        <h2>Raus aus der Stadt, abends zurück<span class="lime-dot">.</span></h2>
-        <p class="cat-subhead">Vier Ausflüge ab Prag, vom 30-Minuten-Sprung bis zur 3-stündigen Zugfahrt. Die ersten beiden sind einfache Tagesausflüge — um 9 Uhr losfahren, zum Abendessen zurück. Die anderen beiden sind technisch an einem Tag machbar, aber Sie werden es bereuen, gehetzt zu haben. Bleiben Sie über Nacht, wenn Sie können.</p>
+        <h2 data-i18n="cat.trip.title">Raus aus der Stadt, abends zurück<span class="lime-dot">.</span></h2>
+        <p class="cat-subhead" data-i18n="cat.trip.sub">Vier Ausflüge ab Prag, vom 30-Minuten-Sprung bis zur 3-stündigen Zugfahrt. Die ersten beiden sind einfache Tagesausflüge — um 9 Uhr losfahren, zum Abendessen zurück. Die anderen beiden sind technisch an einem Tag machbar, aber Sie werden es bereuen, gehetzt zu haben. Bleiben Sie über Nacht, wenn Sie können.</p>
       </div>
 
       <div class="cards-grid">
 
         <div class="place-card">
-          <img src="/images/prague/karlstejn.jpg" alt="Burg Karlštejn, Tschechien" class="place-photo" loading="lazy">
+          <img src="/images/prague/karlstejn.jpg" alt="Karlštejn" class="place-photo" loading="lazy">
           <div class="place-content">
-            <span class="neighborhood-pill">30 Min mit Zug</span>
+            <span class="neighborhood-pill" data-i18n="trip.karlstejn.pill">30 Min mit Zug</span>
             <div class="place-name">Karlštejn</div>
-            <p class="place-desc">Eine gotische Burg aus dem 14. Jahrhundert, die Kaiser Karl IV. erbauen liess, um die böhmischen Kronjuwelen sicher aufzubewahren. Die meistfotografierte Burg des Landes — und das aus gutem Grund. Nehmen Sie den Zug ab Prag Smíchov, gehen Sie durch das Dorf den Hügel hinauf, machen Sie die Führung mit. Ein halber Tag, locker.</p>
-            <div class="place-address">Karlštejn, Mittelböhmen</div>
+            <p class="place-desc" data-i18n="trip.karlstejn.desc">Eine gotische Burg aus dem 14. Jahrhundert, die Kaiser Karl IV. erbauen liess, um die böhmischen Kronjuwelen sicher aufzubewahren. Die meistfotografierte Burg des Landes — und das aus gutem Grund. Nehmen Sie den Zug ab Prag Smíchov, gehen Sie durch das Dorf den Hügel hinauf, machen Sie die Führung mit. Ein halber Tag, locker.</p>
+            <div class="place-address" data-i18n="trip.karlstejn.addr">Karlštejn, Mittelböhmen</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/kutna-hora.jpg" alt="Kutná Hora, Tschechien" class="place-photo" loading="lazy">
+          <img src="/images/prague/kutna-hora.jpg" alt="Kutná Hora" class="place-photo" loading="lazy">
           <div class="place-content">
-            <span class="neighborhood-pill">1 Std mit Zug</span>
+            <span class="neighborhood-pill" data-i18n="trip.kutna.pill">1 Std mit Zug</span>
             <div class="place-name">Kutná Hora</div>
-            <p class="place-desc">UNESCO-gelistete Silberbergbaustadt, im mittelalterlichen Königreich Böhmen nur Prag nachgeordnet. Versäumen Sie das Beinhaus von Sedlec nicht — eine Kapelle, die mit den Knochen von 40'000 Menschen geschmückt ist. Dann die Kathedrale, dann Mittagessen. Befremdlich und schön zugleich.</p>
-            <div class="place-address">Kutná Hora, Mittelböhmen</div>
+            <p class="place-desc" data-i18n="trip.kutna.desc">UNESCO-gelistete Silberbergbaustadt, im mittelalterlichen Königreich Böhmen nur Prag nachgeordnet. Versäumen Sie das Beinhaus von Sedlec nicht — eine Kapelle, die mit den Knochen von 40'000 Menschen geschmückt ist. Dann die Kathedrale, dann Mittagessen. Befremdlich und schön zugleich.</p>
+            <div class="place-address" data-i18n="trip.kutna.addr">Kutná Hora, Mittelböhmen</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/cesky-krumlov.jpg" alt="Český Krumlov, Tschechien" class="place-photo" loading="lazy">
+          <img src="/images/prague/cesky-krumlov.jpg" alt="Český Krumlov" class="place-photo" loading="lazy">
           <div class="place-content">
-            <span class="neighborhood-pill">3 Std mit Zug</span>
+            <span class="neighborhood-pill" data-i18n="trip.krumlov.pill">3 Std mit Zug</span>
             <div class="place-name">Český Krumlov</div>
-            <p class="place-desc">Eine UNESCO-Renaissancestadt, gebaut in eine enge Schleife der Moldau, beherrscht von einer riesigen Barockburg. Ja, es ist weit. Ja, es lohnt sich. Im Sommer touristisch — fahren Sie in der Nebensaison. Wenn Sie können, bleiben Sie eine Nacht; die Stadt verwandelt sich, sobald die Tagesausflügler weg sind.</p>
-            <div class="place-address">Český Krumlov, Südböhmen</div>
+            <p class="place-desc" data-i18n="trip.krumlov.desc">Eine UNESCO-Renaissancestadt, gebaut in eine enge Schleife der Moldau, beherrscht von einer riesigen Barockburg. Ja, es ist weit. Ja, es lohnt sich. Im Sommer touristisch — fahren Sie in der Nebensaison. Wenn Sie können, bleiben Sie eine Nacht; die Stadt verwandelt sich, sobald die Tagesausflügler weg sind.</p>
+            <div class="place-address" data-i18n="trip.krumlov.addr">Český Krumlov, Südböhmen</div>
           </div>
         </div>
 
         <div class="place-card">
-          <img src="/images/prague/olomouc.jpg" alt="Olomouc, Tschechien" class="place-photo" loading="lazy">
+          <img src="/images/prague/olomouc.jpg" alt="Olomouc" class="place-photo" loading="lazy">
           <div class="place-content">
-            <span class="neighborhood-pill">2,5 Std mit Zug</span>
+            <span class="neighborhood-pill" data-i18n="trip.olomouc.pill">2,5 Std mit Zug</span>
             <div class="place-name">Olomouc</div>
-            <p class="place-desc">Eine Universitätsstadt in Mittelmähren, die die meisten Ausländer auslassen — was genau der Grund ist, hinzufahren. UNESCO-Dreifaltigkeitssäule, eine Astronomische Uhr, die noch eigenartiger ist als die in Prag, ausgezeichnete Küche, echte Studentenenergie. Als langer Tag machbar, aber zwei Tage werden ihr eher gerecht.</p>
-            <div class="place-address">Olomouc, Mittelmähren</div>
+            <p class="place-desc" data-i18n="trip.olomouc.desc">Eine Universitätsstadt in Mittelmähren, die die meisten Ausländer auslassen — was genau der Grund ist, hinzufahren. UNESCO-Dreifaltigkeitssäule, eine Astronomische Uhr, die noch eigenartiger ist als die in Prag, ausgezeichnete Küche, echte Studentenenergie. Als langer Tag machbar, aber zwei Tage werden ihr eher gerecht.</p>
+            <div class="place-address" data-i18n="trip.olomouc.addr">Olomouc, Mittelmähren</div>
           </div>
         </div>
 
@@ -1204,16 +1121,16 @@
     </div>
   </section>
 
-  <!-- ═══ UNTERWEGS / GETTING AROUND ═══ -->
+  <!-- ═══ UNTERWEGS / GETTING AROUND / SE DÉPLACER ═══ -->
   <section class="cat-section alt" id="getting-around">
     <div class="container">
       <div class="cat-header">
         <div class="cat-icon-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6v6M16 6v6M2 16h20M6 20h12M2 8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8z"/></svg>
-          <span class="cat-eyebrow"><span class="lime-dot-small"></span>08 · Unterwegs</span>
+          <span class="cat-eyebrow"><span class="lime-dot-small"></span><span data-i18n="cat.around.eyebrow">08 · Unterwegs</span></span>
         </div>
-        <h2>Wie Sie sich in Prag wirklich fortbewegen<span class="lime-dot">.</span></h2>
-        <p class="cat-subhead">Lassen Sie die Flughafentaxis und die zufälligen «Stadtrundfahrt»-Cabs an Sehenswürdigkeiten links liegen. Der ÖV ist hier ausgezeichnet und günstig. Ein paar praktische Dinge, die ich jedem Freund auf Besuch erkläre.</p>
+        <h2 data-i18n="cat.around.title">Wie Sie sich in Prag wirklich fortbewegen<span class="lime-dot">.</span></h2>
+        <p class="cat-subhead" data-i18n="cat.around.sub">Lassen Sie die Flughafentaxis und die zufälligen «Stadtrundfahrt»-Cabs an Sehenswürdigkeiten links liegen. Der ÖV ist hier ausgezeichnet und günstig. Ein paar praktische Dinge, die ich jedem Freund auf Besuch erkläre.</p>
       </div>
 
       <div class="cards-grid">
@@ -1222,8 +1139,8 @@
           <div class="info-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
           </div>
-          <div class="info-card-title">Vom Flughafen mit dem ÖV</div>
-          <div class="info-card-body">
+          <div class="info-card-title" data-i18n="around.airport.title">Vom Flughafen mit dem ÖV</div>
+          <div class="info-card-body" data-i18n="around.airport.body">
             Lassen Sie die Taxis aus. Zwei gute ÖV-Optionen vom <strong>Václav-Havel-Flughafen (PRG)</strong> ins Stadtzentrum: <strong>Bus 59</strong> verbindet zur Metrolinie A (Nádraží Veleslavín) — mit einem regulären Ticket abgedeckt. Oder nehmen Sie den <strong>Airport Express (AE)</strong> direkt zum Hauptbahnhof für <strong>200 CZK (~8 CHF)</strong> — schnell und direkt.
             <div class="info-card-tip">💡 Bus 59 + Metro dauert ~35 Min. AE dauert ~30 Min. Beide schlagen das Festsitzen im Flughafentaxi-Verkehr.</div>
           </div>
@@ -1233,8 +1150,8 @@
           <div class="info-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93 19.07 19.07"/></svg>
           </div>
-          <div class="info-card-title">Niemals ein Strassentaxi nehmen</div>
-          <div class="info-card-body">
+          <div class="info-card-title" data-i18n="around.taxi.title">Niemals ein Strassentaxi nehmen</div>
+          <div class="info-card-body" data-i18n="around.taxi.body">
             Der klassische Prager Touristenschwindel: ein Taxi, das vor einer berühmten Sehenswürdigkeit wartet. Das Taxameter beginnt bei 200 CZK (~8 CHF), die Route wird kreativ, und Sie zahlen das Vierfache. <strong>Nutzen Sie stattdessen Uber oder Bolt.</strong> Beide funktionieren in der ganzen Stadt, die Preise stehen vor der Fahrt fest und die Fahrer werden bewertet. Bolt ist meist etwas günstiger.
             <div class="info-card-tip">⚠️ Wenn Sie unbedingt ein Strassentaxi nehmen müssen, prüfen Sie, dass es ein verifiziertes Unternehmen mit Schild auf dem Dach ist — und fragen Sie den Preis im Voraus.</div>
           </div>
@@ -1244,8 +1161,8 @@
           <div class="info-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
-          <div class="info-card-title">24- oder 72-Stunden-Pass kaufen</div>
-          <div class="info-card-body">
+          <div class="info-card-title" data-i18n="around.pass.title">24- oder 72-Stunden-Pass kaufen</div>
+          <div class="info-card-body" data-i18n="around.pass.body">
             Ein Ticket, unbegrenzte Fahrten in Metro, Tram und Bus. <strong>24 Stunden: 150 CZK (~6 CHF)</strong> bzw. 140 CZK (~5 CHF) in der App. <strong>72 Stunden: 350 CZK (~14 CHF)</strong> bzw. 340 CZK (~13 CHF) in der App. Lohnt sich nach 4 Fahrten. Die Petřín-Standseilbahn ist inkludiert — ein Zückerchen.
             <div class="info-card-tip">💡 Papiertickets bei der ersten Nutzung in der gelben Maschine entwerten — am Metroeingang, im Tram oder Bus. Vergessenes Entwerten = 1'500 CZK (~58 CHF) Busse. Die App-Version entwertet automatisch.</div>
           </div>
@@ -1255,8 +1172,8 @@
           <div class="info-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>
           </div>
-          <div class="info-card-title">Die App PID Lítačka holen</div>
-          <div class="info-card-body">
+          <div class="info-card-title" data-i18n="around.app.title">Die App PID Lítačka holen</div>
+          <div class="info-card-body" data-i18n="around.app.body">
             Die offizielle ÖV-App von Prag. Kaufen Sie jedes Ticket direkt auf dem Handy — etwa <strong>10 CZK (~0,40 CHF) günstiger als auf Papier</strong>, kein Entwerten nötig, und Sie können auch noch während der Fahrt kaufen, falls Sie es vergessen haben. Funktioniert auf Englisch. Der Routenplaner ist für den ÖV hier besser als Google Maps.
             <div class="info-card-tip">💡 Suchen Sie «PID Lítačka» im App Store oder bei Google Play. Richten Sie sie ein, bevor Sie den Flughafen verlassen — erspart Ihnen die Schlange am Ticketautomaten.</div>
           </div>
@@ -1266,58 +1183,58 @@
     </div>
   </section>
 
-  <!-- ═══ CTA SECTION (vrátit zpět na fundraising) ═══ -->
+  <!-- ═══ CTA SECTION ═══ -->
   <section class="cta-section">
     <div class="container">
-      <div class="cta-eyebrow">Genug Prag-Geschichten</div>
-      <h2>Also — zurück zum <em>Fundraising?</em><span class="lime-dot">.</span></h2>
-      <p class="cta-lead">Sie haben gerade gesehen, wie ich über Prag denke — was man auslassen sollte, was Ihrer Zeit wert ist, was ich aufrichtig liebe. Dieselbe Sorgfalt bringe ich ins digitale Fundraising für gemeinnützige Organisationen in ganz Europa. Wenn das Ihr Bereich ist, zeigt Ihnen der QuickCheck genau, woran wir arbeiten würden.</p>
+      <div class="cta-eyebrow" data-i18n="cta.eyebrow">Genug Prag-Geschichten</div>
+      <h2 data-i18n="cta.title">Also — zurück zum <em>Fundraising?</em><span class="lime-dot">.</span></h2>
+      <p class="cta-lead" data-i18n="cta.lead">Sie haben gerade gesehen, wie ich über Prag denke — was man auslassen sollte, was Ihrer Zeit wert ist, was ich aufrichtig liebe. Dieselbe Sorgfalt bringe ich ins digitale Fundraising für gemeinnützige Organisationen in ganz Europa. Wenn das Ihr Bereich ist, zeigt Ihnen der QuickCheck genau, woran wir arbeiten würden.</p>
       <div class="cta-buttons">
-        <a href="/#quickcheck" class="btn-primary">QuickCheck anfordern →</a>
-        <a href="/#services" class="btn-secondary-light">Alle Leistungen ansehen →</a>
+        <a href="/#quickcheck" class="btn-primary" data-i18n="cta.btn1">QuickCheck anfordern →</a>
+        <a href="/#services" class="btn-secondary-light" data-i18n="cta.btn2">Alle Leistungen ansehen →</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ FOOTER (1:1 z homepage; lokalizováno do DE/CH) ============ -->
+  <!-- ============ FOOTER ============ -->
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div>
           <div class="footer-logo">ngo<span class="dot" style="color: #C9F31D;">.</span>digital</div>
-          <p class="footer-tag">Beratung für digitales Fundraising für gemeinnützige Organisationen in Europa, die wachsen wollen. Made in Prague.</p>
+          <p class="footer-tag" data-i18n="footer.tag">Beratung für digitales Fundraising für gemeinnützige Organisationen in Europa, die wachsen wollen. Made in Prague.</p>
           <div class="footer-email">peter@ngo.digital</div>
         </div>
 
         <div>
-          <div class="footer-col-title">Leistungen</div>
+          <div class="footer-col-title" data-i18n="footer.col.services">Leistungen</div>
           <div class="footer-links">
             <a href="/#quickcheck">QuickCheck</a>
-            <a href="/#services">Retainer</a>
-            <a href="/#services">Vollstrategie</a>
-            <a href="/#services">Beratung</a>
+            <a href="/#services" data-i18n="footer.link.retainer">Retainer</a>
+            <a href="/#services" data-i18n="footer.link.strategy">Vollstrategie</a>
+            <a href="/#services" data-i18n="footer.link.consulting">Beratung</a>
           </div>
         </div>
 
         <div>
-          <div class="footer-col-title">Über</div>
+          <div class="footer-col-title" data-i18n="footer.col.about">Über</div>
           <div class="footer-links">
-            <a href="/#about">Über Peter</a>
-            <a href="/#cases">Fallstudien</a>
-            <a href="/#contact">Kontakt</a>
+            <a href="/#about" data-i18n="footer.link.about">Über Peter</a>
+            <a href="/#cases" data-i18n="footer.link.cases">Fallstudien</a>
+            <a href="/#contact" data-i18n="footer.link.contact">Kontakt</a>
           </div>
         </div>
 
         <div>
-          <div class="footer-col-title">Prag besuchen</div>
+          <div class="footer-col-title" data-i18n="footer.col.prague">Prag besuchen</div>
           <div class="footer-links">
-            <a href="/de/my-prague-tips.html">Prag-Tipps</a>
+            <a href="#" data-i18n="footer.link.prague">Prag-Tipps</a>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div class="footer-meta">© 2026 Peter Chalupiansky · Made in Prague · <a href="/#imprint">Impressum</a> · <a href="https://www.iubenda.com/privacy-policy/97343048" class="iubenda-white iubenda-noiframe iubenda-embed" title="Datenschutz">Datenschutz</a> · <a href="https://www.iubenda.com/privacy-policy/97343048/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie-Richtlinie">Cookie-Richtlinie</a></div>
+        <div class="footer-meta">© 2026 Peter Chalupianský · <span data-i18n="footer.bottom_made">Made in Prague</span> · <a href="/#imprint" data-i18n="footer.imprint">Impressum</a> · <a href="https://www.iubenda.com/privacy-policy/97343048" class="iubenda-white iubenda-noiframe iubenda-embed" data-i18n="footer.privacy">Datenschutz</a> · <a href="https://www.iubenda.com/privacy-policy/97343048/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" data-i18n="footer.cookies">Cookie-Richtlinie</a></div>
         <div class="footer-legal">
           <a href="#">LinkedIn</a>
         </div>
@@ -1326,11 +1243,9 @@
   </footer>
 
   <script>
-    // Mobile hamburger toggle (zatím neaktivní — stejný markup jako homepage,
-    // ale na mobilu se na Prague Tips zobrazují jen logo + jazyk; CTA je hidden)
+    // Mobile hamburger toggle
     const hamburger = document.querySelector('.nav-hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    if (hamburger && navLinks) {
+    if (hamburger) {
       hamburger.addEventListener('click', () => {
         const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
         hamburger.setAttribute('aria-expanded', String(!isOpen));
@@ -1351,6 +1266,532 @@
       });
     }, { rootMargin: '-30% 0px -60% 0px' });
     sections.forEach(s => observer.observe(s));
+  </script>
+
+  <!-- ============ I18N - PŘEPÍNAČ JAZYKŮ (EN/DE/FR) ============
+       Stejný systém jako homepage preview_3_2.html.
+       Volba se ukládá do localStorage. Lze předat i ?lang=de v URL. -->
+  <script>
+    (function() {
+      const LANGS = ['en', 'de', 'fr'];
+      const T = {
+
+        // ============ ENGLISH ============
+        en: {
+          'nav.cta': 'Get the QuickCheck →',
+          'hero.eyebrow': 'Prague tips from Peter',
+          'hero.title': 'An insider\'s guide<br>to <em>my Prague</em><span class="lime-dot">.</span>',
+          'hero.lead': 'This is my city. I grew up here. If you\'re flying in for a meeting, a workshop or a long weekend — these are the corners I actually send friends to. No tourist traps. No clichés. Just the places I genuinely love.',
+          'hero.updated': 'Last updated: May 2026',
+
+          'pill.coffee': 'Coffee',
+          'pill.food': 'Food',
+          'pill.beer': 'Beer',
+          'pill.nature': 'Nature',
+          'pill.gems': 'Hidden Gems',
+          'pill.skip': 'Skip',
+          'pill.trip': 'Day trip',
+          'pill.around': 'Getting around',
+
+          'hood.oldtown': 'Old Town',
+          'hood.prag6': 'Prague 6',
+
+          // Coffee
+          'cat.coffee.eyebrow': '01 · Coffee',
+          'cat.coffee.title': 'Where I start my mornings<span class="lime-dot">.</span>',
+          'cat.coffee.sub': 'The Czech specialty coffee scene has come a long way over the last decade. These are the four spots I rotate between — depending on whether I want to work, talk, or just sit in silence for an hour.',
+          'coffee.misto.desc': 'The neighbourhood meeting point of the Doubleshot family — quieter than Můj šálek, less hectic than Loka. There\'s a communal table, a sofa, a small library nook, even steps designed for a quick coffee with your dog. Brunch is excellent. My favourite coffee stop when I\'m moving through the centre — and where I land after my boxing training. The atmosphere is just right.',
+          'coffee.misto.addr': 'Bubenečská 12, Dejvice, Prague 6',
+          'coffee.loka.desc': 'Doubleshot\'s espresso bar in the new Masaryčka building. Sleek interior, beautiful pastries, coffee that takes itself seriously without being pretentious. My choice when coffee comes with a slice of cake.',
+          'coffee.loka.addr': 'Ke Štvanici 371/4, Karlín, Prague 8',
+          'coffee.salek.desc': 'Doubleshot\'s flagship in Karlín and probably the most-mentioned specialty coffee spot in Prague — for good reason. Brunch is excellent. Come early or expect to wait. My favourite stop when I\'m in Karlín.',
+          'coffee.salek.addr': 'Křižíkova 105, Karlín, Prague 8',
+          'coffee.slavia.desc': 'Open since 1884. Kafka, Rilke, Havel and most of Czech literary history sat here. Set the coffee snobbery aside for one morning — the real reason to come is the view across the river to Prague Castle. I never get tired of it. Order a hot chocolate.',
+          'coffee.slavia.addr': 'Smetanovo nábřeží 1012/2, Old Town, Prague 1',
+
+          // Food
+          'cat.food.eyebrow': '02 · Food',
+          'cat.food.title': 'Where I take friends<span class="lime-dot">.</span>',
+          'cat.food.sub': 'Forget the tourist menus with goulash and dumplings. Prague\'s dining scene right now is honestly one of the best in Central Europe — modern, ingredient-led, unpretentious. Eight places I rotate between — depending on who\'s visiting and what we\'re celebrating.',
+          'food.palanda.desc': 'If you ask me where to find the best burger in Prague — this is it. No frills, no fuss, just a small place a few minutes off the tourist trail that does one thing extremely well.',
+          'food.palanda.addr': 'Zlatnická 1122/11, Nové Město, Prague 1',
+          'food.louvre.desc': 'Open since 1902. Kafka, Einstein and Masaryk all had their regular table here. The atmosphere is genuinely one of a kind — and the prices are surprisingly fair for what you get. Come for the schnitzel, the Viennese breakfast, or just to sit upstairs and pretend it\'s still the First Republic. Billiards in the back room, if you want to make an evening of it.',
+          'food.louvre.addr': 'Národní 22, Nové Město, Prague 1',
+          'food.cestr.desc': 'The Ambiente group\'s steakhouse, named after the Czech beef breed. Dry-aged Czech beef, Pilsner from the tank, an open kitchen you can watch. My choice for a serious business dinner — the food speaks for itself. Book ahead — always.',
+          'food.cestr.addr': 'Legerova 57/75, Vinohrady, Prague 1',
+          'food.kuchyn.desc': 'Czech home cooking, Ambiente quality, in the Salm Palace right next to the Castle. The kitchen brings the pots to your table — you lift the lids and choose. The most beautiful terrace with a view in the city. My default lunch when I\'m at Prague Castle.',
+          'food.kuchyn.addr': 'Hradčanské náměstí 186/1, Hradčany, Prague 1',
+          'food.tonkin.desc': 'Vietnamese-Thai food the way it should be — no compromises for Czech palates. Phở with clear, deep broth, real bún bò nam bộ, curries that actually have heat. I love Vietnamese food, and this is my top stop in Prague. Here the food is the star, not the interior.',
+          'food.tonkin.addr': 'Na Hutích 661/9, Dejvice, Prague 6',
+          'food.stejkarna.desc': 'An unpretentious steakhouse that punches well above its price tag. South American Aberdeen Angus, US Black Angus, properly dry-aged, cooked exactly how you want it. Wooden tables, soft lighting, no monkey business. Where I go when there\'s something to celebrate.',
+          'food.stejkarna.addr': 'Veletržní 246/5, Holešovice, Prague 7',
+          'food.jelen.desc': 'The largest restaurant in Prague, set inside Josef Gočár\'s cubist former Anglo-Czech Bank — reimagined by architect Stanislav Fiala. A 12-tank Pilsner tower running across three floors, an inferno wood grill, the original 800 kg vault door turned into a regulars\' table. The room genuinely fascinates me — bring a group, this is an experience.',
+          'food.jelen.addr': 'Hybernská 1034/5, Nové Město, Prague 1',
+          'food.brasileiro.desc': 'Brazilian churrasco rodízio by Ambiente, set in a 15th-century cellar a minute from the Old Town Square. Passadores carve grilled meat straight onto your plate, salad bar with Nikkei sushi included, all-you-can-eat at a fixed price. Where I take family for special occasions. Loud, generous, joyful. Caipirinha is mandatory.',
+          'food.brasileiro.addr': 'U Radnice 8/13, Old Town, Prague 1',
+
+          // Beer
+          'cat.beer.eyebrow': '03 · Beer',
+          'cat.beer.title': 'Beyond the tourist pub<span class="lime-dot">.</span>',
+          'cat.beer.sub': 'Czechs drink more beer per capita than anyone in the world. That doesn\'t mean every pub knows how to pour it. Here are four that do — from a 180-year-old institution to a microbrewery from 2018.',
+          'beer.pinkasu.desc': 'The first place in Prague to serve Pilsner, back in 1843. Hrabal came here every morning at 7am for goulash and a beer. Václav Havel decided to run for president here, over lunch, in December 1989. The Pilsner is still poured the way it was meant to be — and the atmosphere is something I genuinely love. Right in the centre, hard to beat.',
+          'beer.pinkasu.addr': 'Jungmannovo náměstí 16, Nové Město, Prague 1',
+          'beer.kohouti.desc': 'A microbrewery and tap room under one roof — opened in 2018 by brewmaster Adam Matuška and Lukáš Svoboda from Lokál. House Místní ležák, brewed in the morning, on tap by the afternoon, plus rotating beers from other Czech microbreweries. Industrial space, DJs in the evenings, a courtyard that\'s full all summer. I come here for the vibe and the unusual beers.',
+          'beer.kohouti.addr': 'Sokolovská 81/55, Karlín, Prague 8',
+          'beer.lokal.desc': 'The original Lokál — and the longest. 70 metres of bar, 12 Pilsner tanks, 270 chairs, 1,500 guests a day. Ambiente runs Lokál with their usual obsessive quality control. Order the smažák — the breaded fried cheese. The Czech classic that never disappoints. Don\'t let the size put you off; the beer is exactly the same.',
+          'beer.lokal.addr': 'Dlouhá 33, Old Town, Prague 1',
+          'beer.matuska.desc': 'The first proper tap room from Matuška brewery — one of my favourite Czech breweries, based in Broumy. Ten taps, a small experimental nano-brewery in the back, BBQ smoker out front. Right next to Hradčanská metro station. This is where I bring craft beer geeks.',
+          'beer.matuska.addr': 'Dejvická 4, Dejvice, Prague 6',
+
+          // Nature
+          'cat.nature.eyebrow': '04 · Nature',
+          'cat.nature.title': 'Green spaces I escape to<span class="lime-dot">.</span>',
+          'cat.nature.sub': 'Prague is one of the greenest capitals in Europe. Most visitors never leave the cobblestones. These four parks are where you\'ll find locals — running, picnicking, drinking wine, or just sitting under a tree.',
+          'nature.stromovka.desc': '95 hectares of former royal hunting grounds — Prague\'s Central Park. Old trees, ponds, jogging trails, a planetarium and a Renaissance summer palace on the hill. A comfortable ten minutes from the city centre by tram, but it feels like another world. This is where I run.',
+          'nature.stromovka.addr': 'Královská obora, Bubeneč, Prague 7',
+          'nature.sarka.desc': 'A wild rocky canyon at the edge of the city — hard to believe you\'re 20 minutes from Wenceslas Square. Hiking trails, an outdoor pool fed by a stream, sandstone cliffs. Take tram 26 to the last stop. Wear proper shoes; this isn\'t a stroll. The feeling of being in a real forest, ten minutes from my home and from the airport.',
+          'nature.sarka.addr': 'Prague 6, Vokovice/Liboc',
+          'nature.grebovka.desc': 'The only working vineyard inside Prague\'s city limits. An Italian neoclassical garden, a grotto carved into the hillside, and a small wine pavilion where you can drink the wine that grows 50 metres away. My favourite spot in Prague for a date — sunset here in September is one of the city\'s best-kept secrets.',
+          'nature.grebovka.addr': 'Havlíčkovy sady, Vinohrady, Prague 2',
+          'nature.hvezda.desc': 'A Renaissance hunting park from 1530, laid out around a six-pointed star-shaped summer palace — yes, literally star-shaped. Quiet beech forest, straight avenues, almost no tourists. Another piece of forest near my home. Insider tip: walk over to Sladká dílna patisserie at Na Petřinách 82 — a family-run pastry shop ten minutes away. The cakes are worth the detour.',
+          'nature.hvezda.addr': 'Liboc, Prague 6',
+
+          // Hidden Gems
+          'cat.gems.eyebrow': '05 · Hidden Gems',
+          'cat.gems.title': 'Places you won\'t find on any map<span class="lime-dot">.</span>',
+          'cat.gems.sub': 'Two addresses that no guidebook puts on the front pages — and that\'s exactly why they work. This is where Praguers go when they want something that doesn\'t feel like a sight. Both are former institutional buildings, both have multiple floors, both are best discovered without rushing.',
+          'gems.kasarna.desc': 'A former Austro-Hungarian military barracks from the 1840s, turned by the Pražské centrum association into a sprawling cultural courtyard. In summer, a huge sandy inner courtyard with deck chairs, an outdoor bar and an open-air cinema; in winter, an ice rink. Concerts, workshops, discussions, book launches — something happens here every single day. The best part: no tourists, just locals spending their evenings here. My favourite summer-evening spot in the city.',
+          'gems.kasarna.addr': 'Prvního pluku 20/2, Karlín, Prague 8',
+          'gems.skaut.desc': 'Right on Old Town Square, in the Palác Dům U Minuty next to the Town Hall with the Astronomical Clock — and yet most tourists miss it completely. The Czech Scout Institute runs a café, a gallery and an event space here. Excellent specialty coffee, honest sandwiches, regular exhibitions of young Czech artists, and a summer terrace with one of the loveliest views of Týn Church you can get for free. Exactly the kind of place I send friends to when they want to visit the centre but survive the tourist crush.',
+          'gems.skaut.addr': 'Staroměstské náměstí 4/1, Old Town, Prague 1',
+
+          // Skip
+          'cat.skip.eyebrow': '06 · Skip',
+          'cat.skip.title': 'What to skip in my city<span class="lime-dot">.</span>',
+          'cat.skip.sub': 'Three tourist traps every local wants to spare you — and what to do instead. Save your money for the places I actually recommend.',
+          'skip.taxi.title': 'Street taxis',
+          'skip.taxi.body': 'The classic Prague scam. A taxi waiting in front of Old Town Square or Charles Bridge will quote you a flat "tourist price" or run the meter creatively. You pay 3 to 4 times what locals pay. <strong>It happens to someone every single day.</strong><div class="skip-card-do">✓ Use Uber or Bolt instead — fixed prices before the ride, rated drivers, works across the whole city. Bolt is usually cheaper.</div>',
+          'skip.exchange.title': 'Currency exchange offices',
+          'skip.exchange.body': 'Those "0% commission" signs in the centre? The rates are 30–40% worse than your bank card. <strong>Avoid the standalone yellow ATMs (Euronet) in particular — the rates are noticeably worse than at bank ATMs.</strong> Same goes for the kiosks promising dream rates near Wenceslas Square.<div class="skip-card-do">✓ Pay by card almost everywhere — restaurants, cafés, public transport. Use Revolut or your home bank card for the best conversion. If you need cash, only use ATMs from the main Czech banks: ČSOB, Komerční banka, Raiffeisenbank, Česká spořitelna.</div>',
+          'skip.food.title': 'Food stalls in the centre',
+          'skip.food.body': 'The trdelník stalls, sausage carts and "traditional Czech cuisine" booths around Old Town Square and Wenceslas Square. Trdelník isn\'t even Czech (it\'s Hungarian-Slovak). Sausages cost four times the supermarket price. The "goulash in a bread bowl" is a tourist invention.<div class="skip-card-do">✓ Walk five minutes to one of the restaurants in the Food section above. For the same money you\'ll get real Czech cooking, properly made — and you get to sit down.</div>',
+
+          // Day trip
+          'cat.trip.eyebrow': '07 · Day trip',
+          'cat.trip.title': 'Out of the city, back by evening<span class="lime-dot">.</span>',
+          'cat.trip.sub': 'Four trips from Prague, from a 30-minute hop to a 3-hour train ride. The first two are easy day trips — leave at 9am, back for dinner. The other two are technically doable in a day, but you\'ll regret rushing them. Stay overnight if you can.',
+          'trip.karlstejn.pill': '30 min by train',
+          'trip.karlstejn.desc': 'A 14th-century Gothic castle built by Emperor Charles IV to safeguard the Bohemian crown jewels. The most photographed castle in the country — for good reason. Take the train from Prague Smíchov, walk up through the village, do the guided tour. Half a day, easy.',
+          'trip.karlstejn.addr': 'Karlštejn, Central Bohemia',
+          'trip.kutna.pill': '1 hr by train',
+          'trip.kutna.desc': 'A UNESCO-listed silver mining town, second only to Prague in the medieval Kingdom of Bohemia. Don\'t miss the Sedlec Ossuary — a chapel decorated with the bones of 40,000 people. Then the cathedral, then lunch. Strange and beautiful at the same time.',
+          'trip.kutna.addr': 'Kutná Hora, Central Bohemia',
+          'trip.krumlov.pill': '3 hrs by train',
+          'trip.krumlov.desc': 'A UNESCO Renaissance town built into a tight bend of the Vltava river, dominated by a vast Baroque castle. Yes, it\'s far. Yes, it\'s worth it. Touristy in summer — go off-season. If you can, stay one night; the town transforms once the day-trippers leave.',
+          'trip.krumlov.addr': 'Český Krumlov, South Bohemia',
+          'trip.olomouc.pill': '2.5 hrs by train',
+          'trip.olomouc.desc': 'A university town in central Moravia that most foreigners skip — which is exactly the reason to go. UNESCO Holy Trinity Column, an Astronomical Clock even stranger than the one in Prague, excellent food, real student energy. Doable as a long day, but two days do it more justice.',
+          'trip.olomouc.addr': 'Olomouc, Central Moravia',
+
+          // Getting around
+          'cat.around.eyebrow': '08 · Getting around',
+          'cat.around.title': 'How to actually move around Prague<span class="lime-dot">.</span>',
+          'cat.around.sub': 'Skip the airport taxis and the random "city tour" cabs at the sights. Public transport here is excellent and cheap. A few practical things I tell every friend who visits.',
+          'around.airport.title': 'From the airport by public transport',
+          'around.airport.body': 'Skip the taxis. Two good public transport options from <strong>Václav Havel Airport (PRG)</strong> to the city centre: <strong>Bus 59</strong> connects to Metro Line A (Nádraží Veleslavín) — covered by a regular ticket. Or take the <strong>Airport Express (AE)</strong> direct to the main train station for <strong>200 CZK (~8 CHF)</strong> — fast and direct.<div class="info-card-tip">💡 Bus 59 + Metro takes ~35 min. AE takes ~30 min. Both beat being stuck in airport-taxi traffic.</div>',
+          'around.taxi.title': 'Never take a street taxi',
+          'around.taxi.body': 'The classic Prague tourist scam: a taxi waiting in front of a famous sight. The meter starts at 200 CZK (~8 CHF), the route gets creative, and you pay four times the fair price. <strong>Use Uber or Bolt instead.</strong> Both work across the whole city, prices are fixed before the ride, and drivers are rated. Bolt is usually slightly cheaper.<div class="info-card-tip">⚠️ If you absolutely must take a street taxi, check that it\'s a verified company with a sign on the roof — and ask the price up front.</div>',
+          'around.pass.title': 'Get a 24- or 72-hour pass',
+          'around.pass.body': 'One ticket, unlimited rides on metro, tram and bus. <strong>24 hours: 150 CZK (~6 CHF)</strong> or 140 CZK (~5 CHF) in the app. <strong>72 hours: 350 CZK (~14 CHF)</strong> or 340 CZK (~13 CHF) in the app. Worth it after 4 rides. The Petřín funicular is included — a nice bonus.<div class="info-card-tip">💡 Validate paper tickets in the yellow machine on first use — at the metro entrance, on the tram or bus. Forgetting to validate = 1,500 CZK (~58 CHF) fine. The app version validates automatically.</div>',
+          'around.app.title': 'Get the PID Lítačka app',
+          'around.app.body': 'Prague\'s official public transport app. Buy any ticket directly on your phone — about <strong>10 CZK (~0.40 CHF) cheaper than paper</strong>, no validation needed, and you can buy mid-ride if you forgot. Works in English. The route planner is better than Google Maps for public transport here.<div class="info-card-tip">💡 Search for "PID Lítačka" on the App Store or Google Play. Set it up before leaving the airport — saves you the queue at the ticket machine.</div>',
+
+          // CTA
+          'cta.eyebrow': 'Enough Prague stories',
+          'cta.title': 'So — back to <em>fundraising?</em><span class="lime-dot">.</span>',
+          'cta.lead': 'You\'ve just seen how I think about Prague — what to skip, what\'s worth your time, what I genuinely love. I bring the same care to digital fundraising for nonprofits across Europe. If that\'s your area, the QuickCheck shows you exactly what we\'d work on.',
+          'cta.btn1': 'Get the QuickCheck →',
+          'cta.btn2': 'See all services →',
+
+          // Footer
+          'footer.tag': 'Digital fundraising consulting for European nonprofits ready to grow. Made in Prague.',
+          'footer.col.services': 'Services',
+          'footer.col.about': 'Company',
+          'footer.col.prague': 'Visit Prague',
+          'footer.link.retainer': 'Retainer',
+          'footer.link.strategy': 'Full Strategy',
+          'footer.link.consulting': 'Consulting',
+          'footer.link.about': 'About Peter',
+          'footer.link.cases': 'Case studies',
+          'footer.link.contact': 'Contact',
+          'footer.link.prague': 'Prague Tips',
+          'footer.bottom_made': 'Made in Prague',
+          'footer.imprint': 'Imprint',
+          'footer.privacy': 'Privacy Policy',
+          'footer.cookies': 'Cookie Policy',
+        },
+
+        // ============ DEUTSCH (default) ============
+        de: {
+          'nav.cta': 'QuickCheck holen →',
+          'hero.eyebrow': 'Prag-Tipps von Peter',
+          'hero.title': 'Ein Insider-Guide<br>für <em>mein Prag</em><span class="lime-dot">.</span>',
+          'hero.lead': 'Das ist meine Stadt. Hier bin ich aufgewachsen. Wenn Sie für ein Meeting, einen Workshop oder ein langes Wochenende einfliegen — das sind die Ecken, in die ich Freunde wirklich schicke. Keine Touristenfallen. Keine Klischees. Nur Orte, die ich tatsächlich liebe.',
+          'hero.updated': 'Letzte Aktualisierung: Mai 2026',
+
+          'pill.coffee': 'Kaffee',
+          'pill.food': 'Essen',
+          'pill.beer': 'Bier',
+          'pill.nature': 'Natur',
+          'pill.gems': 'Hidden Gems',
+          'pill.skip': 'Auslassen',
+          'pill.trip': 'Ausflug',
+          'pill.around': 'Unterwegs',
+
+          'hood.oldtown': 'Altstadt',
+          'hood.prag6': 'Prag 6',
+
+          // Coffee
+          'cat.coffee.eyebrow': '01 · Kaffee',
+          'cat.coffee.title': 'Wo ich meine Morgen beginne<span class="lime-dot">.</span>',
+          'cat.coffee.sub': 'Der tschechische Specialty-Coffee-Markt hat in den letzten zehn Jahren einen weiten Weg zurückgelegt. Das sind die vier Orte, zwischen denen ich rotiere — je nachdem, ob ich arbeiten, reden oder einfach eine Stunde lang ruhig sein möchte.',
+          'coffee.misto.desc': 'Der Quartier-Treff der Doubleshot-Familie — ruhiger als Můj šálek, weniger gehetzt als Loka. Es gibt einen Gemeinschaftstisch, ein Sofa, eine kleine Bibliotheksecke, sogar Stufen, die für einen schnellen Kaffee mit dem Hund konzipiert sind. Der Brunch ist ausgezeichnet. Mein liebster Kaffeestopp, wenn ich mich im Zentrum bewege — und wo ich nach meinem Box-Training lande. Die Atmosphäre ist genau richtig.',
+          'coffee.misto.addr': 'Bubenečská 12, Dejvice, Prag 6',
+          'coffee.loka.desc': 'Doubleshots Espresso-Bar im neuen Masaryčka-Gebäude. Schickes Interieur, wunderschöne Patisserie, Kaffee, der sich ernst nimmt, ohne prätentiös zu sein. Meine Wahl, wenn der Kaffee mit einem Stück Kuchen kommt.',
+          'coffee.loka.addr': 'Ke Štvanici 371/4, Karlín, Prag 8',
+          'coffee.salek.desc': 'Doubleshots Flaggschiff in Karlín und wahrscheinlich der meistgenannte Specialty-Coffee-Ort in Prag — und das aus gutem Grund. Der Brunch ist ausgezeichnet. Kommen Sie früh oder rechnen Sie mit Wartezeit. Mein liebster Stopp, wenn ich in Karlín bin.',
+          'coffee.salek.addr': 'Křižíkova 105, Karlín, Prag 8',
+          'coffee.slavia.desc': 'Geöffnet seit 1884. Kafka, Rilke, Havel und ein Grossteil der tschechischen Literaturgeschichte sassen hier. Lassen Sie das Kaffee-Snobtum für einen Morgen sein — der eigentliche Grund herzukommen ist der Blick über den Fluss zur Prager Burg. Ich werde dessen nie müde. Bestellen Sie eine heisse Schokolade.',
+          'coffee.slavia.addr': 'Smetanovo nábřeží 1012/2, Altstadt, Prag 1',
+
+          // Food
+          'cat.food.eyebrow': '02 · Essen',
+          'cat.food.title': 'Wo ich Freunde hinführe<span class="lime-dot">.</span>',
+          'cat.food.sub': 'Vergessen Sie die Touristenmenüs mit Gulasch und Knödeln. Die Prager Gastronomie-Szene gehört derzeit ehrlich gesagt zu den besten in Mitteleuropa — modern, zutatenorientiert, unprätentiös. Acht Lokale, zwischen denen ich rotiere — je nachdem, wer zu Besuch ist und was wir feiern.',
+          'food.palanda.desc': 'Wenn Sie mich fragen, wo Sie den besten Burger in Prag finden — das ist er. Kein Schnickschnack, kein Aufhebens, einfach ein kleines Lokal ein paar Minuten abseits der Touristenroute, das eine Sache extrem gut macht.',
+          'food.palanda.addr': 'Zlatnická 1122/11, Nové Město, Prag 1',
+          'food.louvre.desc': 'Geöffnet seit 1902. Kafka, Einstein und Masaryk hatten alle hier ihren Stammtisch. Die Atmosphäre ist wirklich einzigartig — und die Preise sind erstaunlich fair für das, was man bekommt. Kommen Sie für das Schnitzel, das Wiener Frühstück oder einfach, um oben zu sitzen und so zu tun, als wäre es noch die Erste Republik. Billard im hinteren Raum, falls Sie einen Abend daraus machen möchten.',
+          'food.louvre.addr': 'Národní 22, Nové Město, Prag 1',
+          'food.cestr.desc': 'Steakhouse der Ambiente-Gruppe, benannt nach der tschechischen Rinderrasse. Dry-aged tschechisches Rindfleisch, Pilsner vom Tank, eine offene Küche, der Sie zuschauen können. Meine Wahl für ein seriöses Geschäftsessen — das Essen spricht für sich. Reservieren Sie im Voraus — immer.',
+          'food.cestr.addr': 'Legerova 57/75, Vinohrady, Prag 1',
+          'food.kuchyn.desc': 'Tschechische Hausmannskost, in Ambiente-Qualität, im Salm-Palais direkt neben der Burg. Die Küche bringt die Töpfe an Ihren Tisch — Sie heben die Deckel und wählen aus. Die schönste Terrasse mit Aussicht in der Stadt. Mein Standard-Mittagessen, wenn ich auf der Prager Burg bin.',
+          'food.kuchyn.addr': 'Hradčanské náměstí 186/1, Hradčany, Prag 1',
+          'food.tonkin.desc': 'Vietnamesisch-thailändisches Essen, wie es sein soll — ohne Kompromisse für tschechische Gaumen. Phở mit klarer, tiefer Brühe, echtes bún bò nam bộ, Currys, die wirklich Schärfe haben. Ich liebe vietnamesisches Essen, und das ist mein Top-Stopp in Prag. Hier ist das Essen der Star, nicht das Interieur.',
+          'food.tonkin.addr': 'Na Hutích 661/9, Dejvice, Prag 6',
+          'food.stejkarna.desc': 'Ein unprätentiöses Steakhouse, das weit über seinem Preis spielt. Aberdeen Angus aus Südamerika, US Black Angus, fachgerecht dry-aged, exakt so zubereitet, wie Sie es wünschen. Holztische, gedämpftes Licht, kein Affenzirkus. Wo ich hingehe, wenn es etwas zu feiern gibt.',
+          'food.stejkarna.addr': 'Veletržní 246/5, Holešovice, Prag 7',
+          'food.jelen.desc': 'Das grösste Restaurant in Prag, untergebracht in Josef Gočárs kubistischer ehemaliger Anglo-Tschechischer Bank — neu interpretiert vom Architekten Stanislav Fiala. Ein 12-Tank-Pilsner-Turm über drei Stockwerke, ein Inferno-Holzgrill, die originale 800-kg-Tresortür, umgewandelt in einen Stammgästetisch. Der Raum fasziniert mich wirklich — bringen Sie eine Gruppe mit, das ist ein Erlebnis.',
+          'food.jelen.addr': 'Hybernská 1034/5, Nové Město, Prag 1',
+          'food.brasileiro.desc': 'Brasilianisches Churrasco-Rodízio von Ambiente, in einem Keller aus dem 15. Jahrhundert eine Minute vom Altstädter Ring. Passadores schneiden gegrilltes Fleisch direkt auf Ihren Teller, Salatbar mit Nikkei-Sushi inklusive, all you can eat zum Festpreis. Wo ich die Familie zu besonderen Anlässen hinführe. Laut, grosszügig, fröhlich. Caipirinha ist Pflicht.',
+          'food.brasileiro.addr': 'U Radnice 8/13, Altstadt, Prag 1',
+
+          // Beer
+          'cat.beer.eyebrow': '03 · Bier',
+          'cat.beer.title': 'Jenseits der Touristenkneipe<span class="lime-dot">.</span>',
+          'cat.beer.sub': 'Tschechen trinken pro Kopf am meisten Bier weltweit. Das heisst nicht, dass jede Beiz weiss, wie man es zapft. Hier sind vier, die es können — von einer 180-jährigen Institution bis zu einer Kleinbrauerei aus dem Jahr 2018.',
+          'beer.pinkasu.desc': 'Das erste Lokal in Prag, das Pilsner ausschenkte, im Jahr 1843. Hrabal kam jeden Morgen um 7 Uhr für Gulasch und ein Bier. Václav Havel beschloss hier im Dezember 1989 beim Mittagessen, für das Präsidentenamt zu kandidieren. Das Pilsner wird immer noch so gezapft, wie es gemeint war — und die Atmosphäre ist etwas, das ich aufrichtig liebe. Mitten im Zentrum, schwer zu schlagen.',
+          'beer.pinkasu.addr': 'Jungmannovo náměstí 16, Nové Město, Prag 1',
+          'beer.kohouti.desc': 'Eine Kleinbrauerei und ein Tap Room unter einem Dach — 2018 vom Braumeister Adam Matuška und Lukáš Svoboda von Lokál eröffnet. Eigenes Místní ležák, am Morgen gebraut, am Nachmittag ausgeschenkt, dazu wechselnde Biere anderer tschechischer Kleinbrauereien. Industrieraum, abends DJs, ein Hof, der den ganzen Sommer voll ist. Hierher komme ich für die Stimmung und die ungewöhnlichen Biere.',
+          'beer.kohouti.addr': 'Sokolovská 81/55, Karlín, Prag 8',
+          'beer.lokal.desc': 'Der Original-Lokál — und der längste. 70 Meter Bar, 12 Pilsner-Tanks, 270 Stühle, 1\'500 Gäste pro Tag. Ambiente führt das Lokal mit ihrer üblichen besessenen Qualitätskontrolle. Bestellen Sie den smažák — den panierten Käse. Der tschechische Klassiker, der nie enttäuscht. Lassen Sie sich von der Grösse nicht abschrecken; das Bier ist genau dasselbe.',
+          'beer.lokal.addr': 'Dlouhá 33, Altstadt, Prag 1',
+          'beer.matuska.desc': 'Der erste eigene Tap Room der Brauerei Matuška — eine meiner liebsten tschechischen Brauereien, mit Sitz in Broumy. Zehn Hähne, eine kleine experimentelle Nano-Brauerei im hinteren Bereich, BBQ-Smoker davor. Direkt neben der Metrostation Hradčanská. Hier bringe ich Craft-Beer-Geeks hin.',
+          'beer.matuska.addr': 'Dejvická 4, Dejvice, Prag 6',
+
+          // Nature
+          'cat.nature.eyebrow': '04 · Natur',
+          'cat.nature.title': 'Grünflächen, in die ich entfliehe<span class="lime-dot">.</span>',
+          'cat.nature.sub': 'Prag ist eine der grünsten Hauptstädte Europas. Die meisten Besucher verlassen das Kopfsteinpflaster nie. In diesen vier Parks finden Sie Einheimische — beim Joggen, Picknicken, Wein trinken oder einfach unter einem Baum sitzend.',
+          'nature.stromovka.desc': '95 Hektar ehemaliges königliches Jagdrevier — Prags Central Park. Alte Bäume, Teiche, Joggingwege, ein Planetarium und ein Renaissance-Sommerpalais auf dem Hügel. Bequeme zehn Minuten vom Stadtzentrum mit dem Tram, aber es fühlt sich an wie eine andere Welt. Hier jogge ich.',
+          'nature.stromovka.addr': 'Královská obora, Bubeneč, Prag 7',
+          'nature.sarka.desc': 'Ein wilder Felsencanyon am Stadtrand — kaum zu glauben, dass man 20 Minuten vom Wenzelsplatz entfernt ist. Wanderwege, ein Freibad, das von einem Bach gespeist wird, Sandsteinklippen. Nehmen Sie das Tram 26 bis zur Endstation. Tragen Sie ordentliche Schuhe; das ist kein Spaziergang. Das Gefühl, in einem echten Wald zu sein, zehn Minuten von meinem Zuhause und vom Flughafen entfernt.',
+          'nature.sarka.addr': 'Prag 6, Vokovice/Liboc',
+          'nature.grebovka.desc': 'Der einzige funktionierende Weinberg innerhalb der Stadtgrenzen Prags. Italienischer neoklassizistischer Garten, eine in den Hügel gehauene Grotte und ein kleiner Wein-Pavillon, in dem Sie den Wein trinken können, der 50 Meter weiter wächst. Mein liebster Ort in Prag für ein Date — der Sonnenuntergang hier im September ist eines der bestgehüteten Geheimnisse der Stadt.',
+          'nature.grebovka.addr': 'Havlíčkovy sady, Vinohrady, Prag 2',
+          'nature.hvezda.desc': 'Ein Renaissance-Jagdpark aus dem Jahr 1530, angelegt um ein sechszackiges sternförmiges Sommerpalais — ja, buchstäblich sternförmig. Stiller Buchenwald, gerade Alleen, fast keine Touristen. Ein weiteres Stück Wald in der Nähe meines Zuhauses. Insider-Tipp: Spazieren Sie zur Konditorei Sladká dílna in der Na Petřinách 82 — eine familiengeführte Patisserie zehn Minuten entfernt. Die Kuchen sind den Umweg wert.',
+          'nature.hvezda.addr': 'Liboc, Prag 6',
+
+          // Hidden Gems
+          'cat.gems.eyebrow': '05 · Hidden Gems',
+          'cat.gems.title': 'Orte, die Sie auf keiner Karte finden<span class="lime-dot">.</span>',
+          'cat.gems.sub': 'Zwei Adressen, die kein Reiseführer auf den ersten Seiten hat — und genau deshalb funktionieren sie. Hierher gehen Pragerinnen und Prager, wenn sie etwas suchen, das sich nicht wie eine Sehenswürdigkeit anfühlt. Beide sind ehemalige Institutsgebäude, beide haben mehrere Etagen, beide entdeckt man besser ohne Eile.',
+          'gems.kasarna.desc': 'Eine ehemalige k.u.k. Militärkaserne aus den 1840er-Jahren, vom Verein Pražské centrum in einen weitläufigen Kulturhof verwandelt. Im Sommer ein riesiger Sandinnenhof mit Liegestühlen, Outdoor-Bar und Open-Air-Kino, im Winter eine Eisbahn. Konzerte, Workshops, Diskussionen, Buchpräsentationen — täglich passiert hier irgendetwas. Das Beste: keine Touristen, nur Einheimische, die ihren Feierabend hier verbringen. Mein liebster Sommerabend-Spot in der Stadt.',
+          'gems.kasarna.addr': 'Prvního pluku 20/2, Karlín, Prag 8',
+          'gems.skaut.desc': 'Direkt am Altstädter Ring, im Palác Dům U Minuty neben dem Rathaus mit der Astronomischen Uhr — und doch übersehen die meisten Touristen diesen Ort komplett. Das Institut der tschechischen Pfadfinder betreibt hier ein Café, eine Galerie und einen Veranstaltungsraum. Hervorragender Specialty-Coffee, ehrliche Sandwiches, regelmässige Ausstellungen junger tschechischer Künstler, im Sommer eine Terrasse mit einem der schönsten Blicke auf die Týnkirche, die man gratis bekommt. Genau die Art Ort, an den ich Freunde schicke, wenn sie das Zentrum besuchen, aber das Touristengetümmel überleben wollen.',
+          'gems.skaut.addr': 'Staroměstské náměstí 4/1, Altstadt, Prag 1',
+
+          // Skip
+          'cat.skip.eyebrow': '06 · Auslassen',
+          'cat.skip.title': 'Was Sie in meiner Stadt meiden sollten<span class="lime-dot">.</span>',
+          'cat.skip.sub': 'Drei Touristenfallen, die jeder Prager Einheimische Ihnen ersparen möchte — und was Sie stattdessen tun sollten. Sparen Sie Ihr Geld für die Orte, die ich tatsächlich empfehle.',
+          'skip.taxi.title': 'Strassentaxis',
+          'skip.taxi.body': 'Der klassische Prag-Schwindel. Ein Taxi, das vor dem Altstädter Ring oder der Karlsbrücke wartet, nennt Ihnen einen pauschalen «Touristenpreis» oder lässt das Taxameter kreativ laufen. Sie zahlen das 3- bis 4-Fache dessen, was Einheimische zahlen. <strong>Es passiert jeden Tag jemandem.</strong><div class="skip-card-do">✓ Nutzen Sie Uber oder Bolt — feste Preise vor der Fahrt, bewertete Fahrer, funktioniert in der ganzen Stadt. Bolt ist meist günstiger.</div>',
+          'skip.exchange.title': 'Wechselstuben',
+          'skip.exchange.body': 'Die Schilder mit «0 % Kommission» im Zentrum? Die Kurse sind 30–40 % schlechter als auf Ihrer Bankkarte. <strong>Meiden Sie besonders die freistehenden gelben Geldautomaten (Euronet) — die Kurse sind deutlich schlechter als an Bankautomaten.</strong> Dasselbe gilt für die Kioske, die in der Nähe des Wenzelsplatzes traumhafte Kurse versprechen.<div class="skip-card-do">✓ Bezahlen Sie fast überall mit Karte — Restaurants, Cafés, ÖV. Nutzen Sie Revolut oder Ihre Schweizer Bankkarte (UBS, Raiffeisen, ZKB) für die beste Umrechnung. Wenn Sie Bargeld brauchen, nutzen Sie nur Geldautomaten der grossen tschechischen Banken: ČSOB, Komerční banka, Raiffeisenbank, Česká spořitelna.</div>',
+          'skip.food.title': 'Essensstände im Zentrum',
+          'skip.food.body': 'Die Trdelník-Stände, Wurstwagen und «traditionelle tschechische Küche»-Buden rund um den Altstädter Ring und den Wenzelsplatz. Trdelník ist nicht einmal tschechisch (es ist ungarisch-slowakisch). Würste kosten das Vierfache des Supermarktpreises. Der «Gulasch in der Brotschüssel» ist eine Touristenerfindung.<div class="skip-card-do">✓ Gehen Sie fünf Minuten zu einem der Restaurants im Essens-Bereich oben. Für dasselbe Geld bekommen Sie echte tschechische Küche, fachgerecht zubereitet — und Sie sitzen.</div>',
+
+          // Day trip
+          'cat.trip.eyebrow': '07 · Ausflug',
+          'cat.trip.title': 'Raus aus der Stadt, abends zurück<span class="lime-dot">.</span>',
+          'cat.trip.sub': 'Vier Ausflüge ab Prag, vom 30-Minuten-Sprung bis zur 3-stündigen Zugfahrt. Die ersten beiden sind einfache Tagesausflüge — um 9 Uhr losfahren, zum Abendessen zurück. Die anderen beiden sind technisch an einem Tag machbar, aber Sie werden es bereuen, gehetzt zu haben. Bleiben Sie über Nacht, wenn Sie können.',
+          'trip.karlstejn.pill': '30 Min mit Zug',
+          'trip.karlstejn.desc': 'Eine gotische Burg aus dem 14. Jahrhundert, die Kaiser Karl IV. erbauen liess, um die böhmischen Kronjuwelen sicher aufzubewahren. Die meistfotografierte Burg des Landes — und das aus gutem Grund. Nehmen Sie den Zug ab Prag Smíchov, gehen Sie durch das Dorf den Hügel hinauf, machen Sie die Führung mit. Ein halber Tag, locker.',
+          'trip.karlstejn.addr': 'Karlštejn, Mittelböhmen',
+          'trip.kutna.pill': '1 Std mit Zug',
+          'trip.kutna.desc': 'UNESCO-gelistete Silberbergbaustadt, im mittelalterlichen Königreich Böhmen nur Prag nachgeordnet. Versäumen Sie das Beinhaus von Sedlec nicht — eine Kapelle, die mit den Knochen von 40\'000 Menschen geschmückt ist. Dann die Kathedrale, dann Mittagessen. Befremdlich und schön zugleich.',
+          'trip.kutna.addr': 'Kutná Hora, Mittelböhmen',
+          'trip.krumlov.pill': '3 Std mit Zug',
+          'trip.krumlov.desc': 'Eine UNESCO-Renaissancestadt, gebaut in eine enge Schleife der Moldau, beherrscht von einer riesigen Barockburg. Ja, es ist weit. Ja, es lohnt sich. Im Sommer touristisch — fahren Sie in der Nebensaison. Wenn Sie können, bleiben Sie eine Nacht; die Stadt verwandelt sich, sobald die Tagesausflügler weg sind.',
+          'trip.krumlov.addr': 'Český Krumlov, Südböhmen',
+          'trip.olomouc.pill': '2,5 Std mit Zug',
+          'trip.olomouc.desc': 'Eine Universitätsstadt in Mittelmähren, die die meisten Ausländer auslassen — was genau der Grund ist, hinzufahren. UNESCO-Dreifaltigkeitssäule, eine Astronomische Uhr, die noch eigenartiger ist als die in Prag, ausgezeichnete Küche, echte Studentenenergie. Als langer Tag machbar, aber zwei Tage werden ihr eher gerecht.',
+          'trip.olomouc.addr': 'Olomouc, Mittelmähren',
+
+          // Getting around
+          'cat.around.eyebrow': '08 · Unterwegs',
+          'cat.around.title': 'Wie Sie sich in Prag wirklich fortbewegen<span class="lime-dot">.</span>',
+          'cat.around.sub': 'Lassen Sie die Flughafentaxis und die zufälligen «Stadtrundfahrt»-Cabs an Sehenswürdigkeiten links liegen. Der ÖV ist hier ausgezeichnet und günstig. Ein paar praktische Dinge, die ich jedem Freund auf Besuch erkläre.',
+          'around.airport.title': 'Vom Flughafen mit dem ÖV',
+          'around.airport.body': 'Lassen Sie die Taxis aus. Zwei gute ÖV-Optionen vom <strong>Václav-Havel-Flughafen (PRG)</strong> ins Stadtzentrum: <strong>Bus 59</strong> verbindet zur Metrolinie A (Nádraží Veleslavín) — mit einem regulären Ticket abgedeckt. Oder nehmen Sie den <strong>Airport Express (AE)</strong> direkt zum Hauptbahnhof für <strong>200 CZK (~8 CHF)</strong> — schnell und direkt.<div class="info-card-tip">💡 Bus 59 + Metro dauert ~35 Min. AE dauert ~30 Min. Beide schlagen das Festsitzen im Flughafentaxi-Verkehr.</div>',
+          'around.taxi.title': 'Niemals ein Strassentaxi nehmen',
+          'around.taxi.body': 'Der klassische Prager Touristenschwindel: ein Taxi, das vor einer berühmten Sehenswürdigkeit wartet. Das Taxameter beginnt bei 200 CZK (~8 CHF), die Route wird kreativ, und Sie zahlen das Vierfache. <strong>Nutzen Sie stattdessen Uber oder Bolt.</strong> Beide funktionieren in der ganzen Stadt, die Preise stehen vor der Fahrt fest und die Fahrer werden bewertet. Bolt ist meist etwas günstiger.<div class="info-card-tip">⚠️ Wenn Sie unbedingt ein Strassentaxi nehmen müssen, prüfen Sie, dass es ein verifiziertes Unternehmen mit Schild auf dem Dach ist — und fragen Sie den Preis im Voraus.</div>',
+          'around.pass.title': '24- oder 72-Stunden-Pass kaufen',
+          'around.pass.body': 'Ein Ticket, unbegrenzte Fahrten in Metro, Tram und Bus. <strong>24 Stunden: 150 CZK (~6 CHF)</strong> bzw. 140 CZK (~5 CHF) in der App. <strong>72 Stunden: 350 CZK (~14 CHF)</strong> bzw. 340 CZK (~13 CHF) in der App. Lohnt sich nach 4 Fahrten. Die Petřín-Standseilbahn ist inkludiert — ein Zückerchen.<div class="info-card-tip">💡 Papiertickets bei der ersten Nutzung in der gelben Maschine entwerten — am Metroeingang, im Tram oder Bus. Vergessenes Entwerten = 1\'500 CZK (~58 CHF) Busse. Die App-Version entwertet automatisch.</div>',
+          'around.app.title': 'Die App PID Lítačka holen',
+          'around.app.body': 'Die offizielle ÖV-App von Prag. Kaufen Sie jedes Ticket direkt auf dem Handy — etwa <strong>10 CZK (~0,40 CHF) günstiger als auf Papier</strong>, kein Entwerten nötig, und Sie können auch noch während der Fahrt kaufen, falls Sie es vergessen haben. Funktioniert auf Englisch. Der Routenplaner ist für den ÖV hier besser als Google Maps.<div class="info-card-tip">💡 Suchen Sie «PID Lítačka» im App Store oder bei Google Play. Richten Sie sie ein, bevor Sie den Flughafen verlassen — erspart Ihnen die Schlange am Ticketautomaten.</div>',
+
+          // CTA
+          'cta.eyebrow': 'Genug Prag-Geschichten',
+          'cta.title': 'Also — zurück zum <em>Fundraising?</em><span class="lime-dot">.</span>',
+          'cta.lead': 'Sie haben gerade gesehen, wie ich über Prag denke — was man auslassen sollte, was Ihrer Zeit wert ist, was ich aufrichtig liebe. Dieselbe Sorgfalt bringe ich ins digitale Fundraising für gemeinnützige Organisationen in ganz Europa. Wenn das Ihr Bereich ist, zeigt Ihnen der QuickCheck genau, woran wir arbeiten würden.',
+          'cta.btn1': 'QuickCheck anfordern →',
+          'cta.btn2': 'Alle Leistungen ansehen →',
+
+          // Footer
+          'footer.tag': 'Beratung für digitales Fundraising für gemeinnützige Organisationen in Europa, die wachsen wollen. Made in Prague.',
+          'footer.col.services': 'Leistungen',
+          'footer.col.about': 'Über',
+          'footer.col.prague': 'Prag besuchen',
+          'footer.link.retainer': 'Retainer',
+          'footer.link.strategy': 'Vollstrategie',
+          'footer.link.consulting': 'Beratung',
+          'footer.link.about': 'Über Peter',
+          'footer.link.cases': 'Fallstudien',
+          'footer.link.contact': 'Kontakt',
+          'footer.link.prague': 'Prag-Tipps',
+          'footer.bottom_made': 'Made in Prague',
+          'footer.imprint': 'Impressum',
+          'footer.privacy': 'Datenschutz',
+          'footer.cookies': 'Cookie-Richtlinie',
+        },
+
+        // ============ FRANÇAIS ============
+        fr: {
+          'nav.cta': 'Réserver mon QuickCheck →',
+          'hero.eyebrow': 'Conseils de Peter sur Prague',
+          'hero.title': 'Un guide d\'initié<br>de <em>mon Prague</em><span class="lime-dot">.</span>',
+          'hero.lead': 'C\'est ma ville. J\'y ai grandi. Si vous venez pour une réunion, un atelier ou un long week-end — voici les coins où j\'envoie réellement mes amis. Pas de pièges à touristes. Pas de clichés. Juste les endroits que j\'aime vraiment.',
+          'hero.updated': 'Dernière mise à jour : mai 2026',
+
+          'pill.coffee': 'Café',
+          'pill.food': 'Cuisine',
+          'pill.beer': 'Bière',
+          'pill.nature': 'Nature',
+          'pill.gems': 'Trésors cachés',
+          'pill.skip': 'À éviter',
+          'pill.trip': 'Escapade',
+          'pill.around': 'Se déplacer',
+
+          'hood.oldtown': 'Vieille Ville',
+          'hood.prag6': 'Prague 6',
+
+          // Coffee
+          'cat.coffee.eyebrow': '01 · Café',
+          'cat.coffee.title': 'Où je commence mes matinées<span class="lime-dot">.</span>',
+          'cat.coffee.sub': 'La scène tchèque du café de spécialité a fait beaucoup de chemin ces dix dernières années. Voici les quatre adresses entre lesquelles je tourne — selon que je veux travailler, discuter ou simplement m\'asseoir en silence pendant une heure.',
+          'coffee.misto.desc': 'Le point de rencontre de quartier de la famille Doubleshot — plus calme que Můj šálek, moins frénétique que Loka. Une grande table commune, un canapé, un petit coin bibliothèque, et même des marches conçues pour un café rapide avec son chien. Le brunch est excellent. Mon café préféré quand je me déplace dans le centre — et l\'endroit où j\'atterris après ma séance de boxe. L\'ambiance y est juste comme il faut.',
+          'coffee.misto.addr': 'Bubenečská 12, Dejvice, Prague 6',
+          'coffee.loka.desc': 'Le bar à espresso de Doubleshot dans le nouvel immeuble Masaryčka. Intérieur élégant, magnifiques pâtisseries, un café qui se prend au sérieux sans être prétentieux. Mon choix quand le café s\'accompagne d\'une part de gâteau.',
+          'coffee.loka.addr': 'Ke Štvanici 371/4, Karlín, Prague 8',
+          'coffee.salek.desc': 'Le vaisseau amiral de Doubleshot à Karlín, et probablement l\'adresse café de spécialité la plus citée à Prague — pour de bonnes raisons. Le brunch est excellent. Venez tôt ou attendez-vous à patienter. Mon arrêt préféré quand je suis à Karlín.',
+          'coffee.salek.addr': 'Křižíkova 105, Karlín, Prague 8',
+          'coffee.slavia.desc': 'Ouvert depuis 1884. Kafka, Rilke, Havel et la majeure partie de l\'histoire littéraire tchèque s\'y sont assis. Mettez le snobisme du café de côté pour une matinée — la vraie raison de venir, c\'est la vue de l\'autre côté du fleuve, sur le Château de Prague. Je ne m\'en lasse jamais. Commandez un chocolat chaud.',
+          'coffee.slavia.addr': 'Smetanovo nábřeží 1012/2, Vieille Ville, Prague 1',
+
+          // Food
+          'cat.food.eyebrow': '02 · Cuisine',
+          'cat.food.title': 'Où j\'emmène mes amis<span class="lime-dot">.</span>',
+          'cat.food.sub': 'Oubliez les menus touristiques avec goulasch et knedlíky. La scène gastronomique de Prague est aujourd\'hui, honnêtement, l\'une des meilleures d\'Europe centrale — moderne, axée sur les produits, sans prétention. Huit adresses entre lesquelles je tourne — selon qui me rend visite et ce que nous célébrons.',
+          'food.palanda.desc': 'Si vous me demandez où trouver le meilleur burger de Prague — c\'est ici. Pas de chichis, pas de simagrées, juste un petit endroit à quelques minutes du circuit touristique qui fait une seule chose extrêmement bien.',
+          'food.palanda.addr': 'Zlatnická 1122/11, Nové Město, Prague 1',
+          'food.louvre.desc': 'Ouvert depuis 1902. Kafka, Einstein et Masaryk y avaient tous leur table attitrée. L\'atmosphère est vraiment unique — et les prix sont étonnamment justes pour ce qu\'on y reçoit. Venez pour le schnitzel, le petit-déjeuner viennois, ou simplement pour vous asseoir à l\'étage et faire comme si on était encore sous la Première République. Billard dans la salle du fond, si vous voulez en faire toute une soirée.',
+          'food.louvre.addr': 'Národní 22, Nové Město, Prague 1',
+          'food.cestr.desc': 'Le steakhouse du groupe Ambiente, baptisé d\'après la race bovine tchèque. Bœuf tchèque maturé à sec, Pilsner tirée du tank, cuisine ouverte que vous pouvez observer. Mon choix pour un dîner d\'affaires sérieux — la cuisine parle d\'elle-même. Réservez à l\'avance — toujours.',
+          'food.cestr.addr': 'Legerova 57/75, Vinohrady, Prague 1',
+          'food.kuchyn.desc': 'Cuisine familiale tchèque, qualité Ambiente, dans le palais Salm juste à côté du Château. La cuisine apporte les marmites jusqu\'à votre table — vous soulevez les couvercles et vous choisissez. La plus belle terrasse avec vue de la ville. Mon déjeuner par défaut quand je suis au Château de Prague.',
+          'food.kuchyn.addr': 'Hradčanské náměstí 186/1, Hradčany, Prague 1',
+          'food.tonkin.desc': 'Cuisine vietnamienne-thaïlandaise telle qu\'elle devrait être — sans compromis pour les palais tchèques. Phở au bouillon clair et profond, vrai bún bò nam bộ, currys qui ont vraiment du piquant. J\'adore la cuisine vietnamienne, et c\'est mon adresse préférée à Prague. Ici, c\'est la cuisine la star, pas la déco.',
+          'food.tonkin.addr': 'Na Hutích 661/9, Dejvice, Prague 6',
+          'food.stejkarna.desc': 'Un steakhouse sans prétention qui joue bien au-dessus de son prix. Aberdeen Angus d\'Amérique du Sud, US Black Angus, maturés à sec dans les règles de l\'art, cuits exactement comme vous le souhaitez. Tables en bois, lumière tamisée, aucune fioriture. C\'est là que je vais quand il y a quelque chose à célébrer.',
+          'food.stejkarna.addr': 'Veletržní 246/5, Holešovice, Prague 7',
+          'food.jelen.desc': 'Le plus grand restaurant de Prague, installé dans l\'ancienne Banque Anglo-Tchèque cubiste de Josef Gočár — réinterprétée par l\'architecte Stanislav Fiala. Une tour Pilsner à 12 tanks qui traverse trois étages, un grill à bois inferno, la porte de coffre originale de 800 kg transformée en table d\'habitués. La salle me fascine vraiment — venez en groupe, c\'est une expérience.',
+          'food.jelen.addr': 'Hybernská 1034/5, Nové Město, Prague 1',
+          'food.brasileiro.desc': 'Churrasco rodízio brésilien par Ambiente, dans une cave du XVe siècle à une minute de la place de la Vieille Ville. Les passadores découpent la viande grillée directement dans votre assiette, bar à salades avec sushis nikkei inclus, à volonté à prix fixe. C\'est là que j\'emmène la famille pour les grandes occasions. Bruyant, généreux, joyeux. La caipirinha est obligatoire.',
+          'food.brasileiro.addr': 'U Radnice 8/13, Vieille Ville, Prague 1',
+
+          // Beer
+          'cat.beer.eyebrow': '03 · Bière',
+          'cat.beer.title': 'Au-delà du pub à touristes<span class="lime-dot">.</span>',
+          'cat.beer.sub': 'Les Tchèques boivent plus de bière par habitant que n\'importe qui dans le monde. Cela ne veut pas dire que chaque bistrot sait la tirer. Voici quatre adresses qui le savent — d\'une institution vieille de 180 ans à une microbrasserie ouverte en 2018.',
+          'beer.pinkasu.desc': 'Le premier établissement de Prague à avoir servi de la Pilsner, en 1843. Hrabal y venait tous les matins à 7 h pour un goulasch et une bière. Václav Havel y a décidé de se présenter à la présidence, à table, en décembre 1989. La Pilsner y est encore tirée comme elle doit l\'être — et l\'ambiance est quelque chose que j\'aime sincèrement. En plein centre, difficile à battre.',
+          'beer.pinkasu.addr': 'Jungmannovo náměstí 16, Nové Město, Prague 1',
+          'beer.kohouti.desc': 'Une microbrasserie et un tap room sous le même toit — ouvert en 2018 par le maître brasseur Adam Matuška et Lukáš Svoboda de Lokál. Leur Místní ležák maison, brassée le matin, servie l\'après-midi, plus des bières tournantes d\'autres microbrasseries tchèques. Espace industriel, DJs en soirée, une cour bondée tout l\'été. C\'est ici que je viens pour l\'ambiance et les bières peu communes.',
+          'beer.kohouti.addr': 'Sokolovská 81/55, Karlín, Prague 8',
+          'beer.lokal.desc': 'Le Lokál original — et le plus long. 70 mètres de bar, 12 tanks de Pilsner, 270 chaises, 1 500 clients par jour. Ambiente gère Lokál avec son contrôle qualité obsessionnel habituel. Commandez le smažák — le fromage pané frit. Le classique tchèque qui ne déçoit jamais. Ne vous laissez pas impressionner par la taille ; la bière est exactement la même.',
+          'beer.lokal.addr': 'Dlouhá 33, Vieille Ville, Prague 1',
+          'beer.matuska.desc': 'Le premier vrai tap room de la brasserie Matuška — l\'une de mes brasseries tchèques préférées, basée à Broumy. Dix tireuses, une petite nano-brasserie expérimentale au fond, smoker BBQ devant. Juste à côté de la station de métro Hradčanská. C\'est ici que j\'emmène les passionnés de bières artisanales.',
+          'beer.matuska.addr': 'Dejvická 4, Dejvice, Prague 6',
+
+          // Nature
+          'cat.nature.eyebrow': '04 · Nature',
+          'cat.nature.title': 'Espaces verts où je m\'évade<span class="lime-dot">.</span>',
+          'cat.nature.sub': 'Prague est l\'une des capitales les plus vertes d\'Europe. La plupart des visiteurs ne quittent jamais les pavés. Ces quatre parcs sont les endroits où vous trouverez les habitants — courant, pique-niquant, buvant du vin ou simplement assis sous un arbre.',
+          'nature.stromovka.desc': '95 hectares d\'anciennes chasses royales — le Central Park de Prague. Vieux arbres, étangs, sentiers de jogging, un planétarium et un palais d\'été Renaissance sur la colline. À dix minutes confortables du centre-ville en tram, et pourtant on a l\'impression d\'être dans un autre monde. C\'est ici que je cours.',
+          'nature.stromovka.addr': 'Královská obora, Bubeneč, Prague 7',
+          'nature.sarka.desc': 'Un canyon rocheux sauvage à la lisière de la ville — difficile de croire qu\'on est à 20 minutes de la place Venceslas. Sentiers de randonnée, une piscine en plein air alimentée par un ruisseau, falaises de grès. Prenez le tram 26 jusqu\'au terminus. Mettez de bonnes chaussures ; ce n\'est pas une promenade. La sensation d\'être dans une vraie forêt, à dix minutes de chez moi et de l\'aéroport.',
+          'nature.sarka.addr': 'Prague 6, Vokovice/Liboc',
+          'nature.grebovka.desc': 'Le seul vignoble en activité à l\'intérieur des limites de Prague. Un jardin néoclassique italien, une grotte taillée dans la colline, et un petit pavillon à vin où l\'on peut boire le vin qui pousse à 50 mètres de là. Mon endroit préféré à Prague pour un rendez-vous — le coucher de soleil ici en septembre est l\'un des secrets les mieux gardés de la ville.',
+          'nature.grebovka.addr': 'Havlíčkovy sady, Vinohrady, Prague 2',
+          'nature.hvezda.desc': 'Un parc de chasse Renaissance datant de 1530, aménagé autour d\'un palais d\'été en forme d\'étoile à six branches — oui, littéralement en forme d\'étoile. Forêt de hêtres silencieuse, allées rectilignes, presque pas de touristes. Encore un morceau de forêt près de chez moi. Astuce d\'initié : marchez jusqu\'à la pâtisserie Sladká dílna au Na Petřinách 82 — une pâtisserie familiale à dix minutes. Les gâteaux valent le détour.',
+          'nature.hvezda.addr': 'Liboc, Prague 6',
+
+          // Hidden Gems
+          'cat.gems.eyebrow': '05 · Trésors cachés',
+          'cat.gems.title': 'Lieux que vous ne trouverez sur aucune carte<span class="lime-dot">.</span>',
+          'cat.gems.sub': 'Deux adresses qu\'aucun guide ne met en première page — et c\'est exactement pour cela qu\'elles fonctionnent. Les Pragois y vont quand ils cherchent quelque chose qui n\'a pas l\'air d\'une attraction. Les deux sont d\'anciens bâtiments institutionnels, les deux ont plusieurs étages, les deux se découvrent mieux sans se presser.',
+          'gems.kasarna.desc': 'Une ancienne caserne militaire austro-hongroise des années 1840, transformée par l\'association Pražské centrum en une vaste cour culturelle. L\'été, une immense cour intérieure de sable avec transats, bar en plein air et cinéma à ciel ouvert ; l\'hiver, une patinoire. Concerts, ateliers, débats, lancements de livres — il s\'y passe quelque chose tous les jours. Le meilleur : pas de touristes, juste des habitants qui y passent leurs soirées. Mon endroit préféré pour les soirées d\'été en ville.',
+          'gems.kasarna.addr': 'Prvního pluku 20/2, Karlín, Prague 8',
+          'gems.skaut.desc': 'En plein sur la place de la Vieille Ville, dans le palais Dům U Minuty à côté de l\'Hôtel de Ville et de l\'Horloge astronomique — et pourtant, la plupart des touristes passent complètement à côté. L\'Institut tchèque des scouts y tient un café, une galerie et un espace événementiel. Excellent café de spécialité, sandwichs honnêtes, expositions régulières de jeunes artistes tchèques, et l\'été une terrasse avec l\'une des plus belles vues sur l\'église de Týn que l\'on peut avoir gratuitement. Exactement le genre d\'endroit où j\'envoie mes amis quand ils veulent visiter le centre tout en survivant à la cohue touristique.',
+          'gems.skaut.addr': 'Staroměstské náměstí 4/1, Vieille Ville, Prague 1',
+
+          // Skip
+          'cat.skip.eyebrow': '06 · À éviter',
+          'cat.skip.title': 'Ce qu\'il faut éviter dans ma ville<span class="lime-dot">.</span>',
+          'cat.skip.sub': 'Trois pièges à touristes que tout Pragois souhaite vous épargner — et ce qu\'il faut faire à la place. Gardez votre argent pour les endroits que je recommande vraiment.',
+          'skip.taxi.title': 'Les taxis de rue',
+          'skip.taxi.body': 'L\'arnaque pragoise classique. Un taxi qui attend devant la place de la Vieille Ville ou le Pont Charles vous annonce un « prix touristique » forfaitaire ou laisse tourner le compteur de manière créative. Vous payez 3 à 4 fois ce que paient les locaux. <strong>Cela arrive à quelqu\'un tous les jours.</strong><div class="skip-card-do">✓ Utilisez Uber ou Bolt — prix fixes avant la course, chauffeurs notés, ça marche dans toute la ville. Bolt est généralement moins cher.</div>',
+          'skip.exchange.title': 'Les bureaux de change',
+          'skip.exchange.body': 'Les pancartes « 0 % de commission » dans le centre ? Les taux sont 30 à 40 % moins bons que sur votre carte bancaire. <strong>Évitez en particulier les distributeurs jaunes autonomes (Euronet) — les taux sont nettement moins bons que dans les distributeurs des banques.</strong> Idem pour les kiosques qui promettent des taux de rêve près de la place Venceslas.<div class="skip-card-do">✓ Payez par carte presque partout — restaurants, cafés, transports en commun. Utilisez Revolut ou la carte de votre banque pour la meilleure conversion. Si vous avez besoin d\'espèces, n\'utilisez que les distributeurs des grandes banques tchèques : ČSOB, Komerční banka, Raiffeisenbank, Česká spořitelna.</div>',
+          'skip.food.title': 'Les stands de nourriture du centre',
+          'skip.food.body': 'Les stands de trdelník, les chariots de saucisses et les baraques « cuisine traditionnelle tchèque » autour de la place de la Vieille Ville et de la place Venceslas. Le trdelník n\'est même pas tchèque (il est hongrois-slovaque). Les saucisses coûtent quatre fois le prix du supermarché. Le « goulasch dans une miche de pain » est une invention pour touristes.<div class="skip-card-do">✓ Marchez cinq minutes jusqu\'à l\'un des restaurants de la section Cuisine ci-dessus. Pour le même prix vous aurez de la vraie cuisine tchèque, faite dans les règles — et vous serez assis.</div>',
+
+          // Day trip
+          'cat.trip.eyebrow': '07 · Escapade',
+          'cat.trip.title': 'Sortir de la ville, rentrer le soir<span class="lime-dot">.</span>',
+          'cat.trip.sub': 'Quatre escapades depuis Prague, du saut de 30 minutes au trajet de 3 heures en train. Les deux premières sont des excursions faciles à la journée — partir à 9 h, rentrer pour le dîner. Les deux autres sont techniquement faisables en une journée, mais vous regretterez de les avoir bâclées. Restez la nuit si vous le pouvez.',
+          'trip.karlstejn.pill': '30 min en train',
+          'trip.karlstejn.desc': 'Un château gothique du XIVe siècle bâti par l\'empereur Charles IV pour mettre en sûreté les joyaux de la couronne de Bohême. Le château le plus photographié du pays — pour de bonnes raisons. Prenez le train depuis Prague-Smíchov, montez à pied à travers le village, faites la visite guidée. Une demi-journée, sans difficulté.',
+          'trip.karlstejn.addr': 'Karlštejn, Bohême centrale',
+          'trip.kutna.pill': '1 h en train',
+          'trip.kutna.desc': 'Une ville minière d\'argent classée à l\'UNESCO, qui ne le cédait qu\'à Prague dans le royaume médiéval de Bohême. Ne manquez pas l\'ossuaire de Sedlec — une chapelle décorée avec les ossements de 40 000 personnes. Puis la cathédrale, puis le déjeuner. Étrange et beau à la fois.',
+          'trip.kutna.addr': 'Kutná Hora, Bohême centrale',
+          'trip.krumlov.pill': '3 h en train',
+          'trip.krumlov.desc': 'Une ville Renaissance classée à l\'UNESCO, bâtie dans une boucle serrée de la Vltava, dominée par un immense château baroque. Oui, c\'est loin. Oui, ça vaut le coup. Touristique en été — allez-y hors saison. Si vous le pouvez, restez une nuit ; la ville se transforme dès que les visiteurs à la journée sont partis.',
+          'trip.krumlov.addr': 'Český Krumlov, Bohême du Sud',
+          'trip.olomouc.pill': '2 h 30 en train',
+          'trip.olomouc.desc': 'Une ville universitaire de Moravie centrale que la plupart des étrangers zappent — et c\'est exactement la raison d\'y aller. Colonne de la Sainte-Trinité classée à l\'UNESCO, une horloge astronomique encore plus singulière que celle de Prague, excellente cuisine, vraie énergie étudiante. Faisable en une longue journée, mais deux jours lui rendent davantage justice.',
+          'trip.olomouc.addr': 'Olomouc, Moravie centrale',
+
+          // Getting around
+          'cat.around.eyebrow': '08 · Se déplacer',
+          'cat.around.title': 'Comment se déplacer vraiment dans Prague<span class="lime-dot">.</span>',
+          'cat.around.sub': 'Laissez tomber les taxis de l\'aéroport et les taxis « tour de ville » qui rôdent autour des sites. Les transports en commun ici sont excellents et bon marché. Quelques aspects pratiques que j\'explique à chaque ami de passage.',
+          'around.airport.title': 'Depuis l\'aéroport en transports en commun',
+          'around.airport.body': 'Oubliez les taxis. Deux bonnes options en transports en commun depuis l\'<strong>aéroport Václav Havel (PRG)</strong> jusqu\'au centre-ville : le <strong>bus 59</strong> rejoint la ligne A du métro (Nádraží Veleslavín) — couvert par un ticket ordinaire. Ou prenez l\'<strong>Airport Express (AE)</strong> en direct jusqu\'à la gare centrale pour <strong>200 CZK (~8 CHF)</strong> — rapide et direct.<div class="info-card-tip">💡 Bus 59 + métro : ~35 min. AE : ~30 min. Les deux battent le fait d\'être coincé dans les bouchons des taxis d\'aéroport.</div>',
+          'around.taxi.title': 'Ne prenez jamais un taxi de rue',
+          'around.taxi.body': 'L\'arnaque touristique pragoise classique : un taxi qui attend devant un site connu. Le compteur démarre à 200 CZK (~8 CHF), l\'itinéraire devient créatif, et vous payez quatre fois le bon prix. <strong>Utilisez plutôt Uber ou Bolt.</strong> Les deux fonctionnent dans toute la ville, les prix sont fixés avant la course et les chauffeurs sont notés. Bolt est généralement légèrement moins cher.<div class="info-card-tip">⚠️ Si vous devez absolument prendre un taxi de rue, vérifiez que c\'est une compagnie identifiée avec un panneau sur le toit — et demandez le prix d\'avance.</div>',
+          'around.pass.title': 'Prenez un pass 24 h ou 72 h',
+          'around.pass.body': 'Un seul ticket, trajets illimités en métro, tram et bus. <strong>24 heures : 150 CZK (~6 CHF)</strong> ou 140 CZK (~5 CHF) dans l\'app. <strong>72 heures : 350 CZK (~14 CHF)</strong> ou 340 CZK (~13 CHF) dans l\'app. Rentable dès 4 trajets. Le funiculaire de Petřín est inclus — un joli bonus.<div class="info-card-tip">💡 Compostez les tickets papier dans la machine jaune dès la première utilisation — à l\'entrée du métro, dans le tram ou le bus. Oubli de compostage = amende de 1 500 CZK (~58 CHF). La version dans l\'app se composte automatiquement.</div>',
+          'around.app.title': 'Téléchargez l\'app PID Lítačka',
+          'around.app.body': 'L\'app officielle des transports en commun de Prague. Achetez n\'importe quel ticket directement sur votre téléphone — environ <strong>10 CZK (~0,40 CHF) moins cher que sur papier</strong>, sans compostage, et vous pouvez acheter en cours de trajet si vous avez oublié. Fonctionne en anglais. Le calculateur d\'itinéraire est meilleur que Google Maps pour les transports en commun ici.<div class="info-card-tip">💡 Cherchez « PID Lítačka » sur l\'App Store ou Google Play. Installez-la avant de quitter l\'aéroport — ça vous évite la file d\'attente au distributeur de tickets.</div>',
+
+          // CTA
+          'cta.eyebrow': 'Assez d\'histoires praguoises',
+          'cta.title': 'Alors — on revient au <em>fundraising ?</em><span class="lime-dot">.</span>',
+          'cta.lead': 'Vous venez de voir comment je pense Prague — ce qu\'il faut éviter, ce qui vaut votre temps, ce que j\'aime sincèrement. J\'apporte le même soin au fundraising digital pour les associations à travers l\'Europe. Si c\'est votre domaine, le QuickCheck vous montre exactement sur quoi nous travaillerions.',
+          'cta.btn1': 'Demander mon QuickCheck →',
+          'cta.btn2': 'Voir toutes les prestations →',
+
+          // Footer
+          'footer.tag': 'Conseil en fundraising digital pour les associations européennes prêtes à grandir. Made in Prague.',
+          'footer.col.services': 'Prestations',
+          'footer.col.about': 'À propos',
+          'footer.col.prague': 'Visiter Prague',
+          'footer.link.retainer': 'Retainer',
+          'footer.link.strategy': 'Stratégie complète',
+          'footer.link.consulting': 'Conseil',
+          'footer.link.about': 'À propos de Peter',
+          'footer.link.cases': 'Études de cas',
+          'footer.link.contact': 'Contact',
+          'footer.link.prague': 'Conseils Prague',
+          'footer.bottom_made': 'Made in Prague',
+          'footer.imprint': 'Mentions légales',
+          'footer.privacy': 'Politique de confidentialité',
+          'footer.cookies': 'Politique des cookies',
+        },
+      };
+
+      let currentLang = 'de';
+
+      function setLang(lang) {
+        if (!LANGS.includes(lang)) lang = 'de';
+        currentLang = lang;
+        const dict = T[lang];
+        document.documentElement.lang = lang;
+
+        // Aktualizace state tlačítek
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          const isActive = btn.dataset.lang === lang;
+          btn.classList.toggle('is-active', isActive);
+          btn.setAttribute('aria-pressed', String(isActive));
+        });
+
+        // Aplikace překladů na všechny prvky s data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.dataset.i18n;
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        // Aktualizace title a meta description podle jazyka
+        const titles = {
+          en: 'My Prague — an Insider\'s Guide | ngo.digital',
+          de: 'Mein Prag — ein Insider-Guide | ngo.digital',
+          fr: 'Mon Prague — un guide d\'initié | ngo.digital'
+        };
+        if (titles[lang]) document.title = titles[lang];
+
+        // Persistence
+        try { localStorage.setItem('ngo_lang', lang); } catch(e) {}
+      }
+
+      // Init: URL > localStorage > default 'de'
+      let initLang = 'de';
+      try {
+        const saved = localStorage.getItem('ngo_lang');
+        if (saved && LANGS.includes(saved)) initLang = saved;
+      } catch(e) {}
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      if (urlLang && LANGS.includes(urlLang)) initLang = urlLang;
+
+      // Drátování tlačítek
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLang(btn.dataset.lang));
+      });
+
+      // Aplikace na startu
+      setLang(initLang);
+    })();
   </script>
 
 </body>
