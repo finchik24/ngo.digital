@@ -578,6 +578,39 @@
       color: #555;
       line-height: 1.4;
     }
+    .qc-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .qc-bullets li {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #1A1A1A;
+      line-height: 1.5;
+      padding-left: 22px;
+      position: relative;
+    }
+    .qc-bullets li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #1A1A1A;
+      font-weight: 700;
+    }
+    .qc-pricing-note {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #555;
+      max-width: 540px;
+      margin: 0 0 28px 0;
+    }
     /* Footer uvnitř qc-card (černý box) - promise "no interviews" v lime */
     .qc-card-footer {
       margin-top: 22px;
@@ -1988,7 +2021,7 @@
             I'm Peter Chalupiansky, a fundraising consultant based in Prague. For the past <strong>ten years</strong>, I've worked with nonprofits, helping them turn digital donations into a sustainable revenue channel.
           </p>
           <p data-i18n="about.bio.p2">
-            My work spans two fronts. As CSR &amp; ESG lead at <strong>Kaufland Czech Republic - part of Schwarz Gruppe, Europe's largest retailer</strong> - I've built the Christmas campaign for <em>Světluška</em> into a <strong>€4.9M fundraising engine over seven years</strong>. As an independent consultant, I run digital fundraising campaigns for European nonprofits - most recently the <strong>most successful Christmas campaign in Czechia of 2025</strong>.
+            My work spans two fronts. As CSR &amp; ESG lead at <strong>Kaufland Czech Republic - part of Schwarz Gruppe, Europe's largest retailer</strong> - I've built the Christmas campaign for <em>Světluška</em> into a <strong>€4.9M fundraising engine over seven years</strong>. As an independent consultant, I run digital fundraising campaigns for nonprofits - most recently the <strong>most successful Christmas campaign in Czechia of 2025</strong>.
           </p>
           <p data-i18n="about.bio.p3">
             My campaigns consistently <strong>deliver positive ROI</strong> and <strong>grow donor bases</strong> that stick.
@@ -2029,7 +2062,7 @@
     <div class="container">
       <div class="qc-grid">
         <div class="qc-content">
-          <div class="eyebrow-pill" data-i18n="qc.eyebrow">Start here · Zero involvement from your team</div>
+          <div class="eyebrow-pill" data-i18n="qc.eyebrow">What you get</div>
           <h2 class="qc-title" data-i18n="qc.title">
             QuickCheck - <em>let's</em><br>
             <em>find out what your</em><br>
@@ -2037,68 +2070,22 @@
             missing<span class="lime-dot">.</span>
           </h2>
           <p class="qc-lead" data-i18n="qc.lead">
-            Within 15 working days, I run a complete external audit of your digital fundraising - without your team lifting a finger. You get a <strong>full report</strong>, a <strong>video walkthrough</strong>, your <strong>own microsite with the summary</strong>, and a list of <strong>concrete quick wins</strong> you can ship next week.
+            A complete external audit of your digital fundraising in 15 working days. PDF report, video walkthrough, microsite, and concrete QuickWins you can ship next week.
           </p>
 
-          <div class="qc-features">
-            <div class="qc-feature">
-              <div class="qc-feature-num">01</div>
-              <div class="qc-feature-text">
-                <strong data-i18n="qc.feat.1.title">Donor journey audit</strong>
-                <span data-i18n="qc.feat.1.sub">Where your visitors drop off - and why</span>
-              </div>
-            </div>
-            <div class="qc-feature">
-              <div class="qc-feature-num">02</div>
-              <div class="qc-feature-text">
-                <strong data-i18n="qc.feat.2.title">Social & campaign analysis</strong>
-                <span data-i18n="qc.feat.2.sub">What works, what wastes budget</span>
-              </div>
-            </div>
-            <div class="qc-feature">
-              <div class="qc-feature-num">03</div>
-              <div class="qc-feature-text">
-                <strong data-i18n="qc.feat.3.title">Quick wins</strong>
-                <span data-i18n="qc.feat.3.sub">Concrete actions to ship next week</span>
-              </div>
-            </div>
-            <div class="qc-feature">
-              <div class="qc-feature-num">04</div>
-              <div class="qc-feature-text">
-                <strong data-i18n="qc.feat.4.title">Benchmark of similar nonprofits</strong>
-                <span data-i18n="qc.feat.4.sub">How 3-5 peers in your space compare</span>
-              </div>
-            </div>
-          </div>
+          <ul class="qc-bullets">
+            <li data-i18n="qc.bullet.1">Donor journey audit</li>
+            <li data-i18n="qc.bullet.2">Social & campaign analysis</li>
+            <li data-i18n="qc.bullet.3">Benchmark vs 3-5 peers</li>
+            <li data-i18n="qc.bullet.4">QuickWins to ship next week</li>
+          </ul>
 
-          <div class="qc-pricing">
-            <div class="qc-pricing-pills">
-              <span class="qc-pill-dark" data-i18n="qc.price.pill_limited">Limited offer</span>
-              <span class="qc-pill-lime" data-i18n="qc.price.pill_until">Until 31 May</span>
-            </div>
-
-            <div class="qc-pricing-row">
-              <span class="qc-price-now">CHF 3,999</span>
-              <span class="qc-price-was">CHF 5,499</span>
-            </div>
-            <div class="qc-pricing-meta" data-i18n="qc.price.meta">
-              Special introductory price for the first <em>5 Swiss nonprofits</em> · Same scope, same standards.
-            </div>
-
-            <p class="qc-pricing-body" data-i18n="qc.price.body">
-              When you enter a new market, nothing is more valuable than a great reference. So I'm offering the first <strong>five Swiss organizations</strong> CHF 1,500 off through end of May, in exchange for your <strong>honest feedback</strong>. I'll do everything I can to make sure you're happy and that your digital fundraising moves forward.
-            </p>
-          </div>
+          <p class="qc-pricing-note" data-i18n="qc.price.note">
+            Pricing scoped to your organization. Reach out for a tailored proposal.
+          </p>
 
           <div class="qc-ctas">
-            <a href="#contact" data-interest="QuickCheck" class="btn-primary pulse" data-i18n="qc.cta">Book my QuickCheck <span>→</span></a>
-            <div class="qc-meta">
-              <span data-i18n="qc.meta.duration">Up to 15 working days</span>
-              <span class="qc-divider">·</span>
-              <span data-i18n="qc.meta.no_meetings">No meetings</span>
-              <span class="qc-divider">·</span>
-              <span data-i18n="qc.meta.zero_effort">Zero client effort</span>
-            </div>
+            <a href="#contact" data-interest="QuickCheck" class="btn-primary pulse" data-i18n="qc.cta">Get in touch <span>→</span></a>
           </div>
         </div>
 
@@ -2209,7 +2196,7 @@
             <div class="card-tag-dark" data-i18n="srv.1.tag">MOST POPULAR</div>
           </div>
           <h3 data-i18n="srv.1.title">QuickCheck</h3>
-          <p data-i18n="srv.1.desc">A complete external audit of your digital fundraising within 15 working days. PDF report, video walkthrough, microsite - and concrete quick wins to ship next week.</p>
+          <p data-i18n="srv.1.desc">A complete external audit of your digital fundraising within 15 working days. PDF report, video walkthrough, microsite - and concrete QuickWins to ship next week.</p>
           <div class="card-pricing">
             <div class="pricing-from" data-i18n="srv.1.meta">Ready within 15 working days</div>
             <a href="#contact" class="pricing-amount-link" data-interest="QuickCheck" style="font-size: 22px;" data-i18n="srv.1.cta">Get a QuickCheck →</a>
@@ -2869,10 +2856,10 @@
           'hero.cta_secondary': 'See all services →',
           'about.eyebrow': 'About me',
           'about.title': 'I help nonprofits<br>across Europe raise<br><em>real money</em> - not<br>just engagement<span class="lime-dot">.</span>',
-          'qc.eyebrow': 'Start here · Zero involvement from your team',
+          'qc.eyebrow': 'What you get',
           'qc.title': 'QuickCheck - <em>let\'s</em><br><em>find out what your</em><br>fundraising is<br>missing<span class="lime-dot">.</span>',
-          'qc.lead': 'Within 15 working days, I run a complete external audit of your digital fundraising - without your team lifting a finger. You get a <strong>full report</strong>, a <strong>video walkthrough</strong>, your <strong>own microsite with the summary</strong>, and a list of <strong>concrete quick wins</strong> you can ship next week.',
-          'qc.cta': 'Book my QuickCheck <span>→</span>',
+          'qc.lead': 'A complete external audit of your digital fundraising in 15 working days. PDF report, video walkthrough, microsite, and concrete QuickWins you can ship next week.',
+          'qc.cta': 'Get in touch <span>→</span>',
           'services.eyebrow': 'How else I can help you',
           'services.title': 'Six ways<br><em>we can work</em><br>together<span class="lime-dot">.</span>',
           'services.lead': 'From a quick external audit to a full strategic partnership. Pick the depth your nonprofit needs - from a single consultation to a long-term partnership.',
@@ -2929,24 +2916,13 @@
           'footer.link.prague': 'Prague Tips',
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Imprint',
-          // QuickCheck features
-          'qc.feat.1.title': 'Donor journey audit',
-          'qc.feat.1.sub': 'Where your visitors drop off - and why',
-          'qc.feat.2.title': 'Social & campaign analysis',
-          'qc.feat.2.sub': 'What works, what wastes budget',
-          'qc.feat.3.title': 'Quick wins',
-          'qc.feat.3.sub': 'Concrete actions to ship next week',
-          'qc.feat.4.title': 'Benchmark of similar nonprofits',
-          'qc.feat.4.sub': 'How 3-5 peers in your space compare',
-          // QC pricing block
-          'qc.price.pill_limited': 'Limited offer',
-          'qc.price.pill_until': 'Until 31 May',
-          'qc.price.meta': 'Special introductory price for the first <em>5 organizations</em> · Same scope, same standards.',
-          'qc.price.body': 'I\'m offering the first <strong>five organizations</strong> CHF 1,500 off through end of May, in exchange for your <strong>honest feedback</strong>. I\'ll do everything I can to make sure you\'re happy and that your digital fundraising moves forward.',
-          // QC CTA meta
-          'qc.meta.duration': 'Up to 15 working days',
-          'qc.meta.no_meetings': 'No meetings',
-          'qc.meta.zero_effort': 'Zero client effort',
+          // QuickCheck bullets
+          'qc.bullet.1': 'Donor journey audit',
+          'qc.bullet.2': 'Social & campaign analysis',
+          'qc.bullet.3': 'Benchmark vs 3-5 peers',
+          'qc.bullet.4': 'QuickWins to ship next week',
+          // QC pricing note
+          'qc.price.note': 'Pricing scoped to your organization. Reach out for a tailored proposal.',
           // QC right card
           'qc.card.eyebrow': 'What I check',
           'qc.card.status': 'Up to 15 working days',
@@ -2975,7 +2951,7 @@
           // Services 6 cards
           'srv.tailored': 'Tailored to your needs',
           'srv.1.num': '01 · Diagnostic', 'srv.1.tag': 'MOST POPULAR', 'srv.1.title': 'QuickCheck',
-          'srv.1.desc': 'A complete external audit of your digital fundraising within 15 working days. PDF report, video walkthrough, microsite - and concrete quick wins to ship next week.',
+          'srv.1.desc': 'A complete external audit of your digital fundraising within 15 working days. PDF report, video walkthrough, microsite - and concrete QuickWins to ship next week.',
           'srv.1.meta': 'Ready within 15 working days', 'srv.1.cta': 'Get a QuickCheck →',
           'srv.2.num': '02 · Strategy', 'srv.2.tag': '4–8 weeks', 'srv.2.title': 'Full Strategy',
           'srv.2.desc': 'Mid-term strategy for your digital fundraising, donor care, and social media. The document that actually kickstarts your fundraising and gives it real direction for the next 12-24 months.',
@@ -3003,7 +2979,7 @@
           'case.small.stat1': 'ROI in 2 months', 'case.small.stat2': 'raised from CHF 1.4K invested', 'case.small.stat3': 'new donors in the region',
           // About bio
           'about.bio.p1': 'I\'m Peter Chalupiansky, a fundraising consultant based in Prague. For the past <strong>ten years</strong>, I\'ve worked with nonprofits, helping them turn digital donations into a sustainable revenue channel.',
-          'about.bio.p2': 'My work spans two fronts. As CSR &amp; ESG lead at <strong>Kaufland Czech Republic - part of Schwarz Gruppe, Europe\'s largest retailer</strong> - I\'ve built the Christmas campaign for <em>Světluška</em> into a <strong>€4.9M fundraising engine over seven years</strong>. As an independent consultant, I run digital fundraising campaigns for European nonprofits - most recently the <strong>most successful Christmas campaign in Czechia of 2025</strong>.',
+          'about.bio.p2': 'My work spans two fronts. As CSR &amp; ESG lead at <strong>Kaufland Czech Republic - part of Schwarz Gruppe, Europe\'s largest retailer</strong> - I\'ve built the Christmas campaign for <em>Světluška</em> into a <strong>€4.9M fundraising engine over seven years</strong>. As an independent consultant, I run digital fundraising campaigns for nonprofits - most recently the <strong>most successful Christmas campaign in Czechia of 2025</strong>.',
           'about.bio.p3': 'My campaigns consistently <strong>deliver positive ROI</strong> and <strong>grow donor bases</strong> that stick.',
           'about.bio.p4': 'Now I want to bring all of that to your nonprofit - and help you <strong>build a digital fundraising channel that actually works</strong>.',
           'about.recog.title': 'Awards &amp; Recognition',
@@ -3035,10 +3011,10 @@
           'hero.cta_secondary': 'Alle Leistungen ansehen →',
           'about.eyebrow': 'Über mich',
           'about.title': 'Ich helfe Non-Profits<br>in ganz Europa,<br><em>echtes Geld</em> zu sammeln -<br>nicht nur Engagement<span class="lime-dot">.</span>',
-          'qc.eyebrow': 'Hier starten · Null Aufwand für Ihr Team',
+          'qc.eyebrow': 'Was Sie bekommen',
           'qc.title': 'QuickCheck - <em>finden wir</em><br><em>heraus, was Ihrem</em><br>Fundraising<br>fehlt<span class="lime-dot">.</span>',
-          'qc.lead': 'Innerhalb von 15 Arbeitstagen führe ich einen kompletten externen Audit Ihres digitalen Fundraisings durch - ohne dass Ihr Team einen Finger rühren muss. Sie erhalten einen <strong>vollständigen Bericht</strong>, ein <strong>Video-Walkthrough</strong>, Ihre <strong>eigene Microsite mit der Zusammenfassung</strong> und eine Liste mit <strong>konkreten Quick Wins</strong>, die Sie nächste Woche umsetzen können.',
-          'qc.cta': 'Meinen QuickCheck buchen <span>→</span>',
+          'qc.lead': 'Ein kompletter externer Audit Ihres digitalen Fundraisings in 15 Arbeitstagen. PDF-Bericht, Video-Walkthrough, Microsite und konkrete QuickWins, die Sie nächste Woche umsetzen können.',
+          'qc.cta': 'Kontakt aufnehmen <span>→</span>',
           'services.eyebrow': 'Wie ich sonst noch helfen kann',
           'services.title': 'Sechs Wege,<br><em>wie wir</em><br>zusammenarbeiten<span class="lime-dot">.</span>',
           'services.lead': 'Vom schnellen externen Audit bis zur vollen strategischen Partnerschaft. Wählen Sie die Tiefe, die Ihre Organisation braucht - von der einmaligen Beratung bis zur langfristigen Zusammenarbeit.',
@@ -3095,24 +3071,13 @@
           'footer.link.prague': 'Prag Tipps',
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Impressum',
-          // QuickCheck features
-          'qc.feat.1.title': 'Donor Journey Audit',
-          'qc.feat.1.sub': 'Wo Ihre Besucher abspringen - und warum',
-          'qc.feat.2.title': 'Social-Media- und Kampagnen-Analyse',
-          'qc.feat.2.sub': 'Was funktioniert, was Budget verschwendet',
-          'qc.feat.3.title': 'Quick Wins',
-          'qc.feat.3.sub': 'Konkrete Aktionen für nächste Woche',
-          'qc.feat.4.title': 'Benchmark vergleichbarer Non-Profits',
-          'qc.feat.4.sub': 'Wie 3-5 Peers in Ihrem Bereich abschneiden',
-          // QC pricing block
-          'qc.price.pill_limited': 'Begrenztes Angebot',
-          'qc.price.pill_until': 'Bis 31. Mai',
-          'qc.price.meta': 'Sonderpreis für die ersten <em>5 Organisationen</em> · Gleicher Umfang, gleiche Qualität.',
-          'qc.price.body': 'Ich biete den ersten <strong>fünf Organisationen</strong> bis Ende Mai CHF 1.500 Rabatt - im Austausch für Ihr <strong>ehrliches Feedback</strong>. Ich tue alles dafür, dass Sie zufrieden sind und Ihr digitales Fundraising vorankommt.',
-          // QC CTA meta
-          'qc.meta.duration': 'Bis zu 15 Arbeitstage',
-          'qc.meta.no_meetings': 'Keine Meetings',
-          'qc.meta.zero_effort': 'Null Aufwand für Sie',
+          // QuickCheck bullets
+          'qc.bullet.1': 'Donor Journey Audit',
+          'qc.bullet.2': 'Social-Media- und Kampagnen-Analyse',
+          'qc.bullet.3': 'Benchmark mit 3-5 Peers',
+          'qc.bullet.4': 'QuickWins für nächste Woche',
+          // QC pricing note
+          'qc.price.note': 'Preis auf Ihre Organisation zugeschnitten. Kontaktieren Sie mich für ein individuelles Angebot.',
           // QC right card
           'qc.card.eyebrow': 'Was ich prüfe',
           'qc.card.status': 'Bis zu 15 Arbeitstage',
@@ -3141,7 +3106,7 @@
           // Services 6 cards
           'srv.tailored': 'Auf Ihre Bedürfnisse zugeschnitten',
           'srv.1.num': '01 · Diagnose', 'srv.1.tag': 'AM BELIEBTESTEN', 'srv.1.title': 'QuickCheck',
-          'srv.1.desc': 'Ein kompletter externer Audit Ihres digitalen Fundraisings innerhalb von 15 Arbeitstagen. PDF-Bericht, Video-Walkthrough, Microsite - und konkrete Quick Wins für nächste Woche.',
+          'srv.1.desc': 'Ein kompletter externer Audit Ihres digitalen Fundraisings innerhalb von 15 Arbeitstagen. PDF-Bericht, Video-Walkthrough, Microsite - und konkrete QuickWins für nächste Woche.',
           'srv.1.meta': 'Bereit in 15 Arbeitstagen', 'srv.1.cta': 'QuickCheck buchen →',
           'srv.2.num': '02 · Strategie', 'srv.2.tag': '4–8 Wochen', 'srv.2.title': 'Vollstrategie',
           'srv.2.desc': 'Mittelfristige Strategie für Ihr digitales Fundraising, Spenderbetreuung und Social Media. Das Dokument, das Ihr Fundraising wirklich anschiebt und ihm für die nächsten 12-24 Monate eine echte Richtung gibt.',
@@ -3169,7 +3134,7 @@
           'case.small.stat1': 'ROI in 2 Monaten', 'case.small.stat2': 'eingenommen aus CHF 1.4K Investment', 'case.small.stat3': 'neue Spender in der Region',
           // About bio
           'about.bio.p1': 'Ich bin Peter Chalupiansky, ein Fundraising-Berater mit Sitz in Prag. In den letzten <strong>zehn Jahren</strong> habe ich mit Non-Profits gearbeitet und ihnen geholfen, digitale Spenden in einen nachhaltigen Einnahmekanal zu verwandeln.',
-          'about.bio.p2': 'Meine Arbeit verläuft auf zwei Schienen. Als CSR- &amp; ESG-Lead bei <strong>Kaufland Tschechien - Teil der Schwarz Gruppe, Europas grösstem Einzelhändler</strong> - habe ich die Weihnachtskampagne für <em>Světluška</em> in eine <strong>4,9-Mio.-€-Fundraising-Maschine über sieben Jahre</strong> verwandelt. Als unabhängiger Berater leite ich digitale Fundraising-Kampagnen für europäische Non-Profits - zuletzt die <strong>erfolgreichste Weihnachtskampagne in Tschechien 2025</strong>.',
+          'about.bio.p2': 'Meine Arbeit verläuft auf zwei Schienen. Als CSR- &amp; ESG-Lead bei <strong>Kaufland Tschechien - Teil der Schwarz Gruppe, Europas grösstem Einzelhändler</strong> - habe ich die Weihnachtskampagne für <em>Světluška</em> in eine <strong>4,9-Mio.-€-Fundraising-Maschine über sieben Jahre</strong> verwandelt. Als unabhängiger Berater leite ich digitale Fundraising-Kampagnen für Non-Profits - zuletzt die <strong>erfolgreichste Weihnachtskampagne in Tschechien 2025</strong>.',
           'about.bio.p3': 'Meine Kampagnen liefern konsequent <strong>positiven ROI</strong> und bauen <strong>Spenderbasen auf</strong>, die bleiben.',
           'about.bio.p4': 'Jetzt möchte ich all das zu Ihrer Non-Profit bringen - und Ihnen helfen, einen <strong>digitalen Fundraising-Kanal zu bauen, der wirklich funktioniert</strong>.',
           'about.recog.title': 'Auszeichnungen &amp; Anerkennungen',
@@ -3201,10 +3166,10 @@
           'hero.cta_secondary': 'Voir toutes les prestations →',
           'about.eyebrow': 'À propos',
           'about.title': 'J\'aide les associations<br>en Europe à lever<br><em>du vrai argent</em> -<br>pas juste de l\'engagement<span class="lime-dot">.</span>',
-          'qc.eyebrow': 'Commencez ici · Zéro effort pour votre équipe',
+          'qc.eyebrow': 'Ce que vous obtenez',
           'qc.title': 'QuickCheck - <em>découvrons</em><br><em>ce qui manque à</em><br>votre fundraising<span class="lime-dot">.</span>',
-          'qc.lead': 'En 15 jours ouvrés, je réalise un audit externe complet de votre fundraising digital - sans que votre équipe lève le petit doigt. Vous recevez un <strong>rapport complet</strong>, une <strong>vidéo explicative</strong>, votre <strong>microsite dédié avec le résumé</strong>, et une liste de <strong>quick wins concrets</strong> à livrer dès la semaine prochaine.',
-          'qc.cta': 'Réserver mon QuickCheck <span>→</span>',
+          'qc.lead': 'Un audit externe complet de votre fundraising digital en 15 jours ouvrés. Rapport PDF, vidéo explicative, microsite et QuickWins concrets à livrer dès la semaine prochaine.',
+          'qc.cta': 'Prendre contact <span>→</span>',
           'services.eyebrow': 'Comment je peux aussi vous aider',
           'services.title': 'Six façons<br><em>de travailler</em><br>ensemble<span class="lime-dot">.</span>',
           'services.lead': 'D\'un audit externe rapide à un partenariat stratégique complet. Choisissez la profondeur dont votre association a besoin - de la consultation ponctuelle au partenariat long terme.',
@@ -3261,24 +3226,13 @@
           'footer.link.prague': 'Conseils Prague',
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Mentions légales',
-          // QuickCheck features
-          'qc.feat.1.title': 'Audit du parcours donateur',
-          'qc.feat.1.sub': 'Où vos visiteurs décrochent - et pourquoi',
-          'qc.feat.2.title': 'Analyse social &amp; campagnes',
-          'qc.feat.2.sub': 'Ce qui marche, ce qui gaspille du budget',
-          'qc.feat.3.title': 'Quick wins',
-          'qc.feat.3.sub': 'Actions concrètes à livrer la semaine prochaine',
-          'qc.feat.4.title': 'Benchmark d\'associations similaires',
-          'qc.feat.4.sub': 'Comment 3-5 pairs de votre secteur se positionnent',
-          // QC pricing block
-          'qc.price.pill_limited': 'Offre limitée',
-          'qc.price.pill_until': 'Jusqu\'au 31 mai',
-          'qc.price.meta': 'Tarif d\'introduction pour les <em>5 premières organisations</em> · Même périmètre, mêmes standards.',
-          'qc.price.body': 'Je propose aux <strong>cinq premières organisations</strong> CHF 1\'500 de réduction jusqu\'à fin mai, en échange de votre <strong>retour honnête</strong>. Je ferai tout pour que vous soyez satisfait et que votre fundraising digital avance.',
-          // QC CTA meta
-          'qc.meta.duration': 'Jusqu\'à 15 jours ouvrés',
-          'qc.meta.no_meetings': 'Aucune réunion',
-          'qc.meta.zero_effort': 'Zéro effort de votre part',
+          // QuickCheck bullets
+          'qc.bullet.1': 'Audit du parcours donateur',
+          'qc.bullet.2': 'Analyse social &amp; campagnes',
+          'qc.bullet.3': 'Benchmark avec 3-5 pairs',
+          'qc.bullet.4': 'QuickWins à livrer la semaine prochaine',
+          // QC pricing note
+          'qc.price.note': 'Tarif adapté à votre organisation. Contactez-moi pour une offre sur mesure.',
           // QC right card
           'qc.card.eyebrow': 'Ce que je vérifie',
           'qc.card.status': 'Jusqu\'à 15 jours ouvrés',
@@ -3307,7 +3261,7 @@
           // Services 6 cards
           'srv.tailored': 'Sur mesure selon vos besoins',
           'srv.1.num': '01 · Diagnostic', 'srv.1.tag': 'LE PLUS POPULAIRE', 'srv.1.title': 'QuickCheck',
-          'srv.1.desc': 'Un audit externe complet de votre fundraising digital en 15 jours ouvrés. Rapport PDF, vidéo explicative, microsite - et des quick wins concrets à livrer la semaine prochaine.',
+          'srv.1.desc': 'Un audit externe complet de votre fundraising digital en 15 jours ouvrés. Rapport PDF, vidéo explicative, microsite - et des QuickWins concrets à livrer la semaine prochaine.',
           'srv.1.meta': 'Prêt en 15 jours ouvrés', 'srv.1.cta': 'Réserver un QuickCheck →',
           'srv.2.num': '02 · Stratégie', 'srv.2.tag': '4–8 semaines', 'srv.2.title': 'Stratégie complète',
           'srv.2.desc': 'Stratégie à moyen terme pour votre fundraising digital, le soin des donateurs et les réseaux sociaux. Le document qui lance vraiment votre fundraising et lui donne une vraie direction pour les 12-24 prochains mois.',
@@ -3335,7 +3289,7 @@
           'case.small.stat1': 'ROI en 2 mois', 'case.small.stat2': 'collectés à partir de CHF 1\'400 investis', 'case.small.stat3': 'nouveaux donateurs dans la région',
           // About bio
           'about.bio.p1': 'Je suis Peter Chalupiansky, consultant en fundraising basé à Prague. Depuis <strong>dix ans</strong>, je travaille avec des associations pour transformer les dons digitaux en un canal de revenus durable.',
-          'about.bio.p2': 'Mon travail se déploie sur deux fronts. En tant que responsable RSE &amp; ESG chez <strong>Kaufland République tchèque - filiale du Schwarz Gruppe, le plus grand distributeur d\'Europe</strong> - j\'ai transformé la campagne de Noël pour <em>Světluška</em> en une <strong>machine de fundraising de 4,9 M€ sur sept ans</strong>. En tant que consultant indépendant, je dirige des campagnes de fundraising digital pour des associations européennes - dernièrement la <strong>campagne de Noël la plus réussie en Tchéquie en 2025</strong>.',
+          'about.bio.p2': 'Mon travail se déploie sur deux fronts. En tant que responsable RSE &amp; ESG chez <strong>Kaufland République tchèque - filiale du Schwarz Gruppe, le plus grand distributeur d\'Europe</strong> - j\'ai transformé la campagne de Noël pour <em>Světluška</em> en une <strong>machine de fundraising de 4,9 M€ sur sept ans</strong>. En tant que consultant indépendant, je dirige des campagnes de fundraising digital pour des associations - dernièrement la <strong>campagne de Noël la plus réussie en Tchéquie en 2025</strong>.',
           'about.bio.p3': 'Mes campagnes livrent systématiquement <strong>un ROI positif</strong> et font <strong>grandir des bases de donateurs</strong> qui restent.',
           'about.bio.p4': 'Maintenant, je veux apporter tout cela à votre association - et vous aider à <strong>construire un canal de fundraising digital qui marche vraiment</strong>.',
           'about.recog.title': 'Distinctions &amp; reconnaissance',
@@ -3367,10 +3321,10 @@
           'hero.cta_secondary': 'Vedi tutti i servizi →',
           'about.eyebrow': 'Chi sono',
           'about.title': 'Aiuto le non profit<br>in tutta Europa a raccogliere<br><em>soldi veri</em> -<br>non solo engagement<span class="lime-dot">.</span>',
-          'qc.eyebrow': 'Inizia qui · Zero impegno per il tuo team',
+          'qc.eyebrow': 'Cosa ottieni',
           'qc.title': 'QuickCheck - <em>scopriamo</em><br><em>cosa manca al</em><br>tuo fundraising<span class="lime-dot">.</span>',
-          'qc.lead': 'In 15 giorni lavorativi realizzo un audit esterno completo del tuo fundraising digitale - senza che il tuo team alzi un dito. Ricevi un <strong>report completo</strong>, una <strong>video-spiegazione</strong>, una <strong>microsite dedicata con il riepilogo</strong>, e una lista di <strong>quick win concreti</strong> da implementare la settimana prossima.',
-          'qc.cta': 'Prenota il mio QuickCheck <span>→</span>',
+          'qc.lead': 'Un audit esterno completo del tuo fundraising digitale in 15 giorni lavorativi. Report PDF, video-spiegazione, microsite e QuickWins concreti da implementare la settimana prossima.',
+          'qc.cta': 'Mettiti in contatto <span>→</span>',
           'services.eyebrow': 'Come altro posso aiutarti',
           'services.title': 'Sei modi<br><em>di lavorare</em><br>insieme<span class="lime-dot">.</span>',
           'services.lead': 'Da un audit esterno rapido a una partnership strategica completa. Scegli la profondità di cui la tua organizzazione ha bisogno - dalla consulenza singola alla partnership a lungo termine.',
@@ -3428,23 +3382,12 @@
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Impressum',
           // QuickCheck features
-          'qc.feat.1.title': 'Audit del donor journey',
-          'qc.feat.1.sub': 'Dove i tuoi visitatori abbandonano - e perché',
-          'qc.feat.2.title': 'Analisi social &amp; campagne',
-          'qc.feat.2.sub': 'Cosa funziona, cosa spreca budget',
-          'qc.feat.3.title': 'Quick win',
-          'qc.feat.3.sub': 'Azioni concrete da implementare la prossima settimana',
-          'qc.feat.4.title': 'Benchmark di non profit simili',
-          'qc.feat.4.sub': 'Come 3-5 peer del tuo settore si posizionano',
-          // QC pricing block
-          'qc.price.pill_limited': 'Offerta limitata',
-          'qc.price.pill_until': 'Fino al 31 maggio',
-          'qc.price.meta': 'Prezzo introduttivo speciale per le <em>prime 5 organizzazioni</em> · Stesso scope, stessi standard.',
-          'qc.price.body': 'Offro alle <strong>prime cinque organizzazioni</strong> CHF 1\'500 di sconto fino a fine maggio, in cambio del tuo <strong>feedback onesto</strong>. Farò di tutto per assicurarmi che tu sia soddisfatto e che il tuo fundraising digitale vada avanti.',
-          // QC CTA meta
-          'qc.meta.duration': 'Fino a 15 giorni lavorativi',
-          'qc.meta.no_meetings': 'Nessuna riunione',
-          'qc.meta.zero_effort': 'Zero impegno per te',
+          'qc.bullet.1': 'Audit del donor journey',
+          'qc.bullet.2': 'Analisi social &amp; campagne',
+          'qc.bullet.3': 'Benchmark con 3-5 peer',
+          'qc.bullet.4': 'QuickWins da implementare la prossima settimana',
+          // QC pricing note
+          'qc.price.note': 'Prezzo adattato alla tua organizzazione. Contattami per un\'offerta su misura.',
           // QC right card
           'qc.card.eyebrow': 'Cosa controllo',
           'qc.card.status': 'Fino a 15 giorni lavorativi',
@@ -3473,7 +3416,7 @@
           // Services 6 cards
           'srv.tailored': 'Su misura per le tue esigenze',
           'srv.1.num': '01 · Diagnostica', 'srv.1.tag': 'IL PIÙ POPOLARE', 'srv.1.title': 'QuickCheck',
-          'srv.1.desc': 'Un audit esterno completo del tuo fundraising digitale in 15 giorni lavorativi. Report PDF, video-spiegazione, microsite - e quick win concreti da implementare la prossima settimana.',
+          'srv.1.desc': 'Un audit esterno completo del tuo fundraising digitale in 15 giorni lavorativi. Report PDF, video-spiegazione, microsite - e QuickWins concreti da implementare la prossima settimana.',
           'srv.1.meta': 'Pronto in 15 giorni lavorativi', 'srv.1.cta': 'Prenota un QuickCheck →',
           'srv.2.num': '02 · Strategia', 'srv.2.tag': '4–8 settimane', 'srv.2.title': 'Strategia completa',
           'srv.2.desc': 'Strategia a medio termine per il tuo fundraising digitale, donor care e social media. Il documento che davvero fa partire il tuo fundraising e gli dà una vera direzione per i prossimi 12-24 mesi.',
@@ -3501,7 +3444,7 @@
           'case.small.stat1': 'ROI in 2 mesi', 'case.small.stat2': 'raccolti da CHF 1\'400 investiti', 'case.small.stat3': 'nuovi donatori nella regione',
           // About bio
           'about.bio.p1': 'Sono Peter Chalupiansky, un consulente di fundraising con base a Praga. Negli ultimi <strong>dieci anni</strong>, ho lavorato con non profit, aiutandole a trasformare le donazioni digitali in un canale di reddito sostenibile.',
-          'about.bio.p2': 'Il mio lavoro si svolge su due fronti. Come responsabile CSR &amp; ESG presso <strong>Kaufland Repubblica Ceca - parte del Schwarz Gruppe, il più grande retailer d\'Europa</strong> - ho trasformato la campagna natalizia per <em>Světluška</em> in una <strong>macchina di fundraising da 4,9 milioni di € in sette anni</strong>. Come consulente indipendente, dirigo campagne di fundraising digitale per non profit europee - più recentemente la <strong>campagna natalizia di maggior successo in Cechia del 2025</strong>.',
+          'about.bio.p2': 'Il mio lavoro si svolge su due fronti. Come responsabile CSR &amp; ESG presso <strong>Kaufland Repubblica Ceca - parte del Schwarz Gruppe, il più grande retailer d\'Europa</strong> - ho trasformato la campagna natalizia per <em>Světluška</em> in una <strong>macchina di fundraising da 4,9 milioni di € in sette anni</strong>. Come consulente indipendente, dirigo campagne di fundraising digitale per non profit - più recentemente la <strong>campagna natalizia di maggior successo in Cechia del 2025</strong>.',
           'about.bio.p3': 'Le mie campagne offrono costantemente <strong>ROI positivo</strong> e fanno <strong>crescere basi di donatori</strong> che restano.',
           'about.bio.p4': 'Ora voglio portare tutto questo alla tua non profit - e aiutarti a <strong>costruire un canale di fundraising digitale che davvero funziona</strong>.',
           'about.recog.title': 'Premi &amp; Riconoscimenti',
