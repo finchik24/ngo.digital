@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -578,13 +578,92 @@
       color: #555;
       line-height: 1.4;
     }
-    .qc-pricing-note {
+    /* QC deliverables grid (4 dlaždice) */
+    .qc-deliverables {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 28px;
+      margin: 0 0 28px 0;
+    }
+    .qc-deliv-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .qc-deliv-num {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      color: #C9F31D;
+      background: #1A1A1A;
+      padding: 5px 8px;
+      border-radius: 5px;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .qc-deliv-title {
       font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #1A1A1A;
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+    .qc-deliv-sub {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* QC pre-CTA callout (lime border vlevo) */
+    .qc-precta {
+      padding: 14px 0 14px 18px;
+      border-left: 3px solid #C9F31D;
+      margin: 0 0 28px 0;
+      max-width: 540px;
+    }
+    .qc-precta p {
+      font-family: 'Source Sans 3', sans-serif;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.55;
+      color: #1A1A1A;
+    }
+    .qc-precta p + p {
+      margin-top: 6px;
+    }
+    .qc-precta em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .qc-precta strong {
+      font-weight: 700;
+    }
+
+    /* QC post-CTA timing promise */
+    .qc-postcta {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
       font-size: 16px;
       line-height: 1.5;
-      color: #555;
-      max-width: 540px;
-      margin: 0 0 28px 0;
+      color: #888;
+      max-width: 480px;
+      margin: 16px 0 0 0;
+    }
+
+    /* Mobile - deliverables se zalomi pod sebe */
+    @media (max-width: 720px) {
+      .qc-deliverables {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .qc-precta p,
+      .qc-deliv-title {
+        font-size: 15px;
+      }
     }
     /* Footer uvnitř qc-card (černý box) - promise "no interviews" v lime */
     .qc-card-footer {
@@ -1848,7 +1927,6 @@
         gap: 40px;
       }
       .services-grid-2 { grid-template-columns: 1fr; }
-      .qc-features { grid-template-columns: 1fr; }
       .case-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
       /* Typography */
@@ -2048,43 +2126,45 @@
             A complete external audit of your digital fundraising in 15 working days. PDF report, video walkthrough, microsite, and concrete QuickWins you can ship next week.
           </p>
 
-          <div class="qc-features">
-            <div class="qc-feature">
-              <div class="qc-feature-num">01</div>
-              <div class="qc-feature-text">
-                <strong data-i18n="qc.feat.1.title">Donor journey audit</strong>
-                <span data-i18n="qc.feat.1.sub">Where your visitors drop off - and why</span>
+          <div class="qc-deliverables">
+            <div class="qc-deliv-row">
+              <span class="qc-deliv-num">01</span>
+              <div>
+                <div class="qc-deliv-title" data-i18n="qc.deliv.1.title">Donor journey audit</div>
+                <div class="qc-deliv-sub" data-i18n="qc.deliv.1.sub">Where your visitors drop off — and why</div>
               </div>
             </div>
-            <div class="qc-feature">
-              <div class="qc-feature-num">02</div>
-              <div class="qc-feature-text">
-                <strong data-i18n="qc.feat.2.title">Social & campaign analysis</strong>
-                <span data-i18n="qc.feat.2.sub">What works, what wastes budget</span>
+            <div class="qc-deliv-row">
+              <span class="qc-deliv-num">02</span>
+              <div>
+                <div class="qc-deliv-title" data-i18n="qc.deliv.2.title">Social &amp; campaign analysis</div>
+                <div class="qc-deliv-sub" data-i18n="qc.deliv.2.sub">What works, what wastes budget</div>
               </div>
             </div>
-            <div class="qc-feature">
-              <div class="qc-feature-num">03</div>
-              <div class="qc-feature-text">
-                <strong data-i18n="qc.feat.3.title">QuickWins</strong>
-                <span data-i18n="qc.feat.3.sub">Concrete actions to ship next week</span>
+            <div class="qc-deliv-row">
+              <span class="qc-deliv-num">03</span>
+              <div>
+                <div class="qc-deliv-title" data-i18n="qc.deliv.3.title">QuickWins</div>
+                <div class="qc-deliv-sub" data-i18n="qc.deliv.3.sub">Concrete actions to ship next week</div>
               </div>
             </div>
-            <div class="qc-feature">
-              <div class="qc-feature-num">04</div>
-              <div class="qc-feature-text">
-                <strong data-i18n="qc.feat.4.title">Benchmark of similar nonprofits</strong>
-                <span data-i18n="qc.feat.4.sub">How 3-5 peers in your space compare</span>
+            <div class="qc-deliv-row">
+              <span class="qc-deliv-num">04</span>
+              <div>
+                <div class="qc-deliv-title" data-i18n="qc.deliv.4.title">Benchmark of similar nonprofits</div>
+                <div class="qc-deliv-sub" data-i18n="qc.deliv.4.sub">How 3-5 peers in your space compare</div>
               </div>
             </div>
           </div>
 
-          <p class="qc-pricing-note" data-i18n="qc.price.note">
-            Pricing scoped to your organization. Reach out for a tailored proposal.
-          </p>
+          <div class="qc-precta">
+            <p data-i18n="qc.precta.1">Your first concrete step toward digital fundraising that <em>actually works</em> — no meetings, nothing for your team to do.</p>
+            <p data-i18n="qc.precta.2">Save your time for your real work. <strong>Let me do my job</strong>.</p>
+          </div>
 
           <div class="qc-ctas">
-            <a href="#contact" data-interest="QuickCheck" class="btn-primary pulse" data-i18n="qc.cta">Get in touch <span>→</span></a>
+            <a href="#contact" data-interest="QuickCheck" class="btn-primary pulse" data-i18n="qc.cta">Book my QuickCheck <span>→</span></a>
+            <p class="qc-postcta" data-i18n="qc.postcta">From your first message to a personal offer in 48 hours. From offer to delivery in 15 working days.</p>
           </div>
         </div>
 
@@ -2858,7 +2938,7 @@
           'qc.eyebrow': 'What you get',
           'qc.title': 'QuickCheck - <em>let\'s</em><br><em>find out what your</em><br>fundraising is<br>missing<span class="lime-dot">.</span>',
           'qc.lead': 'A complete external audit of your digital fundraising in 15 working days. PDF report, video walkthrough, microsite, and concrete QuickWins you can ship next week.',
-          'qc.cta': 'Get in touch <span>→</span>',
+          'qc.cta': 'Book my QuickCheck <span>→</span>',
           'services.eyebrow': 'How else I can help you',
           'services.title': 'Six ways<br><em>we can work</em><br>together<span class="lime-dot">.</span>',
           'services.lead': 'From a quick external audit to a full strategic partnership. Pick the depth your nonprofit needs - from a single consultation to a long-term partnership.',
@@ -2915,17 +2995,20 @@
           'footer.link.prague': 'Prague Tips',
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Imprint',
-          // QuickCheck features
-          'qc.feat.1.title': 'Donor journey audit',
-          'qc.feat.1.sub': 'Where your visitors drop off - and why',
-          'qc.feat.2.title': 'Social & campaign analysis',
-          'qc.feat.2.sub': 'What works, what wastes budget',
-          'qc.feat.3.title': 'QuickWins',
-          'qc.feat.3.sub': 'Concrete actions to ship next week',
-          'qc.feat.4.title': 'Benchmark of similar nonprofits',
-          'qc.feat.4.sub': 'How 3-5 peers in your space compare',
-          // QC pricing note
-          'qc.price.note': 'Pricing scoped to your organization. Reach out for a tailored proposal.',
+          // QC deliverables (4 cards)
+          'qc.deliv.1.title': 'Donor journey audit',
+          'qc.deliv.1.sub': 'Where your visitors drop off — and why',
+          'qc.deliv.2.title': 'Social & campaign analysis',
+          'qc.deliv.2.sub': 'What works, what wastes budget',
+          'qc.deliv.3.title': 'QuickWins',
+          'qc.deliv.3.sub': 'Concrete actions to ship next week',
+          'qc.deliv.4.title': 'Benchmark of similar nonprofits',
+          'qc.deliv.4.sub': 'How 3-5 peers in your space compare',
+          // QC pre-CTA callout
+          'qc.precta.1': 'Your first concrete step toward digital fundraising that <em>actually works</em> — no meetings, nothing for your team to do.',
+          'qc.precta.2': 'Save your time for your real work. <strong>Let me do my job</strong>.',
+          // QC post-CTA timing
+          'qc.postcta': 'From your first message to a personal offer in 48 hours. From offer to delivery in 15 working days.',
           // QC right card
           'qc.card.eyebrow': 'What I check',
           'qc.card.status': 'Up to 15 working days',
@@ -3017,7 +3100,7 @@
           'qc.eyebrow': 'Was Sie bekommen',
           'qc.title': 'QuickCheck - <em>finden wir</em><br><em>heraus, was Ihrem</em><br>Fundraising<br>fehlt<span class="lime-dot">.</span>',
           'qc.lead': 'Ein kompletter externer Audit Ihres digitalen Fundraisings in 15 Arbeitstagen. PDF-Bericht, Video-Walkthrough, Microsite und konkrete QuickWins, die Sie nächste Woche umsetzen können.',
-          'qc.cta': 'Kontakt aufnehmen <span>→</span>',
+          'qc.cta': 'QuickCheck buchen <span>→</span>',
           'services.eyebrow': 'Wie ich sonst noch helfen kann',
           'services.title': 'Sechs Wege,<br><em>wie wir</em><br>zusammenarbeiten<span class="lime-dot">.</span>',
           'services.lead': 'Vom schnellen externen Audit bis zur vollen strategischen Partnerschaft. Wählen Sie die Tiefe, die Ihre Organisation braucht - von der einmaligen Beratung bis zur langfristigen Zusammenarbeit.',
@@ -3074,17 +3157,20 @@
           'footer.link.prague': 'Prag Tipps',
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Impressum',
-          // QuickCheck features
-          'qc.feat.1.title': 'Donor Journey Audit',
-          'qc.feat.1.sub': 'Wo Ihre Besucher abspringen - und warum',
-          'qc.feat.2.title': 'Social-Media- und Kampagnen-Analyse',
-          'qc.feat.2.sub': 'Was funktioniert, was Budget verschwendet',
-          'qc.feat.3.title': 'QuickWins',
-          'qc.feat.3.sub': 'Konkrete Aktionen für nächste Woche',
-          'qc.feat.4.title': 'Benchmark vergleichbarer Non-Profits',
-          'qc.feat.4.sub': 'Wie 3-5 Peers in Ihrem Bereich abschneiden',
-          // QC pricing note
-          'qc.price.note': 'Preis auf Ihre Organisation zugeschnitten. Kontaktieren Sie mich für ein individuelles Angebot.',
+          // QC deliverables (4 cards)
+          'qc.deliv.1.title': 'Donor Journey Audit',
+          'qc.deliv.1.sub': 'Wo Ihre Besucher abspringen — und warum',
+          'qc.deliv.2.title': 'Social-Media- und Kampagnen-Analyse',
+          'qc.deliv.2.sub': 'Was funktioniert, was Budget verbrennt',
+          'qc.deliv.3.title': 'QuickWins',
+          'qc.deliv.3.sub': 'Konkrete Maßnahmen für nächste Woche',
+          'qc.deliv.4.title': 'Benchmark vergleichbarer NGOs',
+          'qc.deliv.4.sub': 'Wie 3-5 Peers in Ihrem Bereich abschneiden',
+          // QC pre-CTA callout
+          'qc.precta.1': 'Ihr erster konkreter Schritt zu digitalem Fundraising, das <em>wirklich funktioniert</em> — keine Meetings, nichts für Ihr Team zu tun.',
+          'qc.precta.2': 'Sparen Sie Ihre Zeit für Ihre eigentliche Arbeit. <strong>Lassen Sie mich meinen Job machen</strong>.',
+          // QC post-CTA timing
+          'qc.postcta': 'Von Ihrer ersten Nachricht bis zum persönlichen Angebot: 48 Stunden. Vom Angebot bis zur Lieferung: 15 Arbeitstage.',
           // QC right card
           'qc.card.eyebrow': 'Was ich prüfe',
           'qc.card.status': 'Bis zu 15 Arbeitstage',
@@ -3176,7 +3262,7 @@
           'qc.eyebrow': 'Ce que vous obtenez',
           'qc.title': 'QuickCheck - <em>découvrons</em><br><em>ce qui manque à</em><br>votre fundraising<span class="lime-dot">.</span>',
           'qc.lead': 'Un audit externe complet de votre fundraising digital en 15 jours ouvrés. Rapport PDF, vidéo explicative, microsite et QuickWins concrets à livrer dès la semaine prochaine.',
-          'qc.cta': 'Prendre contact <span>→</span>',
+          'qc.cta': 'Réserver mon QuickCheck <span>→</span>',
           'services.eyebrow': 'Comment je peux aussi vous aider',
           'services.title': 'Six façons<br><em>de travailler</em><br>ensemble<span class="lime-dot">.</span>',
           'services.lead': 'D\'un audit externe rapide à un partenariat stratégique complet. Choisissez la profondeur dont votre association a besoin - de la consultation ponctuelle au partenariat long terme.',
@@ -3233,17 +3319,20 @@
           'footer.link.prague': 'Conseils Prague',
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Mentions légales',
-          // QuickCheck features
-          'qc.feat.1.title': 'Audit du parcours donateur',
-          'qc.feat.1.sub': 'Où vos visiteurs décrochent - et pourquoi',
-          'qc.feat.2.title': 'Analyse social &amp; campagnes',
-          'qc.feat.2.sub': 'Ce qui marche, ce qui gaspille du budget',
-          'qc.feat.3.title': 'QuickWins',
-          'qc.feat.3.sub': 'Actions concrètes à livrer la semaine prochaine',
-          'qc.feat.4.title': 'Benchmark d\'associations similaires',
-          'qc.feat.4.sub': 'Comment 3-5 pairs de votre secteur se positionnent',
-          // QC pricing note
-          'qc.price.note': 'Tarif adapté à votre organisation. Contactez-moi pour une offre sur mesure.',
+          // QC deliverables (4 cards)
+          'qc.deliv.1.title': 'Audit du parcours donateur',
+          'qc.deliv.1.sub': 'Où vos visiteurs décrochent — et pourquoi',
+          'qc.deliv.2.title': 'Analyse social &amp; campagnes',
+          'qc.deliv.2.sub': 'Ce qui marche, ce qui gâche le budget',
+          'qc.deliv.3.title': 'QuickWins',
+          'qc.deliv.3.sub': 'Actions concrètes à livrer la semaine prochaine',
+          'qc.deliv.4.title': 'Benchmark d\'associations comparables',
+          'qc.deliv.4.sub': 'Comment 3-5 pairs se positionnent',
+          // QC pre-CTA callout
+          'qc.precta.1': 'Votre première étape concrète vers un fundraising digital qui <em>fonctionne vraiment</em> — pas de réunions, rien à faire pour votre équipe.',
+          'qc.precta.2': 'Gardez votre temps pour votre vrai travail. <strong>Laissez-moi faire le mien</strong>.',
+          // QC post-CTA timing
+          'qc.postcta': 'De votre premier message à une offre personnalisée en 48 heures. De l\'offre à la livraison en 15 jours ouvrés.',
           // QC right card
           'qc.card.eyebrow': 'Ce que je vérifie',
           'qc.card.status': 'Jusqu\'à 15 jours ouvrés',
@@ -3335,7 +3424,7 @@
           'qc.eyebrow': 'Cosa ottieni',
           'qc.title': 'QuickCheck - <em>scopriamo</em><br><em>cosa manca al</em><br>tuo fundraising<span class="lime-dot">.</span>',
           'qc.lead': 'Un audit esterno completo del tuo fundraising digitale in 15 giorni lavorativi. Report PDF, video-spiegazione, microsite e QuickWins concreti da implementare la settimana prossima.',
-          'qc.cta': 'Mettiti in contatto <span>→</span>',
+          'qc.cta': 'Prenota il mio QuickCheck <span>→</span>',
           'services.eyebrow': 'Come altro posso aiutarti',
           'services.title': 'Sei modi<br><em>di lavorare</em><br>insieme<span class="lime-dot">.</span>',
           'services.lead': 'Da un audit esterno rapido a una partnership strategica completa. Scegli la profondità di cui la tua organizzazione ha bisogno - dalla consulenza singola alla partnership a lungo termine.',
@@ -3393,16 +3482,20 @@
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Impressum',
           // QuickCheck features
-          'qc.feat.1.title': 'Audit del donor journey',
-          'qc.feat.1.sub': 'Dove i tuoi visitatori abbandonano - e perché',
-          'qc.feat.2.title': 'Analisi social &amp; campagne',
-          'qc.feat.2.sub': 'Cosa funziona, cosa spreca budget',
-          'qc.feat.3.title': 'QuickWins',
-          'qc.feat.3.sub': 'Azioni concrete da implementare la prossima settimana',
-          'qc.feat.4.title': 'Benchmark di non profit simili',
-          'qc.feat.4.sub': 'Come 3-5 peer del tuo settore si posizionano',
-          // QC pricing note
-          'qc.price.note': 'Prezzo adattato alla tua organizzazione. Contattami per un\'offerta su misura.',
+          // QC deliverables (4 cards)
+          'qc.deliv.1.title': 'Audit del donor journey',
+          'qc.deliv.1.sub': 'Dove i tuoi visitatori abbandonano — e perché',
+          'qc.deliv.2.title': 'Analisi social &amp; campagne',
+          'qc.deliv.2.sub': 'Cosa funziona, cosa spreca budget',
+          'qc.deliv.3.title': 'QuickWins',
+          'qc.deliv.3.sub': 'Azioni concrete da implementare la prossima settimana',
+          'qc.deliv.4.title': 'Benchmark di organizzazioni simili',
+          'qc.deliv.4.sub': 'Come 3-5 peer del tuo settore si posizionano',
+          // QC pre-CTA callout
+          'qc.precta.1': 'Il tuo primo passo concreto verso un digital fundraising che <em>funziona davvero</em> — niente riunioni, niente da fare per il tuo team.',
+          'qc.precta.2': 'Risparmia il tuo tempo per il tuo vero lavoro. <strong>Lascia che faccia il mio</strong>.',
+          // QC post-CTA timing
+          'qc.postcta': 'Dal tuo primo messaggio a un\'offerta personalizzata in 48 ore. Dall\'offerta alla consegna in 15 giorni lavorativi.',
           // QC right card
           'qc.card.eyebrow': 'Cosa controllo',
           'qc.card.status': 'Fino a 15 giorni lavorativi',
