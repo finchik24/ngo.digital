@@ -578,31 +578,6 @@
       color: #555;
       line-height: 1.4;
     }
-    .qc-bullets {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 32px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .qc-bullets li {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: #1A1A1A;
-      line-height: 1.5;
-      padding-left: 22px;
-      position: relative;
-    }
-    .qc-bullets li::before {
-      content: "▸";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #1A1A1A;
-      font-weight: 700;
-    }
     .qc-pricing-note {
       font-family: 'Source Sans 3', sans-serif;
       font-size: 16px;
@@ -2073,12 +2048,36 @@
             A complete external audit of your digital fundraising in 15 working days. PDF report, video walkthrough, microsite, and concrete QuickWins you can ship next week.
           </p>
 
-          <ul class="qc-bullets">
-            <li data-i18n="qc.bullet.1">Donor journey audit</li>
-            <li data-i18n="qc.bullet.2">Social & campaign analysis</li>
-            <li data-i18n="qc.bullet.3">Benchmark vs 3-5 peers</li>
-            <li data-i18n="qc.bullet.4">QuickWins to ship next week</li>
-          </ul>
+          <div class="qc-features">
+            <div class="qc-feature">
+              <div class="qc-feature-num">01</div>
+              <div class="qc-feature-text">
+                <strong data-i18n="qc.feat.1.title">Donor journey audit</strong>
+                <span data-i18n="qc.feat.1.sub">Where your visitors drop off - and why</span>
+              </div>
+            </div>
+            <div class="qc-feature">
+              <div class="qc-feature-num">02</div>
+              <div class="qc-feature-text">
+                <strong data-i18n="qc.feat.2.title">Social & campaign analysis</strong>
+                <span data-i18n="qc.feat.2.sub">What works, what wastes budget</span>
+              </div>
+            </div>
+            <div class="qc-feature">
+              <div class="qc-feature-num">03</div>
+              <div class="qc-feature-text">
+                <strong data-i18n="qc.feat.3.title">QuickWins</strong>
+                <span data-i18n="qc.feat.3.sub">Concrete actions to ship next week</span>
+              </div>
+            </div>
+            <div class="qc-feature">
+              <div class="qc-feature-num">04</div>
+              <div class="qc-feature-text">
+                <strong data-i18n="qc.feat.4.title">Benchmark of similar nonprofits</strong>
+                <span data-i18n="qc.feat.4.sub">How 3-5 peers in your space compare</span>
+              </div>
+            </div>
+          </div>
 
           <p class="qc-pricing-note" data-i18n="qc.price.note">
             Pricing scoped to your organization. Reach out for a tailored proposal.
@@ -2916,11 +2915,15 @@
           'footer.link.prague': 'Prague Tips',
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Imprint',
-          // QuickCheck bullets
-          'qc.bullet.1': 'Donor journey audit',
-          'qc.bullet.2': 'Social & campaign analysis',
-          'qc.bullet.3': 'Benchmark vs 3-5 peers',
-          'qc.bullet.4': 'QuickWins to ship next week',
+          // QuickCheck features
+          'qc.feat.1.title': 'Donor journey audit',
+          'qc.feat.1.sub': 'Where your visitors drop off - and why',
+          'qc.feat.2.title': 'Social & campaign analysis',
+          'qc.feat.2.sub': 'What works, what wastes budget',
+          'qc.feat.3.title': 'QuickWins',
+          'qc.feat.3.sub': 'Concrete actions to ship next week',
+          'qc.feat.4.title': 'Benchmark of similar nonprofits',
+          'qc.feat.4.sub': 'How 3-5 peers in your space compare',
           // QC pricing note
           'qc.price.note': 'Pricing scoped to your organization. Reach out for a tailored proposal.',
           // QC right card
@@ -3071,11 +3074,15 @@
           'footer.link.prague': 'Prag Tipps',
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Impressum',
-          // QuickCheck bullets
-          'qc.bullet.1': 'Donor Journey Audit',
-          'qc.bullet.2': 'Social-Media- und Kampagnen-Analyse',
-          'qc.bullet.3': 'Benchmark mit 3-5 Peers',
-          'qc.bullet.4': 'QuickWins für nächste Woche',
+          // QuickCheck features
+          'qc.feat.1.title': 'Donor Journey Audit',
+          'qc.feat.1.sub': 'Wo Ihre Besucher abspringen - und warum',
+          'qc.feat.2.title': 'Social-Media- und Kampagnen-Analyse',
+          'qc.feat.2.sub': 'Was funktioniert, was Budget verschwendet',
+          'qc.feat.3.title': 'QuickWins',
+          'qc.feat.3.sub': 'Konkrete Aktionen für nächste Woche',
+          'qc.feat.4.title': 'Benchmark vergleichbarer Non-Profits',
+          'qc.feat.4.sub': 'Wie 3-5 Peers in Ihrem Bereich abschneiden',
           // QC pricing note
           'qc.price.note': 'Preis auf Ihre Organisation zugeschnitten. Kontaktieren Sie mich für ein individuelles Angebot.',
           // QC right card
@@ -3226,11 +3233,15 @@
           'footer.link.prague': 'Conseils Prague',
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Mentions légales',
-          // QuickCheck bullets
-          'qc.bullet.1': 'Audit du parcours donateur',
-          'qc.bullet.2': 'Analyse social &amp; campagnes',
-          'qc.bullet.3': 'Benchmark avec 3-5 pairs',
-          'qc.bullet.4': 'QuickWins à livrer la semaine prochaine',
+          // QuickCheck features
+          'qc.feat.1.title': 'Audit du parcours donateur',
+          'qc.feat.1.sub': 'Où vos visiteurs décrochent - et pourquoi',
+          'qc.feat.2.title': 'Analyse social &amp; campagnes',
+          'qc.feat.2.sub': 'Ce qui marche, ce qui gaspille du budget',
+          'qc.feat.3.title': 'QuickWins',
+          'qc.feat.3.sub': 'Actions concrètes à livrer la semaine prochaine',
+          'qc.feat.4.title': 'Benchmark d\'associations similaires',
+          'qc.feat.4.sub': 'Comment 3-5 pairs de votre secteur se positionnent',
           // QC pricing note
           'qc.price.note': 'Tarif adapté à votre organisation. Contactez-moi pour une offre sur mesure.',
           // QC right card
@@ -3382,10 +3393,14 @@
           'footer.bottom_made': 'Made in Prague',
           'footer.imprint': 'Impressum',
           // QuickCheck features
-          'qc.bullet.1': 'Audit del donor journey',
-          'qc.bullet.2': 'Analisi social &amp; campagne',
-          'qc.bullet.3': 'Benchmark con 3-5 peer',
-          'qc.bullet.4': 'QuickWins da implementare la prossima settimana',
+          'qc.feat.1.title': 'Audit del donor journey',
+          'qc.feat.1.sub': 'Dove i tuoi visitatori abbandonano - e perché',
+          'qc.feat.2.title': 'Analisi social &amp; campagne',
+          'qc.feat.2.sub': 'Cosa funziona, cosa spreca budget',
+          'qc.feat.3.title': 'QuickWins',
+          'qc.feat.3.sub': 'Azioni concrete da implementare la prossima settimana',
+          'qc.feat.4.title': 'Benchmark di non profit simili',
+          'qc.feat.4.sub': 'Come 3-5 peer del tuo settore si posizionano',
           // QC pricing note
           'qc.price.note': 'Prezzo adattato alla tua organizzazione. Contattami per un\'offerta su misura.',
           // QC right card
