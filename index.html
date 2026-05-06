@@ -2039,6 +2039,14 @@
         grid-template-columns: 1fr !important;
         gap: 40px !important;
       }
+      /* Mobilní pořadí: intro + areas → tmavý box → CTA na konec.
+         display: contents rozprostře levý sloupec do gridu, pak order posune CTA dolů. */
+      .audit-hero-layout > div:first-child {
+        display: contents;
+      }
+      .audit-cta-block {
+        order: 99;
+      }
       .audit-outcomes-grid {
         grid-template-columns: 1fr !important;
         gap: 0 !important;
@@ -2181,7 +2189,7 @@
           </div>
 
           <!-- CTA + reassurance (left-aligned) -->
-          <div>
+          <div class="audit-cta-block">
             <a href="#contact" data-interest="Audit" class="btn-primary pulse" data-i18n="audit.cta">Book my Audit <span>&rarr;</span></a>
             <p style="font-size: 12px; color: #888; margin: 12px 0 0 0;" data-i18n="audit.cta.reassurance">No commitment &middot; Personal quote within 24 hours</p>
           </div>
