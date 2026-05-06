@@ -46,6 +46,7 @@
       background: #FFFFFF;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
 
@@ -2032,6 +2033,28 @@
 
       /* Footer bottom stack */
       .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+
+      /* Inline gridy v audit sekci a testimonialech – přepsat na 1 sloupec */
+      .audit-hero-layout {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+      .audit-outcomes-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+      }
+      /* 7. outcome měl span 2 v 2-sloupcovém gridu, na mobilu už není potřeba */
+      .audit-outcomes-grid > div[style*="span 2"] {
+        grid-column: auto !important;
+      }
+      /* Tmavý box menší padding na mobilu */
+      .audit-hero-layout > div[style*="background: #1A1A1A"] {
+        padding: 28px 22px !important;
+      }
+      .testimonial-microquotes {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+      }
     }
 
     /* ============ RESPONSIVE - SMALL MOBILE (≤ 480px) ============ */
@@ -2115,7 +2138,7 @@
   <!-- ============ QUICKCHECK HERO SECTION ============ -->
   <section class="audit-hero" id="audit">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start;">
+      <div class="audit-hero-layout" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start;">
 
         <!-- LEFT COLUMN -->
         <div>
@@ -2352,7 +2375,7 @@
         </div>
 
         <!-- Mikro-quote sloupce pod hlavní citací -->
-        <div style="border-top: 1px solid #333; padding-top: 32px; margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+        <div class="testimonial-microquotes" style="border-top: 1px solid #333; padding-top: 32px; margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
           <div style="border-left: 3px solid #C9F31D; padding-left: 18px;">
             <div style="font-size: 16px; line-height: 1.55; color: #E8E8E8; font-style: italic; margin-bottom: 14px;" data-i18n="testimonial.micro1.quote">"With a 35,000 CZK investment, he generated over 650,000 CZK in 2 months. And built lasting PR for us."</div>
             <div style="font-size: 13px; color: #FFFFFF; font-weight: 700; margin-bottom: 2px;" data-i18n="testimonial.micro1.name">Alena Pecková</div>
