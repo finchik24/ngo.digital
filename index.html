@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -500,6 +500,37 @@
     .recognition-list li strong {
       font-weight: 700;
       color: #000;
+    }
+    .bio-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .bio-list li {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 18px;
+      line-height: 1.55;
+      color: #1A1A1A;
+      padding-left: 22px;
+      position: relative;
+    }
+    .bio-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 8px;
+      height: 8px;
+      background: #C9F31D;
+      border-radius: 50%;
+    }
+    .bio-list li strong { font-weight: 700; color: #000; }
+    .bio-list li em { font-style: italic; }
+    @media (max-width: 480px) {
+      .bio-list li { font-size: 16px; }
     }
     .recognition-tier + .recognition-tier {
       margin-top: 24px;
@@ -2061,7 +2092,7 @@
             <p style="font-size: 16px; color: #1A1A1A; line-height: 1.6; font-weight: 400; margin: 0 0 28px 0; max-width: 600px;" data-i18n="audit.async">
               <strong>No waiting for meetings</strong>. The audit runs, you lead your organization. You get the results <strong>ready to use immediately</strong>.
             </p>
-            <div style="background: #FAFAF7; border-left: 4px solid #1A1A1A; padding: 18px 22px; margin: 8px 0 28px 0; max-width: 600px;">
+            <div style="background: #F5FBE3; border: 1px solid #E1F297; border-left: 4px solid #C9F31D; padding: 18px 22px; margin: 8px 0 28px 0; max-width: 600px;">
               <div style="font-size: 16px; font-weight: 700; color: #1A1A1A; line-height: 1.4; margin-bottom: 4px;" data-i18n="audit.datapoint.main">Most NGOs lose 60-70% of website visitors before they donate.</div>
               <div style="font-size: 14px; color: #666; line-height: 1.5;" data-i18n="audit.datapoint.sub">The audit shows you exactly where. And how to win them back.</div>
             </div>
@@ -2105,50 +2136,50 @@
           </h3>
 
           <div class="audit-outcomes-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px;">
-            <div style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-              <span style="color: #C9F31D; font-size: 13px; font-weight: 700; padding-top: 2px;">01</span>
+            <div style="display: grid; grid-template-columns: 60px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); align-items: start;">
+              <span style="font-family: 'Bricolage Grotesque', sans-serif; color: #C9F31D; font-size: 40px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; padding-top: 4px;">01</span>
               <div>
                 <div style="font-size: 17px; font-weight: 700; color: #FFFFFF; line-height: 1.3;" data-i18n="audit.outcome.1.title">No meetings. Time back for you.</div>
                 <div style="font-size: 14px; color: #A8A8A5; line-height: 1.5; margin-top: 4px;" data-i18n="audit.outcome.1.desc">I walk the same path as your donors.</div>
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-              <span style="color: #C9F31D; font-size: 13px; font-weight: 700; padding-top: 2px;">02</span>
+            <div style="display: grid; grid-template-columns: 60px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); align-items: start;">
+              <span style="font-family: 'Bricolage Grotesque', sans-serif; color: #C9F31D; font-size: 40px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; padding-top: 4px;">02</span>
               <div>
                 <div style="font-size: 17px; font-weight: 700; color: #FFFFFF; line-height: 1.3;" data-i18n="audit.outcome.2.title">External view of where you stand today.</div>
                 <div style="font-size: 14px; color: #A8A8A5; line-height: 1.5; margin-top: 4px;" data-i18n="audit.outcome.2.desc">What works? Where are donors leaving?</div>
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-              <span style="color: #C9F31D; font-size: 13px; font-weight: 700; padding-top: 2px;">03</span>
+            <div style="display: grid; grid-template-columns: 60px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); align-items: start;">
+              <span style="font-family: 'Bricolage Grotesque', sans-serif; color: #C9F31D; font-size: 40px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; padding-top: 4px;">03</span>
               <div>
                 <div style="font-size: 17px; font-weight: 700; color: #FFFFFF; line-height: 1.3;" data-i18n="audit.outcome.3.title">5+ QuickWins to ship right away.</div>
                 <div style="font-size: 14px; color: #A8A8A5; line-height: 1.5; margin-top: 4px;" data-i18n="audit.outcome.3.desc">Actions your team can deploy next week.</div>
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-              <span style="color: #C9F31D; font-size: 13px; font-weight: 700; padding-top: 2px;">04</span>
+            <div style="display: grid; grid-template-columns: 60px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); align-items: start;">
+              <span style="font-family: 'Bricolage Grotesque', sans-serif; color: #C9F31D; font-size: 40px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; padding-top: 4px;">04</span>
               <div>
                 <div style="font-size: 17px; font-weight: 700; color: #FFFFFF; line-height: 1.3;" data-i18n="audit.outcome.4.title">How similar NGOs operate.</div>
                 <div style="font-size: 14px; color: #A8A8A5; line-height: 1.5; margin-top: 4px;" data-i18n="audit.outcome.4.desc">What they do, where they grow, where they bet.</div>
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-              <span style="color: #C9F31D; font-size: 13px; font-weight: 700; padding-top: 2px;">05</span>
+            <div style="display: grid; grid-template-columns: 60px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); align-items: start;">
+              <span style="font-family: 'Bricolage Grotesque', sans-serif; color: #C9F31D; font-size: 40px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; padding-top: 4px;">05</span>
               <div>
                 <div style="font-size: 17px; font-weight: 700; color: #FFFFFF; line-height: 1.3;" data-i18n="audit.outcome.5.title">Best practices from top NGOs.</div>
                 <div style="font-size: 14px; color: #A8A8A5; line-height: 1.5; margin-top: 4px;" data-i18n="audit.outcome.5.desc">Concrete examples to adopt.</div>
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-              <span style="color: #C9F31D; font-size: 13px; font-weight: 700; padding-top: 2px;">06</span>
+            <div style="display: grid; grid-template-columns: 60px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); align-items: start;">
+              <span style="font-family: 'Bricolage Grotesque', sans-serif; color: #C9F31D; font-size: 40px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; padding-top: 4px;">06</span>
               <div>
                 <div style="font-size: 17px; font-weight: 700; color: #FFFFFF; line-height: 1.3;" data-i18n="audit.outcome.6.title">ROI-prioritized roadmap.</div>
                 <div style="font-size: 14px; color: #A8A8A5; line-height: 1.5; margin-top: 4px;" data-i18n="audit.outcome.6.desc">Plan by impact. You decide.</div>
               </div>
             </div>
-            <div style="grid-column: span 2; display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-              <span style="color: #C9F31D; font-size: 13px; font-weight: 700; padding-top: 2px;">07</span>
+            <div style="grid-column: span 2; display: grid; grid-template-columns: 60px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); align-items: start;">
+              <span style="font-family: 'Bricolage Grotesque', sans-serif; color: #C9F31D; font-size: 40px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; padding-top: 4px;">07</span>
               <div>
                 <div style="font-size: 17px; font-weight: 700; color: #FFFFFF; line-height: 1.3;" data-i18n="audit.outcome.7.title">Board-ready deck + action plan.</div>
                 <div style="font-size: 14px; color: #A8A8A5; line-height: 1.5; margin-top: 4px;" data-i18n="audit.outcome.7.desc">Ready presentation for your board or leadership. Plus implementation plan.</div>
@@ -2298,6 +2329,80 @@
     </div>
   </section>
 
+  <!-- ============ CASES ============ -->
+  <section class="cases" id="cases">
+    <div class="container">
+      <div style="margin-bottom: 64px;">
+        <div class="eyebrow" data-i18n="cases.eyebrow">Cases</div>
+        <h2 class="section-title" data-i18n="cases.title">Numbers that <em>actually</em> moved<span class="lime-dot">.</span></h2>
+      </div>
+
+      <div class="cases-grid">
+        <!-- Big case -->
+        <div class="case-card">
+          <div>
+            <div class="case-tag" data-i18n="case.big.tag">FEATURED</div>
+            <h3 data-i18n="case.big.title">Czechia's #1 Christmas campaign 2025</h3>
+            <p class="case-desc" data-i18n="case.big.desc">Built with a team of volunteers - the most successful Christmas fundraiser in the country that year. Powered by gamification, donor journey design and media partnerships.</p>
+            <div style="margin-top: 22px; padding: 16px 20px; background: rgba(201, 243, 29, 0.1); border-left: 3px solid #C9F31D; border-radius: 6px;">
+              <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800; color: #FFFFFF; line-height: 1.2; letter-spacing: -0.03em;" data-i18n="case.big.amplifier.headline">1 in 175 Czechs <em style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #C9F31D;">donated</em>.</div>
+              <div style="font-size: 14px; color: #C9F31D; margin-top: 8px; font-weight: 600; letter-spacing: 0.01em; line-height: 1.5;" data-i18n="case.big.amplifier.note">A reach almost no Czech NGO has ever achieved.</div>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div>
+              <div class="case-stat-num">€700K</div>
+              <div class="case-stat-label" data-i18n="case.big.stat1">raised</div>
+            </div>
+            <div>
+              <div class="case-stat-num">60 000+</div>
+              <div class="case-stat-label" data-i18n="case.big.stat2">donors</div>
+            </div>
+            <div>
+              <div class="case-stat-num">3,700%</div>
+              <div class="case-stat-label" data-i18n="case.big.stat3">ROI in 1 month</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Klubák case -->
+        <div class="case-card muted">
+          <div>
+            <div class="case-tag" data-i18n="case.small.tag">REGIONAL CAMPAIGN</div>
+            <h3>Klubák</h3>
+            <p class="case-tagline" data-i18n="case.small.tagline">Czech social enterprise for people with disabilities</p>
+            <p class="case-desc" data-i18n="case.small.desc">A 2-month regional fundraising campaign - built to reach donors in the communities where the organization actually works. Powered by donor journey design, gamification and Meta Ads.</p>
+          </div>
+          <div class="case-stats">
+            <div>
+              <div class="case-stat-num">2,100%</div>
+              <div class="case-stat-label" data-i18n="case.small.stat1">ROI in 2 months</div>
+            </div>
+            <div>
+              <div class="case-stat-num">CHF 26K</div>
+              <div class="case-stat-label" data-i18n="case.small.stat2">raised from CHF 1.4K invested</div>
+            </div>
+            <div>
+              <div class="case-stat-num">250+</div>
+              <div class="case-stat-label" data-i18n="case.small.stat3">new donors in the region</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Closing CTA: invite the next case -->
+      <div style="margin-top: 80px; text-align: center; padding: 0 24px;">
+        <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 38px; font-weight: 800; line-height: 1.05; letter-spacing: -0.04em; color: #000; margin-bottom: 14px;" data-i18n="cases.next.title">
+          The next case study<br>could be <em style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">yours</em><span class="lime-dot">.</span>
+        </h3>
+        <p style="font-family: 'Source Sans 3', sans-serif; font-size: 19px; color: #555; line-height: 1.5; max-width: 520px; margin: 0 auto 32px;" data-i18n="cases.next.sub">
+          Let's start writing it together.
+        </p>
+        <a href="#contact" class="btn-primary" data-i18n="cases.next.cta">Let's talk <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
 <!-- ============ ABOUT ============ -->
   <section class="about" id="about">
     <div class="container">
@@ -2340,9 +2445,13 @@
           <p data-i18n="about.bio.p1">
             I'm Peter Chalupiansky, a fundraising consultant based in Prague. For the past <strong>ten years</strong>, I've worked with nonprofits, helping them turn digital donations into a sustainable revenue channel.
           </p>
-          <p data-i18n="about.bio.p2">
-            My work spans two fronts. As CSR &amp; ESG lead at <strong>Kaufland Czech Republic - part of Schwarz Gruppe, Europe's largest retailer</strong> - I've built the Christmas campaign for <em>Světluška</em> into a <strong>€4.9M fundraising engine over seven years</strong>. As an independent consultant, I run digital fundraising campaigns for nonprofits - most recently the <strong>most successful Christmas campaign in Czechia of 2025</strong>.
-          </p>
+          <ul class="bio-list" data-i18n="about.bio.p2">
+            <li><strong>Two roles. One focus.</strong> Corporate scale plus agile independent work.</li>
+            <li><strong>Kaufland Czech Republic</strong> &middot; CSR &amp; ESG lead, part of Schwarz Gruppe (Europe's largest retailer).</li>
+            <li><strong>Christmas campaign for <em>Světluška</em></strong> &middot; €4.9M fundraising engine over seven years.</li>
+            <li><strong>Independent consultant</strong> &middot; digital fundraising for European nonprofits.</li>
+            <li><strong>Christmas campaign 2025</strong> &middot; most successful in Czechia of that year.</li>
+          </ul>
           <p data-i18n="about.bio.p3">
             My campaigns consistently <strong>deliver positive ROI</strong> and <strong>grow donor bases</strong> that stick.
           </p>
@@ -2370,65 +2479,6 @@
                 <li data-i18n="about.recog.item6"><strong>Czech National Quality Award 2022 for Sustainability</strong> · Ministry of Industry &amp; Trade</li>
                 <li data-i18n="about.recog.item7"><strong>Four-time Responsible Retailer of the Year</strong> (2020, 2022, 2024, 2025) · Czech Confederation of Commerce and Tourism</li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CASES ============ -->
-  <section class="cases" id="cases">
-    <div class="container">
-      <div style="margin-bottom: 64px;">
-        <div class="eyebrow" data-i18n="cases.eyebrow">Cases</div>
-        <h2 class="section-title" data-i18n="cases.title">Numbers that <em>actually</em> moved<span class="lime-dot">.</span></h2>
-      </div>
-
-      <div class="cases-grid">
-        <!-- Big case -->
-        <div class="case-card">
-          <div>
-            <div class="case-tag" data-i18n="case.big.tag">FEATURED</div>
-            <h3 data-i18n="case.big.title">Czechia's #1 Christmas campaign 2025</h3>
-            <p class="case-desc" data-i18n="case.big.desc">Built with a team of volunteers - the most successful Christmas fundraiser in the country that year. Powered by gamification, donor journey design and media partnerships.</p>
-          </div>
-          <div class="case-stats">
-            <div>
-              <div class="case-stat-num">€700K</div>
-              <div class="case-stat-label" data-i18n="case.big.stat1">raised</div>
-            </div>
-            <div>
-              <div class="case-stat-num">60 000+</div>
-              <div class="case-stat-label" data-i18n="case.big.stat2">donors</div>
-            </div>
-            <div>
-              <div class="case-stat-num">3,700%</div>
-              <div class="case-stat-label" data-i18n="case.big.stat3">ROI in 1 month</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Klubák case -->
-        <div class="case-card muted">
-          <div>
-            <div class="case-tag" data-i18n="case.small.tag">REGIONAL CAMPAIGN</div>
-            <h3>Klubák</h3>
-            <p class="case-tagline" data-i18n="case.small.tagline">Czech social enterprise for people with disabilities</p>
-            <p class="case-desc" data-i18n="case.small.desc">A 2-month regional fundraising campaign - built to reach donors in the communities where the organization actually works. Powered by donor journey design, gamification and Meta Ads.</p>
-          </div>
-          <div class="case-stats">
-            <div>
-              <div class="case-stat-num">2,100%</div>
-              <div class="case-stat-label" data-i18n="case.small.stat1">ROI in 2 months</div>
-            </div>
-            <div>
-              <div class="case-stat-num">CHF 26K</div>
-              <div class="case-stat-label" data-i18n="case.small.stat2">raised from CHF 1.4K invested</div>
-            </div>
-            <div>
-              <div class="case-stat-num">250+</div>
-              <div class="case-stat-label" data-i18n="case.small.stat3">new donors in the region</div>
             </div>
           </div>
         </div>
@@ -3063,14 +3113,19 @@
           'case.big.tag': 'FEATURED',
           'case.big.title': 'Czechia\'s #1 Christmas campaign 2025',
           'case.big.desc': 'Built with a team of volunteers - the most successful Christmas fundraiser in the country that year. Powered by gamification, donor journey design and media partnerships.',
+          'case.big.amplifier.headline': '1 in 175 Czechs <em style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; color: #C9F31D;">donated</em>.',
+          'case.big.amplifier.note': 'A reach almost no Czech NGO has ever achieved.',
           'case.big.stat1': 'raised', 'case.big.stat2': 'donors', 'case.big.stat3': 'ROI in 1 month',
           'case.small.tag': 'REGIONAL CAMPAIGN',
           'case.small.tagline': 'Czech social enterprise for people with disabilities',
           'case.small.desc': 'A 2-month regional fundraising campaign - built to reach donors in the communities where the organization actually works. Powered by donor journey design, gamification and Meta Ads.',
           'case.small.stat1': 'ROI in 2 months', 'case.small.stat2': 'raised from CHF 1.4K invested', 'case.small.stat3': 'new donors in the region',
+          'cases.next.title': 'The next case study<br>could be <em style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">yours</em><span class="lime-dot">.</span>',
+          'cases.next.sub': 'Let\'s start writing it together.',
+          'cases.next.cta': 'Let\'s talk <span>&rarr;</span>',
           // About bio
           'about.bio.p1': 'I\'m Peter Chalupiansky, a fundraising consultant based in Prague. For the past <strong>ten years</strong>, I\'ve worked with nonprofits, helping them turn digital donations into a sustainable revenue channel.',
-          'about.bio.p2': 'My work spans two fronts. As CSR &amp; ESG lead at <strong>Kaufland Czech Republic - part of Schwarz Gruppe, Europe\'s largest retailer</strong> - I\'ve built the Christmas campaign for <em>Světluška</em> into a <strong>€4.9M fundraising engine over seven years</strong>. As an independent consultant, I run digital fundraising campaigns for nonprofits - most recently the <strong>most successful Christmas campaign in Czechia of 2025</strong>.',
+          'about.bio.p2': '<li><strong>Two roles. One focus.</strong> Corporate scale plus agile independent work.</li><li><strong>Kaufland Czech Republic</strong> &middot; CSR &amp; ESG lead, part of Schwarz Gruppe (Europe\'s largest retailer).</li><li><strong>Christmas campaign for <em>Světluška</em></strong> &middot; &euro;4.9M fundraising engine over seven years.</li><li><strong>Independent consultant</strong> &middot; digital fundraising for European nonprofits.</li><li><strong>Christmas campaign 2025</strong> &middot; most successful in Czechia of that year.</li>',
           'about.bio.p3': 'My campaigns consistently <strong>deliver positive ROI</strong> and <strong>grow donor bases</strong> that stick.',
           'about.bio.p4': 'Now I want to bring all of that to your nonprofit - and help you <strong>build a digital fundraising channel that actually works</strong>.',
           'about.recog.title': 'Awards &amp; Recognition',
@@ -3227,14 +3282,19 @@
           'case.big.tag': 'FEATURED',
           'case.big.title': 'Tschechiens #1 Weihnachtskampagne 2025',
           'case.big.desc': 'Mit einem Team von Freiwilligen aufgebaut - die erfolgreichste Weihnachts-Spendenaktion des Landes in jenem Jahr. Mit Gamification, Donor-Journey-Design und Medienpartnerschaften.',
+          'case.big.amplifier.headline': 'Jeder 175. Tscheche hat <em style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; color: #C9F31D;">gespendet</em>.',
+          'case.big.amplifier.note': 'Eine Reichweite, die kaum eine tschechische NGO je erreicht hat.',
           'case.big.stat1': 'eingenommen', 'case.big.stat2': 'Spender', 'case.big.stat3': 'ROI in 1 Monat',
           'case.small.tag': 'REGIONALE KAMPAGNE',
           'case.small.tagline': 'Tschechisches Sozialunternehmen für Menschen mit Behinderungen',
           'case.small.desc': 'Eine zweimonatige regionale Fundraising-Kampagne - gebaut, um Spender in den Gemeinden zu erreichen, in denen die Organisation tatsächlich tätig ist. Mit Donor-Journey-Design, Gamification und Meta Ads.',
           'case.small.stat1': 'ROI in 2 Monaten', 'case.small.stat2': 'eingenommen aus CHF 1.4K Investment', 'case.small.stat3': 'neue Spender in der Region',
+          'cases.next.title': 'Die nächste Fallstudie<br>könnte <em style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">Ihre</em> sein<span class="lime-dot">.</span>',
+          'cases.next.sub': 'Lassen Sie sie uns gemeinsam schreiben.',
+          'cases.next.cta': 'Sprechen wir <span>&rarr;</span>',
           // About bio
           'about.bio.p1': 'Ich bin Peter Chalupiansky, ein Fundraising-Berater mit Sitz in Prag. In den letzten <strong>zehn Jahren</strong> habe ich mit Non-Profits gearbeitet und ihnen geholfen, digitale Spenden in einen nachhaltigen Einnahmekanal zu verwandeln.',
-          'about.bio.p2': 'Meine Arbeit verläuft auf zwei Schienen. Als CSR- &amp; ESG-Lead bei <strong>Kaufland Tschechien - Teil der Schwarz Gruppe, Europas grösstem Einzelhändler</strong> - habe ich die Weihnachtskampagne für <em>Světluška</em> in eine <strong>4,9-Mio.-€-Fundraising-Maschine über sieben Jahre</strong> verwandelt. Als unabhängiger Berater leite ich digitale Fundraising-Kampagnen für Non-Profits - zuletzt die <strong>erfolgreichste Weihnachtskampagne in Tschechien 2025</strong>.',
+          'about.bio.p2': '<li><strong>Zwei Rollen. Ein Fokus.</strong> Konzernweite Größenordnung plus unabhängige Schnelligkeit.</li><li><strong>Kaufland Tschechien</strong> &middot; CSR- &amp; ESG-Lead, Teil der Schwarz Gruppe (Europas größter Einzelhändler).</li><li><strong>Weihnachtskampagne für <em>Světluška</em></strong> &middot; 4,9-Mio.-€-Fundraising-Maschine über sieben Jahre.</li><li><strong>Unabhängiger Berater</strong> &middot; digitales Fundraising für europäische Non-Profits.</li><li><strong>Weihnachtskampagne 2025</strong> &middot; erfolgreichste in Tschechien jenes Jahres.</li>',
           'about.bio.p3': 'Meine Kampagnen liefern konsequent <strong>positiven ROI</strong> und bauen <strong>Spenderbasen auf</strong>, die bleiben.',
           'about.bio.p4': 'Jetzt möchte ich all das zu Ihrer Non-Profit bringen - und Ihnen helfen, einen <strong>digitalen Fundraising-Kanal zu bauen, der wirklich funktioniert</strong>.',
           'about.recog.title': 'Auszeichnungen &amp; Anerkennungen',
