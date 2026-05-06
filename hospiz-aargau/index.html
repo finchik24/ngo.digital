@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="de">
 <head>
-  <meta charset="UTF-8">a
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ngo.digital — QuickCheck pro Hospiz Aargau</title>
-  <meta name="description" content="Včera jsem strávil 30 minut s vaším digitálním fundraisingem. Tady je, co jsem viděl.">
+  <title>ngo.digital — QuickCheck für Hospiz Aargau</title>
+  <meta name="description" content="Gestern habe ich 30 Minuten mit Ihrem Digital-Fundraising verbracht. Hier ist, was ich gesehen habe.">
   <meta name="theme-color" content="#1A1A1A">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -148,34 +147,61 @@
       color: #1A1A1A;
     }
     .logo .dot { color: #C9F31D; }
-    .nav-meta {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #888;
-    }
     .nav-co-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
       flex-shrink: 0;
     }
-    .nav-co-brand-label {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #888;
-      white-space: nowrap;
+    .nav-co-brand-sep {
+      width: 1px;
+      height: 24px;
+      background: #DDDDDD;
+      flex-shrink: 0;
+      display: block;
     }
     .nav-co-brand-logo {
-      height: 26px;
-      width: 110px;
+      height: 32px;
+      width: auto;
+      max-width: 160px;
       display: block;
       object-fit: contain;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* ===== LANG SWITCHER ===== */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: stretch;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 999px;
+      overflow: hidden;
+      font-family: 'Bricolage Grotesque', sans-serif;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      transition: background 0.15s ease, color 0.15s ease;
+      line-height: 1.2;
+    }
+    .lang-btn:hover { color: #1A1A1A; }
+    .lang-btn.is-active {
+      background: #1A1A1A;
+      color: #C9F31D;
+    }
+    .lang-btn:focus-visible {
+      outline: 2px solid #C9F31D;
+      outline-offset: 2px;
     }
 
     /* ===== HERO ===== */
@@ -935,8 +961,10 @@
       .avatar { width: 80px; height: 80px; }
       .petr-photo-quote { padding: 28px 24px 22px; }
       .petr-photo-quote-text { font-size: 20px; }
-      .nav-co-brand-label { display: none; }
-      .nav-co-brand-logo { height: 26px; }
+      .nav-co-brand { gap: 12px; }
+      .nav-co-brand-sep { height: 20px; }
+      .nav-co-brand-logo { height: 24px; max-width: 130px; }
+      .nav-right { gap: 12px; }
       .solo-pricing { grid-template-columns: 1fr; padding: 36px 28px; gap: 24px; }
       .solo-pricing .price-block { text-align: left; }
       .solo-cohort { justify-content: flex-start; }
@@ -945,7 +973,7 @@
       .final-cta h2 { font-size: 40px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 12px; }
-      .nav-inner { padding: 16px 24px; }
+      .nav-inner { padding: 16px 24px; flex-wrap: wrap; gap: 12px; }
     }
   </style>
 </head>
@@ -954,10 +982,16 @@
   <!-- ============ NAV ============ -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#" class="logo">ngo<span class="dot">.</span>digital</a>
       <div class="nav-co-brand">
-        <span class="nav-co-brand-label">Osobně pro</span>
-        <img src="hospiz-aargau-logo.png" alt="Hospiz Aargau" class="nav-co-brand-logo">
+        <a href="#" class="logo">ngo<span class="dot">.</span>digital</a>
+        <span class="nav-co-brand-sep" aria-hidden="true"></span>
+        <img src="assets/logo-hospiz-aargau.jpg" alt="Hospiz Aargau" class="nav-co-brand-logo">
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher" role="group" aria-label="Language">
+          <button type="button" class="lang-btn is-active" data-lang="de" aria-pressed="true">DE</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -967,28 +1001,28 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <span class="eyebrow-pill">Exkluzivní nabídka · Hospiz Aargau</span>
-          <h1>Včera jsem analyzoval váš digitální fundraising. <em>A vidím velký potenciál.</em></h1>
-          <p class="hero-sub">
-            Více individuálních dárců. Vyšší pravidelné dary. Silnější renomé hospice v komunitě i v digitálu. Tady je, co jsem viděl — a jak to společně můžeme posunout.
+          <span class="eyebrow-pill" data-i18n="hero.pill">Exklusives Angebot · Hospiz Aargau</span>
+          <h1 data-i18n="hero.h1">Gestern habe ich Ihr Digital-Fundraising analysiert. <em>Und ich sehe großes Potenzial.</em></h1>
+          <p class="hero-sub" data-i18n="hero.sub">
+            Mehr Einzelspender. Höhere wiederkehrende Spenden. Ein stärkerer Ruf des Hospizes in der Gemeinschaft und im digitalen Raum. Hier ist, was ich gesehen habe — und wie wir es gemeinsam weiterbringen.
           </p>
           <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
-            <a href="#findings" class="btn-primary">Co jsem viděl →</a>
-            <a href="#balicky" class="btn-secondary">Tři balíčky spolupráce</a>
+            <a href="#findings" class="btn-primary" data-i18n="hero.btn1">Was ich gesehen habe →</a>
+            <a href="#balicky" class="btn-secondary" data-i18n="hero.btn2">Drei Pakete der Zusammenarbeit</a>
           </div>
         </div>
 
         <aside class="hero-card">
-          <div class="hero-card-label">Vaše osobní nabídka</div>
+          <div class="hero-card-label" data-i18n="hero.card.label">Ihr persönliches Angebot</div>
           <h3>QuickCheck Hospiz Aargau</h3>
-          <p>Plná externí analýza vašeho digitálního fundraisingu. Bez práce na vaší straně. Dodání 10 pracovních dní.</p>
+          <p data-i18n="hero.card.desc">Vollständige externe Analyse Ihres Digital-Fundraisings. Ohne Aufwand auf Ihrer Seite. Lieferung in 10 Werktagen.</p>
           <div class="hero-card-cohort">
             <span class="cohort-dots">●●●●○</span>
-            <span class="cohort-text">Founding Cohort · 4 z 5 míst</span>
+            <span class="cohort-text" data-i18n="hero.card.cohort">Founding Cohort · 4 von 5 Plätzen</span>
           </div>
           <div class="price-main">5 999 CHF</div>
-          <div class="price-meta">Founding Cohort cena · platí 30 dní</div>
-          <a href="#balicky" class="btn-secondary light">Nebo balíčky →</a>
+          <div class="price-meta" data-i18n="hero.card.priceMeta">Founding Cohort Preis · gültig 30 Tage</div>
+          <a href="#balicky" class="btn-secondary light" data-i18n="hero.card.btn">Oder Pakete →</a>
         </aside>
       </div>
     </div>
@@ -1002,21 +1036,21 @@
       </div>
       <!-- ⚠️ PŘED ODESLÁNÍM: nahraď {ŘEDITEL} jménem ředitele organizace (např. "Herr Müller", "Frau Dr. Hofer") -->
       <div>
-        <h3>Krátký vzkaz pro vás osobně</h3>
-        <p>
-          Vážený pane řediteli {ŘEDITEL}, omlouvám se za nečekanou zprávu. Jsem konzultant digitálního fundraisingu a věnuji se neziskovkám v DACH a Skandinávii — především hospicům, organizacím sociální péče a zdravotně zaměřeným NGO.
+        <h3 data-i18n="personal.h3">Eine kurze persönliche Nachricht für Sie</h3>
+        <p data-i18n="personal.p1">
+          Sehr geehrter Herr Direktor {ŘEDITEL}, entschuldigen Sie die unerwartete Nachricht. Ich bin Berater für Digital-Fundraising und arbeite mit Non-Profit-Organisationen in der DACH-Region und Skandinavien — vor allem mit Hospizen, Sozialeinrichtungen und gesundheitsorientierten NGOs.
         </p>
-        <p>
-          Včera jsem při svém pravidelném mapování hospicového sektoru ve Švýcarsku narazil na Hospiz Aargau a chvíli jsem se zastavil u vašeho digitálního fundraisingu — jako bych byl potenciální dárce. Prošel jsem si web, podíval se na sociální sítě, otevřel spendenformulář a hledal newsletter.
+        <p data-i18n="personal.p2">
+          Bei meinem regelmäßigen Mapping des Hospiz-Sektors in der Schweiz bin ich gestern auf Hospiz Aargau gestoßen und habe mich kurz mit Ihrem Digital-Fundraising beschäftigt — als wäre ich ein potenzieller Spender. Ich bin durch die Website gegangen, habe die Social-Media-Kanäle angesehen, das Spendenformular geöffnet und nach dem Newsletter gesucht.
         </p>
-        <p>
-          Co jsem viděl mě <strong>upřímně zaujalo</strong> — a to z dobrého důvodu. Hospiz Aargau má všechno, co dělá hospic dárcovsky atraktivní: silný příběh, hmatatelný dopad na lidi v posledních dnech života, pevnou pozici v komunitě. A přesně proto vidím <strong>velký nevyužitý potenciál</strong> — víc individuálních dárců, vyšší podíl pravidelných darů, silnější renomé hospice v digitálním prostředí. Není to o tom, co děláte špatně. Je to o tom, co dnes ještě nemůžete využívat naplno.
+        <p data-i18n="personal.p3">
+          Was ich gesehen habe, hat mich <strong>aufrichtig beeindruckt</strong> — und das aus gutem Grund. Hospiz Aargau hat alles, was ein Hospiz für Spender attraktiv macht: eine starke Geschichte, greifbare Wirkung auf Menschen in den letzten Tagen ihres Lebens, eine feste Position in der Gemeinschaft. Und genau deshalb sehe ich <strong>großes ungenutztes Potenzial</strong> — mehr Einzelspender, einen höheren Anteil an wiederkehrenden Spenden, einen stärkeren Ruf des Hospizes im digitalen Raum. Es geht nicht darum, was Sie falsch machen. Es geht darum, was Sie heute noch nicht voll ausschöpfen können.
         </p>
-        <p>
-          Tato microsite je můj návrh, jak ten potenciál společně proměnit ve výsledky. Pokud vás následující stránka zaujme, ozvěte se. Pokud ne, věřím, že vám i tak přinese pár užitečných pohledů.
+        <p data-i18n="personal.p4">
+          Diese Microsite ist mein Vorschlag, wie wir dieses Potenzial gemeinsam in Ergebnisse umwandeln. Wenn Sie die folgende Seite anspricht, melden Sie sich. Wenn nicht, glaube ich, dass sie Ihnen trotzdem ein paar nützliche Einsichten bringt.
         </p>
-        <p class="personal-signature">
-          S úctou k vaší práci, Petr Chalupianský
+        <p class="personal-signature" data-i18n="personal.signature">
+          Mit Respekt vor Ihrer Arbeit, Petr Chalupianský
         </p>
       </div>
     </div>
@@ -1026,31 +1060,31 @@
   <section id="findings">
     <div class="container">
       <div class="section-intro">
-        <span class="eyebrow">Tři klíčová pozorování</span>
-        <h2 class="section-title">Tři věci, které brzdí <em>celý váš digitální fundraising.</em></h2>
-        <p class="lead">Tohle nejsou drobné kosmetické úpravy. Jsou to tři strukturální body, které spolu úzce souvisejí — a každý z nich vás stojí dárce, dary i renomé. Dobrá zpráva: všechny tři se dají systematicky opravit.</p>
+        <span class="eyebrow" data-i18n="findings.eyebrow">Drei Schlüsselbeobachtungen</span>
+        <h2 class="section-title" data-i18n="findings.h2">Drei Dinge, die <em>Ihr gesamtes Digital-Fundraising bremsen.</em></h2>
+        <p class="lead" data-i18n="findings.lead">Das sind keine kleinen kosmetischen Anpassungen. Es sind drei strukturelle Punkte, die eng miteinander verbunden sind — und jeder einzelne kostet Sie Spender, Spenden und Renommee. Die gute Nachricht: Alle drei lassen sich systematisch beheben.</p>
       </div>
 
       <div class="findings-grid">
         <article class="finding-card">
-          <span class="finding-num">Pozorování 01</span>
-          <h4>Zastaralý web</h4>
-          <p>Váš současný web byl pravděpodobně postavený před řadou let a dnes výrazně zaostává za standardem hospicových organizací v DACH. Není to o estetice — je to o tom, že moderní dárce přichází s jinými očekáváními (rychlost, mobilní zážitek, důvěryhodnost, příběh dopadu). Zastaralý web podvědomě zlevňuje vnímání celé organizace.</p>
-          <div class="finding-impact">Dopad: <span class="stars">★★★★★</span> · Řešení: nový web</div>
+          <span class="finding-num" data-i18n="findings.c1.num">Beobachtung 01</span>
+          <h4 data-i18n="findings.c1.h4">Veraltete Website</h4>
+          <p data-i18n="findings.c1.p">Ihre aktuelle Website wurde wahrscheinlich vor einigen Jahren gebaut und liegt heute deutlich hinter dem Standard von Hospizorganisationen im DACH-Raum zurück. Es geht nicht um Ästhetik — es geht darum, dass moderne Spender mit anderen Erwartungen kommen (Geschwindigkeit, Mobile Experience, Vertrauenswürdigkeit, Wirkungsgeschichte). Eine veraltete Website senkt unbewusst die Wahrnehmung der gesamten Organisation.</p>
+          <div class="finding-impact" data-i18n="findings.c1.impact">Wirkung: <span class="stars">★★★★★</span> · Lösung: neue Website</div>
         </article>
 
         <article class="finding-card">
-          <span class="finding-num">Pozorování 02</span>
-          <h4>Špatný Spenden formulář</h4>
-          <p>Současný dárcovský formulář dárce nevede — pouze ho čeká. Chybí konkrétní wirkungsbeträge („CHF 80 = jeden den hospicové péče"), pravidelný dar není nastaven jako výchozí volba, donor journey je tříštivý. Toto jediné místo je nejvíc kritickým bodem, kde se rozhoduje, jestli návštěvník dokončí dar — nebo odejde.</p>
-          <div class="finding-impact">Dopad: <span class="stars">★★★★★</span> · Řešení: optimalizace + redesign</div>
+          <span class="finding-num" data-i18n="findings.c2.num">Beobachtung 02</span>
+          <h4 data-i18n="findings.c2.h4">Schlechtes Spendenformular</h4>
+          <p data-i18n="findings.c2.p">Das aktuelle Spendenformular führt den Spender nicht — es wartet nur auf ihn. Es fehlen konkrete Wirkungsbeträge („CHF 80 = ein Tag Hospizpflege"), die wiederkehrende Spende ist nicht als Standard voreingestellt, die Donor Journey ist fragmentiert. Diese eine Stelle ist der kritischste Punkt, an dem entschieden wird, ob der Besucher die Spende abschließt — oder geht.</p>
+          <div class="finding-impact" data-i18n="findings.c2.impact">Wirkung: <span class="stars">★★★★★</span> · Lösung: Optimierung + Redesign</div>
         </article>
 
         <article class="finding-card">
-          <span class="finding-num">Pozorování 03</span>
-          <h4>Absence placených reklam</h4>
-          <p>Po kontrole Meta Ads Library jsem nenašel žádné placené kampaně Hospiz Aargau na Facebooku ani Instagramu. Vaše FB stránka má 225 fanoušků po 30 letech existence — což znamená naprostou závislost na organickém dosahu. Cílené Meta kampaně v rámci kantonu Aargau jsou pro hospicový sektor jeden z nejefektivnějších kanálů akvizice nových dárců i posílení renomé.</p>
-          <div class="finding-impact">Dopad: <span class="stars">★★★★☆</span> · Řešení: dlouhodobá spolupráce</div>
+          <span class="finding-num" data-i18n="findings.c3.num">Beobachtung 03</span>
+          <h4 data-i18n="findings.c3.h4">Fehlen bezahlter Werbung</h4>
+          <p data-i18n="findings.c3.p">Bei der Überprüfung der Meta Ads Library habe ich keine bezahlten Kampagnen von Hospiz Aargau auf Facebook oder Instagram gefunden. Ihre FB-Seite hat 225 Fans nach 30 Jahren Existenz — was eine vollständige Abhängigkeit von der organischen Reichweite bedeutet. Gezielte Meta-Kampagnen im Kanton Aargau gehören für den Hospizsektor zu den effektivsten Kanälen, um neue Spender zu gewinnen und das Renommee zu stärken.</p>
+          <div class="finding-impact" data-i18n="findings.c3.impact">Wirkung: <span class="stars">★★★★☆</span> · Lösung: langfristige Zusammenarbeit</div>
         </article>
       </div>
     </div>
@@ -1060,10 +1094,10 @@
   <section style="padding-bottom: 0;">
     <div class="container">
       <div class="promise">
-        <span class="eyebrow-pill eyebrow-pill-dark">Co tato 3 pozorování spolu znamenají</span>
-        <h2>Tři problémy. <em>Jeden společný kořen.</em></h2>
-        <p>
-          Zastaralý web, špatný Spenden formulář a absence reklam nejsou tři nezávislé chyby — jsou to <strong style="color:#FFF;">symptomy stejné věci</strong>: digitální fundraising u Hospiz Aargau zatím nefunguje jako systém. V plném QuickChecku tento systém zmapuju napříč <strong style="color:#C9F31D;">9 oblastmi</strong> a navrhnu, jak ho postavit. Bez jediné minuty vašeho času — vy jen objednáte, já dodám.
+        <span class="eyebrow-pill eyebrow-pill-dark" data-i18n="promise.pill">Was diese 3 Beobachtungen zusammen bedeuten</span>
+        <h2 data-i18n="promise.h2">Drei Probleme. <em>Eine gemeinsame Wurzel.</em></h2>
+        <p data-i18n="promise.p">
+          Eine veraltete Website, ein schlechtes Spendenformular und fehlende Werbung sind keine drei unabhängigen Fehler — sie sind <strong style="color:#FFF;">Symptome derselben Sache</strong>: Digital-Fundraising bei Hospiz Aargau funktioniert noch nicht als System. Im vollständigen QuickCheck kartiere ich dieses System über <strong style="color:#C9F31D;">9 Bereiche</strong> hinweg und schlage vor, wie es aufgebaut werden kann. Ohne eine einzige Minute Ihrer Zeit — Sie bestellen, ich liefere.
         </p>
       </div>
     </div>
@@ -1073,62 +1107,62 @@
   <section id="co-je-quickcheck">
     <div class="container">
       <div class="section-intro">
-        <span class="eyebrow">Co je QuickCheck</span>
-        <h2 class="section-title">Externí audit. <em>Tajný nakupující.</em> Žádný čas vašeho týmu.</h2>
-        <p class="lead">QuickCheck je strukturovaná externí analýza vašeho digitálního fundraisingu. Pracuji jako tajný nakupující — přihlásím se k newsletteru jako anonymní zájemce, projdu si web jako potenciální dárce, otestuju donor journey, srovnám vás s konkurencí. Vy jen objednáte. Já dodám.</p>
+        <span class="eyebrow" data-i18n="qc.eyebrow">Was ist QuickCheck</span>
+        <h2 class="section-title" data-i18n="qc.h2">Externes Audit. <em>Mystery Shopper.</em> Keine Zeit Ihres Teams.</h2>
+        <p class="lead" data-i18n="qc.lead">QuickCheck ist eine strukturierte externe Analyse Ihres Digital-Fundraisings. Ich arbeite als Mystery Shopper — melde mich anonym zum Newsletter an, gehe durch die Website wie ein potenzieller Spender, teste die Donor Journey, vergleiche Sie mit dem Wettbewerb. Sie bestellen. Ich liefere.</p>
       </div>
 
       <!-- 9 PILÍŘŮ GRID -->
       <div class="pillars-intro">
-        <span class="eyebrow-pill">9 oblastí · Strukturovaná metodologie</span>
-        <h3 class="pillars-title">Co konkrétně auditujeme.</h3>
+        <span class="eyebrow-pill" data-i18n="pillars.pill">9 Bereiche · Strukturierte Methodologie</span>
+        <h3 class="pillars-title" data-i18n="pillars.title">Was wir konkret prüfen.</h3>
       </div>
 
       <div class="pillars-grid">
         <div class="pillar-card">
           <div class="pillar-num">01</div>
-          <h4>Web &amp; Donate Page</h4>
-          <p>UX, mobilní optimalizace, donate page audit, performance, trust signály.</p>
+          <h4 data-i18n="pillars.1.h4">Web &amp; Donate Page</h4>
+          <p data-i18n="pillars.1.p">UX, Mobile-Optimierung, Donate Page Audit, Performance, Trust-Signale.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">02</div>
-          <h4>Donor Journey + Mobile</h4>
-          <p>Od první návštěvy k dokončenému daru. Friction points, drop-off, mobile experience.</p>
+          <h4 data-i18n="pillars.2.h4">Donor Journey + Mobile</h4>
+          <p data-i18n="pillars.2.p">Vom ersten Besuch bis zur abgeschlossenen Spende. Friction Points, Drop-off, Mobile Experience.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">03</div>
-          <h4>Sociální sítě</h4>
-          <p>Aktivita, engagement, kvalita obsahu, paid kampaně, follower growth, tone of voice.</p>
+          <h4 data-i18n="pillars.3.h4">Soziale Netzwerke</h4>
+          <p data-i18n="pillars.3.p">Aktivität, Engagement, Inhaltsqualität, Paid-Kampagnen, Follower-Wachstum, Tonalität.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">04</div>
-          <h4>Aktuální kampaně</h4>
-          <p>Běžící akce, landing pages, ad copy, urgency, social proof, sezónní timing.</p>
+          <h4 data-i18n="pillars.4.h4">Aktuelle Kampagnen</h4>
+          <p data-i18n="pillars.4.p">Laufende Aktionen, Landing Pages, Ad Copy, Dringlichkeit, Social Proof, saisonales Timing.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">05</div>
-          <h4>Newsletter &amp; welcome sekvence</h4>
-          <p>Audit z pozice anonymního subscribera. Welcome série, frekvence, storytelling kvalita.</p>
+          <h4 data-i18n="pillars.5.h4">Newsletter &amp; Welcome-Sequenz</h4>
+          <p data-i18n="pillars.5.p">Audit aus der Sicht eines anonymen Subscribers. Welcome-Serie, Frequenz, Storytelling-Qualität.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">06</div>
-          <h4>Peer benchmark</h4>
-          <p>Srovnání s 5–7 podobnými organizacemi z DACH. Co dělají oni lépe — a co můžete převzít.</p>
+          <h4 data-i18n="pillars.6.h4">Peer Benchmark</h4>
+          <p data-i18n="pillars.6.p">Vergleich mit 5–7 ähnlichen Organisationen aus dem DACH-Raum. Was machen sie besser — und was können Sie übernehmen.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">07</div>
-          <h4>Strategie kampaní + sezónní</h4>
-          <p>Roční kalendář, klíčové momenty, kampaňová struktura, návaznost akcí.</p>
+          <h4 data-i18n="pillars.7.h4">Kampagnenstrategie + saisonal</h4>
+          <p data-i18n="pillars.7.p">Jahreskalender, Schlüsselmomente, Kampagnenstruktur, Verkettung der Aktionen.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">08</div>
-          <h4>Recurring giving</h4>
-          <p>Pravidelné dárcovství — strategie, technické nastavení, retention, upgrade asks.</p>
+          <h4 data-i18n="pillars.8.h4">Recurring Giving</h4>
+          <p data-i18n="pillars.8.p">Wiederkehrendes Spenden — Strategie, technisches Setup, Retention, Upgrade Asks.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">09</div>
-          <h4>Storytelling + brand</h4>
-          <p>Brand voice konzistence, kvalita příběhů, vizuální identita, emocionální vs. racionální balance.</p>
+          <h4 data-i18n="pillars.9.h4">Storytelling + Brand</h4>
+          <p data-i18n="pillars.9.p">Brand-Voice-Konsistenz, Qualität der Geschichten, visuelle Identität, emotionale vs. rationale Balance.</p>
         </div>
       </div>
 
@@ -1137,29 +1171,29 @@
         <div class="methodology-item">
           <div class="methodology-icon">01</div>
           <div>
-            <h4>Tajný nakupující přístup</h4>
-            <p>Přihlásím se k newsletteru jako anonymní zájemce. Otestuju spendenformulář s malou částkou. Projdu donor journey jako reálný dárce. Vidím, co vidí váš dárce — ne to, co chcete, aby viděl.</p>
+            <h4 data-i18n="meth.1.h4">Mystery-Shopper-Ansatz</h4>
+            <p data-i18n="meth.1.p">Ich melde mich anonym zum Newsletter an. Teste das Spendenformular mit einem kleinen Betrag. Gehe durch die Donor Journey wie ein echter Spender. Ich sehe, was Ihr Spender sieht — nicht das, was Sie sehen wollen, dass er sieht.</p>
           </div>
         </div>
         <div class="methodology-item">
           <div class="methodology-icon">02</div>
           <div>
-            <h4>Hvězdičkový rating systému</h4>
-            <p>Každý quick win má rating na 4 osách: dopad, pracnost, čas k výsledku, finanční náklady. Žádné mlhavé „doporučujeme" — jasné priority, kde začít.</p>
+            <h4 data-i18n="meth.2.h4">Sternchen-Bewertungssystem</h4>
+            <p data-i18n="meth.2.p">Jeder Quick Win bekommt ein Rating auf 4 Achsen: Wirkung, Aufwand, Time-to-Result, finanzielle Kosten. Keine vagen „wir empfehlen" — klare Prioritäten, wo zu beginnen ist.</p>
           </div>
         </div>
         <div class="methodology-item">
           <div class="methodology-icon">03</div>
           <div>
-            <h4>Peer benchmark s konkrétními příklady</h4>
-            <p>Najdu 5–7 NGO podobné velikosti a sektoru. Ukážu, co dělají lépe — s konkrétními screenshoty a odkazy. Žádná teorie z internetu.</p>
+            <h4 data-i18n="meth.3.h4">Peer Benchmark mit konkreten Beispielen</h4>
+            <p data-i18n="meth.3.p">Ich finde 5–7 NGOs ähnlicher Größe und Sektor. Zeige, was sie besser machen — mit konkreten Screenshots und Links. Keine Theorie aus dem Internet.</p>
           </div>
         </div>
         <div class="methodology-item">
           <div class="methodology-icon">04</div>
           <div>
-            <h4>10 pracovních dní · striktně</h4>
-            <p>Od objednání po dodání 10 pracovních dní. Žádné slipping termíny, žádné „dodáme za měsíc". Včetně 22–28 hodin auditní práce z mé strany.</p>
+            <h4 data-i18n="meth.4.h4">10 Werktage · strikt</h4>
+            <p data-i18n="meth.4.p">Von der Bestellung bis zur Lieferung 10 Werktage. Keine verschobenen Fristen, kein „wir liefern in einem Monat". Inklusive 22–28 Stunden Auditarbeit von meiner Seite.</p>
           </div>
         </div>
       </div>
@@ -1170,53 +1204,53 @@
   <section id="quickcheck">
     <div class="container">
       <div class="deliverables-band">
-        <span class="eyebrow">Co dostanete v QuickChecku</span>
-        <h2 class="section-title">Šest výstupů. <em>10 pracovních dní.</em> Nula úsilí.</h2>
-        <p class="lead" style="max-width:680px;">
-          Pracuji jako tajný nakupující — zvenku, optikou potenciálního dárce. Vy jen objednáte. Já dodám.
+        <span class="eyebrow" data-i18n="deliv.eyebrow">Was Sie im QuickCheck bekommen</span>
+        <h2 class="section-title" data-i18n="deliv.h2">Sechs Outputs. <em>10 Werktage.</em> Null Aufwand.</h2>
+        <p class="lead" style="max-width:680px;" data-i18n="deliv.lead">
+          Ich arbeite als Mystery Shopper — von außen, durch die Brille eines potenziellen Spenders. Sie bestellen. Ich liefere.
         </p>
 
         <div class="deliv-grid">
           <div class="deliv-item">
             <div class="deliv-icon">01</div>
             <div>
-              <h4>PDF report (15–25 stran)</h4>
-              <p>Analýza všech 9 oblastí, top zjištění, peer benchmark, strategická doporučení.</p>
+              <h4 data-i18n="deliv.1.h4">PDF-Report (15–25 Seiten)</h4>
+              <p data-i18n="deliv.1.p">Analyse aller 9 Bereiche, Top-Erkenntnisse, Peer Benchmark, strategische Empfehlungen.</p>
             </div>
           </div>
           <div class="deliv-item">
             <div class="deliv-icon">02</div>
             <div>
-              <h4>Video prezentace (10–15 min)</h4>
-              <p>V němčině. Provedu vás top 5 quick wins. Jako bychom se osobně potkali.</p>
+              <h4 data-i18n="deliv.2.h4">Videopräsentation (10–15 Min)</h4>
+              <p data-i18n="deliv.2.p">Auf Deutsch. Ich führe Sie durch die Top 5 Quick Wins. Als hätten wir uns persönlich getroffen.</p>
             </div>
           </div>
           <div class="deliv-item">
             <div class="deliv-icon">03</div>
             <div>
-              <h4>Klientská microsite</h4>
-              <p>Vše na jednom místě. Interaktivní quick wins checklist. Přístup 12 měsíců.</p>
+              <h4 data-i18n="deliv.3.h4">Kunden-Microsite</h4>
+              <p data-i18n="deliv.3.p">Alles an einem Ort. Interaktive Quick-Wins-Checkliste. Zugang für 12 Monate.</p>
             </div>
           </div>
           <div class="deliv-item">
             <div class="deliv-icon">04</div>
             <div>
-              <h4>Peer benchmark (5–7 NGO)</h4>
-              <p>Jak si stojíte mezi srovnatelnými hospici a pečovatelskými organizacemi v DACH.</p>
+              <h4 data-i18n="deliv.4.h4">Peer Benchmark (5–7 NGOs)</h4>
+              <p data-i18n="deliv.4.p">Wo Sie zwischen vergleichbaren Hospizen und Pflegeorganisationen im DACH-Raum stehen.</p>
             </div>
           </div>
           <div class="deliv-item">
             <div class="deliv-icon">05</div>
             <div>
-              <h4>PowerPoint pro správní radu</h4>
-              <p>Editovatelná prezentace, kterou rovnou použijete na zasedání.</p>
+              <h4 data-i18n="deliv.5.h4">PowerPoint für den Stiftungsrat</h4>
+              <p data-i18n="deliv.5.p">Editierbare Präsentation, die Sie direkt in der Sitzung verwenden.</p>
             </div>
           </div>
           <div class="deliv-item">
             <div class="deliv-icon">06</div>
             <div>
-              <h4>30min strategický call</h4>
-              <p>Po dodání. Vaše otázky, priority, další kroky. Bez prodejního tlaku.</p>
+              <h4 data-i18n="deliv.6.h4">30-Min strategischer Call</h4>
+              <p data-i18n="deliv.6.p">Nach der Lieferung. Ihre Fragen, Prioritäten, nächste Schritte. Ohne Verkaufsdruck.</p>
             </div>
           </div>
         </div>
@@ -1228,24 +1262,24 @@
   <section id="balicky">
     <div class="container">
       <div class="bundles-intro">
-        <span class="eyebrow" style="justify-content:center;">Tři způsoby, jak začít</span>
-        <h2 class="section-title">Vyberte, <em>jak hluboko chcete jít.</em></h2>
-        <p style="font-size:18px; color:#555; line-height:1.55;">QuickCheck je vstupní brána. Ale samotná analýza nezvedne spendy — to udělá až práce, která navazuje. Proto jsem připravil tři varianty.</p>
+        <span class="eyebrow" style="justify-content:center;" data-i18n="bundles.eyebrow">Drei Wege, anzufangen</span>
+        <h2 class="section-title" data-i18n="bundles.h2">Wählen Sie, <em>wie tief Sie gehen möchten.</em></h2>
+        <p style="font-size:18px; color:#555; line-height:1.55;" data-i18n="bundles.p">QuickCheck ist die Eingangstür. Aber die Analyse allein hebt die Spenden nicht — das macht erst die Arbeit, die folgt. Deshalb habe ich drei Varianten vorbereitet.</p>
       </div>
 
       <!-- SOLO QUICKCHECK -->
       <div class="solo-pricing">
         <div>
-          <h3>Jen QuickCheck</h3>
-          <p>Externí analýza + 25–30 quick wins + strategická doporučení. Pro hospic, který chce nejdřív vědět, kde je, než se rozhodne, kam jít. Implementaci si zařídíte sami.</p>
+          <h3 data-i18n="solo.h3">Nur QuickCheck</h3>
+          <p data-i18n="solo.p">Externe Analyse + 25–30 Quick Wins + strategische Empfehlungen. Für ein Hospiz, das zuerst wissen möchte, wo es steht, bevor es entscheidet, wohin es geht. Die Umsetzung organisieren Sie selbst.</p>
         </div>
         <div class="price-block">
           <div class="solo-cohort">
             <span class="cohort-dots">●●●●○</span>
-            <span class="cohort-text-light">Founding Cohort · 4 z 5 míst</span>
+            <span class="cohort-text-light" data-i18n="solo.cohort">Founding Cohort · 4 von 5 Plätzen</span>
           </div>
           <div class="price-new">5 999 CHF</div>
-          <div class="price-meta">10 pracovních dní · Founding Cohort cena · platí 30 dní</div>
+          <div class="price-meta" data-i18n="solo.priceMeta">10 Werktage · Founding Cohort Preis · gültig 30 Tage</div>
         </div>
       </div>
 
@@ -1253,52 +1287,52 @@
       <div class="bundles-grid">
         <!-- BUNDLE 1: STRATEGIE -->
         <div class="bundle-card">
-          <h4>Balíček 01</h4>
-          <h3>QuickCheck + kompletní fundraisingová strategie</h3>
-          <p class="desc">Pro hospic, který má jasno, že chce digitální fundraising postavit profesionálně. QuickCheck najde mezery, strategie navrhne, jak je systematicky vyplnit na 12–24 měsíců dopředu.</p>
+          <h4 data-i18n="bundle1.h4">Paket 01</h4>
+          <h3 data-i18n="bundle1.h3">QuickCheck + komplette Fundraising-Strategie</h3>
+          <p class="desc" data-i18n="bundle1.desc">Für ein Hospiz, das klar weiß, dass es Digital-Fundraising professionell aufbauen möchte. QuickCheck findet die Lücken, die Strategie schlägt vor, wie sie systematisch über 12–24 Monate gefüllt werden.</p>
           <ul>
-            <li>Kompletní QuickCheck (vše uvedené výše)</li>
-            <li>Definice cílových dárcovských segmentů a person</li>
-            <li>Strategie sběru e-mailových kontaktů</li>
-            <li>Kompletní donor journey mapa</li>
-            <li>Obsahová strategie pro web a sociální sítě</li>
-            <li>Roční kampaňový kalendář</li>
-            <li>KPIs a měření</li>
-            <li>Plán nasazení AI nástrojů</li>
-            <li>Roadmap na 12–24 měsíců s rozpočtem</li>
-            <li>Online workshop s vaší správní radou (4 h)</li>
+            <li data-i18n="bundle1.li1">Vollständiger QuickCheck (alles oben Aufgeführte)</li>
+            <li data-i18n="bundle1.li2">Definition der Zielspender-Segmente und Personas</li>
+            <li data-i18n="bundle1.li3">Strategie zur E-Mail-Adressgewinnung</li>
+            <li data-i18n="bundle1.li4">Komplette Donor-Journey-Karte</li>
+            <li data-i18n="bundle1.li5">Content-Strategie für Website und Social Media</li>
+            <li data-i18n="bundle1.li6">Jährlicher Kampagnenkalender</li>
+            <li data-i18n="bundle1.li7">KPIs und Messung</li>
+            <li data-i18n="bundle1.li8">Plan zur Implementierung von KI-Tools</li>
+            <li data-i18n="bundle1.li9">Roadmap für 12–24 Monate inklusive Budget</li>
+            <li data-i18n="bundle1.li10">Online-Workshop mit Ihrem Stiftungsrat (4 Std.)</li>
           </ul>
           <div class="bundle-price">18 999 CHF</div>
-          <div class="bundle-meta">Komplexní balíček · Dodání 5–7 týdnů · Platba 50/50</div>
-          <a href="mailto:petr@ngo.digital?subject=Hospiz%20Aargau%20%E2%80%94%20QuickCheck%20%2B%20Strategie" class="btn-primary" style="width:100%; justify-content:center;">Mám zájem o tento balíček →</a>
+          <div class="bundle-meta" data-i18n="bundle1.meta">Komplexes Paket · Lieferung 5–7 Wochen · Zahlung 50/50</div>
+          <a href="mailto:petr@ngo.digital?subject=Hospiz%20Aargau%20%E2%80%94%20QuickCheck%20%2B%20Strategie" class="btn-primary" style="width:100%; justify-content:center;" data-i18n="bundle1.cta">Ich habe Interesse an diesem Paket →</a>
         </div>
 
         <!-- BUNDLE 2: RETAINER (FEATURED) -->
         <div class="bundle-card featured">
-          <span class="bundle-tag">★ Nejvíc smysluplné</span>
-          <h4 style="color:#C9F31D !important;">Balíček 02</h4>
-          <h3>QuickCheck + dlouhodobý retainer</h3>
-          <p class="desc">Pro hospic, který chce digitální fundraising posunout systematicky a nemusí čekat na hotovou strategii. Po QuickChecku se přesouvám do role externího experta — jsme v denním kontaktu s vaším týmem.</p>
+          <span class="bundle-tag" data-i18n="bundle2.tag">★ Am sinnvollsten</span>
+          <h4 style="color:#C9F31D !important;" data-i18n="bundle2.h4">Paket 02</h4>
+          <h3 data-i18n="bundle2.h3">QuickCheck + langfristiger Retainer</h3>
+          <p class="desc" data-i18n="bundle2.desc">Für ein Hospiz, das Digital-Fundraising systematisch weiterbringen möchte und nicht auf eine fertige Strategie warten muss. Nach dem QuickCheck wechsle ich in die Rolle eines externen Experten — wir sind im täglichen Kontakt mit Ihrem Team.</p>
           <ul>
-            <li>Kompletní QuickCheck (vše uvedené výše)</li>
-            <li>Měsíční strategický call s ředitelem / fundraisingem</li>
-            <li>Příprava a review kampaní</li>
-            <li>Postupná optimalizace donor journey</li>
-            <li>Konzultace nad obsahem (web, social, newsletter)</li>
-            <li>Měsíční reporting a doporučení</li>
-            <li>Postupné nasazení AI nástrojů</li>
-            <li>1× ročně velký workshop / strategy review</li>
-            <li>8 hodin práce / měsíc · 6 měsíců minimum</li>
+            <li data-i18n="bundle2.li1">Vollständiger QuickCheck (alles oben Aufgeführte)</li>
+            <li data-i18n="bundle2.li2">Monatlicher strategischer Call mit Direktor / Fundraising</li>
+            <li data-i18n="bundle2.li3">Vorbereitung und Review von Kampagnen</li>
+            <li data-i18n="bundle2.li4">Schrittweise Optimierung der Donor Journey</li>
+            <li data-i18n="bundle2.li5">Beratung zu Inhalten (Web, Social, Newsletter)</li>
+            <li data-i18n="bundle2.li6">Monatliches Reporting und Empfehlungen</li>
+            <li data-i18n="bundle2.li7">Schrittweise Implementierung von KI-Tools</li>
+            <li data-i18n="bundle2.li8">1× jährlich großer Workshop / Strategy Review</li>
+            <li data-i18n="bundle2.li9">8 Stunden Arbeit / Monat · 6 Monate Mindestlaufzeit</li>
           </ul>
-          <div class="bundle-price">První rok: 34 999 CHF</div>
-          <div class="bundle-meta">QuickCheck + 12× měsíční retainer · Komplexní balíček prvního roku</div>
-          <a href="mailto:petr@ngo.digital?subject=Hospiz%20Aargau%20%E2%80%94%20QuickCheck%20%2B%20Retainer" class="btn-primary" style="width:100%; justify-content:center;">Mám zájem o tento balíček →</a>
+          <div class="bundle-price" data-i18n="bundle2.price">Erstes Jahr: 34 999 CHF</div>
+          <div class="bundle-meta" data-i18n="bundle2.meta">QuickCheck + 12× monatlicher Retainer · Komplexes Paket des ersten Jahres</div>
+          <a href="mailto:petr@ngo.digital?subject=Hospiz%20Aargau%20%E2%80%94%20QuickCheck%20%2B%20Retainer" class="btn-primary" style="width:100%; justify-content:center;" data-i18n="bundle2.cta">Ich habe Interesse an diesem Paket →</a>
         </div>
       </div>
 
-      <p style="text-align:center; color:#888; font-size:15px; margin-top:-40px;">
-        Všechny ceny v CHF + DPH. Platba bankovním převodem nebo kartou.<br>
-        Nepřesvědčen? Dejte si zatím <a href="#quickcheck" style="color:#1A1A1A; border-bottom:1px solid #1A1A1A;">jen samotný QuickCheck</a> a rozhodněte se po něm.
+      <p style="text-align:center; color:#888; font-size:15px; margin-top:-40px;" data-i18n="bundles.disclaimer">
+        Alle Preise in CHF + MwSt. Zahlung per Banküberweisung oder Karte.<br>
+        Nicht überzeugt? Nehmen Sie zunächst <a href="#quickcheck" style="color:#1A1A1A; border-bottom:1px solid #1A1A1A;">nur den QuickCheck</a> und entscheiden Sie danach.
       </p>
     </div>
   </section>
@@ -1309,26 +1343,26 @@
       <div class="about">
         <div class="about-grid">
           <div>
-            <span class="eyebrow">Kdo to dělá</span>
-            <h2 class="section-title">Petr Chalupianský, <em>konzultant digitálního fundraisingu.</em></h2>
-            <p style="font-size:18px; line-height:1.6; color:#444;">
-              Pomáhám neziskovkám v Evropě získávat víc dárců a peněz — kombinací digitální strategie, AI a 10 let praxe. Z Prahy, pro DACH a Skandinávii.
+            <span class="eyebrow" data-i18n="about.eyebrow">Wer es macht</span>
+            <h2 class="section-title" data-i18n="about.h2">Petr Chalupianský, <em>Berater für Digital-Fundraising.</em></h2>
+            <p style="font-size:18px; line-height:1.6; color:#444;" data-i18n="about.p">
+              Ich helfe Non-Profits in Europa, mehr Spender und Geld zu gewinnen — durch eine Kombination aus digitaler Strategie, KI und 10 Jahren Praxis. Aus Prag, für DACH und Skandinavien.
             </p>
             <ul>
-              <li><strong>17+ mil. Kč</strong> se sbírkou Rozsviťme Česko 2024 — nejúspěšnější vánoční sbírka v ČR</li>
-              <li><strong>122 mil. Kč</strong> za 7 let pro Světlušku (Vánoční sbírka Kaufland)</li>
-              <li><strong>ROI 2 100 %</strong> pro Sociální podnik Klubák — 30k Kč investice → 650k Kč</li>
-              <li><strong>Člen správní rady</strong> Nadačního fondu Českého rozhlasu</li>
-              <li><strong>Ocenění:</strong> Osobnost filantropie 2021, Laskavec 2020</li>
-              <li><strong>Vystoupení:</strong> TEDx, PechaKucha Night, ČT24</li>
+              <li data-i18n="about.li1"><strong>17+ Mio. CZK</strong> mit der Sammlung Rozsviťme Česko 2024 — die erfolgreichste Weihnachtssammlung in Tschechien</li>
+              <li data-i18n="about.li2"><strong>122 Mio. CZK</strong> in 7 Jahren für Světluška (Kaufland-Weihnachtssammlung)</li>
+              <li data-i18n="about.li3"><strong>ROI 2 100 %</strong> für das Sozialunternehmen Klubák — 30k CZK Investition → 650k CZK</li>
+              <li data-i18n="about.li4"><strong>Vorstandsmitglied</strong> der Stiftung des Tschechischen Rundfunks</li>
+              <li data-i18n="about.li5"><strong>Auszeichnungen:</strong> Persönlichkeit der Philanthropie 2021, Laskavec 2020</li>
+              <li data-i18n="about.li6"><strong>Auftritte:</strong> TEDx, PechaKucha Night, ČT24</li>
             </ul>
           </div>
           <div>
             <div class="petr-photo">
               <img src="petr-portrait.png" alt="Petr Chalupianský">
               <div class="petr-photo-quote">
-                <div class="petr-photo-quote-text">
-                  „Hospic dělá nejtěžší práci ze všech sociálních služeb. Digitální fundraising musí odpovídat hodnotě té práce — ne ji utlumit."
+                <div class="petr-photo-quote-text" data-i18n="about.quote">
+                  „Ein Hospiz leistet die schwerste Arbeit aller Sozialdienste. Digital-Fundraising muss dem Wert dieser Arbeit entsprechen — und ihn nicht abdämpfen."
                 </div>
                 <div class="petr-photo-quote-author">— Petr Chalupianský</div>
               </div>
@@ -1342,15 +1376,15 @@
   <!-- ============ FINAL CTA ============ -->
   <div class="final-cta">
     <div class="container">
-      <span class="eyebrow-pill">Další krok · Nezávazně</span>
-      <h2>30 minut na hovor. <em>Bez prodejního tlaku.</em></h2>
-      <p>Nemusíte se hned rozhodovat. Probereme vaši situaci, vaše priority, a vyberete si — jestli QuickCheck, jeden z balíčků, nebo nic. Klidně jen poslat zprávu.</p>
+      <span class="eyebrow-pill" data-i18n="final.pill">Nächster Schritt · Unverbindlich</span>
+      <h2 data-i18n="final.h2">30 Minuten für ein Gespräch. <em>Ohne Verkaufsdruck.</em></h2>
+      <p data-i18n="final.p">Sie müssen sich nicht sofort entscheiden. Wir besprechen Ihre Situation, Ihre Prioritäten — und Sie wählen, ob QuickCheck, eines der Pakete oder nichts. Auch nur eine Nachricht zu senden ist völlig in Ordnung.</p>
       <div class="final-cta-buttons">
-        <a href="mailto:petr@ngo.digital?subject=Hospiz%20Aargau%20%E2%80%94%20Strategick%C3%BD%20call" class="btn-primary">Domluvit strategický call →</a>
-        <a href="mailto:petr@ngo.digital?subject=Hospiz%20Aargau%20%E2%80%94%20Dotaz" class="btn-secondary">Nejdřív se zeptat</a>
+        <a href="mailto:petr@ngo.digital?subject=Hospiz%20Aargau%20%E2%80%94%20Strategischer%20Call" class="btn-primary" data-i18n="final.btn1">Strategischen Call vereinbaren →</a>
+        <a href="mailto:petr@ngo.digital?subject=Hospiz%20Aargau%20%E2%80%94%20Anfrage" class="btn-secondary" data-i18n="final.btn2">Zuerst eine Frage stellen</a>
       </div>
-      <p style="margin-top:32px; font-size:14px; color:#888;">
-        Odpověď do 24 hodin, po–pá. · Komunikace v němčině nebo angličtině.
+      <p style="margin-top:32px; font-size:14px; color:#888;" data-i18n="final.note">
+        Antwort innerhalb von 24 Stunden, Mo–Fr. · Kommunikation auf Deutsch oder Englisch.
       </p>
     </div>
   </div>
@@ -1361,18 +1395,18 @@
       <div class="footer-grid">
         <div>
           <a href="#" class="logo">ngo<span class="dot">.</span>digital</a>
-          <p style="margin-top:16px; max-width:340px;">Digitální fundraising, který opravdu vybírá. Strategie, AI a 10 let praxe — pro neziskovky v DACH a Skandinávii.</p>
+          <p style="margin-top:16px; max-width:340px;" data-i18n="footer.tag">Digital-Fundraising, das wirklich Geld einbringt. Strategie, KI und 10 Jahre Praxis — für Non-Profits in DACH und Skandinavien.</p>
         </div>
         <div>
-          <h5>Kontakt</h5>
+          <h5 data-i18n="footer.col1.title">Kontakt</h5>
           <p><a href="mailto:petr@ngo.digital">petr@ngo.digital</a></p>
           <p><a href="https://ngo.digital">ngo.digital</a></p>
           <p><a href="https://linkedin.com/in/chalupiansky">LinkedIn</a></p>
         </div>
         <div>
-          <h5>Tato microsite</h5>
-          <p>Připravena osobně pro Hospiz Aargau po 30minutové analýze vašeho digitálního fundraisingu.</p>
-          <p style="margin-top:12px;">URL: <strong>ngo.digital/hospiz-aargau</strong></p>
+          <h5 data-i18n="footer.col2.title">Diese Microsite</h5>
+          <p data-i18n="footer.col2.text">Persönlich für Hospiz Aargau vorbereitet nach einer 30-minütigen Analyse Ihres Digital-Fundraisings.</p>
+          <p style="margin-top:12px;" data-i18n="footer.urlLine">URL: <strong>ngo.digital/hospiz-aargau</strong></p>
         </div>
       </div>
 
@@ -1382,6 +1416,361 @@
       </div>
     </div>
   </footer>
+
+  <!-- ============ I18N - LANG SWITCHER (DE/EN, default DE) ============ -->
+  <script>
+    (function() {
+      const LANGS = ['de', 'en'];
+      const T = {
+        de: {
+          'hero.pill': 'Exklusives Angebot · Hospiz Aargau',
+          'hero.h1': 'Gestern habe ich Ihr Digital-Fundraising analysiert. <em>Und ich sehe großes Potenzial.</em>',
+          'hero.sub': 'Mehr Einzelspender. Höhere wiederkehrende Spenden. Ein stärkerer Ruf des Hospizes in der Gemeinschaft und im digitalen Raum. Hier ist, was ich gesehen habe — und wie wir es gemeinsam weiterbringen.',
+          'hero.btn1': 'Was ich gesehen habe →',
+          'hero.btn2': 'Drei Pakete der Zusammenarbeit',
+          'hero.card.label': 'Ihr persönliches Angebot',
+          'hero.card.desc': 'Vollständige externe Analyse Ihres Digital-Fundraisings. Ohne Aufwand auf Ihrer Seite. Lieferung in 10 Werktagen.',
+          'hero.card.cohort': 'Founding Cohort · 4 von 5 Plätzen',
+          'hero.card.priceMeta': 'Founding Cohort Preis · gültig 30 Tage',
+          'hero.card.btn': 'Oder Pakete →',
+
+          'personal.h3': 'Eine kurze persönliche Nachricht für Sie',
+          'personal.p1': 'Sehr geehrter Herr Direktor {ŘEDITEL}, entschuldigen Sie die unerwartete Nachricht. Ich bin Berater für Digital-Fundraising und arbeite mit Non-Profit-Organisationen in der DACH-Region und Skandinavien — vor allem mit Hospizen, Sozialeinrichtungen und gesundheitsorientierten NGOs.',
+          'personal.p2': 'Bei meinem regelmäßigen Mapping des Hospiz-Sektors in der Schweiz bin ich gestern auf Hospiz Aargau gestoßen und habe mich kurz mit Ihrem Digital-Fundraising beschäftigt — als wäre ich ein potenzieller Spender. Ich bin durch die Website gegangen, habe die Social-Media-Kanäle angesehen, das Spendenformular geöffnet und nach dem Newsletter gesucht.',
+          'personal.p3': 'Was ich gesehen habe, hat mich <strong>aufrichtig beeindruckt</strong> — und das aus gutem Grund. Hospiz Aargau hat alles, was ein Hospiz für Spender attraktiv macht: eine starke Geschichte, greifbare Wirkung auf Menschen in den letzten Tagen ihres Lebens, eine feste Position in der Gemeinschaft. Und genau deshalb sehe ich <strong>großes ungenutztes Potenzial</strong> — mehr Einzelspender, einen höheren Anteil an wiederkehrenden Spenden, einen stärkeren Ruf des Hospizes im digitalen Raum. Es geht nicht darum, was Sie falsch machen. Es geht darum, was Sie heute noch nicht voll ausschöpfen können.',
+          'personal.p4': 'Diese Microsite ist mein Vorschlag, wie wir dieses Potenzial gemeinsam in Ergebnisse umwandeln. Wenn Sie die folgende Seite anspricht, melden Sie sich. Wenn nicht, glaube ich, dass sie Ihnen trotzdem ein paar nützliche Einsichten bringt.',
+          'personal.signature': 'Mit Respekt vor Ihrer Arbeit, Petr Chalupianský',
+
+          'findings.eyebrow': 'Drei Schlüsselbeobachtungen',
+          'findings.h2': 'Drei Dinge, die <em>Ihr gesamtes Digital-Fundraising bremsen.</em>',
+          'findings.lead': 'Das sind keine kleinen kosmetischen Anpassungen. Es sind drei strukturelle Punkte, die eng miteinander verbunden sind — und jeder einzelne kostet Sie Spender, Spenden und Renommee. Die gute Nachricht: Alle drei lassen sich systematisch beheben.',
+          'findings.c1.num': 'Beobachtung 01',
+          'findings.c1.h4': 'Veraltete Website',
+          'findings.c1.p': 'Ihre aktuelle Website wurde wahrscheinlich vor einigen Jahren gebaut und liegt heute deutlich hinter dem Standard von Hospizorganisationen im DACH-Raum zurück. Es geht nicht um Ästhetik — es geht darum, dass moderne Spender mit anderen Erwartungen kommen (Geschwindigkeit, Mobile Experience, Vertrauenswürdigkeit, Wirkungsgeschichte). Eine veraltete Website senkt unbewusst die Wahrnehmung der gesamten Organisation.',
+          'findings.c1.impact': 'Wirkung: <span class="stars">★★★★★</span> · Lösung: neue Website',
+          'findings.c2.num': 'Beobachtung 02',
+          'findings.c2.h4': 'Schlechtes Spendenformular',
+          'findings.c2.p': 'Das aktuelle Spendenformular führt den Spender nicht — es wartet nur auf ihn. Es fehlen konkrete Wirkungsbeträge („CHF 80 = ein Tag Hospizpflege"), die wiederkehrende Spende ist nicht als Standard voreingestellt, die Donor Journey ist fragmentiert. Diese eine Stelle ist der kritischste Punkt, an dem entschieden wird, ob der Besucher die Spende abschließt — oder geht.',
+          'findings.c2.impact': 'Wirkung: <span class="stars">★★★★★</span> · Lösung: Optimierung + Redesign',
+          'findings.c3.num': 'Beobachtung 03',
+          'findings.c3.h4': 'Fehlen bezahlter Werbung',
+          'findings.c3.p': 'Bei der Überprüfung der Meta Ads Library habe ich keine bezahlten Kampagnen von Hospiz Aargau auf Facebook oder Instagram gefunden. Ihre FB-Seite hat 225 Fans nach 30 Jahren Existenz — was eine vollständige Abhängigkeit von der organischen Reichweite bedeutet. Gezielte Meta-Kampagnen im Kanton Aargau gehören für den Hospizsektor zu den effektivsten Kanälen, um neue Spender zu gewinnen und das Renommee zu stärken.',
+          'findings.c3.impact': 'Wirkung: <span class="stars">★★★★☆</span> · Lösung: langfristige Zusammenarbeit',
+
+          'promise.pill': 'Was diese 3 Beobachtungen zusammen bedeuten',
+          'promise.h2': 'Drei Probleme. <em>Eine gemeinsame Wurzel.</em>',
+          'promise.p': 'Eine veraltete Website, ein schlechtes Spendenformular und fehlende Werbung sind keine drei unabhängigen Fehler — sie sind <strong style="color:#FFF;">Symptome derselben Sache</strong>: Digital-Fundraising bei Hospiz Aargau funktioniert noch nicht als System. Im vollständigen QuickCheck kartiere ich dieses System über <strong style="color:#C9F31D;">9 Bereiche</strong> hinweg und schlage vor, wie es aufgebaut werden kann. Ohne eine einzige Minute Ihrer Zeit — Sie bestellen, ich liefere.',
+
+          'qc.eyebrow': 'Was ist QuickCheck',
+          'qc.h2': 'Externes Audit. <em>Mystery Shopper.</em> Keine Zeit Ihres Teams.',
+          'qc.lead': 'QuickCheck ist eine strukturierte externe Analyse Ihres Digital-Fundraisings. Ich arbeite als Mystery Shopper — melde mich anonym zum Newsletter an, gehe durch die Website wie ein potenzieller Spender, teste die Donor Journey, vergleiche Sie mit dem Wettbewerb. Sie bestellen. Ich liefere.',
+
+          'pillars.pill': '9 Bereiche · Strukturierte Methodologie',
+          'pillars.title': 'Was wir konkret prüfen.',
+          'pillars.1.h4': 'Web &amp; Donate Page',
+          'pillars.1.p': 'UX, Mobile-Optimierung, Donate Page Audit, Performance, Trust-Signale.',
+          'pillars.2.h4': 'Donor Journey + Mobile',
+          'pillars.2.p': 'Vom ersten Besuch bis zur abgeschlossenen Spende. Friction Points, Drop-off, Mobile Experience.',
+          'pillars.3.h4': 'Soziale Netzwerke',
+          'pillars.3.p': 'Aktivität, Engagement, Inhaltsqualität, Paid-Kampagnen, Follower-Wachstum, Tonalität.',
+          'pillars.4.h4': 'Aktuelle Kampagnen',
+          'pillars.4.p': 'Laufende Aktionen, Landing Pages, Ad Copy, Dringlichkeit, Social Proof, saisonales Timing.',
+          'pillars.5.h4': 'Newsletter &amp; Welcome-Sequenz',
+          'pillars.5.p': 'Audit aus der Sicht eines anonymen Subscribers. Welcome-Serie, Frequenz, Storytelling-Qualität.',
+          'pillars.6.h4': 'Peer Benchmark',
+          'pillars.6.p': 'Vergleich mit 5–7 ähnlichen Organisationen aus dem DACH-Raum. Was machen sie besser — und was können Sie übernehmen.',
+          'pillars.7.h4': 'Kampagnenstrategie + saisonal',
+          'pillars.7.p': 'Jahreskalender, Schlüsselmomente, Kampagnenstruktur, Verkettung der Aktionen.',
+          'pillars.8.h4': 'Recurring Giving',
+          'pillars.8.p': 'Wiederkehrendes Spenden — Strategie, technisches Setup, Retention, Upgrade Asks.',
+          'pillars.9.h4': 'Storytelling + Brand',
+          'pillars.9.p': 'Brand-Voice-Konsistenz, Qualität der Geschichten, visuelle Identität, emotionale vs. rationale Balance.',
+
+          'meth.1.h4': 'Mystery-Shopper-Ansatz',
+          'meth.1.p': 'Ich melde mich anonym zum Newsletter an. Teste das Spendenformular mit einem kleinen Betrag. Gehe durch die Donor Journey wie ein echter Spender. Ich sehe, was Ihr Spender sieht — nicht das, was Sie sehen wollen, dass er sieht.',
+          'meth.2.h4': 'Sternchen-Bewertungssystem',
+          'meth.2.p': 'Jeder Quick Win bekommt ein Rating auf 4 Achsen: Wirkung, Aufwand, Time-to-Result, finanzielle Kosten. Keine vagen „wir empfehlen" — klare Prioritäten, wo zu beginnen ist.',
+          'meth.3.h4': 'Peer Benchmark mit konkreten Beispielen',
+          'meth.3.p': 'Ich finde 5–7 NGOs ähnlicher Größe und Sektor. Zeige, was sie besser machen — mit konkreten Screenshots und Links. Keine Theorie aus dem Internet.',
+          'meth.4.h4': '10 Werktage · strikt',
+          'meth.4.p': 'Von der Bestellung bis zur Lieferung 10 Werktage. Keine verschobenen Fristen, kein „wir liefern in einem Monat". Inklusive 22–28 Stunden Auditarbeit von meiner Seite.',
+
+          'deliv.eyebrow': 'Was Sie im QuickCheck bekommen',
+          'deliv.h2': 'Sechs Outputs. <em>10 Werktage.</em> Null Aufwand.',
+          'deliv.lead': 'Ich arbeite als Mystery Shopper — von außen, durch die Brille eines potenziellen Spenders. Sie bestellen. Ich liefere.',
+          'deliv.1.h4': 'PDF-Report (15–25 Seiten)',
+          'deliv.1.p': 'Analyse aller 9 Bereiche, Top-Erkenntnisse, Peer Benchmark, strategische Empfehlungen.',
+          'deliv.2.h4': 'Videopräsentation (10–15 Min)',
+          'deliv.2.p': 'Auf Deutsch. Ich führe Sie durch die Top 5 Quick Wins. Als hätten wir uns persönlich getroffen.',
+          'deliv.3.h4': 'Kunden-Microsite',
+          'deliv.3.p': 'Alles an einem Ort. Interaktive Quick-Wins-Checkliste. Zugang für 12 Monate.',
+          'deliv.4.h4': 'Peer Benchmark (5–7 NGOs)',
+          'deliv.4.p': 'Wo Sie zwischen vergleichbaren Hospizen und Pflegeorganisationen im DACH-Raum stehen.',
+          'deliv.5.h4': 'PowerPoint für den Stiftungsrat',
+          'deliv.5.p': 'Editierbare Präsentation, die Sie direkt in der Sitzung verwenden.',
+          'deliv.6.h4': '30-Min strategischer Call',
+          'deliv.6.p': 'Nach der Lieferung. Ihre Fragen, Prioritäten, nächste Schritte. Ohne Verkaufsdruck.',
+
+          'bundles.eyebrow': 'Drei Wege, anzufangen',
+          'bundles.h2': 'Wählen Sie, <em>wie tief Sie gehen möchten.</em>',
+          'bundles.p': 'QuickCheck ist die Eingangstür. Aber die Analyse allein hebt die Spenden nicht — das macht erst die Arbeit, die folgt. Deshalb habe ich drei Varianten vorbereitet.',
+          'solo.h3': 'Nur QuickCheck',
+          'solo.p': 'Externe Analyse + 25–30 Quick Wins + strategische Empfehlungen. Für ein Hospiz, das zuerst wissen möchte, wo es steht, bevor es entscheidet, wohin es geht. Die Umsetzung organisieren Sie selbst.',
+          'solo.cohort': 'Founding Cohort · 4 von 5 Plätzen',
+          'solo.priceMeta': '10 Werktage · Founding Cohort Preis · gültig 30 Tage',
+
+          'bundle1.h4': 'Paket 01',
+          'bundle1.h3': 'QuickCheck + komplette Fundraising-Strategie',
+          'bundle1.desc': 'Für ein Hospiz, das klar weiß, dass es Digital-Fundraising professionell aufbauen möchte. QuickCheck findet die Lücken, die Strategie schlägt vor, wie sie systematisch über 12–24 Monate gefüllt werden.',
+          'bundle1.li1': 'Vollständiger QuickCheck (alles oben Aufgeführte)',
+          'bundle1.li2': 'Definition der Zielspender-Segmente und Personas',
+          'bundle1.li3': 'Strategie zur E-Mail-Adressgewinnung',
+          'bundle1.li4': 'Komplette Donor-Journey-Karte',
+          'bundle1.li5': 'Content-Strategie für Website und Social Media',
+          'bundle1.li6': 'Jährlicher Kampagnenkalender',
+          'bundle1.li7': 'KPIs und Messung',
+          'bundle1.li8': 'Plan zur Implementierung von KI-Tools',
+          'bundle1.li9': 'Roadmap für 12–24 Monate inklusive Budget',
+          'bundle1.li10': 'Online-Workshop mit Ihrem Stiftungsrat (4 Std.)',
+          'bundle1.meta': 'Komplexes Paket · Lieferung 5–7 Wochen · Zahlung 50/50',
+          'bundle1.cta': 'Ich habe Interesse an diesem Paket →',
+
+          'bundle2.tag': '★ Am sinnvollsten',
+          'bundle2.h4': 'Paket 02',
+          'bundle2.h3': 'QuickCheck + langfristiger Retainer',
+          'bundle2.desc': 'Für ein Hospiz, das Digital-Fundraising systematisch weiterbringen möchte und nicht auf eine fertige Strategie warten muss. Nach dem QuickCheck wechsle ich in die Rolle eines externen Experten — wir sind im täglichen Kontakt mit Ihrem Team.',
+          'bundle2.li1': 'Vollständiger QuickCheck (alles oben Aufgeführte)',
+          'bundle2.li2': 'Monatlicher strategischer Call mit Direktor / Fundraising',
+          'bundle2.li3': 'Vorbereitung und Review von Kampagnen',
+          'bundle2.li4': 'Schrittweise Optimierung der Donor Journey',
+          'bundle2.li5': 'Beratung zu Inhalten (Web, Social, Newsletter)',
+          'bundle2.li6': 'Monatliches Reporting und Empfehlungen',
+          'bundle2.li7': 'Schrittweise Implementierung von KI-Tools',
+          'bundle2.li8': '1× jährlich großer Workshop / Strategy Review',
+          'bundle2.li9': '8 Stunden Arbeit / Monat · 6 Monate Mindestlaufzeit',
+          'bundle2.price': 'Erstes Jahr: 34 999 CHF',
+          'bundle2.meta': 'QuickCheck + 12× monatlicher Retainer · Komplexes Paket des ersten Jahres',
+          'bundle2.cta': 'Ich habe Interesse an diesem Paket →',
+
+          'bundles.disclaimer': 'Alle Preise in CHF + MwSt. Zahlung per Banküberweisung oder Karte.<br>Nicht überzeugt? Nehmen Sie zunächst <a href="#quickcheck" style="color:#1A1A1A; border-bottom:1px solid #1A1A1A;">nur den QuickCheck</a> und entscheiden Sie danach.',
+
+          'about.eyebrow': 'Wer es macht',
+          'about.h2': 'Petr Chalupianský, <em>Berater für Digital-Fundraising.</em>',
+          'about.p': 'Ich helfe Non-Profits in Europa, mehr Spender und Geld zu gewinnen — durch eine Kombination aus digitaler Strategie, KI und 10 Jahren Praxis. Aus Prag, für DACH und Skandinavien.',
+          'about.li1': '<strong>17+ Mio. CZK</strong> mit der Sammlung Rozsviťme Česko 2024 — die erfolgreichste Weihnachtssammlung in Tschechien',
+          'about.li2': '<strong>122 Mio. CZK</strong> in 7 Jahren für Světluška (Kaufland-Weihnachtssammlung)',
+          'about.li3': '<strong>ROI 2 100 %</strong> für das Sozialunternehmen Klubák — 30k CZK Investition → 650k CZK',
+          'about.li4': '<strong>Vorstandsmitglied</strong> der Stiftung des Tschechischen Rundfunks',
+          'about.li5': '<strong>Auszeichnungen:</strong> Persönlichkeit der Philanthropie 2021, Laskavec 2020',
+          'about.li6': '<strong>Auftritte:</strong> TEDx, PechaKucha Night, ČT24',
+          'about.quote': '„Ein Hospiz leistet die schwerste Arbeit aller Sozialdienste. Digital-Fundraising muss dem Wert dieser Arbeit entsprechen — und ihn nicht abdämpfen."',
+
+          'final.pill': 'Nächster Schritt · Unverbindlich',
+          'final.h2': '30 Minuten für ein Gespräch. <em>Ohne Verkaufsdruck.</em>',
+          'final.p': 'Sie müssen sich nicht sofort entscheiden. Wir besprechen Ihre Situation, Ihre Prioritäten — und Sie wählen, ob QuickCheck, eines der Pakete oder nichts. Auch nur eine Nachricht zu senden ist völlig in Ordnung.',
+          'final.btn1': 'Strategischen Call vereinbaren →',
+          'final.btn2': 'Zuerst eine Frage stellen',
+          'final.note': 'Antwort innerhalb von 24 Stunden, Mo–Fr. · Kommunikation auf Deutsch oder Englisch.',
+
+          'footer.tag': 'Digital-Fundraising, das wirklich Geld einbringt. Strategie, KI und 10 Jahre Praxis — für Non-Profits in DACH und Skandinavien.',
+          'footer.col1.title': 'Kontakt',
+          'footer.col2.title': 'Diese Microsite',
+          'footer.col2.text': 'Persönlich für Hospiz Aargau vorbereitet nach einer 30-minütigen Analyse Ihres Digital-Fundraisings.',
+          'footer.urlLine': 'URL: <strong>ngo.digital/hospiz-aargau</strong>',
+        },
+        en: {
+          'hero.pill': 'Exclusive offer · Hospiz Aargau',
+          'hero.h1': 'Yesterday I analyzed your digital fundraising. <em>And I see real potential.</em>',
+          'hero.sub': 'More individual donors. Higher recurring giving. A stronger reputation for the hospice in the community and online. Here\'s what I saw — and how we can move it forward together.',
+          'hero.btn1': 'What I saw →',
+          'hero.btn2': 'Three collaboration packages',
+          'hero.card.label': 'Your personal offer',
+          'hero.card.desc': 'A complete external analysis of your digital fundraising. Zero work on your side. Delivered in 10 working days.',
+          'hero.card.cohort': 'Founding Cohort · 4 of 5 spots',
+          'hero.card.priceMeta': 'Founding Cohort price · valid for 30 days',
+          'hero.card.btn': 'Or packages →',
+
+          'personal.h3': 'A short personal note for you',
+          'personal.p1': 'Dear Director {ŘEDITEL}, apologies for this unexpected message. I\'m a digital fundraising consultant working with non-profits across the DACH region and Scandinavia — primarily hospices, social care organizations and health-focused NGOs.',
+          'personal.p2': 'Yesterday, during my regular mapping of the hospice sector in Switzerland, I came across Hospiz Aargau and spent a moment looking at your digital fundraising — as if I were a potential donor. I went through the website, looked at your social media channels, opened the donation form and searched for the newsletter.',
+          'personal.p3': 'What I saw <strong>genuinely impressed me</strong> — and for good reason. Hospiz Aargau has everything that makes a hospice attractive to donors: a strong story, tangible impact on people in their final days, a solid position in the community. And precisely for that reason, I see <strong>significant untapped potential</strong> — more individual donors, a higher share of recurring giving, a stronger reputation in the digital space. It\'s not about what you\'re doing wrong. It\'s about what you can\'t yet fully leverage today.',
+          'personal.p4': 'This microsite is my proposal for how we can turn that potential into results together. If the following page resonates, get in touch. If not, I trust it will still bring you a few useful insights.',
+          'personal.signature': 'With respect for your work, Petr Chalupianský',
+
+          'findings.eyebrow': 'Three key observations',
+          'findings.h2': 'Three things holding back <em>your entire digital fundraising.</em>',
+          'findings.lead': 'These aren\'t minor cosmetic tweaks. They\'re three structural issues that are closely connected — and each one is costing you donors, donations and reputation. The good news: all three can be systematically fixed.',
+          'findings.c1.num': 'Observation 01',
+          'findings.c1.h4': 'Outdated website',
+          'findings.c1.p': 'Your current website was likely built years ago and now lags significantly behind the standard of hospice organizations in the DACH region. It\'s not about aesthetics — it\'s that modern donors come with different expectations (speed, mobile experience, trustworthiness, impact storytelling). An outdated website subconsciously lowers the perception of the entire organization.',
+          'findings.c1.impact': 'Impact: <span class="stars">★★★★★</span> · Solution: new website',
+          'findings.c2.num': 'Observation 02',
+          'findings.c2.h4': 'Poor donation form',
+          'findings.c2.p': 'The current donation form doesn\'t guide the donor — it just waits for them. There are no concrete impact amounts ("CHF 80 = one day of hospice care"), recurring giving isn\'t set as the default, the donor journey is fragmented. This single point is the most critical place where it\'s decided whether a visitor completes their donation — or leaves.',
+          'findings.c2.impact': 'Impact: <span class="stars">★★★★★</span> · Solution: optimization + redesign',
+          'findings.c3.num': 'Observation 03',
+          'findings.c3.h4': 'Absence of paid ads',
+          'findings.c3.p': 'After checking the Meta Ads Library, I found no paid campaigns by Hospiz Aargau on Facebook or Instagram. Your FB page has 225 fans after 30 years of existence — meaning total dependence on organic reach. Targeted Meta campaigns within the canton of Aargau are one of the most effective channels for the hospice sector to acquire new donors and strengthen reputation.',
+          'findings.c3.impact': 'Impact: <span class="stars">★★★★☆</span> · Solution: long-term partnership',
+
+          'promise.pill': 'What these 3 observations mean together',
+          'promise.h2': 'Three problems. <em>One common root.</em>',
+          'promise.p': 'An outdated website, a poor donation form and the absence of ads aren\'t three independent mistakes — they\'re <strong style="color:#FFF;">symptoms of the same thing</strong>: digital fundraising at Hospiz Aargau isn\'t yet working as a system. In the full QuickCheck I map this system across <strong style="color:#C9F31D;">9 areas</strong> and propose how to build it. Without a single minute of your time — you order, I deliver.',
+
+          'qc.eyebrow': 'What is QuickCheck',
+          'qc.h2': 'External audit. <em>Mystery shopper.</em> Zero time from your team.',
+          'qc.lead': 'QuickCheck is a structured external analysis of your digital fundraising. I work as a mystery shopper — sign up to the newsletter as an anonymous prospect, walk through the website like a potential donor, test the donor journey, benchmark you against the competition. You order. I deliver.',
+
+          'pillars.pill': '9 areas · Structured methodology',
+          'pillars.title': 'What we audit specifically.',
+          'pillars.1.h4': 'Web &amp; Donate Page',
+          'pillars.1.p': 'UX, mobile optimization, donate page audit, performance, trust signals.',
+          'pillars.2.h4': 'Donor Journey + Mobile',
+          'pillars.2.p': 'From first visit to completed donation. Friction points, drop-off, mobile experience.',
+          'pillars.3.h4': 'Social media',
+          'pillars.3.p': 'Activity, engagement, content quality, paid campaigns, follower growth, tone of voice.',
+          'pillars.4.h4': 'Current campaigns',
+          'pillars.4.p': 'Active campaigns, landing pages, ad copy, urgency, social proof, seasonal timing.',
+          'pillars.5.h4': 'Newsletter &amp; welcome sequence',
+          'pillars.5.p': 'Audit from an anonymous subscriber\'s perspective. Welcome series, frequency, storytelling quality.',
+          'pillars.6.h4': 'Peer benchmark',
+          'pillars.6.p': 'Comparison with 5–7 similar organizations from DACH. What they do better — and what you can adopt.',
+          'pillars.7.h4': 'Campaign strategy + seasonal',
+          'pillars.7.p': 'Annual calendar, key moments, campaign structure, sequencing.',
+          'pillars.8.h4': 'Recurring giving',
+          'pillars.8.p': 'Recurring giving — strategy, technical setup, retention, upgrade asks.',
+          'pillars.9.h4': 'Storytelling + brand',
+          'pillars.9.p': 'Brand voice consistency, story quality, visual identity, emotional vs. rational balance.',
+
+          'meth.1.h4': 'Mystery shopper approach',
+          'meth.1.p': 'I sign up to the newsletter as an anonymous prospect. I test the donation form with a small amount. I walk through the donor journey like a real donor. I see what your donor sees — not what you want them to see.',
+          'meth.2.h4': 'Star rating system',
+          'meth.2.p': 'Every quick win gets a rating across 4 axes: impact, effort, time-to-result, financial cost. No vague "we recommend" — clear priorities on where to start.',
+          'meth.3.h4': 'Peer benchmark with concrete examples',
+          'meth.3.p': 'I find 5–7 NGOs of similar size and sector. I show what they do better — with concrete screenshots and links. No internet theory.',
+          'meth.4.h4': '10 working days · strict',
+          'meth.4.p': 'From order to delivery: 10 working days. No slipping deadlines, no "we\'ll deliver in a month". Including 22–28 hours of audit work on my side.',
+
+          'deliv.eyebrow': 'What you get in QuickCheck',
+          'deliv.h2': 'Six outputs. <em>10 working days.</em> Zero effort.',
+          'deliv.lead': 'I work as a mystery shopper — from the outside, through the lens of a potential donor. You order. I deliver.',
+          'deliv.1.h4': 'PDF report (15–25 pages)',
+          'deliv.1.p': 'Analysis of all 9 areas, top findings, peer benchmark, strategic recommendations.',
+          'deliv.2.h4': 'Video presentation (10–15 min)',
+          'deliv.2.p': 'In German. I walk you through the top 5 quick wins. As if we met in person.',
+          'deliv.3.h4': 'Client microsite',
+          'deliv.3.p': 'Everything in one place. Interactive quick wins checklist. Access for 12 months.',
+          'deliv.4.h4': 'Peer benchmark (5–7 NGOs)',
+          'deliv.4.p': 'How you stand among comparable hospices and care organizations in the DACH region.',
+          'deliv.5.h4': 'PowerPoint for the board',
+          'deliv.5.p': 'Editable presentation you can use directly at the meeting.',
+          'deliv.6.h4': '30-min strategy call',
+          'deliv.6.p': 'After delivery. Your questions, priorities, next steps. No sales pressure.',
+
+          'bundles.eyebrow': 'Three ways to start',
+          'bundles.h2': 'Choose <em>how deep you want to go.</em>',
+          'bundles.p': 'QuickCheck is the entry door. But analysis alone won\'t lift donations — that comes from the work that follows. So I\'ve prepared three variants.',
+          'solo.h3': 'QuickCheck only',
+          'solo.p': 'External analysis + 25–30 quick wins + strategic recommendations. For a hospice that wants to know where it stands first, before deciding where to go. You arrange the implementation yourself.',
+          'solo.cohort': 'Founding Cohort · 4 of 5 spots',
+          'solo.priceMeta': '10 working days · Founding Cohort price · valid for 30 days',
+
+          'bundle1.h4': 'Package 01',
+          'bundle1.h3': 'QuickCheck + complete fundraising strategy',
+          'bundle1.desc': 'For a hospice that\'s clear it wants to build digital fundraising professionally. QuickCheck finds the gaps; the strategy proposes how to systematically fill them over 12–24 months.',
+          'bundle1.li1': 'Complete QuickCheck (everything listed above)',
+          'bundle1.li2': 'Definition of target donor segments and personas',
+          'bundle1.li3': 'Email contact acquisition strategy',
+          'bundle1.li4': 'Complete donor journey map',
+          'bundle1.li5': 'Content strategy for web and social media',
+          'bundle1.li6': 'Annual campaign calendar',
+          'bundle1.li7': 'KPIs and measurement',
+          'bundle1.li8': 'AI tool implementation plan',
+          'bundle1.li9': '12–24 month roadmap with budget',
+          'bundle1.li10': 'Online workshop with your board (4 hrs)',
+          'bundle1.meta': 'Comprehensive package · Delivery 5–7 weeks · Payment 50/50',
+          'bundle1.cta': 'I\'m interested in this package →',
+
+          'bundle2.tag': '★ Most meaningful',
+          'bundle2.h4': 'Package 02',
+          'bundle2.h3': 'QuickCheck + long-term retainer',
+          'bundle2.desc': 'For a hospice that wants to advance digital fundraising systematically and doesn\'t need to wait for a finished strategy. After the QuickCheck I move into the role of external expert — we\'re in daily contact with your team.',
+          'bundle2.li1': 'Complete QuickCheck (everything listed above)',
+          'bundle2.li2': 'Monthly strategy call with director / fundraising',
+          'bundle2.li3': 'Campaign preparation and review',
+          'bundle2.li4': 'Gradual donor journey optimization',
+          'bundle2.li5': 'Content consultation (web, social, newsletter)',
+          'bundle2.li6': 'Monthly reporting and recommendations',
+          'bundle2.li7': 'Gradual AI tool implementation',
+          'bundle2.li8': '1× per year a large workshop / strategy review',
+          'bundle2.li9': '8 hours of work / month · 6 months minimum',
+          'bundle2.price': 'First year: 34 999 CHF',
+          'bundle2.meta': 'QuickCheck + 12× monthly retainer · Comprehensive first-year package',
+          'bundle2.cta': 'I\'m interested in this package →',
+
+          'bundles.disclaimer': 'All prices in CHF + VAT. Payment by bank transfer or card.<br>Not convinced? Try <a href="#quickcheck" style="color:#1A1A1A; border-bottom:1px solid #1A1A1A;">just the QuickCheck</a> first and decide afterwards.',
+
+          'about.eyebrow': 'Who\'s behind it',
+          'about.h2': 'Petr Chalupianský, <em>digital fundraising consultant.</em>',
+          'about.p': 'I help non-profits across Europe gain more donors and money — through digital strategy, AI and 10 years of practice. From Prague, for DACH and Scandinavia.',
+          'about.li1': '<strong>17+ million CZK</strong> with the Rozsviťme Česko 2024 campaign — the most successful Christmas fundraiser in the Czech Republic',
+          'about.li2': '<strong>122 million CZK</strong> over 7 years for Světluška (Kaufland Christmas campaign)',
+          'about.li3': '<strong>ROI 2,100%</strong> for Klubák social enterprise — 30k CZK invested → 650k CZK',
+          'about.li4': '<strong>Board member</strong> of the Czech Radio Foundation',
+          'about.li5': '<strong>Awards:</strong> Personality of Philanthropy 2021, Laskavec 2020',
+          'about.li6': '<strong>Speaker:</strong> TEDx, PechaKucha Night, ČT24',
+          'about.quote': '"A hospice does the hardest work of all social services. Digital fundraising must match the value of that work — not diminish it."',
+
+          'final.pill': 'Next step · No commitment',
+          'final.h2': '30 minutes for a call. <em>No sales pressure.</em>',
+          'final.p': 'You don\'t have to decide right away. We\'ll discuss your situation, your priorities — and you choose: QuickCheck, one of the packages, or nothing. Just sending a message is fine too.',
+          'final.btn1': 'Schedule a strategy call →',
+          'final.btn2': 'Ask first',
+          'final.note': 'Reply within 24 hours, Mon–Fri. · Communication in German or English.',
+
+          'footer.tag': 'Digital fundraising that actually raises money. Strategy, AI and 10 years of practice — for non-profits in DACH and Scandinavia.',
+          'footer.col1.title': 'Contact',
+          'footer.col2.title': 'This microsite',
+          'footer.col2.text': 'Personally prepared for Hospiz Aargau after a 30-minute analysis of your digital fundraising.',
+          'footer.urlLine': 'URL: <strong>ngo.digital/hospiz-aargau</strong>',
+        }
+      };
+
+      function setLang(lang) {
+        if (!LANGS.includes(lang)) lang = 'de';
+        const dict = T[lang];
+        document.documentElement.lang = lang;
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          const isActive = btn.dataset.lang === lang;
+          btn.classList.toggle('is-active', isActive);
+          btn.setAttribute('aria-pressed', String(isActive));
+        });
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.dataset.i18n;
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        try { localStorage.setItem('hospiz_lang', lang); } catch(e) {}
+      }
+
+      // Init: URL ?lang=en > localStorage > default 'de'
+      let initLang = 'de';
+      try {
+        const saved = localStorage.getItem('hospiz_lang');
+        if (saved && LANGS.includes(saved)) initLang = saved;
+      } catch(e) {}
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      if (urlLang && LANGS.includes(urlLang)) initLang = urlLang;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLang(btn.dataset.lang));
+      });
+
+      setLang(initLang);
+    })();
+  </script>
 
 </body>
 </html>
