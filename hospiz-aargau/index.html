@@ -9,6 +9,13 @@
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-9B328kdZ_zEWlEdeo50hp.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -69,32 +76,80 @@
       padding: 0 0.05em;
     }
 
-    /* Bio list (about section, like homepage) */
+    /* Bio bullet list (about section, lime dot markers, like homepage v3_3) */
     .bio-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 28px 0;
+      margin: 0 0 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
     .bio-list li {
       font-family: 'Source Sans 3', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 17px;
+      line-height: 1.55;
       color: #1A1A1A;
-      font-weight: 300;
-      padding: 14px 0 14px 28px;
-      border-bottom: 1px solid #E0E0E0;
+      padding-left: 22px;
       position: relative;
     }
     .bio-list li::before {
-      content: '→';
-      color: #C9F31D;
+      content: '';
       position: absolute;
       left: 0;
-      font-weight: 800;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      background: #C9F31D;
+      border-radius: 50%;
     }
-    .bio-list li:last-child { border-bottom: none; }
-    .bio-list li strong { font-weight: 700; }
+    .bio-list li strong { font-weight: 700; color: #000; }
     .bio-list li em { font-style: italic; font-family: 'Instrument Serif', serif; font-weight: 400; }
+    @media (max-width: 480px) {
+      .bio-list li { font-size: 16px; }
+    }
+
+    /* Recognition cards (about awards, card grid, like homepage v3_3) */
+    .recognition-grid {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .recognition-card {
+      position: relative;
+      background: #FAFAFA;
+      border: 1px solid #ECECEC;
+      border-left: 3px solid #C9F31D;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #555;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-color 0.25s ease, background 0.25s ease;
+    }
+    .recognition-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      background: #FFFFFF;
+      border-left-color: #000;
+    }
+    .recognition-card strong {
+      display: block;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #000;
+      font-size: 16px;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    @media (max-width: 720px) {
+      .recognition-grid { grid-template-columns: 1fr; }
+    }
 
     /* Pulsující CTA tlačítko (dark on lime bg) */
     @keyframes ctaPulse {
@@ -118,134 +173,6 @@
     }
     .cta-pulse-lime:hover { animation: none; }
 
-    /* ============ CONTACT WIZARD (z homepage) ============ */
-    .wizard {
-      max-width: 720px;
-      margin: 32px auto 0;
-      background: #FFFFFF;
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 24px;
-      padding: 56px 48px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.08), 0 32px 64px rgba(0,0,0,0.10);
-      position: relative;
-      overflow: hidden;
-    }
-    .wizard-progress { display: flex; gap: 6px; margin-bottom: 32px; }
-    .wizard-progress-dot { flex: 1; height: 4px; background: #EEE; border-radius: 2px; transition: background 0.3s ease; }
-    .wizard-progress-dot.done { background: #C9F31D; }
-    .wizard-progress-dot.current { background: #1A1A1A; }
-    .wizard-step { display: none; animation: wizardFadeIn 0.4s cubic-bezier(.2,.8,.2,1); }
-    .wizard-step.active { display: block; }
-    @keyframes wizardFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .wizard-question {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 36px; font-weight: 800; letter-spacing: -0.03em;
-      line-height: 1.1; color: #1A1A1A; margin-bottom: 8px;
-    }
-    .wizard-question em {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic; font-weight: 400; letter-spacing: -0.02em;
-    }
-    .wizard-hint {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 16px; color: #888; margin-bottom: 28px;
-    }
-    .wizard-input {
-      width: 100%; border: none; border-bottom: 2px solid #1A1A1A;
-      padding: 16px 0; font-family: 'Source Sans 3', sans-serif;
-      font-size: 22px; color: #1A1A1A; background: transparent;
-      outline: none; transition: border-color 0.2s ease;
-    }
-    .wizard-input:focus { border-bottom-color: #C9F31D; }
-    .wizard-input::placeholder { color: #BBB; font-weight: 300; }
-    .wizard-input.is-error { border-bottom-color: #E63946; }
-    .wizard-error {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 13px; color: #E63946; margin-top: 8px; min-height: 18px;
-    }
-    .wizard-textarea {
-      width: 100%; border: none; border-bottom: 2px solid #1A1A1A;
-      padding: 16px 0; font-family: 'Source Sans 3', sans-serif;
-      font-size: 18px; line-height: 1.5; color: #1A1A1A;
-      background: transparent; outline: none; resize: none; min-height: 90px;
-    }
-    .wizard-textarea:focus { border-bottom-color: #C9F31D; }
-    .wizard-textarea::placeholder { color: #BBB; font-weight: 300; }
-    .wizard-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
-    .wizard-chips input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
-    .wizard-chip {
-      display: inline-block; padding: 10px 18px; border: 1px solid #000;
-      border-radius: 999px; font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 14px; font-weight: 600; color: #000;
-      cursor: pointer; transition: all 0.15s ease; background: transparent;
-    }
-    .wizard-chip:hover { background: #000; color: #C9F31D; }
-    .wizard-chips input[type="radio"]:checked + .wizard-chip {
-      background: #000; color: #C9F31D; border-color: #000;
-    }
-    .wizard-chips input[type="radio"]:focus-visible + .wizard-chip {
-      outline: 2px solid #000; outline-offset: 2px;
-    }
-    .wizard-controls {
-      display: flex; align-items: center; justify-content: space-between; margin-top: 32px;
-    }
-    .wizard-back, .wizard-next, .wizard-skip {
-      font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700;
-      border: none; cursor: pointer; border-radius: 999px; transition: all 0.2s ease;
-    }
-    .wizard-back { background: transparent; color: #888; padding: 12px 18px; font-size: 15px; }
-    .wizard-back:hover { color: #1A1A1A; }
-    .wizard-back.is-hidden { visibility: hidden; }
-    .wizard-skip { background: transparent; color: #888; padding: 12px 18px; font-size: 14px; margin-right: 8px; }
-    .wizard-skip:hover { color: #1A1A1A; }
-    .wizard-skip.is-hidden { display: none; }
-    .wizard-next {
-      background: #C9F31D; color: #1A1A1A; padding: 14px 26px;
-      font-size: 15px; box-shadow: 0 4px 0 #00000010;
-      display: inline-flex; align-items: center; gap: 10px;
-    }
-    .wizard-next:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #00000010; }
-    .wizard-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-    .wizard-press-enter { font-family: 'Source Sans 3', sans-serif; font-size: 12px; color: #888; margin-left: 14px; }
-    .wizard-press-enter kbd {
-      background: #F5F5F5; border: 1px solid #DDD; border-radius: 4px;
-      padding: 2px 6px; font-family: 'Source Sans 3', sans-serif;
-      font-size: 11px; font-weight: 600;
-    }
-    .wizard-success { text-align: center; padding: 48px 0 16px; animation: wizardFadeIn 0.5s cubic-bezier(.2,.8,.2,1); }
-    .wizard-success-icon {
-      width: 64px; height: 64px; background: #C9F31D; border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      margin-bottom: 20px; font-size: 28px; color: #1A1A1A; font-weight: 800;
-    }
-    .wizard-success h3 {
-      font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px;
-      font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; color: #1A1A1A;
-    }
-    .wizard-success h3 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
-    .wizard-success p {
-      font-family: 'Source Sans 3', sans-serif; font-size: 17px;
-      color: #444; max-width: 420px; margin: 0 auto; line-height: 1.5;
-    }
-    @media (max-width: 1024px) {
-      .wizard { padding: 48px 36px; }
-      .wizard-question { font-size: 32px; }
-    }
-    @media (max-width: 768px) {
-      .wizard { padding: 32px 24px; border-radius: 20px; margin-top: 24px; }
-      .wizard-question { font-size: 26px; line-height: 1.15; }
-      .wizard-hint { font-size: 15px; margin-bottom: 24px; }
-      .wizard-input { font-size: 19px; }
-      .wizard-textarea { font-size: 16px; }
-      .wizard-press-enter { display: none; }
-      .wizard-controls { margin-top: 28px; }
-      .wizard-next { padding: 14px 22px; font-size: 14px; }
-      .wizard-success { padding: 32px 0 8px; }
-      .wizard-success h3 { font-size: 28px; }
-    }
   </style>
 </head>
 <body class="antialiased">
@@ -254,7 +181,7 @@
   <nav class="sticky top-0 z-50 bg-white/92 backdrop-blur-md border-b border-[#F0F0F0]">
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between gap-4">
       <div class="flex items-center gap-3 md:gap-4 min-w-0">
-        <a href="https://ngo.digital" target="_blank" rel="noopener" class="text-[18px] md:text-[20px] font-extrabold tracking-[-0.03em] text-[#1A1A1A] flex-shrink-0 hover:opacity-80 transition-opacity" style="font-family: 'Bricolage Grotesque', sans-serif;" aria-label="ngo.digital homepage">
+        <a href="https://ngo.digital/?lang=de" target="_blank" rel="noopener" class="text-[18px] md:text-[20px] font-extrabold tracking-[-0.03em] text-[#1A1A1A] flex-shrink-0 hover:opacity-80 transition-opacity" style="font-family: 'Bricolage Grotesque', sans-serif;" aria-label="ngo.digital homepage">
           ngo<span class="text-[#C9F31D]">.</span>digital
         </a>
         <span class="hidden sm:block w-px h-5 bg-[#DDDDDD] flex-shrink-0"></span>
@@ -281,12 +208,6 @@
   <section class="relative bg-white overflow-hidden">
 
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-24 md:py-32 lg:py-40 relative">
-
-      <!-- Date marker (merged: scope + date) -->
-      <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888] mb-9 flex items-center gap-2.5" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        <span class="w-2 h-2 rounded-full bg-[#C9F31D]"></span>
-        <span data-i18n="hero.date">Persönliche Analyse für Hospiz Aargau · 11. Mai 2026</span>
-      </div>
 
       <!-- H1 — salutation + direct headline -->
       <h1 class="text-[#1A1A1A] mb-12" style="font-family: 'Bricolage Grotesque', sans-serif;">
@@ -560,11 +481,7 @@
           </div>
           <div class="mt-auto pt-6 border-t border-[#E8E8E8]">
             <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="qw.impactlabel">Expected impact</div>
-            <div class="flex items-baseline gap-1.5 mb-2">
-              <div class="text-[40px] md:text-[44px] font-extrabold text-[#1A1A1A] leading-none tracking-[-0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="qw.c1.metric">+40&ndash;70</div>
-              <div class="text-[24px] font-extrabold text-[#C9F31D]" style="font-family: 'Bricolage Grotesque', sans-serif;">%</div>
-            </div>
-            <p class="text-[13px] md:text-[14px] text-[#555] leading-[1.5]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="qw.c1.impactdesc">more instant donations from mobile.</p>
+            <p class="text-[15px] md:text-[16px] text-[#1A1A1A] leading-[1.55] font-medium" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="qw.c1.impactdesc">Noticeably more instant donations from mobile.</p>
           </div>
         </article>
 
@@ -588,11 +505,7 @@
           </div>
           <div class="mt-auto pt-6 border-t border-[#E8E8E8]">
             <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="qw.impactlabel.2">Expected impact</div>
-            <div class="flex items-baseline gap-1.5 mb-2">
-              <div class="text-[40px] md:text-[44px] font-extrabold text-[#1A1A1A] leading-none tracking-[-0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="qw.c2.metric">18&ndash;35</div>
-              <div class="text-[24px] font-extrabold text-[#C9F31D]" style="font-family: 'Bricolage Grotesque', sans-serif;">%</div>
-            </div>
-            <p class="text-[13px] md:text-[14px] text-[#555] leading-[1.5]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="qw.c2.impactdesc">of donors switch to recurring &ndash; with high long-term value.</p>
+            <p class="text-[15px] md:text-[16px] text-[#1A1A1A] leading-[1.55] font-medium" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="qw.c2.impactdesc">More predictable income through recurring donations with strong long-term value.</p>
           </div>
         </article>
 
@@ -615,20 +528,18 @@
           </div>
           <div class="mt-auto pt-6 border-t border-[#E8E8E8]">
             <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="qw.impactlabel.3">Expected impact</div>
-            <div class="flex items-baseline gap-1.5 mb-2">
-              <div class="text-[40px] md:text-[44px] font-extrabold text-[#1A1A1A] leading-none tracking-[-0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="qw.c3.metric">+30&ndash;50</div>
-              <div class="text-[24px] font-extrabold text-[#C9F31D]" style="font-family: 'Bricolage Grotesque', sans-serif;">%</div>
-            </div>
-            <p class="text-[13px] md:text-[14px] text-[#555] leading-[1.5]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="qw.c3.impactdesc">higher completion rate &ndash; and noticeably better donor retention.</p>
+            <p class="text-[15px] md:text-[16px] text-[#1A1A1A] leading-[1.55] font-medium" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="qw.c3.impactdesc">Higher completion rates and significantly better donor retention.</p>
           </div>
         </article>
 
       </div>
 
-      <!-- Outro paragraph -->
-      <p class="mt-14 md:mt-16 text-[17px] md:text-[19px] text-[#444] leading-[1.6] max-w-3xl mx-auto text-center font-light" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="qw.outro">
-        <strong class="text-[#1A1A1A] font-semibold">Three points, three levers, three measurable effects.</strong> In the Digital Fundraising Audit we go deeper &mdash; channel by channel, weak spot by weak spot, with clear prioritization by effort and impact.
-      </p>
+      <!-- Outro headline -->
+      <div class="mt-14 md:mt-20 text-center max-w-3xl mx-auto">
+        <h3 class="text-[26px] sm:text-[32px] md:text-[38px] lg:text-[44px] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="qw.outro">
+          Discover what other quick steps <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">with high impact</em> you can take<span class="text-[#C9F31D]">.</span>
+        </h3>
+      </div>
 
       <!-- CTA to audit -->
       <div class="mt-10 md:mt-12 flex justify-center">
@@ -661,7 +572,7 @@
 
         <!-- Body -->
         <p class="relative text-[17px] md:text-[19px] lg:text-[20px] text-white/85 leading-[1.6] max-w-4xl mb-10 font-light" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="syn.body">
-          The 3 observations show <strong class="text-white font-semibold">what's not working</strong>. The 3 quick wins show <strong class="text-white font-semibold">what's actionable today</strong>.<br><br>But both are just the surface. The actual cause is the same: digital fundraising at Hospiz Aargau isn't yet running <strong class="text-white font-semibold">as a system</strong>.<br><br>The <strong class="text-white font-semibold">Digital Fundraising Audit</strong> maps your entire fundraising system, identifies the biggest opportunities and delivers you <strong class="text-[#C9F31D] font-semibold">a personalized microsite</strong> with a concrete action plan.<br><br>Without a single minute of your time. No unnecessary meetings. No work for you. You order, I deliver.
+          The 3 observations show <strong class="text-white font-semibold">what's not working</strong>. The 3 quick wins show <strong class="text-white font-semibold">what's actionable today</strong>.<br><br>But both are just the surface. The actual cause is the same: digital fundraising at Hospiz Aargau isn't yet running <strong class="text-white font-semibold">as a system</strong>.<br><br>The <strong class="text-white font-semibold">Digital Fundraising Audit</strong> maps your entire fundraising system, identifies the biggest opportunities and delivers you <strong class="text-[#C9F31D] font-semibold">an output</strong> with a concrete action plan.<br><br>Without a single minute of your time. No unnecessary meetings. No work for you. You order, I deliver. I approach the audit from your donor's perspective.
         </p>
 
         <!-- CTA -->
@@ -671,7 +582,7 @@
             <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
           </a>
           <div class="mt-5 text-[12px] text-white/60 tracking-[0.08em] uppercase font-semibold" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="syn.ctameta">
-            Personalized microsite · delivered in 15 days
+            Personalized microsite with audit output · delivered in 15 working days · Board-ready presentation
           </div>
         </div>
 
@@ -705,7 +616,7 @@
           <!-- Lime callout -->
           <div class="mb-9 p-6 md:p-7 rounded-2xl bg-[#FBFEEF] border border-[#EEF5C8]" data-i18n="audit.callout">
             <p class="text-[16px] md:text-[17px] text-[#1A1A1A] leading-[1.5] mb-2 font-semibold" style="font-family: 'Source Sans 3', sans-serif;">
-              Most NGOs lose 60&ndash;70 % of website visitors before they donate.
+              Most NGOs lose 60&ndash;70 % of website visitors before they complete a donation attempt.
             </p>
             <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55] font-light" style="font-family: 'Source Sans 3', sans-serif;">
               The audit shows you exactly where &ndash; and how to win them back.
@@ -783,38 +694,25 @@
             <!-- Divider -->
             <div class="relative border-t border-[#1A1A1A]/15 mb-5"></div>
 
-            <!-- Subtle price line (supporting detail, not hero) -->
-            <div class="relative flex items-baseline justify-between gap-3">
-              <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#1A1A1A]/60" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="audit.price.label">Investment</div>
-              <div class="flex items-baseline gap-1.5">
-                <div class="text-[28px] md:text-[32px] font-extrabold text-[#1A1A1A] leading-none tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">6&rsquo;750</div>
-                <div class="text-[13px] font-bold text-[#1A1A1A]/65 tracking-[0.06em] uppercase" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF</div>
+            <!-- Price (hero, right-aligned) -->
+            <div class="relative mb-5 text-right">
+              <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#1A1A1A]/60 mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="audit.price.label">Investment</div>
+              <div class="flex items-baseline gap-2 flex-wrap justify-end">
+                <div class="text-[44px] md:text-[56px] font-extrabold text-[#1A1A1A] leading-[0.95] tracking-[-0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">4&rsquo;800</div>
+                <div class="text-[14px] md:text-[18px] font-bold text-[#1A1A1A]/65 tracking-[0.06em] uppercase" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF</div>
               </div>
             </div>
-            <div class="relative text-right text-[12px] italic text-[#1A1A1A]/65 mb-7" style="font-family: 'Instrument Serif', serif;" data-i18n="audit.price.cohort">
-              Introductory price for Hospiz Aargau &ndash; valid for 30 days
-            </div>
+
+            <!-- Payoff line -->
+            <p class="relative text-center text-[14px] md:text-[15px] italic text-[#1A1A1A]/80 leading-[1.5] mb-6" style="font-family: 'Instrument Serif', serif; font-weight: 400;" data-i18n="audit.price.payoff">
+              Die Erkenntnisse aus dem Audit zahlen sich für Sie an Spenden und Reputation um ein Vielfaches aus.
+            </p>
 
             <!-- CTA primary (dark on lime, pulsing) -->
             <a href="#contact" data-interest="Digital Fundraising Audit" class="cta-pulse relative group flex items-center justify-center gap-3 w-full px-6 py-[20px] rounded-full bg-[#1A1A1A] text-[#C9F31D] font-bold text-[16px] tracking-[-0.01em] hover:-translate-y-1 transition-transform duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
               <span data-i18n="audit.cta">Book Digital Fundraising Audit</span>
               <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
             </a>
-
-            <!-- Divider -->
-            <div class="relative border-t border-[#1A1A1A]/15 my-7"></div>
-
-            <!-- Trust signals -->
-            <div class="relative flex flex-wrap gap-x-5 gap-y-3" style="font-family: 'Bricolage Grotesque', sans-serif;">
-              <div class="flex items-center gap-2 text-[12px] font-bold text-[#1A1A1A]">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span data-i18n="audit.trust.2">Personally handled by me</span>
-              </div>
-              <div class="flex items-center gap-2 text-[12px] font-bold text-[#1A1A1A]">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span data-i18n="audit.trust.3">No hidden costs</span>
-              </div>
-            </div>
 
           </div>
         </div>
@@ -865,20 +763,19 @@
 
         <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
           <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">04</div>
-          <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="audit.d5.title">Best practices from the DACH region</h3>
-          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="audit.d5.desc">Concrete examples from hospices and NGOs in Switzerland, Germany and Austria you can adapt immediately.</p>
+          <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="audit.d5.title">Best practices from Europe</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="audit.d5.desc">Concrete examples from hospices and NGOs across Europe you can adapt immediately.</p>
         </article>
 
         <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
           <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">05</div>
-          <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="audit.d6.title">ROI-prioritized roadmap</h3>
-          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="audit.d6.desc">Clear plan of what to tackle first &ndash; with clear sequencing and expected return.</p>
+          <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="audit.d6.title">Roadmap of action steps</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="audit.d6.desc">Structured plan of what to tackle first &ndash; with sequencing and expected benefit.</p>
         </article>
 
         <!-- 06 - signature deliverable, regular card with black background -->
         <article class="bg-[#1A1A1A] rounded-3xl p-7 md:p-8 hover:shadow-[0_16px_40px_rgba(0,0,0,0.20)] hover:-translate-y-1 transition-all duration-300">
           <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">06</div>
-          <div class="text-[10px] uppercase tracking-[0.2em] font-bold text-[#C9F31D] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="audit.d7.eyebrow">★ Das Herzstück</div>
           <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-white tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="audit.d7.title">Board-ready presentation + concrete implementation plan</h3>
           <p class="text-[14px] md:text-[15px] text-white/70 leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="audit.d7.desc">Ready-made, editable presentation + realistic action plan with priorities and budget.</p>
         </article>
@@ -891,6 +788,79 @@
           <span data-i18n="audit.detail.cta">Book Digital Fundraising Audit</span>
           <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
         </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PROCESS & TERMS (timeline) ============ -->
+  <section class="bg-[#FAFAFA] border-t border-[#E8E8E8]">
+    <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
+
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-3 mb-7 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
+        <span class="w-10 h-px bg-[#C9F31D]"></span>
+        <span data-i18n="process.eyebrow">Process &amp; Terms</span>
+      </div>
+
+      <!-- H2 -->
+      <h2 class="text-[34px] sm:text-[40px] md:text-[46px] lg:text-[52px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-7 max-w-4xl" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.h2">
+        How we work together &ndash; <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">transparent and without surprises</em><span class="text-[#C9F31D]">.</span>
+      </h2>
+
+      <!-- Intro -->
+      <p class="text-[17px] md:text-[19px] text-[#444] leading-[1.6] max-w-3xl mb-14 font-light" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="process.intro">
+        From order to delivery, it&rsquo;s 15 working days. You pay half at the start, half after delivery &ndash; no hidden costs, no automatic renewal.
+      </p>
+
+      <!-- 5-step timeline cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+
+        <!-- Step 1: Order -->
+        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-6 md:p-7 flex flex-col h-full">
+          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.s1.kicker">Day 0</div>
+          <h3 class="text-[18px] md:text-[19px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.02em] leading-[1.25]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.s1.title">Order</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="process.s1.desc">You confirm your order by email. I send the initial invoice for 50&nbsp;% (CHF 2,400).</p>
+        </article>
+
+        <!-- Step 2: Initial payment -->
+        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-6 md:p-7 flex flex-col h-full">
+          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.s2.kicker">Day 1&ndash;7</div>
+          <h3 class="text-[18px] md:text-[19px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.02em] leading-[1.25]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.s2.title">Initial payment</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="process.s2.desc">Once the initial payment is received, I start the audit. Payment term: 7 days.</p>
+        </article>
+
+        <!-- Step 3: Audit phase -->
+        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-6 md:p-7 flex flex-col h-full">
+          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.s3.kicker">Day 1&ndash;15</div>
+          <h3 class="text-[18px] md:text-[19px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.02em] leading-[1.25]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.s3.title">Audit phase</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="process.s3.desc">Written onboarding (15 min of your time). After that, I work independently. No meetings, no extra workload for your team.</p>
+        </article>
+
+        <!-- Step 4: Delivery -->
+        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-6 md:p-7 flex flex-col h-full">
+          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.s4.kicker">Day 15</div>
+          <h3 class="text-[18px] md:text-[19px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.02em] leading-[1.25]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.s4.title">Delivery</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="process.s4.desc">You receive all results: analysis report, quick wins, roadmap, and board presentation. Plus the final invoice for the remaining 50&nbsp;% (CHF 2,400).</p>
+        </article>
+
+        <!-- Step 5: Final payment -->
+        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-6 md:p-7 flex flex-col h-full">
+          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.s5.kicker">Day 15&ndash;29</div>
+          <h3 class="text-[18px] md:text-[19px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.02em] leading-[1.25]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="process.s5.title">Final payment</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="process.s5.desc">Payment term for the final invoice: 14 days. This concludes the audit &ndash; with no further obligations.</p>
+        </article>
+
+      </div>
+
+      <!-- Footer line: VAT + contact -->
+      <div class="mt-10 md:mt-12 pt-6 border-t border-[#E8E8E8] flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <p class="text-[13px] md:text-[14px] text-[#888] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="process.footer">
+          All amounts in CHF. Payment via bank transfer.
+        </p>
+        <p class="text-[13px] md:text-[14px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="process.contact">
+          Questions about the process or invoicing? Write to me directly: <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-semibold border-b border-[#1A1A1A]/40 hover:border-[#1A1A1A]">peter@ngo.digital</a>
+        </p>
       </div>
 
     </div>
@@ -918,7 +888,7 @@
         </div>
         <div>
           <div class="text-[16px] font-bold text-white" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="ref.author">Zdeněk Mihalco</div>
-          <div class="text-[14px] text-[#999]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="ref.role">Director, Nadace Via &ndash; Darujme.cz (Czech equivalent of <strong class="text-[#C9F31D] font-bold">RaiseNow</strong>)</div>
+          <div class="text-[14px] text-[#999]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="ref.role">Director, Nadace Via &ndash; Darujme.cz (Czechia&rsquo;s central donation infrastructure, comparable to <strong class="text-[#C9F31D] font-bold">RaiseNow</strong> in Switzerland)</div>
         </div>
       </div>
 
@@ -934,6 +904,29 @@
           <div class="text-[13px] font-bold text-white mb-0.5" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="ref.m2.name">Silvie Dymáková</div>
           <div class="text-[12px] text-[#999]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="ref.m2.role">Journalist, Founder of Příběhy Foundation</div>
         </div>
+      </div>
+
+      <!-- Lime divider (separates references from closing CTA) -->
+      <div class="mt-14 md:mt-16 flex justify-center">
+        <div class="w-40 md:w-56 h-[3px] bg-[#C9F31D] rounded-full"></div>
+      </div>
+
+      <!-- Closing CTA headline -->
+      <div class="mt-10 md:mt-12 text-center max-w-3xl mx-auto">
+        <h3 class="text-[26px] sm:text-[32px] md:text-[38px] lg:text-[44px] font-extrabold leading-[1.1] tracking-[-0.035em] text-white" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="ref.cta.h">
+          The next case reference<br><em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">could be yours</em><span class="text-[#C9F31D]">.</span>
+        </h3>
+        <p class="mt-6 md:mt-7 text-[15px] md:text-[17px] text-white/70 leading-[1.6] max-w-2xl mx-auto font-light" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="ref.cta.body">
+          What worked in Czechia will work for Hospiz Aargau too. The donor-journey logic is the same across borders &ndash; only payment methods and language change.
+        </p>
+      </div>
+
+      <!-- CTA button -->
+      <div class="mt-8 md:mt-10 flex justify-center">
+        <a href="#contact" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.20)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.20),0_12px_24px_rgba(201,243,29,0.30)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          <span data-i18n="ref.cta">Book Digital Fundraising Audit</span>
+          <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
+        </a>
       </div>
     </div>
   </section>
@@ -975,7 +968,7 @@
           <!-- Stats -->
           <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
             <div>
-              <div class="text-[24px] md:text-[28px] font-extrabold text-white leading-none tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">€700K</div>
+              <div class="text-[24px] md:text-[28px] font-extrabold text-white leading-none tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="cases.big.amount">€700K</div>
               <div class="text-[11px] uppercase tracking-[0.1em] text-white/55 mt-2" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="cases.big.stat1">raised</div>
             </div>
             <div>
@@ -1022,9 +1015,16 @@
   <section id="about" class="bg-[#F5F5F5] border-t border-[#E8E8E8]">
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
 
-      <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
 
-        <!-- LEFT COLUMN: text (matched to homepage about) -->
+        <!-- LEFT COLUMN: photo only (clean, no overlay, like homepage v3_3) -->
+        <div class="lg:sticky lg:top-24">
+          <figure class="relative rounded-2xl overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.18)] aspect-[4/5] bg-[#C9F31D]">
+            <img src="../images/petr-portret.jpg" alt="Peter Chalupianský" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+          </figure>
+        </div>
+
+        <!-- RIGHT COLUMN: bio + recognition (matched to homepage v3_3) -->
         <div>
           <!-- Eyebrow -->
           <div class="inline-flex items-center gap-2.5 mb-9 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
@@ -1033,49 +1033,61 @@
           </div>
 
           <!-- H2 -->
-          <h2 class="text-[40px] sm:text-[48px] md:text-[54px] lg:text-[60px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-9 max-w-xl" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="about.h2">
+          <h2 class="text-[36px] sm:text-[42px] md:text-[48px] lg:text-[56px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-9" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="about.h2">
             I help nonprofits across Europe raise <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">real money</em> &ndash; not just engagement<span class="text-[#C9F31D]">.</span>
           </h2>
 
-          <!-- Bio paragraph 1 -->
-          <p class="text-[17px] md:text-[18px] text-[#1A1A1A] leading-[1.6] mb-7 font-light max-w-xl" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="about.bio.p1">
-            I'm Peter Chalupiansky, a fundraising consultant based in Prague. For the past <strong class="font-bold">ten years</strong>, I've worked with nonprofits, helping them turn digital donations into a sustainable revenue channel.
+          <!-- Bio paragraph 1 (intro) -->
+          <p class="text-[17px] md:text-[18px] text-[#1A1A1A] leading-[1.65] mb-6" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="about.bio.p1">
+            I&rsquo;m Peter Chalupiansky, a fundraising consultant based in Prague. For the past <strong>ten years</strong>, I&rsquo;ve worked with nonprofits, helping them turn digital donations into a sustainable revenue channel.
           </p>
 
-          <!-- Bio list (4 items via i18n) -->
-          <ul class="bio-list max-w-xl" data-i18n="about.bio.p2">
-            <li><strong>Kaufland Czech Republic</strong> &middot; CSR &amp; ESG lead (8+ years), <span class="lime-highlight">part of Schwarz Gruppe</span> (Europe's largest retailer). Christmas campaign for <em>Světluška</em> (foundation for blind children and adults) &middot; CHF 4.7M fundraising platform over seven years.</li>
+          <!-- Bio bullet list (lime dot markers) -->
+          <ul class="bio-list" data-i18n="about.bio.p2">
+            <li><strong>Kaufland Czech Republic</strong> &middot; CSR &amp; ESG lead (8+ years), <span class="lime-highlight">part of Schwarz Gruppe</span> (Europe&rsquo;s largest retailer). Christmas campaign for <em>Světluška</em> &middot; &euro;4.9M fundraising engine over seven years. PR and execution of nationwide marketing campaigns.</li>
             <li><strong>Board Member of Czech Radio Foundation</strong> &middot; one of the largest NGOs in Czechia.</li>
             <li><strong>Independent consultant</strong> &middot; digital fundraising for European nonprofits.</li>
-            <li><strong>Author of the most successful Christmas campaign 2025</strong> in Czechia.</li>
+            <li><strong>Most successful Christmas campaign 2025</strong> &middot; in Czechia of that year.</li>
           </ul>
 
           <!-- Bio paragraph 3 -->
-          <p class="text-[16px] md:text-[17px] text-[#444] leading-[1.6] mb-5 font-light max-w-xl" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="about.bio.p3">
-            My campaigns consistently <strong class="font-bold">deliver positive ROI</strong> and <strong class="font-bold">grow sustainable donor bases</strong>.
+          <p class="text-[17px] md:text-[18px] text-[#1A1A1A] leading-[1.65] mb-5" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="about.bio.p3">
+            My campaigns consistently <strong>deliver positive ROI</strong> and <strong>grow donor bases</strong> that stick.
           </p>
 
           <!-- Bio paragraph 4 -->
-          <p class="text-[16px] md:text-[17px] text-[#444] leading-[1.6] font-light max-w-xl" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="about.bio.p4">
-            Now I want to bring all of that to your nonprofit &ndash; and help you <strong class="font-bold">build a digital fundraising channel that actually works</strong>.
+          <p class="text-[17px] md:text-[18px] text-[#1A1A1A] leading-[1.65]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="about.bio.p4">
+            Now I want to bring all of that to your nonprofit &ndash; and help you <strong>build a digital fundraising channel that actually works</strong>.
           </p>
-        </div>
 
-        <!-- RIGHT COLUMN: photo with quote overlay -->
-        <div class="lg:sticky lg:top-24">
-          <figure class="relative rounded-3xl overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.18)] aspect-[4/5] bg-[#1A1A1A]">
-            <img src="../images/petr-portret.jpg" alt="Peter Chalupianský" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-
-            <!-- Dark gradient overlay with quote -->
-            <div class="absolute inset-x-0 bottom-0 p-7 md:p-9 pt-[186px]" style="background: linear-gradient(to top, #1A1A1A 0%, #1A1A1A 62%, rgba(26,26,26,0) 100%);">
-              <blockquote class="text-[16px] md:text-[18px] italic text-white leading-[1.45] mb-4" style="font-family: 'Instrument Serif', serif; font-weight: 400; letter-spacing: -0.01em;" data-i18n="about.quote">
-                &ldquo;A hospice does the hardest work of all social services. Digital fundraising must match the value of that work &ndash; not diminish it.&rdquo;
-              </blockquote>
-              <figcaption class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#C9F31D]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="about.attribution">
-                &ndash;&nbsp; Peter Chalupianský
-              </figcaption>
+          <!-- Awards & Recognition (card grid, lime left border) -->
+          <div class="mt-12 pt-9 border-t border-black/10">
+            <div class="inline-flex items-center gap-2.5 mb-6 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
+              <span class="w-2 h-2 rounded-full bg-[#C9F31D]"></span>
+              <span data-i18n="about.recognition.title">Awards &amp; Recognition</span>
             </div>
-          </figure>
+
+            <!-- Tier 1: Personal -->
+            <div class="mb-6">
+              <div class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="about.recognition.personal.label">Personal</div>
+              <div class="recognition-grid" data-i18n="about.recognition.personal.cards">
+                <div class="recognition-card"><strong>TEDx, PechaKucha Nights &amp; conference speaker</strong>more than 20 events</div>
+                <div class="recognition-card"><strong>The Kind Heart Award</strong>Karel Janeček Foundation</div>
+                <div class="recognition-card"><strong>Personality of Philanthropy</strong>Czech Donors Forum</div>
+                <div class="recognition-card"><strong>Personality of the Year</strong>Wheelchair Sport Club Prague</div>
+              </div>
+            </div>
+
+            <!-- Tier 2: With Kaufland team -->
+            <div>
+              <div class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="about.recognition.team.label">With Kaufland Czech Republic team (part of Schwarz Gruppe)</div>
+              <div class="recognition-grid" data-i18n="about.recognition.team.cards">
+                <div class="recognition-card"><strong>Czech National Quality Award 2022 for Sustainability</strong>Ministry of Industry &amp; Trade</div>
+                <div class="recognition-card"><strong>Four-time Responsible Retailer of the Year (2020, 2022, 2024, 2025)</strong>Czech Confederation of Commerce and Tourism</div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -1102,39 +1114,55 @@
         The audit is the first step. Based on its findings, one of these paths usually follows:
       </p>
 
-      <!-- 3 stages, numbered, no CTA, no prices -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- 4 paths: 3 one-off cards in grid + 1 full-width dark ongoing card -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
 
-        <!-- Path 01 -->
-        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8">
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">01</div>
-          <div class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#888] mb-2" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s1.duration">1&ndash;2 months</div>
-          <h3 class="text-[20px] md:text-[22px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s1.title">Implementing the Quick Wins</h3>
-          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6] mb-5" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="next.s1.body">We fix the most acute issues from the audit &ndash; donor journey, payment friction, email capture, TWINT integration.</p>
-          <!-- Retainer price badge -->
-          <div class="inline-flex items-baseline gap-2 px-4 py-2.5 rounded-full bg-[#C9F31D]">
-            <span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s1.retainer.label">Retainer</span>
-            <span class="text-[16px] font-extrabold text-[#1A1A1A] tracking-[-0.02em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s1.retainer.price">4&rsquo;800 CHF/month</span>
-          </div>
+        <!-- Path 01: Quick Wins (one-off) -->
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 flex flex-col">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-5 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">01</div>
+          <div class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#888] mb-2" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s1.kicker">1&ndash;2 months</div>
+          <h3 class="text-[20px] md:text-[22px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s1.title">Implement Quick Wins</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="next.s1.body">We implement the audit&rsquo;s key quick wins together &ndash; donor journey, payment friction, email capture, TWINT integration. Clearly scoped project with rapidly visible impact.</p>
         </article>
 
-        <!-- Path 02 -->
-        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8">
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">02</div>
-          <div class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#888] mb-2" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s2.duration">3&ndash;4 months</div>
+        <!-- Path 02: Fundraising strategy (one-off) -->
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 flex flex-col">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-5 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">02</div>
+          <div class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#888] mb-2" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s2.kicker">3&ndash;4 months</div>
           <h3 class="text-[20px] md:text-[22px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s2.title">Fundraising strategy</h3>
-          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="next.s2.body">If the audit reveals a need for a systemic approach, a strategic plan for 1&ndash;2 years follows &mdash; with clear goals, KPIs and quarterly milestones.</p>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="next.s2.body">If the audit reveals systemic gaps, we build a strategic plan for 1&ndash;2 years &ndash; with clear goals, KPIs and quarterly milestones.</p>
         </article>
 
-        <!-- Path 03 -->
-        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8">
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">03</div>
-          <div class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#888] mb-2" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s3.duration">3&ndash;6 months</div>
+        <!-- Path 03: New digital solution (one-off) -->
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 flex flex-col">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-5 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">03</div>
+          <div class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#888] mb-2" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s3.kicker">3&ndash;6 months</div>
           <h3 class="text-[20px] md:text-[22px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s3.title">New digital foundation</h3>
-          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="next.s3.body">If the technology base is the obstacle, we tackle it as the next step. Either as a donor microsite or a full website redesign.</p>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="next.s3.body">If technology is the obstacle, we tackle it next &ndash; either as a donor microsite or a full website redesign.</p>
         </article>
 
       </div>
+
+      <!-- Path 04: Long-term partnership (full-width, dark, ★ highlighted) -->
+      <article class="bg-[#1A1A1A] rounded-3xl p-7 md:p-9 lg:p-10 hover:shadow-[0_16px_40px_rgba(0,0,0,0.20)] transition-all duration-300">
+        <div class="md:flex md:items-start md:gap-8">
+          <div class="md:flex-shrink-0">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D]" aria-label="Long-term partnership">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
+            </div>
+          </div>
+          <div class="flex-1 mt-5 md:mt-0">
+            <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#C9F31D] mb-2" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s4.kicker">Ongoing</div>
+            <h3 class="text-[22px] md:text-[26px] lg:text-[28px] font-extrabold mb-3 text-white tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s4.title">Long-term partnership</h3>
+            <p class="text-[15px] md:text-[16px] text-white/75 leading-[1.65] mb-6 md:max-w-3xl" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="next.s4.body">Instead of one-off projects: I become your external fundraising partner. Month after month &ndash; running campaigns, optimizing donor journey, managing ads, delivering reports. You set the scope: 20, 30, or 40 hours per month.</p>
+            <!-- Flexible retainer badge -->
+            <div class="inline-flex items-baseline gap-2.5 px-4 py-2 rounded-full bg-[#C9F31D]">
+              <span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s4.badge.label">Flexible</span>
+              <span class="text-[13px] font-extrabold text-[#1A1A1A] tracking-[-0.01em]" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="next.s4.badge.value">20&ndash;40 hrs/month</span>
+            </div>
+          </div>
+        </div>
+      </article>
 
       <!-- Closing reassurance, no CTA -->
       <div class="mt-12 md:mt-14 max-w-3xl">
@@ -1146,109 +1174,39 @@
     </div>
   </section>
 
-  <!-- ============ CONTACT FORM ============ -->
+  <!-- ============ CONTACT ============ -->
   <section id="contact" class="relative bg-[#C9F31D] border-t border-[#C9F31D] overflow-hidden">
-    <!-- Decorative dark blob -->
-    <div aria-hidden="true" class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#1A1A1A] opacity-[0.08] pointer-events-none"></div>
-    <div aria-hidden="true" class="absolute -bottom-40 -right-40 w-[28rem] h-[28rem] rounded-full bg-[#1A1A1A] opacity-[0.06] pointer-events-none"></div>
+    <!-- Subtle dark glow accents -->
+    <div aria-hidden="true" class="absolute -top-40 -left-40 w-[32rem] h-[32rem] rounded-full bg-[#1A1A1A] opacity-[0.06] blur-3xl pointer-events-none"></div>
+    <div aria-hidden="true" class="absolute -bottom-40 -right-40 w-[28rem] h-[28rem] rounded-full bg-[#1A1A1A] opacity-[0.05] blur-3xl pointer-events-none"></div>
 
-    <div class="relative max-w-4xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
+    <div class="relative max-w-3xl mx-auto px-6 md:px-12 py-24 md:py-28 lg:py-32">
 
-      <!-- Eyebrow pill (dark on lime) -->
-      <div class="inline-flex items-center gap-2 mb-7 px-4 py-2 rounded-full bg-[#1A1A1A] text-[#C9F31D] text-[11px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        <span data-i18n="contact.pill">Write to me</span>
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-3 mb-10 text-[10px] font-bold uppercase tracking-[0.18em] text-[#1A1A1A]/55" style="font-family: 'Bricolage Grotesque', sans-serif;">
+        <span class="w-10 h-px bg-[#1A1A1A]"></span>
+        <span data-i18n="contact.eyebrow">Next step</span>
       </div>
 
-      <!-- H2 -->
-      <h2 class="text-[36px] sm:text-[42px] md:text-5xl lg:text-[60px] font-extrabold text-[#1A1A1A] leading-[1.05] tracking-[-0.045em] mb-6" style="font-family: 'Bricolage Grotesque', sans-serif;" data-i18n="contact.title">
-        Write me <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">briefly</em> about your organization<span class="text-white">.</span>
-      </h2>
+      <!-- Salutation (letter-style close) -->
+      <h2 class="text-[28px] sm:text-[34px] md:text-[40px] lg:text-[44px] italic font-normal text-[#1A1A1A] tracking-[-0.02em] mb-8" style="font-family: 'Instrument Serif', serif;" data-i18n="contact.salutation">Mr. Hermann,</h2>
 
-      <!-- Lead -->
-      <p class="text-[17px] md:text-[19px] text-[#1A1A1A]/80 leading-[1.55] mb-12 max-w-2xl font-light" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="contact.lead">
-        A few short questions, no commitment. I'll write back within 24 hours &mdash; no meetings, no sales pitches, just an honest assessment.
+      <!-- Body -->
+      <p class="text-[18px] md:text-[20px] text-[#1A1A1A] leading-[1.65] mb-12 font-light max-w-2xl" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="contact.body">
+        if this analysis caught your interest, just reply to my initial email. One sentence is enough &ndash; something like &ldquo;Please send me more information&rdquo; or &ldquo;When can we start?&rdquo;. I&rsquo;ll be in touch within 24 hours.
       </p>
 
-      <!-- Wizard form (multi-step, jako na homepage) -->
-      <form class="wizard" id="contactWizard" action="https://formspree.io/f/mpqbdwqg" method="POST" novalidate>
+      <!-- Primary CTA (mailto, lang-aware href set by JS) -->
+      <a id="contactCta" href="mailto:peter@ngo.digital" class="cta-pulse group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#1A1A1A] text-[#C9F31D] font-bold text-[17px] md:text-[18px] tracking-[-0.01em] hover:-translate-y-1 transition-transform duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+        <span data-i18n="contact.cta">Write to Peter</span>
+        <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
+      </a>
 
-        <!-- Progress dots -->
-        <div class="wizard-progress" id="wizardProgress">
-          <div class="wizard-progress-dot current" data-step="0"></div>
-          <div class="wizard-progress-dot" data-step="1"></div>
-          <div class="wizard-progress-dot" data-step="2"></div>
-          <div class="wizard-progress-dot" data-step="3"></div>
-          <div class="wizard-progress-dot" data-step="4"></div>
-        </div>
-
-        <!-- Step 0: Interest chips -->
-        <div class="wizard-step active" data-step="0">
-          <h3 class="wizard-question" data-i18n="wizard.step0.q">What brings you <em>my way</em>?</h3>
-          <p class="wizard-hint" data-i18n="wizard.step0.hint">Pick whatever fits best &ndash; we can refine this later.</p>
-          <div class="wizard-chips">
-            <input type="radio" name="interest" value="Digital Fundraising Audit" id="wiz-int-audit">
-            <label for="wiz-int-audit" class="wizard-chip" data-i18n="wizard.chip.audit">Digital Fundraising Audit</label>
-
-            <input type="radio" name="interest" value="Just exploring" id="wiz-int-exploring">
-            <label for="wiz-int-exploring" class="wizard-chip" data-i18n="wizard.chip.exploring">Just exploring</label>
-          </div>
-          <div class="wizard-error" id="wiz-err-interest"></div>
-        </div>
-
-        <!-- Step 1: Name -->
-        <div class="wizard-step" data-step="1">
-          <h3 class="wizard-question" data-i18n="wizard.step1.q">First, what's your <em>name</em>?</h3>
-          <p class="wizard-hint" data-i18n="wizard.step1.hint">Just so I know who I'm talking to.</p>
-          <input type="text" class="wizard-input" name="name" id="wiz-name" placeholder="Type your name here…" autocomplete="given-name">
-          <div class="wizard-error" id="wiz-err-name"></div>
-        </div>
-
-        <!-- Step 2: Organization -->
-        <div class="wizard-step" data-step="2">
-          <h3 class="wizard-question" data-i18n="wizard.step2.q">Which <em>organization</em>?</h3>
-          <p class="wizard-hint" data-i18n="wizard.step2.hint">Just write your hospice or organization name.</p>
-          <input type="text" class="wizard-input" name="organization" id="wiz-org" placeholder="Hospiz Aargau" autocomplete="organization" value="Hospiz Aargau">
-          <div class="wizard-error" id="wiz-err-org"></div>
-        </div>
-
-        <!-- Step 3: Email -->
-        <div class="wizard-step" data-step="3">
-          <h3 class="wizard-question" data-i18n="wizard.step3.q">Where can I <em>reply</em>?</h3>
-          <p class="wizard-hint" data-i18n="wizard.step3.hint">No spam, no newsletter &ndash; unless you want one later.</p>
-          <input type="email" class="wizard-input" name="email" id="wiz-email" placeholder="your@email.com" autocomplete="email" inputmode="email">
-          <div class="wizard-error" id="wiz-err-email"></div>
-        </div>
-
-        <!-- Step 4: Message (optional) -->
-        <div class="wizard-step" data-step="4">
-          <h3 class="wizard-question" data-i18n="wizard.step4.q">Anything you want <em>to share</em>?</h3>
-          <p class="wizard-hint" data-i18n="wizard.step4.hint">Optional &ndash; but a sentence or two helps me prepare.</p>
-          <textarea class="wizard-textarea" name="message" id="wiz-msg" placeholder="A line or two about what you're working on…" maxlength="800"></textarea>
-        </div>
-
-        <!-- Success -->
-        <div class="wizard-step" data-step="5">
-          <div class="wizard-success">
-            <div class="wizard-success-icon">✓</div>
-            <h3 data-i18n="wizard.success.title">Got it. <em>Talk soon.</em></h3>
-            <p id="wizardSuccessMsg" data-i18n="wizard.success.msg">I'll be in touch within 24 hours &ndash; usually faster on weekdays.</p>
-          </div>
-        </div>
-
-        <!-- Controls -->
-        <div class="wizard-controls" id="wizardControls">
-          <button type="button" class="wizard-back is-hidden" id="wizardBack" data-i18n="wizard.btn.back">← Back</button>
-          <div>
-            <button type="button" class="wizard-skip is-hidden" id="wizardSkip" data-i18n="wizard.btn.skip">Skip</button>
-            <button type="button" class="wizard-next" id="wizardNext">Continue <span style="font-weight:400">↵</span></button>
-            <span class="wizard-press-enter"><span data-i18n="wizard.press_enter">press</span> <kbd>Enter</kbd></span>
-          </div>
-        </div>
-      </form>
-
-      <p class="text-center mt-8 text-[13px] text-[#1A1A1A]/65" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="contact.fallback">
-        Or write me directly at <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-semibold border-b border-[#1A1A1A]/40 hover:border-[#1A1A1A]">peter@ngo.digital</a>.
+      <!-- Fallback email line -->
+      <p class="mt-12 text-[15px] md:text-[16px] text-[#1A1A1A] font-medium" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="contact.fallback">
+        Or directly at <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-bold underline underline-offset-4 decoration-2 decoration-[#1A1A1A] hover:decoration-[3px]">peter@ngo.digital</a>
       </p>
+
     </div>
   </section>
 
@@ -1260,7 +1218,7 @@
 
         <!-- Brand -->
         <div>
-          <a href="https://ngo.digital" target="_blank" rel="noopener" class="inline-block text-[24px] font-extrabold tracking-[-0.03em] text-white mb-3 hover:opacity-80 transition-opacity" style="font-family: 'Bricolage Grotesque', sans-serif;" aria-label="ngo.digital homepage">
+          <a href="https://ngo.digital/?lang=de" target="_blank" rel="noopener" class="inline-block text-[24px] font-extrabold tracking-[-0.03em] text-white mb-3 hover:opacity-80 transition-opacity" style="font-family: 'Bricolage Grotesque', sans-serif;" aria-label="ngo.digital homepage">
             ngo<span class="text-[#C9F31D]">.</span>digital
           </a>
           <p class="text-[14px] text-white/55 leading-[1.6] mb-4 max-w-xs" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="footer.tag">
@@ -1292,7 +1250,7 @@
       <!-- Footer bottom -->
       <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div class="text-[12px] text-white/45" style="font-family: 'Source Sans 3', sans-serif;" data-i18n="footer.meta">
-          © 2026 Peter Chalupianský &middot; Made in Prague &middot; <a href="https://ngo.digital/#imprint" class="hover:text-[#C9F31D]">Imprint</a> &middot; <a href="https://ngo.digital/#privacy" class="hover:text-[#C9F31D]">Privacy</a>
+          © 2026 Peter Chalupianský &middot; Made in Prague &middot; <a href="https://ngo.digital/#imprint" class="hover:text-[#C9F31D]">Imprint</a> &middot; <a href="https://www.iubenda.com/privacy-policy/97343048" class="hover:text-[#C9F31D]" title="Privacy Policy">Privacy Policy</a> &middot; <a href="https://www.iubenda.com/privacy-policy/97343048/cookie-policy" class="hover:text-[#C9F31D]" title="Cookie Policy">Cookie Policy</a>
         </div>
         <div>
           <a href="https://www.linkedin.com/in/peter-chalupiansky/" target="_blank" rel="noopener" class="text-[12px] text-white/45 hover:text-[#C9F31D]" style="font-family: 'Source Sans 3', sans-serif;">LinkedIn</a>
@@ -1308,7 +1266,6 @@
       const T = {
         en: {
           'nav.cta': 'Book Digital Fundraising Audit',
-          'hero.date': 'Personal analysis for Hospiz Aargau · May 11, 2026',
           'hero.h1.salutation': 'Dear Mr. Hermann,',
           'hero.h1.headline': 'Hospiz Aargau loses <span class="lime-highlight">thousands of francs in online donations</span> every month &ndash; donations that could give your patients <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">dignified accompaniment</em><span class="text-[#C9F31D]">.</span>',
           'hero.h1.line1': 'After an initial look at your<br>digital fundraising',
@@ -1349,31 +1306,28 @@
           'qw.c1.title': 'TWINT as the leading donation method',
           'qw.c1.body': 'In Switzerland, donors decide in seconds today. Whoever doesn\'t offer TWINT prominently and optimally loses a large share of impulses.',
           'qw.c1.action': 'Prominent TWINT button on all emotional story pages, with predefined amounts (50 / 100 / 200 CHF).',
-          'qw.c1.metric': '+40&ndash;70',
-          'qw.c1.impactdesc': 'more instant donations from mobile.',
+          'qw.c1.impactdesc': 'Noticeably more instant donations from mobile.',
           'qw.c2.title': 'Recurring donations as a strategic priority',
           'qw.c2.body': 'A hospice needs predictable revenue more than one-off campaign successes.',
           'qw.c2.action': '<div class="flex items-center gap-2 mb-2.5"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"/></svg><span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#1A1A1A]" style="font-family: \'Bricolage Grotesque\', sans-serif;">Quick Win</span></div><p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5] mb-3" style="font-family: \'Source Sans 3\', sans-serif;">Highlight monthly giving as the primary option &ndash; with a clear, dignified rationale:</p><p class="text-[14px] md:text-[15px] italic text-[#1A1A1A]/85 leading-[1.5]" style="font-family: \'Instrument Serif\', serif; font-weight: 400;">&ldquo;With CHF 8&ndash;15 monthly, you accompany a person with dignity to their last breath.&rdquo;</p>',
-          'qw.c2.metric': '18&ndash;35',
-          'qw.c2.impactdesc': 'of donors switch to recurring &ndash; with high long-term value.',
+          'qw.c2.impactdesc': 'More predictable income through recurring donations with strong long-term value.',
           'qw.c3.title': 'Frictionless mobile donation flow',
           'qw.c3.body': 'Over 70 % of donation visits come from mobile. Every unnecessary hurdle costs a donation.',
           'qw.c3.action': 'Reduce the donation process to two steps maximum, prefill TWINT &amp; Apple Pay, and a personal thank-you page with a direct offer for monthly support.',
-          'qw.c3.metric': '+30&ndash;50',
-          'qw.c3.impactdesc': 'higher completion rate &ndash; and noticeably better donor retention.',
-          'qw.outro': '<strong class="text-[#1A1A1A] font-semibold">Three points, three levers, three measurable effects.</strong> In the Digital Fundraising Audit we go deeper &mdash; channel by channel, weak spot by weak spot, with clear prioritization by effort and impact.',
+          'qw.c3.impactdesc': 'Higher completion rates and significantly better donor retention.',
+          'qw.outro': 'Discover what other quick steps <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">with high impact</em> you can take<span class="text-[#C9F31D]">.</span>',
           'qw.cta': 'Book Digital Fundraising Audit',
 
           'syn.eyebrow': 'What it all means together',
           'syn.h2': 'Three problems. Three quick wins. <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">One systemic root</em><span class="text-[#C9F31D]">.</span>',
-          'syn.body': 'The 3 observations show <strong class="text-white font-semibold">what\'s not working</strong>. The 3 quick wins show <strong class="text-white font-semibold">what\'s actionable today</strong>.<br><br>But both are just the surface. The actual cause is the same: digital fundraising at Hospiz Aargau isn\'t yet running <strong class="text-white font-semibold">as a system</strong>.<br><br>The <strong class="text-white font-semibold">Digital Fundraising Audit</strong> maps your entire fundraising system, identifies the biggest opportunities and delivers you <strong class="text-[#C9F31D] font-semibold">a personalized microsite</strong> with a concrete action plan.<br><br>Without a single minute of your time. No unnecessary meetings. No work for you. You order, I deliver.',
+          'syn.body': 'The 3 observations show <strong class="text-white font-semibold">what\'s not working</strong>. The 3 quick wins show <strong class="text-white font-semibold">what\'s actionable today</strong>.<br><br>But both are just the surface. The actual cause is the same: digital fundraising at Hospiz Aargau isn\'t yet running <strong class="text-white font-semibold">as a system</strong>.<br><br>The <strong class="text-white font-semibold">Digital Fundraising Audit</strong> maps your entire fundraising system, identifies the biggest opportunities and delivers you <strong class="text-[#C9F31D] font-semibold">an output</strong> with a concrete action plan.<br><br>Without a single minute of your time. No unnecessary meetings. No work for you. You order, I deliver. I approach the audit from your donor\'s perspective.',
           'syn.cta': 'Book Digital Fundraising Audit',
-          'syn.ctameta': 'Personalized microsite · delivered in 15 days',
+          'syn.ctameta': 'Personalized microsite with audit output · delivered in 15 working days · Board-ready presentation',
 
           'audit.eyebrow': 'Digital Fundraising Audit',
           'audit.h2': 'In <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">just</em> 15 days you discover where you lose <span class="lime-highlight">thousands of francs in donations</span> every month &ndash; and how to fix it immediately<span class="text-[#C9F31D]">.</span>',
           'audit.sub': '<strong class="font-semibold">No appointments, no waiting.</strong> The audit runs completely remote &ndash; with written onboarding instead of meetings. You receive ready-to-use results &ndash; <strong class="font-semibold">with minimal effort for you and your team</strong>.',
-          'audit.callout': '<p class="text-[16px] md:text-[17px] text-[#1A1A1A] leading-[1.5] mb-2 font-semibold" style="font-family: \'Source Sans 3\', sans-serif;">Most NGOs lose 60&ndash;70 % of website visitors before they donate.</p><p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55] font-light" style="font-family: \'Source Sans 3\', sans-serif;">The audit shows you exactly where &ndash; and how to win them back.</p>',
+          'audit.callout': '<p class="text-[16px] md:text-[17px] text-[#1A1A1A] leading-[1.5] mb-2 font-semibold" style="font-family: \'Source Sans 3\', sans-serif;">Most NGOs lose 60&ndash;70 % of website visitors before they complete a donation attempt.</p><p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55] font-light" style="font-family: \'Source Sans 3\', sans-serif;">The audit shows you exactly where &ndash; and how to win them back.</p>',
           'audit.body1': 'The audit is 100 % remote &ndash; without any meetings, data-based and fully tailored to your organization.',
           'audit.body2': 'Digital fundraising is <strong class="text-[#1A1A1A] font-semibold">craft</strong>. The audit shows you what you do right, where reserves lie and what you can improve.',
           'audit.areas.label': '10 areas under the lens',
@@ -1384,6 +1338,26 @@
           'audit.check.3': '<strong class="font-semibold">Personalized microsite</strong> with action recommendations',
           'audit.check.4': 'Results in just <strong class="font-semibold">15 days</strong>',
           'audit.check.5': '<strong class="font-semibold">100 % remote</strong> &mdash; written onboarding, no meetings',
+          'process.eyebrow': 'Process &amp; Terms',
+          'process.h2': 'How we work together &ndash; <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">transparent and without surprises</em><span class="text-[#C9F31D]">.</span>',
+          'process.intro': 'From order to delivery, it&rsquo;s 15 working days. You pay half at the start, half after delivery &ndash; no hidden costs, no automatic renewal.',
+          'process.s1.kicker': 'Day 0',
+          'process.s1.title': 'Order',
+          'process.s1.desc': 'You confirm your order by email. I send the initial invoice for 50&nbsp;% (CHF 2,400).',
+          'process.s2.kicker': 'Day 1&ndash;7',
+          'process.s2.title': 'Initial payment',
+          'process.s2.desc': 'Once the initial payment is received, I start the audit. Payment term: 7 days.',
+          'process.s3.kicker': 'Day 1&ndash;15',
+          'process.s3.title': 'Audit phase',
+          'process.s3.desc': 'Written onboarding (15 min of your time). After that, I work independently. No meetings, no extra workload for your team.',
+          'process.s4.kicker': 'Day 15',
+          'process.s4.title': 'Delivery',
+          'process.s4.desc': 'You receive all results: analysis report, quick wins, roadmap, and board presentation. Plus the final invoice for the remaining 50&nbsp;% (CHF 2,400).',
+          'process.s5.kicker': 'Day 15&ndash;29',
+          'process.s5.title': 'Final payment',
+          'process.s5.desc': 'Payment term for the final invoice: 14 days. This concludes the audit &ndash; with no further obligations.',
+          'process.footer': 'All amounts in CHF. Payment via bank transfer.',
+          'process.contact': 'Questions about the process or invoicing? Write to me directly: <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-semibold border-b border-[#1A1A1A]/40 hover:border-[#1A1A1A]">peter@ngo.digital</a>',
           'audit.detail.eyebrow': 'In detail',
           'audit.detail.pill': '6 results in 15 days',
           'audit.detail.h2': 'Concrete results you can use <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">immediately</em><span class="text-[#C9F31D]">.</span>',
@@ -1394,41 +1368,46 @@
           'audit.d2.desc': 'What\'s already working well? Where are you losing donors and money? With clear answers &mdash; not opinions.',
           'audit.d3.title': 'List of instantly actionable quick wins',
           'audit.d3.desc': 'Concrete actions your team can launch as soon as next week.',
-          'audit.d5.title': 'Best practices from the DACH region',
-          'audit.d5.desc': 'Concrete examples from hospices and NGOs in Switzerland, Germany and Austria you can adapt immediately.',
-          'audit.d6.title': 'ROI-prioritized roadmap',
-          'audit.d6.desc': 'Clear plan of what to tackle first &ndash; with clear sequencing and expected return.',
-          'audit.d7.eyebrow': '★ The centerpiece',
+          'audit.d5.title': 'Best practices from Europe',
+          'audit.d5.desc': 'Concrete examples from hospices and NGOs across Europe you can adapt immediately.',
+          'audit.d6.title': 'Roadmap of action steps',
+          'audit.d6.desc': 'Structured plan of what to tackle first &ndash; with sequencing and expected benefit.',
           'audit.d7.title': 'Board-ready presentation + concrete implementation plan',
           'audit.d7.desc': 'Ready-made, editable presentation + realistic action plan with priorities and budget.',
 
           'next.eyebrow': 'After the audit',
           'next.h2': 'What <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">usually happens</em> after the audit<span class="text-[#C9F31D]">.</span>',
           'next.lead': 'The audit is the first step. Based on its findings, one of these paths usually follows:',
-          'next.s1.duration': '1&ndash;2 months',
-          'next.s1.title': 'Implementing the Quick Wins',
-          'next.s1.body': 'We fix the most acute issues from the audit &ndash; donor journey, payment friction, email capture, TWINT integration.',
-          'next.s1.retainer.label': 'Retainer',
-          'next.s1.retainer.price': '4&rsquo;800 CHF/month',
-          'next.s2.duration': '3&ndash;4 months',
+          'next.s1.kicker': '1&ndash;2 months',
+          'next.s1.title': 'Implement Quick Wins',
+          'next.s1.body': 'We implement the audit&rsquo;s key quick wins together &ndash; donor journey, payment friction, email capture, TWINT integration. Clearly scoped project with rapidly visible impact.',
+          'next.s2.kicker': '3&ndash;4 months',
           'next.s2.title': 'Fundraising strategy',
-          'next.s2.body': 'If the audit reveals a need for a systemic approach, a strategic plan for 1&ndash;2 years follows &mdash; with clear goals, KPIs and quarterly milestones.',
-          'next.s3.duration': '3&ndash;6 months',
+          'next.s2.body': 'If the audit reveals systemic gaps, we build a strategic plan for 1&ndash;2 years &ndash; with clear goals, KPIs and quarterly milestones.',
+          'next.s3.kicker': '3&ndash;6 months',
           'next.s3.title': 'New digital foundation',
-          'next.s3.body': 'If the technology base is the obstacle, we tackle it as the next step. Either as a donor microsite or a full website redesign.',
+          'next.s3.body': 'If technology is the obstacle, we tackle it next &ndash; either as a donor microsite or a full website redesign.',
+          'next.s4.kicker': 'Ongoing',
+          'next.s4.title': 'Long-term partnership',
+          'next.s4.body': 'Instead of one-off projects: I become your external fundraising partner. Month after month &ndash; running campaigns, optimizing donor journey, managing ads, delivering reports. You set the scope: 20, 30, or 40 hours per month.',
+          'next.s4.badge.label': 'Flexible',
+          'next.s4.badge.value': '20&ndash;40 hrs/month',
           'next.closing': 'We decide on the specific path <strong class="font-semibold">only based on the audit results</strong> &ndash; maybe one of these is enough, maybe none, maybe all of them step by step. The audit\'s purpose is to give you objective data so you can decide well.',
           'obs.cta.h': 'Want to uncover the other blockers <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">costing you donors</em><span class="text-[#C9F31D]">?</span>',
 
           'ref.eyebrow': 'References',
           'ref.quote': '&ldquo;With a team of volunteers, Peter built the <strong class="text-[#C9F31D] font-bold">most successful Christmas campaign</strong> in the Czech Republic last year. Through simplicity and gamification, he reached <strong class="text-[#C9F31D] font-bold">over 60 000 donors</strong>.&rdquo;',
           'ref.author': 'Zdeněk Mihalco',
-          'ref.role': 'Director, Nadace Via &ndash; Darujme.cz (Czech equivalent of <strong class="text-[#C9F31D] font-bold">RaiseNow</strong>)',
+          'ref.role': 'Director, Nadace Via &ndash; Darujme.cz (Czechia&rsquo;s central donation infrastructure, comparable to <strong class="text-[#C9F31D] font-bold">RaiseNow</strong> in Switzerland)',
           'ref.m1.quote': '&ldquo;With a CHF 1 400 investment, he generated over CHF 26 000 in 2 months. And built lasting PR for us.&rdquo;',
           'ref.m1.name': 'Alena Pecková',
           'ref.m1.role': 'Director, Klubák social enterprise',
           'ref.m2.quote': '&ldquo;His passion and creativity move donors.&rdquo;',
           'ref.m2.name': 'Silvie Dymáková',
           'ref.m2.role': 'Journalist, Founder of Příběhy Foundation',
+          'ref.cta.h': 'The next case reference<br><em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">could be yours</em><span class="text-[#C9F31D]">.</span>',
+          'ref.cta.body': 'What worked in Czechia will work for Hospiz Aargau too. The donor-journey logic is the same across borders &ndash; only payment methods and language change.',
+          'ref.cta': 'Book Digital Fundraising Audit',
 
           'cases.eyebrow': 'Cases',
           'cases.title': 'Numbers that <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">actually</em> moved<span class="text-[#C9F31D]">.</span>',
@@ -1438,6 +1417,7 @@
           'cases.big.desc': 'Built with a team of volunteers &ndash; the most successful Christmas fundraiser in the country that year. Powered by gamification, donor journey design and media partnerships.',
           'cases.big.amplifier': '<strong>1 in 175 Czechs</strong> <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; color: #C9F31D;">donated</em><span class="text-[#C9F31D]">.</span>',
           'cases.big.note': 'A reach almost no Czech NGO has ever achieved.',
+          'cases.big.amount': '€700K',
           'cases.big.stat1': 'raised',
           'cases.big.stat2': 'donors',
           'cases.big.stat3': 'ROI in 1 month',
@@ -1451,41 +1431,23 @@
 
           'about.eyebrow': 'About me',
           'about.h2': 'I help nonprofits across Europe raise <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">real money</em> &ndash; not just engagement<span class="text-[#C9F31D]">.</span>',
-          'about.bio.p1': 'I\'m Peter Chalupiansky, a fundraising consultant based in Prague. For the past <strong class="font-bold">ten years</strong>, I\'ve worked with nonprofits, helping them turn digital donations into a sustainable revenue channel.',
-          'about.bio.p2': '<li><strong>Kaufland Czech Republic</strong> &middot; CSR &amp; ESG lead (8+ years), <span class="lime-highlight">part of Schwarz Gruppe</span> (Europe\'s largest retailer). Christmas campaign for <em>Světluška</em> (foundation for blind children and adults) &middot; CHF 4.7M fundraising platform over seven years.</li><li><strong>Board Member of Czech Radio Foundation</strong> &middot; one of the largest NGOs in Czechia.</li><li><strong>Independent consultant</strong> &middot; digital fundraising for European nonprofits.</li><li><strong>Author of the most successful Christmas campaign 2025</strong> in Czechia.</li>',
-          'about.bio.p3': 'My campaigns consistently <strong class="font-bold">deliver positive ROI</strong> and <strong class="font-bold">grow sustainable donor bases</strong>.',
-          'about.bio.p4': 'Now I want to bring all of that to your nonprofit &ndash; and help you <strong class="font-bold">build a digital fundraising channel that actually works</strong>.',
+          'about.bio.p1': 'I&rsquo;m Peter Chalupiansky, a fundraising consultant based in Prague. For the past <strong>ten years</strong>, I&rsquo;ve worked with nonprofits, helping them turn digital donations into a sustainable revenue channel.',
+          'about.bio.p2': '<li><strong>Kaufland Czech Republic</strong> &middot; CSR &amp; ESG lead (8+ years), <span class="lime-highlight">part of Schwarz Gruppe</span> (Europe&rsquo;s largest retailer). Christmas campaign for <em>Světluška</em> &middot; &euro;4.9M fundraising engine over seven years. PR and execution of nationwide marketing campaigns.</li><li><strong>Board Member of Czech Radio Foundation</strong> &middot; one of the largest NGOs in Czechia.</li><li><strong>Independent consultant</strong> &middot; digital fundraising for European nonprofits.</li><li><strong>Most successful Christmas campaign 2025</strong> &middot; in Czechia of that year.</li>',
+          'about.bio.p3': 'My campaigns consistently <strong>deliver positive ROI</strong> and <strong>grow donor bases</strong> that stick.',
+          'about.bio.p4': 'Now I want to bring all of that to your nonprofit &ndash; and help you <strong>build a digital fundraising channel that actually works</strong>.',
+          'about.recognition.title': 'Awards &amp; Recognition',
+          'about.recognition.personal.label': 'Personal',
+          'about.recognition.personal.cards': '<div class="recognition-card"><strong>TEDx, PechaKucha Nights &amp; conference speaker</strong>more than 20 events</div><div class="recognition-card"><strong>The Kind Heart Award</strong>Karel Janeček Foundation</div><div class="recognition-card"><strong>Personality of Philanthropy</strong>Czech Donors Forum</div><div class="recognition-card"><strong>Personality of the Year</strong>Wheelchair Sport Club Prague</div>',
+          'about.recognition.team.label': 'With Kaufland Czech Republic team (part of Schwarz Gruppe)',
+          'about.recognition.team.cards': '<div class="recognition-card"><strong>Czech National Quality Award 2022 for Sustainability</strong>Ministry of Industry &amp; Trade</div><div class="recognition-card"><strong>Four-time Responsible Retailer of the Year (2020, 2022, 2024, 2025)</strong>Czech Confederation of Commerce and Tourism</div>',
           'about.quote': '&ldquo;A hospice does the hardest work of all social services. Digital fundraising must match the value of that work &ndash; not diminish it.&rdquo;',
           'about.attribution': '&ndash;&nbsp; Peter Chalupianský',
 
-          'contact.pill': 'Write to me',
-          'contact.title': 'Write me <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">briefly</em> about your organization<span class="text-[#C9F31D]">.</span>',
-          'contact.lead': 'A few short questions, no commitment. I\'ll write back within 24 hours &mdash; no meetings, no sales pitches, just an honest assessment.',
-          'contact.fallback': 'Or write me directly at <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-semibold border-b border-[#1A1A1A]/40 hover:border-[#1A1A1A]">peter@ngo.digital</a>.',
-          'wizard.step0.q': 'What brings you <em>my way</em>?',
-          'wizard.step0.hint': 'Pick whatever fits best &ndash; we can refine this later.',
-          'wizard.step1.q': 'First, what\'s your <em>name</em>?',
-          'wizard.step1.hint': 'Just so I know who I\'m talking to.',
-          'wizard.step2.q': 'Which <em>organization</em>?',
-          'wizard.step2.hint': 'Just write your hospice or organization name.',
-          'wizard.step3.q': 'Where can I <em>reply</em>?',
-          'wizard.step3.hint': 'No spam, no newsletter &ndash; unless you want one later.',
-          'wizard.step4.q': 'Anything you want <em>to share</em>?',
-          'wizard.step4.hint': 'Optional &ndash; but a sentence or two helps me prepare.',
-          'wizard.chip.audit': 'Digital Fundraising Audit',
-          'wizard.chip.exploring': 'Just exploring',
-          'wizard.btn.back': '← Back',
-          'wizard.btn.skip': 'Skip',
-          'wizard.btn.ok': 'OK',
-          'wizard.btn.send': 'Send',
-          'wizard.btn.sending': 'Sending…',
-          'wizard.press_enter': 'press',
-          'wizard.error.interest': 'Please pick one option.',
-          'wizard.error.name': 'Please enter your name.',
-          'wizard.error.org': 'Please enter your organization.',
-          'wizard.error.email': 'Please enter a valid email.',
-          'wizard.success.title': 'Got it. <em>Talk soon.</em>',
-          'wizard.success.msg': 'I\'ll be in touch within 24 hours &ndash; usually faster on weekdays.',
+          'contact.salutation': 'Mr. Hermann,',
+          'contact.body': 'if this analysis caught your interest, just reply to my initial email. One sentence is enough &ndash; something like &ldquo;Please send me more information&rdquo; or &ldquo;When can we start?&rdquo;. I&rsquo;ll be in touch within 24 hours.',
+          'contact.cta': 'Write to Peter',
+          'contact.eyebrow': 'Next step',
+          'contact.fallback': 'Or directly at <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-bold underline underline-offset-4 decoration-2 decoration-[#1A1A1A] hover:decoration-[3px]">peter@ngo.digital</a>',
 
           'footer.tag': 'Digital fundraising consulting for European nonprofits ready to grow. Made in Prague.',
           'footer.col.services': 'Services',
@@ -1493,16 +1455,13 @@
           'footer.link.about': 'About Peter',
           'footer.link.cases': 'Case studies',
           'footer.link.contact': 'Contact',
-          'footer.meta': '© 2026 Peter Chalupianský &middot; Made in Prague &middot; <a href="https://ngo.digital/#imprint" class="hover:text-[#C9F31D]">Imprint</a> &middot; <a href="https://ngo.digital/#privacy" class="hover:text-[#C9F31D]">Privacy</a>',
+          'footer.meta': '© 2026 Peter Chalupianský &middot; Made in Prague &middot; <a href="https://ngo.digital/#imprint" class="hover:text-[#C9F31D]">Imprint</a> &middot; <a href="https://www.iubenda.com/privacy-policy/97343048" class="hover:text-[#C9F31D]" title="Privacy Policy">Privacy Policy</a> &middot; <a href="https://www.iubenda.com/privacy-policy/97343048/cookie-policy" class="hover:text-[#C9F31D]" title="Cookie Policy">Cookie Policy</a>',
 
           'audit.intro.pill': 'Personalized for Hospiz Aargau',
           'audit.price.note': 'An audit that shows you where your biggest fundraising opportunities really lie.',
           'audit.price.label': 'Investment',
-          'audit.price.cohort': 'Introductory price for Hospiz Aargau &ndash; valid for 30 days',
+          'audit.price.payoff': 'The insights from the audit pay you back many times over in donations and reputation.',
           'audit.cta': 'Book Digital Fundraising Audit',
-          'audit.trust.1': '100 % no commitment',
-          'audit.trust.2': 'Personally handled by me',
-          'audit.trust.3': 'No hidden costs',
 
           'ctx.eyebrow': 'Context &amp; Market Development',
           'ctx.h2': 'Today, the <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">tomorrow</em> of Hospiz Aargau is decided<span class="text-[#C9F31D]">.</span>',
@@ -1518,7 +1477,6 @@
         },
         de: {
           'nav.cta': 'Digital Fundraising Audit buchen',
-          'hero.date': 'Persönliche Analyse für Hospiz Aargau · 11. Mai 2026',
           'hero.h1.salutation': 'Sehr geehrter Herr Hermann,',
           'hero.h1.headline': 'Hospiz Aargau verliert jeden Monat <span class="lime-highlight">Tausende Franken an Online-Spenden</span> &ndash; Spenden, die Ihren Patienten <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">würdevolle Begleitung</em> ermöglichen könnten<span class="text-[#C9F31D]">.</span>',
           'hero.h1.line1': 'Nach einem ersten Blick auf Ihr<br>Digital-Fundraising',
@@ -1549,7 +1507,7 @@
           'obs.cta': 'Digital Fundraising Audit buchen',
 
           'qw.eyebrow': 'Nach der ersten Analyse',
-          'qw.h2': 'Drei konkrete Quick Wins, die <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">den größten Unterschied</em> bei Hospiz Aargau machen<span class="text-[#C9F31D]">.</span>',
+          'qw.h2': 'Drei konkrete Quick Wins, die <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">den grössten Unterschied</em> bei Hospiz Aargau machen<span class="text-[#C9F31D]">.</span>',
           'qw.lead': 'Auf Basis einer ersten Analyse Ihres aktuellen Digital-Fundraisings &ndash; <strong class="text-[#1A1A1A] font-semibold">sofort umsetzbar</strong> und mit hoher Wirkung.',
           'qw.label': 'Quick Win',
           'qw.label.3': 'Quick Win',
@@ -1557,33 +1515,30 @@
           'qw.impactlabel.2': 'Erwartete Wirkung',
           'qw.impactlabel.3': 'Erwartete Wirkung',
           'qw.c1.title': 'TWINT als führende Spendenmethode',
-          'qw.c1.body': 'In der Schweiz entscheiden Spender heute in Sekunden. Wer TWINT nicht optimal anbietet, verliert einen großen Teil der Spender.',
+          'qw.c1.body': 'In der Schweiz entscheiden Spender heute in Sekunden. Wer TWINT nicht optimal anbietet, verliert einen grossen Teil der Spender.',
           'qw.c1.action': 'Prominenter TWINT-Button auf allen emotionalen Story-Seiten, mit vordefinierten Beträgen (50 / 100 / 200 CHF).',
-          'qw.c1.metric': '+40&ndash;70',
-          'qw.c1.impactdesc': 'mehr Sofort-Spenden vom Smartphone.',
+          'qw.c1.impactdesc': 'Spürbar mehr Sofort-Spenden vom Smartphone.',
           'qw.c2.title': 'Wiederkehrende Spenden als strategische Priorität',
           'qw.c2.body': 'Ein Hospiz braucht planbare Einnahmen mehr als einmalige Kampagnen-Erfolge.',
           'qw.c2.action': '<div class="flex items-center gap-2 mb-2.5"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"/></svg><span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#1A1A1A]" style="font-family: \'Bricolage Grotesque\', sans-serif;">Quick Win</span></div><p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5] mb-3" style="font-family: \'Source Sans 3\', sans-serif;">Heben Sie monatliches Geben als Hauptoption hervor &ndash; mit einer klaren, würdevollen Begründung:</p><p class="text-[14px] md:text-[15px] italic text-[#1A1A1A]/85 leading-[1.5]" style="font-family: \'Instrument Serif\', serif; font-weight: 400;">&ldquo;Mit CHF 8&ndash;15 monatlich begleiten Sie einen Menschen mit Würde bis zum letzten Atemzug.&rdquo;</p>',
-          'qw.c2.metric': '18&ndash;35',
-          'qw.c2.impactdesc': 'der Spender wechseln zu wiederkehrenden Spenden &ndash; mit hohem Langzeitwert.',
+          'qw.c2.impactdesc': 'Mehr planbare Einnahmen durch wiederkehrende Spenden mit hohem Langzeitwert.',
           'qw.c3.title': 'Reibungsloser Mobile-Spendenflow',
           'qw.c3.body': 'Über 70 % der Spendenbesuche kommen vom Smartphone. Jede unnötige Hürde kostet eine Spende.',
           'qw.c3.action': 'Reduzieren Sie den Spendenprozess auf maximal zwei Schritte. Mit vorausgefülltem TWINT &amp; Apple Pay &ndash; und einer persönlichen Dankesseite, die direkt zu monatlicher Unterstützung einlädt.',
-          'qw.c3.metric': '+30&ndash;50',
-          'qw.c3.impactdesc': 'höhere Abschlussrate &ndash; und deutlich bessere Spender-Retention.',
-          'qw.outro': '<strong class="text-[#1A1A1A] font-semibold">Drei Punkte, drei Hebel, drei messbare Effekte.</strong> Im Digital Fundraising Audit gehen wir weiter in die Tiefe &mdash; Kanal für Kanal, Schwachstelle für Schwachstelle, mit klarer Priorisierung nach Aufwand und Wirkung.',
+          'qw.c3.impactdesc': 'Höhere Abschlussraten und deutlich bessere Spender-Retention.',
+          'qw.outro': 'Entdecken Sie, welche weiteren schnellen Schritte <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">mit grosser Wirkung</em> Sie unternehmen können<span class="text-[#C9F31D]">.</span>',
           'qw.cta': 'Digital Fundraising Audit buchen',
 
           'syn.eyebrow': 'Was das alles zusammen bedeutet',
           'syn.h2': 'Drei Probleme. Drei Quick Wins. <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">Eine systemische Ursache</em><span class="text-[#C9F31D]">.</span>',
-          'syn.body': 'Die 3 Beobachtungen zeigen, <strong class="text-white font-semibold">was nicht funktioniert</strong>. Die 3 Quick Wins zeigen, <strong class="text-white font-semibold">was heute machbar ist</strong>.<br><br>Doch beides ist nur die Oberfläche. Die eigentliche Ursache ist dieselbe: Digital-Fundraising bei Hospiz Aargau läuft noch nicht <strong class="text-white font-semibold">als System</strong>.<br><br>Das <strong class="text-white font-semibold">Digital Fundraising Audit</strong> kartiert Ihr gesamtes Fundraising-System, identifiziert die größten Chancen und liefert Ihnen <strong class="text-[#C9F31D] font-semibold">eine personalisierte Microsite</strong> mit konkretem Aktionsplan.<br><br>Ohne aufwändige Workshops. Keine unnötigen Meetings. Keine zusätzliche Arbeit für Sie. Sie bestellen, ich liefere.',
+          'syn.body': 'Die 3 Beobachtungen zeigen, <strong class="text-white font-semibold">was nicht funktioniert</strong>. Die 3 Quick Wins zeigen, <strong class="text-white font-semibold">was heute machbar ist</strong>.<br><br>Doch beides ist nur die Oberfläche. Die eigentliche Ursache ist dieselbe: Digital-Fundraising bei Hospiz Aargau läuft noch nicht <strong class="text-white font-semibold">als System</strong>.<br><br>Das <strong class="text-white font-semibold">Digital Fundraising Audit</strong> kartiert Ihr gesamtes Fundraising-System, identifiziert die grössten Chancen und liefert Ihnen <strong class="text-[#C9F31D] font-semibold">ein Ergebnis</strong> mit konkretem Aktionsplan.<br><br>Ohne aufwändige Workshops. Keine unnötigen Meetings. Keine zusätzliche Arbeit für Sie. Sie bestellen, ich liefere. Beim Audit nehme ich die Perspektive Ihres Spenders ein.',
           'syn.cta': 'Digital Fundraising Audit buchen',
-          'syn.ctameta': 'Personalisierte Microsite · in 15 Arbeitstagen geliefert',
+          'syn.ctameta': 'Personalisierte Microsite mit Audit-Ergebnis · in 15 Arbeitstagen geliefert · Präsentation für den Vorstand',
 
           'audit.eyebrow': 'Digital Fundraising Audit',
           'audit.h2': 'In <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">nur</em> 15 Tagen entdecken Sie, wo Sie jeden Monat <span class="lime-highlight">Tausende Franken an Spenden verlieren</span> &ndash; und wie Sie das sofort beheben<span class="text-[#C9F31D]">.</span>',
-          'audit.sub': '<strong class="font-semibold">Keine Termine, keine Wartezeit.</strong> Das Audit läuft komplett remote &ndash; mit schriftlichem Onboarding statt Meetings. Sie erhalten sofort einsetzbare Ergebnisse &ndash; <strong class="font-semibold">ohne größeren Aufwand für Sie und Ihr Team</strong>.',
-          'audit.callout': '<p class="text-[16px] md:text-[17px] text-[#1A1A1A] leading-[1.5] mb-2 font-semibold" style="font-family: \'Source Sans 3\', sans-serif;">Die meisten NGOs verlieren 60&ndash;70 % der Website-Besucher, bevor sie spenden.</p><p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55] font-light" style="font-family: \'Source Sans 3\', sans-serif;">Das Audit zeigt Ihnen genau wo &ndash; und wie Sie sie zurückgewinnen.</p>',
+          'audit.sub': '<strong class="font-semibold">Keine Termine, keine Wartezeit.</strong> Das Audit läuft komplett remote &ndash; mit schriftlichem Onboarding statt Meetings. Sie erhalten sofort einsetzbare Ergebnisse &ndash; <strong class="font-semibold">ohne grösseren Aufwand für Sie und Ihr Team</strong>.',
+          'audit.callout': '<p class="text-[16px] md:text-[17px] text-[#1A1A1A] leading-[1.5] mb-2 font-semibold" style="font-family: \'Source Sans 3\', sans-serif;">Die meisten NGOs verlieren 60&ndash;70 % der Website-Besucher, bevor sie eine Spende abschliessen.</p><p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55] font-light" style="font-family: \'Source Sans 3\', sans-serif;">Das Audit zeigt Ihnen genau wo &ndash; und wie Sie sie zurückgewinnen.</p>',
           'audit.body1': 'Das Audit ist 100 % remote &ndash; ohne jegliche Meetings, datenbasiert und komplett auf Ihre Organisation zugeschnitten.',
           'audit.body2': 'Digital Fundraising ist <strong class="text-[#1A1A1A] font-semibold">Handwerk</strong>. Das Audit zeigt Ihnen, was Sie richtig machen, wo Reserven liegen und was Sie verbessern können.',
           'audit.areas.label': '10 Bereiche unter der Lupe',
@@ -1593,52 +1548,77 @@
           'audit.check.2': '<strong class="font-semibold">Konkrete, sofort umsetzbare Quick-Wins</strong>',
           'audit.check.3': '<strong class="font-semibold">Personalisierte Microsite</strong> mit Handlungsempfehlungen',
           'audit.check.4': 'Ergebnisse in nur <strong class="font-semibold">15 Tagen</strong>',
-          'audit.check.5': '<strong class="font-semibold">100 % remote</strong> &mdash; schriftliches Onboarding, keine Meetings',
+          'audit.check.5': '<strong class="font-semibold">100 % remote</strong> &ndash; schriftliches Onboarding, keine Meetings',
+          'process.eyebrow': 'Ablauf &amp; Konditionen',
+          'process.h2': 'So läuft die Zusammenarbeit &ndash; <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">transparent und ohne Überraschungen</em><span class="text-[#C9F31D]">.</span>',
+          'process.intro': 'Vom Auftrag bis zur Übergabe sind es 15 Arbeitstage. Sie bezahlen die Hälfte zum Start, die Hälfte nach Lieferung &ndash; ohne versteckte Kosten, ohne automatische Verlängerung.',
+          'process.s1.kicker': 'Tag 0',
+          'process.s1.title': 'Bestellung',
+          'process.s1.desc': 'Sie bestätigen die Bestellung per E-Mail. Ich sende Ihnen die Anzahlungsrechnung über 50&nbsp;% (CHF 2&rsquo;400).',
+          'process.s2.kicker': 'Tag 1&ndash;7',
+          'process.s2.title': 'Anzahlung',
+          'process.s2.desc': 'Sobald die Anzahlung eingegangen ist, starte ich das Audit. Zahlungsziel: 7 Tage.',
+          'process.s3.kicker': 'Tag 1&ndash;15',
+          'process.s3.title': 'Audit-Phase',
+          'process.s3.desc': 'Schriftliches Onboarding (15 Min Ihrer Zeit). Danach arbeite ich eigenständig. Keine Meetings, kein zusätzlicher Aufwand für Ihr Team.',
+          'process.s4.kicker': 'Tag 15',
+          'process.s4.title': 'Lieferung',
+          'process.s4.desc': 'Sie erhalten alle Ergebnisse: Analyse-Report, Quick Wins, Roadmap und Vorstandspräsentation. Plus die Schlussrechnung über die zweiten 50&nbsp;% (CHF 2&rsquo;400).',
+          'process.s5.kicker': 'Tag 15&ndash;29',
+          'process.s5.title': 'Schlusszahlung',
+          'process.s5.desc': 'Zahlungsziel der Schlussrechnung: 14 Tage. Damit ist das Audit abgeschlossen &ndash; ohne weitere Verpflichtungen.',
+          'process.footer': 'Alle Beträge in CHF. Zahlung per Bank-Überweisung.',
+          'process.contact': 'Bei Fragen zum Ablauf oder zur Rechnungsstellung schreiben Sie mir direkt: <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-semibold border-b border-[#1A1A1A]/40 hover:border-[#1A1A1A]">peter@ngo.digital</a>',
           'audit.detail.eyebrow': 'Im Detail',
           'audit.detail.pill': '6 Ergebnisse in 15 Tagen',
           'audit.detail.h2': 'Konkrete Ergebnisse, die Sie <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">sofort nutzen</em><span class="text-[#C9F31D]">.</span>',
           'audit.detail.cta': 'Digital Fundraising Audit buchen',
           'audit.d1.title': 'Analyse-Report',
-          'audit.d1.desc': 'Vollständiger schriftlicher Audit Ihres Digital-Fundraisings &mdash; was funktioniert, was nicht, wo die größten Chancen liegen.',
+          'audit.d1.desc': 'Vollständiger schriftlicher Audit Ihres Digital-Fundraisings &ndash; was funktioniert, was nicht, wo die grössten Chancen liegen.',
           'audit.d2.title': 'Unabhängige Diagnose',
-          'audit.d2.desc': 'Was funktioniert bereits gut? Wo verlieren Sie Spender und Geld? Mit klaren Antworten &mdash; nicht mit Meinungen.',
-          'audit.d3.title': '5+ sofort umsetzbare Quick-Wins',
-          'audit.d3.desc': 'Konkrete Maßnahmen, die Ihr Team schon nächste Woche starten kann.',
-          'audit.d5.title': 'Best Practices aus dem DACH-Raum',
-          'audit.d5.desc': 'Konkrete Beispiele von Hospizen und NGOs aus der Schweiz, Deutschland und Österreich, die Sie sofort adaptieren können.',
-          'audit.d6.title': 'ROI-priorisierte Roadmap',
-          'audit.d6.desc': 'Strukturierter Plan, was Sie zuerst angehen sollten &ndash; mit Reihenfolge und erwartetem Ertrag.',
-          'audit.d7.eyebrow': '★ Das Herzstück',
+          'audit.d2.desc': 'Was funktioniert bereits gut? Wo verlieren Sie Spender und Geld? Mit klaren Antworten &ndash; nicht mit Meinungen.',
+          'audit.d3.title': 'Liste sofort umsetzbarer Quick Wins',
+          'audit.d3.desc': 'Konkrete Massnahmen, die Ihr Team schon nächste Woche starten kann.',
+          'audit.d5.title': 'Best Practices aus Europa',
+          'audit.d5.desc': 'Konkrete Beispiele von Hospizen und NGOs aus ganz Europa, die Sie sofort adaptieren können.',
+          'audit.d6.title': 'Roadmap der Massnahmen',
+          'audit.d6.desc': 'Strukturierter Plan, was Sie zuerst angehen sollten &ndash; mit Reihenfolge und erwartetem Nutzen.',
           'audit.d7.title': 'Präsentation für den Vorstand + konkreter Umsetzungsplan',
           'audit.d7.desc': 'Fertig vorbereitete, editierbare Präsentation + realistischer Aktionsplan mit Prioritäten und Budget.',
 
           'next.eyebrow': 'Nach dem Audit',
           'next.h2': 'Was <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">üblicherweise folgt</em>, wenn das Audit fertig ist<span class="text-[#C9F31D]">.</span>',
           'next.lead': 'Das Audit ist der erste Schritt. Auf Basis seiner Ergebnisse folgt meist einer dieser Wege:',
-          'next.s1.duration': '1&ndash;2 Monate',
-          'next.s1.title': 'Umsetzung der Quick Wins',
-          'next.s1.body': 'Wir beheben die akutesten Punkte aus dem Audit &ndash; Donor Journey, Payment Friction, E-Mail-Capture, TWINT-Integration.',
-          'next.s1.retainer.label': 'Retainer',
-          'next.s1.retainer.price': '4&rsquo;800 CHF/Monat',
-          'next.s2.duration': '3&ndash;4 Monate',
+          'next.s1.kicker': '1&ndash;2 Monate',
+          'next.s1.title': 'Quick Wins implementieren',
+          'next.s1.body': 'Wir setzen die wichtigsten Quick Wins aus dem Audit gemeinsam um &ndash; Donor Journey, Payment-Friktion, E-Mail-Capture, TWINT-Integration. Klar abgegrenztes Projekt mit schnell sichtbarer Wirkung.',
+          'next.s2.kicker': '3&ndash;4 Monate',
           'next.s2.title': 'Fundraising-Strategie',
-          'next.s2.body': 'Zeigt das Audit einen systemischen Handlungsbedarf, folgt ein strategischer Plan für 1&ndash;2 Jahre &mdash; mit klaren Zielen, KPIs und Quartalsmilestones.',
-          'next.s3.duration': '3&ndash;6 Monate',
-          'next.s3.title': 'Neue digitale Basis',
+          'next.s2.body': 'Zeigt das Audit einen systemischen Handlungsbedarf, folgt ein strategischer Plan für 1&ndash;2 Jahre &ndash; mit klaren Zielen, KPIs und Quartalsmilestones.',
+          'next.s3.kicker': '3&ndash;6 Monate',
+          'next.s3.title': 'Neue digitale Lösung',
           'next.s3.body': 'Wenn die technologische Basis die Hürde ist, gehen wir sie als nächsten Schritt an. Entweder als Spender-Microsite oder als komplettes Website-Redesign.',
+          'next.s4.kicker': 'Laufend',
+          'next.s4.title': 'Langfristige Zusammenarbeit',
+          'next.s4.body': 'Statt einzelner Projekte: Ich werde Ihr externer Fundraising-Partner. Ich begleite Sie Monat für Monat &ndash; setze Kampagnen um, optimiere die Donor Journey, manage Ads, halte Reportings. Den Umfang bestimmen Sie: 20, 30 oder 40 Stunden pro Monat.',
+          'next.s4.badge.label': 'Flexibel',
+          'next.s4.badge.value': '20&ndash;40 Std./Monat',
           'next.closing': 'Über den konkreten Weg entscheiden wir <strong class="font-semibold">erst nach den Audit-Ergebnissen</strong> &ndash; vielleicht reicht eines davon, vielleicht keines, vielleicht alle nacheinander. Ziel des Audits ist, Ihnen objektive Daten zu geben, damit Sie gut entscheiden können.',
           'obs.cta.h': 'Wollen Sie die weiteren Bremsen entdecken, <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">die Ihnen Spender kosten</em><span class="text-[#C9F31D]">?</span>',
 
           'ref.eyebrow': 'Referenzen',
           'ref.quote': '&bdquo;Mit einem Team von Freiwilligen hat Peter letztes Jahr die <strong class="text-[#C9F31D] font-bold">erfolgreichste Weihnachtskampagne</strong> in Tschechien aufgebaut. Durch Einfachheit und Gamification erreichte er <strong class="text-[#C9F31D] font-bold">über 60&rsquo;000 Spender</strong>.&ldquo;',
           'ref.author': 'Zdeněk Mihalco',
-          'ref.role': 'Direktor, Nadace Via &ndash; Darujme.cz (tschechisches Pendant zu <strong class="text-[#C9F31D] font-bold">RaiseNow</strong>)',
+          'ref.role': 'Direktor, Nadace Via &ndash; Darujme.cz (zentrale Spenden-Infrastruktur Tschechiens, vergleichbar mit <strong class="text-[#C9F31D] font-bold">RaiseNow</strong> in der Schweiz)',
           'ref.m1.quote': '&bdquo;Mit einer Investition von CHF 1&rsquo;400 hat er in 2 Monaten über CHF 26&rsquo;000 generiert. Und langfristige PR für uns aufgebaut.&ldquo;',
           'ref.m1.name': 'Alena Pecková',
           'ref.m1.role': 'Direktorin, Sozialunternehmen Klubák',
           'ref.m2.quote': '&bdquo;Seine Leidenschaft und Kreativität bewegen Spender.&ldquo;',
           'ref.m2.name': 'Silvie Dymáková',
           'ref.m2.role': 'Journalistin, Gründerin der Stiftung Příběhy',
+          'ref.cta.h': 'Die nächste Case-Referenz<br><em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">könnte Ihre sein</em><span class="text-[#C9F31D]">.</span>',
+          'ref.cta.body': 'Was in Tschechien funktioniert hat, wird auch bei Hospiz Aargau funktionieren. Die Donor-Journey-Logik ist grenzüberschreitend dieselbe &ndash; nur Zahlungsmethoden und Sprache ändern sich.',
+          'ref.cta': 'Digital Fundraising Audit buchen',
 
           'cases.eyebrow': 'Cases',
           'cases.title': 'Zahlen, die <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">wirklich</em> bewegt haben<span class="text-[#C9F31D]">.</span>',
@@ -1648,6 +1628,7 @@
           'cases.big.desc': 'Mit einem Team von Freiwilligen aufgebaut &ndash; der erfolgreichste Weihnachts-Fundraiser des Landes in diesem Jahr. Powered by Gamification, Donor Journey Design und Medien-Partnerschaften.',
           'cases.big.amplifier': '<strong>Jeder 175. Tscheche</strong> <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; color: #C9F31D;">spendete</em><span class="text-[#C9F31D]">.</span>',
           'cases.big.note': 'Eine Reichweite, die fast keine tschechische NGO je erreicht hat.',
+          'cases.big.amount': 'CHF 660K',
           'cases.big.stat1': 'gesammelt',
           'cases.big.stat2': 'Spender',
           'cases.big.stat3': 'ROI in 1 Monat',
@@ -1661,41 +1642,23 @@
 
           'about.eyebrow': 'Über mich',
           'about.h2': 'Ich helfe Non-Profits in ganz Europa, <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">echtes Geld</em> zu sammeln &ndash; nicht nur Engagement<span class="text-[#C9F31D]">.</span>',
-          'about.bio.p1': 'Ich bin Peter Chalupiansky, ein Fundraising-Berater mit Sitz in Prag. In den letzten <strong class="font-bold">zehn Jahren</strong> habe ich Non-Profits dabei begleitet, digitales Spenden in einen verlässlichen Einnahmekanal zu verwandeln.',
-          'about.bio.p2': '<li><strong>Kaufland Tschechien</strong> &middot; CSR- &amp; ESG-Lead (8+ Jahre), <span class="lime-highlight">Teil der Schwarz Gruppe</span> (Europas größter Einzelhändler). Weihnachtskampagne für <em>Světluška</em> (Stiftung für blinde Kinder und Erwachsene) &middot; 4,7-Mio.-CHF-Fundraising-Plattform über sieben Jahre.</li><li><strong>Vorstandsmitglied der Stiftung Tschechischer Rundfunk</strong> &middot; eine der größten NGOs in Tschechien.</li><li><strong>Unabhängiger Berater</strong> &middot; digitales Fundraising für europäische Non-Profits.</li><li><strong>Autor der erfolgreichsten Weihnachtskampagne 2025</strong> in Tschechien.</li>',
-          'about.bio.p3': 'Meine Kampagnen liefern konsequent <strong class="font-bold">positiven ROI</strong> und bauen <strong class="font-bold">nachhaltige Spenderbasen auf</strong>.',
-          'about.bio.p4': 'Jetzt möchte ich all das zu Ihrer Organisation bringen &ndash; und Ihnen helfen, einen <strong class="font-bold">digitalen Fundraising-Kanal zu bauen, der wirklich funktioniert</strong>.',
+          'about.bio.p1': 'Ich bin Peter Chalupiansky, ein Fundraising-Berater mit Sitz in Prag. In den letzten <strong>zehn Jahren</strong> habe ich Non-Profits dabei begleitet, digitales Spenden in einen verlässlichen Einnahmekanal zu verwandeln.',
+          'about.bio.p2': '<li><strong>Kaufland Tschechien</strong> &middot; CSR- &amp; ESG-Lead (8+ Jahre), <span class="lime-highlight">Teil der Schwarz Gruppe</span> (Europas grösster Einzelhändler). Weihnachtskampagne für <em>Světluška</em> &middot; 4,6 Mio. CHF Fundraising-Maschine über sieben Jahre. PR und Umsetzung landesweiter Marketingkampagnen.</li><li><strong>Vorstandsmitglied der Stiftung des Tschechischen Rundfunks</strong> &middot; eine der grössten NGOs in Tschechien.</li><li><strong>Unabhängiger Berater</strong> &middot; digitales Fundraising für europäische Non-Profits.</li><li><strong>Erfolgreichste Weihnachtskampagne 2025</strong> &middot; in Tschechien des Jahres.</li>',
+          'about.bio.p3': 'Meine Kampagnen liefern konsequent <strong>positiven ROI</strong> und bauen <strong>Spenderbasen</strong>, die bleiben.',
+          'about.bio.p4': 'Jetzt möchte ich all das zu Ihrer Organisation bringen &ndash; und Ihnen helfen, einen <strong>digitalen Fundraising-Kanal zu bauen, der wirklich funktioniert</strong>.',
+          'about.recognition.title': 'Auszeichnungen &amp; Anerkennung',
+          'about.recognition.personal.label': 'Persönlich',
+          'about.recognition.personal.cards': '<div class="recognition-card"><strong>TEDx, PechaKucha Nights &amp; Konferenzsprecher</strong>über 20 Veranstaltungen</div><div class="recognition-card"><strong>The Kind Heart Award</strong>Karel-Janeček-Stiftung</div><div class="recognition-card"><strong>Persönlichkeit der Philanthropie</strong>Czech Donors Forum</div><div class="recognition-card"><strong>Persönlichkeit des Jahres</strong>Wheelchair Sport Club Prag</div>',
+          'about.recognition.team.label': 'Mit dem Team von Kaufland Tschechien (Teil der Schwarz Gruppe)',
+          'about.recognition.team.cards': '<div class="recognition-card"><strong>Tschechischer Nationaler Qualitätspreis 2022 für Nachhaltigkeit</strong>Ministerium für Industrie und Handel</div><div class="recognition-card"><strong>Viermalig Verantwortungsvoller Einzelhändler des Jahres (2020, 2022, 2024, 2025)</strong>Tschechische Konföderation für Handel und Tourismus</div>',
           'about.quote': '&bdquo;Ein Hospiz leistet die schwerste Arbeit aller sozialen Dienste. Digital-Fundraising muss diesem Wert gerecht werden &ndash; ihn nicht schmälern.&ldquo;',
           'about.attribution': '&ndash;&nbsp; Peter Chalupianský',
 
-          'contact.pill': 'Schreiben Sie mir',
-          'contact.title': 'Schreiben Sie mir <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">kurz</em> über Ihre Organisation<span class="text-[#C9F31D]">.</span>',
-          'contact.lead': 'Ein paar kurze Fragen, unverbindlich. Ich antworte schriftlich innerhalb von 24 Stunden &mdash; keine Meetings, keine Sales Pitches, nur eine ehrliche Einschätzung.',
-          'contact.fallback': 'Oder schreiben Sie mir direkt an <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-semibold border-b border-[#1A1A1A]/40 hover:border-[#1A1A1A]">peter@ngo.digital</a>.',
-          'wizard.step0.q': 'Was führt Sie <em>zu mir</em>?',
-          'wizard.step0.hint': 'Wählen Sie, was am besten passt &ndash; wir können das später verfeinern.',
-          'wizard.step1.q': 'Wie ist Ihr <em>Name</em>?',
-          'wizard.step1.hint': 'Damit ich weiß, mit wem ich spreche.',
-          'wizard.step2.q': 'Welche <em>Organisation</em>?',
-          'wizard.step2.hint': 'Einfach den Namen Ihres Hospizes oder Ihrer Organisation.',
-          'wizard.step3.q': 'Wo kann ich <em>antworten</em>?',
-          'wizard.step3.hint': 'Kein Spam, kein Newsletter &ndash; außer Sie wollen später einen.',
-          'wizard.step4.q': 'Möchten Sie etwas <em>mitteilen</em>?',
-          'wizard.step4.hint': 'Optional &ndash; ein, zwei Sätze helfen mir bei der Vorbereitung.',
-          'wizard.chip.audit': 'Digital Fundraising Audit',
-          'wizard.chip.exploring': 'Erst einmal informieren',
-          'wizard.btn.back': '← Zurück',
-          'wizard.btn.skip': 'Überspringen',
-          'wizard.btn.ok': 'OK',
-          'wizard.btn.send': 'Senden',
-          'wizard.btn.sending': 'Wird gesendet…',
-          'wizard.press_enter': 'drücken Sie',
-          'wizard.error.interest': 'Bitte wählen Sie eine Option.',
-          'wizard.error.name': 'Bitte geben Sie Ihren Namen ein.',
-          'wizard.error.org': 'Bitte geben Sie Ihre Organisation ein.',
-          'wizard.error.email': 'Bitte geben Sie eine gültige E-Mail ein.',
-          'wizard.success.title': 'Verstanden. <em>Bis bald.</em>',
-          'wizard.success.msg': 'Ich melde mich innerhalb von 24 Stunden &ndash; werktags meistens schneller.',
+          'contact.salutation': 'Sehr geehrter Herr Hermann,',
+          'contact.body': 'wenn die Analyse Sie überzeugt hat, antworten Sie mir einfach kurz auf meine erste E-Mail. Ein Satz reicht &ndash; etwa &bdquo;Bitte senden Sie mir mehr Informationen&ldquo; oder &bdquo;Wann können wir starten?&ldquo;. Ich melde mich innerhalb von 24 Stunden.',
+          'contact.cta': 'Peter schreiben',
+          'contact.eyebrow': 'Nächster Schritt',
+          'contact.fallback': 'Oder direkt an <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-bold underline underline-offset-4 decoration-2 decoration-[#1A1A1A] hover:decoration-[3px]">peter@ngo.digital</a>',
 
           'footer.tag': 'Digital-Fundraising-Beratung für europäische Non-Profits, die wachsen wollen. Made in Prague.',
           'footer.col.services': 'Leistungen',
@@ -1703,20 +1666,17 @@
           'footer.link.about': 'Über Peter',
           'footer.link.cases': 'Case Studies',
           'footer.link.contact': 'Kontakt',
-          'footer.meta': '© 2026 Peter Chalupianský &middot; Made in Prague &middot; <a href="https://ngo.digital/#imprint" class="hover:text-[#C9F31D]">Impressum</a> &middot; <a href="https://ngo.digital/#privacy" class="hover:text-[#C9F31D]">Datenschutz</a>',
+          'footer.meta': '© 2026 Peter Chalupianský &middot; Made in Prague &middot; <a href="https://ngo.digital/#imprint" class="hover:text-[#C9F31D]">Impressum</a> &middot; <a href="https://www.iubenda.com/privacy-policy/97343048" class="hover:text-[#C9F31D]" title="Datenschutzerklärung">Datenschutzerklärung</a> &middot; <a href="https://www.iubenda.com/privacy-policy/97343048/cookie-policy" class="hover:text-[#C9F31D]" title="Cookie-Richtlinie">Cookie-Richtlinie</a>',
 
           'audit.intro.pill': 'Persönlich für Hospiz Aargau',
-          'audit.price.note': 'Ein Audit, das Ihnen zeigt, wo Ihre größten Fundraising-Chancen wirklich liegen.',
+          'audit.price.note': 'Ein Audit, das Ihnen zeigt, wo Ihre grössten Fundraising-Chancen wirklich liegen.',
           'audit.price.label': 'Investition',
-          'audit.price.cohort': 'Einführungspreis für Hospiz Aargau &ndash; gültig 30 Tage',
+          'audit.price.payoff': 'Die Erkenntnisse aus dem Audit zahlen sich für Sie an Spenden und Reputation um ein Vielfaches aus.',
           'audit.cta': 'Digital Fundraising Audit buchen',
-          'audit.trust.1': '100 % unverbindlich',
-          'audit.trust.2': 'Persönlich von mir betreut',
-          'audit.trust.3': 'Keine versteckten Kosten',
 
           'ctx.eyebrow': 'Kontext &amp; Marktentwicklung',
           'ctx.h2': 'Heute wird <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">das Morgen</em> von Hospiz Aargau entschieden<span class="text-[#C9F31D]">.</span>',
-          'ctx.lead1': 'Hospize stehen heute vor größeren Herausforderungen als je zuvor. <strong class="font-semibold">Steigende Kosten, schwindende staatliche Mittel</strong> und eine Spendergeneration, die fast ausschließlich online spendet, verändern alles.',
+          'ctx.lead1': 'Hospize stehen heute vor grösseren Herausforderungen als je zuvor. <strong class="font-semibold">Steigende Kosten, schwindende staatliche Mittel</strong> und eine Spendergeneration, die fast ausschliesslich online spendet, verändern alles.',
           'ctx.lead2': 'Diese Generation erwartet mehr als nur einen Spenden-Button. Sie will sofortige Online-Spenden, persönliche Geschichten und das Gefühl, wirklich etwas zu bewirken. <strong class="font-semibold">Das ist kein Trend &ndash; das ist der neue Standard.</strong>',
           'ctx.lead3': 'Wer heute aktiv mitgestaltet, <strong class="font-semibold">sichert Stabilität.</strong> Studien zeigen: 60&ndash;70 % der mobilen Besucher springen ab, wenn der Spendenprozess nicht optimiert ist &ndash; noch bevor sie überhaupt spenden.',
           'ctx.stat1.label': 'Neue Spendergeneration',
@@ -1728,7 +1688,6 @@
         },
         cs: {
           'nav.cta': 'Objednat Digital Fundraising Audit',
-          'hero.date': 'Osobní analýza pro Hospiz Aargau · 11. května 2026',
           'hero.h1.salutation': 'Vážený pane Hermanne,',
           'hero.h1.headline': 'Hospiz Aargau každý měsíc přichází o <span class="lime-highlight">tisíce franků v online darech</span> &ndash; o dary, které by vašim pacientům mohly umožnit <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">důstojný doprovod</em><span class="text-[#C9F31D]">.</span>',
           'hero.h1.line1': 'Po prvním pohledu na váš<br>digitální fundraising',
@@ -1769,31 +1728,28 @@
           'qw.c1.title': 'TWINT jako hlavní platební metoda',
           'qw.c1.body': 'Ve Švýcarsku se dárci dnes rozhodují v sekundách. Kdo TWINT nenabízí optimálně, přichází o velkou část dárců.',
           'qw.c1.action': 'Výrazné TWINT tlačítko na všech emotivních stránkách s příběhy, s předdefinovanými částkami (50 / 100 / 200 CHF).',
-          'qw.c1.metric': '+40&ndash;70',
-          'qw.c1.impactdesc': 'více okamžitých darů z mobilu.',
+          'qw.c1.impactdesc': 'Citelně více okamžitých darů z mobilu.',
           'qw.c2.title': 'Pravidelné dary jako strategická priorita',
           'qw.c2.body': 'Hospic potřebuje předvídatelné příjmy víc než jednorázové úspěchy kampaní.',
           'qw.c2.action': '<div class="flex items-center gap-2 mb-2.5"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"/></svg><span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#1A1A1A]" style="font-family: \'Bricolage Grotesque\', sans-serif;">Quick Win</span></div><p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5] mb-3" style="font-family: \'Source Sans 3\', sans-serif;">Postavte pravidelné dárcovství jako hlavní volbu &ndash; s jasným, důstojným zdůvodněním:</p><p class="text-[14px] md:text-[15px] italic text-[#1A1A1A]/85 leading-[1.5]" style="font-family: \'Instrument Serif\', serif; font-weight: 400;">&bdquo;S 8&ndash;15 CHF měsíčně doprovodíte člověka s důstojností až do posledního nádechu.&ldquo;</p>',
-          'qw.c2.metric': '18&ndash;35',
-          'qw.c2.impactdesc': 'dárců přejde k pravidelným darům &ndash; s vysokou dlouhodobou hodnotou.',
+          'qw.c2.impactdesc': 'Více předvídatelných příjmů díky pravidelným darům s vysokou dlouhodobou hodnotou.',
           'qw.c3.title': 'Bezbariérový mobilní dárcovský tok',
           'qw.c3.body': 'Přes 70 % návštěv dárcovských stránek přichází z mobilu. Každá zbytečná překážka stojí dar.',
           'qw.c3.action': 'Zkraťte dárcovský proces na maximálně dva kroky. S předvyplněným TWINT &amp; Apple Pay &ndash; a osobní děkovnou stránkou, která přímo zve k pravidelné podpoře.',
-          'qw.c3.metric': '+30&ndash;50',
-          'qw.c3.impactdesc': 'vyšší dokončenost &ndash; a výrazně lepší retence dárců.',
-          'qw.outro': '<strong class="text-[#1A1A1A] font-semibold">Tři body, tři páky, tři měřitelné efekty.</strong> V Digital Fundraising Auditu jdeme hlouběji &mdash; kanál po kanálu, slabé místo po slabém místě, s jasnou prioritizací podle náročnosti a dopadu.',
+          'qw.c3.impactdesc': 'Vyšší míra dokončení a výrazně lepší retence dárců.',
+          'qw.outro': 'Zjistěte, jaké další rychlé kroky <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">s velkým dopadem</em> můžete učinit<span class="text-[#C9F31D]">.</span>',
           'qw.cta': 'Objednat Digital Fundraising Audit',
 
           'syn.eyebrow': 'Co to všechno dohromady znamená',
           'syn.h2': 'Tři problémy. Tři quick winy. <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">Jeden systémový kořen</em><span class="text-[#C9F31D]">.</span>',
-          'syn.body': 'Tři zjištění ukazují, <strong class="text-white font-semibold">co nefunguje</strong>. Tři quick winy ukazují, <strong class="text-white font-semibold">co je dnes proveditelné</strong>.<br><br>Ale to obojí je jen povrch. Skutečná příčina je tatáž: digitální fundraising u Hospiz Aargau ještě neběží <strong class="text-white font-semibold">jako systém</strong>.<br><br><strong class="text-white font-semibold">Digital Fundraising Audit</strong> zmapuje váš celý fundraisingový systém, identifikuje největší příležitosti a dodá vám <strong class="text-[#C9F31D] font-semibold">personalizovanou microsite</strong> s konkrétním akčním plánem.<br><br>Bez jediné minuty vašeho času. Žádné zbytečné meetingy. Žádná práce pro vás. Vy objednáte, já dodám.',
+          'syn.body': 'Tři zjištění ukazují, <strong class="text-white font-semibold">co nefunguje</strong>. Tři quick winy ukazují, <strong class="text-white font-semibold">co je dnes proveditelné</strong>.<br><br>Ale to obojí je jen povrch. Skutečná příčina je tatáž: digitální fundraising u Hospiz Aargau ještě neběží <strong class="text-white font-semibold">jako systém</strong>.<br><br><strong class="text-white font-semibold">Digital Fundraising Audit</strong> zmapuje váš celý fundraisingový systém, identifikuje největší příležitosti a dodá vám <strong class="text-[#C9F31D] font-semibold">výstup</strong> s konkrétním akčním plánem.<br><br>Bez jediné minuty vašeho času. Žádné zbytečné meetingy. Žádná práce pro vás. Vy objednáte, já dodám. K auditu budu přistupovat z pohledu Vašeho dárce.',
           'syn.cta': 'Objednat Digital Fundraising Audit',
-          'syn.ctameta': 'Personalizovaná microsite · dodáno za 15 dní',
+          'syn.ctameta': 'Personalizovaná microsite s výstupem auditu · dodáno za 15 pracovních dní · Prezentace pro správní radu',
 
           'audit.eyebrow': 'Digital Fundraising Audit',
           'audit.h2': 'Za <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">pouhých</em> 15 dní zjistíte, kde každý měsíc <span class="lime-highlight">přicházíte o tisíce franků v darech</span> &ndash; a jak to okamžitě napravit<span class="text-[#C9F31D]">.</span>',
           'audit.sub': '<strong class="font-semibold">Žádné schůzky, žádné čekání.</strong> Audit běží kompletně vzdáleně &ndash; s písemným onboardingem místo schůzek. Dostanete okamžitě použitelné výstupy &ndash; <strong class="font-semibold">bez větší zátěže pro vás a váš tým</strong>.',
-          'audit.callout': '<p class="text-[16px] md:text-[17px] text-[#1A1A1A] leading-[1.5] mb-2 font-semibold" style="font-family: \'Source Sans 3\', sans-serif;">Většina neziskovek ztratí 60&ndash;70 % návštěvníků webu, než vůbec darují.</p><p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55] font-light" style="font-family: \'Source Sans 3\', sans-serif;">Audit ukáže přesně kde &ndash; a jak je získat zpátky.</p>',
+          'audit.callout': '<p class="text-[16px] md:text-[17px] text-[#1A1A1A] leading-[1.5] mb-2 font-semibold" style="font-family: \'Source Sans 3\', sans-serif;">Většina neziskovek ztratí 60&ndash;70 % návštěvníků webu, než dokončí pokus o darování.</p><p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55] font-light" style="font-family: \'Source Sans 3\', sans-serif;">Audit ukáže přesně kde &ndash; a jak je získat zpátky.</p>',
           'audit.body1': 'Audit je 100 % remote &ndash; bez jakýchkoli schůzek, datově podložený a kompletně přizpůsobený vaší organizaci.',
           'audit.body2': 'Digitální fundraising je <strong class="text-[#1A1A1A] font-semibold">řemeslo</strong>. Audit ukáže, co děláte správně, kde jsou rezervy a co se dá zlepšit.',
           'audit.areas.label': '10 oblastí pod lupou',
@@ -1804,6 +1760,26 @@
           'audit.check.3': '<strong class="font-semibold">Personalizovanou microsite</strong> s doporučenými kroky',
           'audit.check.4': 'Výsledky za pouhých <strong class="font-semibold">15 dní</strong>',
           'audit.check.5': '<strong class="font-semibold">100 % vzdáleně</strong> &mdash; písemný onboarding, žádné schůzky',
+          'process.eyebrow': 'Průběh a podmínky',
+          'process.h2': 'Jak probíhá spolupráce &ndash; <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">transparentně a bez překvapení</em><span class="text-[#C9F31D]">.</span>',
+          'process.intro': 'Od objednávky po dodání je to 15 pracovních dnů. Polovinu platíte na začátku, polovinu po dodání &ndash; bez skrytých nákladů, bez automatického prodloužení.',
+          'process.s1.kicker': 'Den 0',
+          'process.s1.title': 'Objednávka',
+          'process.s1.desc': 'Potvrdíte objednávku e-mailem. Zašlu vám zálohovou fakturu na 50&nbsp;% (2&nbsp;400 CHF).',
+          'process.s2.kicker': 'Den 1&ndash;7',
+          'process.s2.title': 'Záloha',
+          'process.s2.desc': 'Jakmile záloha dorazí, zahájím audit. Splatnost: 7 dní.',
+          'process.s3.kicker': 'Den 1&ndash;15',
+          'process.s3.title': 'Auditní fáze',
+          'process.s3.desc': 'Písemné onboarding (15 min vašeho času). Pak pracuji samostatně. Žádné schůzky, žádná práce navíc pro váš tým.',
+          'process.s4.kicker': 'Den 15',
+          'process.s4.title': 'Dodání',
+          'process.s4.desc': 'Obdržíte všechny výstupy: analytický report, quick winy, roadmapu a prezentaci pro představenstvo. Plus závěrečnou fakturu na zbývajících 50&nbsp;% (2&nbsp;400 CHF).',
+          'process.s5.kicker': 'Den 15&ndash;29',
+          'process.s5.title': 'Doplatek',
+          'process.s5.desc': 'Splatnost závěrečné faktury: 14 dní. Tím je audit uzavřen &ndash; bez dalších závazků.',
+          'process.footer': 'Všechny částky v CHF. Platba bankovním převodem.',
+          'process.contact': 'Otázky k průběhu nebo fakturaci? Napište mi přímo: <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-semibold border-b border-[#1A1A1A]/40 hover:border-[#1A1A1A]">peter@ngo.digital</a>',
           'audit.detail.eyebrow': 'V detailu',
           'audit.detail.pill': '7 výstupů za 15 dní',
           'audit.detail.h2': 'Konkrétní výstupy, které <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">hned použijete</em><span class="text-[#C9F31D]">.</span>',
@@ -1812,41 +1788,48 @@
           'audit.d1.desc': 'Kompletní písemný audit vašeho digitálního fundraisingu &mdash; co funguje, co ne, kde leží největší příležitosti.',
           'audit.d2.title': 'Nezávislá diagnostika',
           'audit.d2.desc': 'Co už funguje dobře? Kde přicházíte o dárce a peníze? S jasnými odpověďmi &mdash; ne s názory.',
-          'audit.d3.title': '5+ okamžitě realizovatelných quick winů',
+          'audit.d3.title': 'Seznam okamžitě realizovatelných quick winů',
           'audit.d3.desc': 'Konkrétní kroky, které váš tým může spustit už příští týden.',
-          'audit.d5.title': 'Best practices z DACH regionu',
-          'audit.d5.desc': 'Konkrétní příklady od hospiců a neziskovek ze Švýcarska, Německa a Rakouska, které můžete hned adaptovat.',
-          'audit.d6.title': 'Roadmapa seřazená podle ROI',
-          'audit.d6.desc': 'Strukturovaný plán, co řešit jako první &ndash; s pořadím a očekávaným výnosem.',
-          'audit.d7.eyebrow': '★ Srdce auditu',
+          'audit.d5.title': 'Best practices z Evropy',
+          'audit.d5.desc': 'Konkrétní příklady od hospiců a neziskovek z Evropy, které můžete hned adaptovat.',
+          'audit.d6.title': 'Roadmapa akčních kroků',
+          'audit.d6.desc': 'Strukturovaný plán, co řešit jako první &ndash; s pořadím a očekávaným přínosem.',
           'audit.d7.title': 'Prezentace pro správní radu + konkrétní implementační plán',
           'audit.d7.desc': 'Hotová, editovatelná prezentace + realistický akční plán s prioritami a rozpočtem.',
 
           'next.eyebrow': 'Co následuje po auditu',
           'next.h2': 'Co se <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">obvykle děje</em>, když je audit hotový<span class="text-[#C9F31D]">.</span>',
           'next.lead': 'Audit je první krok. Na základě jeho výsledků obvykle navazuje jedna z těchto cest:',
-          'next.s1.duration': '1&ndash;2 měsíce',
-          'next.s1.title': 'Implementace quick winů',
-          'next.s1.body': 'Opravujeme nejakutnější body z auditu &ndash; donor journey, payment friction, e-mail capture, TWINT integraci. Často formou měsíčního retaineru.',
-          'next.s2.duration': '3&ndash;4 měsíce',
+          'next.s1.kicker': '1&ndash;2 měsíce',
+          'next.s1.title': 'Implementace Quick Wins',
+          'next.s1.body': 'Společně zavedeme nejdůležitější quick winy z auditu &ndash; donor journey, platební frikce, email capture, TWINT integrace. Jasně ohraničený projekt s rychle viditelným dopadem.',
+          'next.s2.kicker': '3&ndash;4 měsíce',
           'next.s2.title': 'Fundraisingová strategie',
-          'next.s2.body': 'Pokud audit ukáže potřebu systémového přístupu, navazujeme strategickým plánem na 1&ndash;2 roky &mdash; s jasnými cíli, KPIs a kvartálními milníky.',
-          'next.s3.duration': '3&ndash;6 měsíců',
+          'next.s2.body': 'Pokud audit ukáže potřebu systémového přístupu, navazujeme strategickým plánem na 1&ndash;2 roky &ndash; s jasnými cíli, KPIs a kvartálními milníky.',
+          'next.s3.kicker': '3&ndash;6 měsíců',
           'next.s3.title': 'Nová digitální základna',
           'next.s3.body': 'Pokud je technologická základna překážkou, řešíme ji jako další krok. Buď ve formě dárcovské microsite nebo předělání celého webu.',
+          'next.s4.kicker': 'Průběžně',
+          'next.s4.title': 'Dlouhodobá spolupráce',
+          'next.s4.body': 'Místo jednotlivých projektů: stávám se vaším externím fundraisingovým partnerem. Provázím vás měsíc po měsíci &ndash; spouštím kampaně, optimalizuji donor journey, spravuji reklamy, dodávám reporty. Rozsah určujete vy: 20, 30 nebo 40 hodin měsíčně.',
+          'next.s4.badge.label': 'Flexibilně',
+          'next.s4.badge.value': '20&ndash;40 h/měsíc',
           'next.closing': 'O konkrétním řešení rozhodneme <strong class="font-semibold">až podle výsledků auditu</strong> &ndash; možná stačí jedna z těchto věcí, možná žádná, možná všechny postupně. Cílem auditu je dát vám objektivní data, abyste se mohli dobře rozhodnout.',
           'obs.cta.h': 'Chcete objevit další brzdy, <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">které vás stojí dárce</em><span class="text-[#C9F31D]">?</span>',
 
           'ref.eyebrow': 'Reference',
           'ref.quote': '&bdquo;S týmem dobrovolníků postavil Petr loni <strong class="text-[#C9F31D] font-bold">nejúspěšnější vánoční kampaň</strong> v Česku. Díky jednoduchosti a gamifikaci oslovil <strong class="text-[#C9F31D] font-bold">přes 60&rsquo;000 dárců</strong>.&ldquo;',
           'ref.author': 'Zdeněk Mihalco',
-          'ref.role': 'Ředitel, Nadace Via &ndash; Darujme.cz (české obdoba <strong class="text-[#C9F31D] font-bold">RaiseNow</strong>)',
+          'ref.role': 'Ředitel, Nadace Via &ndash; Darujme.cz (centrální dárcovská infrastruktura v Česku, srovnatelná s <strong class="text-[#C9F31D] font-bold">RaiseNow</strong> ve Švýcarsku)',
           'ref.m1.quote': '&bdquo;S investicí 1&rsquo;400 CHF vygeneroval za 2 měsíce přes 26&rsquo;000 CHF. A vybudoval pro nás dlouhodobé PR.&ldquo;',
           'ref.m1.name': 'Alena Pecková',
           'ref.m1.role': 'Ředitelka, sociální podnik Klubák',
           'ref.m2.quote': '&bdquo;Jeho zápal a kreativita pohnou dárci.&ldquo;',
           'ref.m2.name': 'Silvie Dymáková',
           'ref.m2.role': 'Novinářka, zakladatelka Nadace Příběhy',
+          'ref.cta.h': 'Další case reference<br><em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">může být ta vaše</em><span class="text-[#C9F31D]">.</span>',
+          'ref.cta.body': 'Co fungovalo v Česku, bude fungovat i u Hospiz Aargau. Logika donor journey je přes hranice stejná &ndash; mění se jen platební metody a jazyk.',
+          'ref.cta': 'Objednat Digital Fundraising Audit',
 
           'cases.eyebrow': 'Případové studie',
           'cases.title': 'Čísla, která <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">opravdu</em> pohnula<span class="text-[#C9F31D]">.</span>',
@@ -1856,6 +1839,7 @@
           'cases.big.desc': 'Postaveno s týmem dobrovolníků &ndash; nejúspěšnější vánoční fundraiser země v daném roce. Powered by gamifikace, donor journey design a mediální partnerství.',
           'cases.big.amplifier': '<strong>Každý 175. Čech</strong> <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; color: #C9F31D;">daroval</em><span class="text-[#C9F31D]">.</span>',
           'cases.big.note': 'Dosah, který skoro žádná česká nezisková organizace nikdy nedosáhla.',
+          'cases.big.amount': '€700K',
           'cases.big.stat1': 'vybráno',
           'cases.big.stat2': 'dárců',
           'cases.big.stat3': 'ROI za 1 měsíc',
@@ -1869,41 +1853,23 @@
 
           'about.eyebrow': 'O mně',
           'about.h2': 'Pomáhám neziskovkám po celé Evropě získávat <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">opravdové peníze</em> &ndash; ne jen engagement<span class="text-[#C9F31D]">.</span>',
-          'about.bio.p1': 'Jsem Petr Chalupianský, fundraisingový konzultant z Prahy. Posledních <strong class="font-bold">deset let</strong> doprovázím neziskovky a pomáhám jim proměnit digitální dárcovství ve spolehlivý příjmový kanál.',
-          'about.bio.p2': '<li><strong>Kaufland Česká republika</strong> &middot; CSR a ESG lead (8+ let), <span class="lime-highlight">součást Schwarz Gruppe</span> (největší retailer v Evropě). Vánoční kampaň pro <em>Světlušku</em> (nadace pro nevidomé děti a dospělé) &middot; fundraisingová platforma za 4,7 mil. CHF během sedmi let.</li><li><strong>Člen správní rady Nadačního fondu Českého rozhlasu</strong> &middot; jedna z největších neziskovek v Česku.</li><li><strong>Nezávislý konzultant</strong> &middot; digitální fundraising pro evropské neziskovky.</li><li><strong>Autor nejúspěšnější vánoční kampaně 2025</strong> v Česku.</li>',
-          'about.bio.p3': 'Moje kampaně dlouhodobě přinášejí <strong class="font-bold">pozitivní ROI</strong> a budují <strong class="font-bold">udržitelné dárcovské základny</strong>.',
-          'about.bio.p4': 'Teď bych to celé rád přinesl k vám a pomohl vám <strong class="font-bold">postavit digitální fundraisingový kanál, který skutečně funguje</strong>.',
+          'about.bio.p1': 'Jsem Petr Chalupianský, fundraisingový konzultant z Prahy. Posledních <strong>deset let</strong> doprovázím neziskovky a pomáhám jim proměnit digitální dárcovství ve spolehlivý příjmový kanál.',
+          'about.bio.p2': '<li><strong>Kaufland Česká republika</strong> &middot; CSR a ESG lead (8+ let), <span class="lime-highlight">součást Schwarz Gruppe</span> (největší retailer v Evropě). Vánoční kampaň pro <em>Světlušku</em> &middot; fundraisingový stroj za 4,9 mil. &euro; během sedmi let. PR a realizace celostátních marketingových kampaní.</li><li><strong>Člen správní rady Nadačního fondu Českého rozhlasu</strong> &middot; jedna z největších neziskovek v Česku.</li><li><strong>Nezávislý konzultant</strong> &middot; digitální fundraising pro evropské neziskovky.</li><li><strong>Nejúspěšnější vánoční kampaň 2025</strong> &middot; v Česku toho roku.</li>',
+          'about.bio.p3': 'Moje kampaně dlouhodobě přinášejí <strong>pozitivní ROI</strong> a budují <strong>dárcovské základny</strong>, které zůstávají.',
+          'about.bio.p4': 'Teď bych to celé rád přinesl k vám a pomohl vám <strong>postavit digitální fundraisingový kanál, který skutečně funguje</strong>.',
+          'about.recognition.title': 'Ocenění a uznání',
+          'about.recognition.personal.label': 'Osobně',
+          'about.recognition.personal.cards': '<div class="recognition-card"><strong>Řečník na TEDx, PechaKucha Nights a konferencích</strong>přes 20 akcí</div><div class="recognition-card"><strong>The Kind Heart Award</strong>Nadace Karla Janečka</div><div class="recognition-card"><strong>Osobnost filantropie</strong>Fórum dárců</div><div class="recognition-card"><strong>Osobnost roku</strong>Klub vozíčkářů Praha</div>',
+          'about.recognition.team.label': 'S týmem Kaufland Česká republika (součást Schwarz Gruppe)',
+          'about.recognition.team.cards': '<div class="recognition-card"><strong>Národní cena kvality ČR 2022 za udržitelnost</strong>Ministerstvo průmyslu a obchodu</div><div class="recognition-card"><strong>Čtyřnásobně Odpovědný obchodník roku (2020, 2022, 2024, 2025)</strong>Svaz obchodu a cestovního ruchu ČR</div>',
           'about.quote': '&bdquo;Hospic dělá nejtěžší práci ze všech sociálních služeb. Digitální fundraising musí téhle hodnotě dostát &ndash; ne ji oslabovat.&ldquo;',
           'about.attribution': '&ndash;&nbsp; Petr Chalupianský',
 
-          'contact.pill': 'Napište mi',
-          'contact.title': 'Napište mi <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">stručně</em> o vaší organizaci<span class="text-[#C9F31D]">.</span>',
-          'contact.lead': 'Pár krátkých otázek, nezávazně. Odpovím písemně do 24 hodin &mdash; žádné schůzky, žádné sales pitches, jen upřímné posouzení.',
-          'contact.fallback': 'Nebo mi napište přímo na <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-semibold border-b border-[#1A1A1A]/40 hover:border-[#1A1A1A]">peter@ngo.digital</a>.',
-          'wizard.step0.q': 'Co vás <em>přivádí</em>?',
-          'wizard.step0.hint': 'Vyberte, co se nejvíc hodí &ndash; můžeme to pak doladit.',
-          'wizard.step1.q': 'Jak se <em>jmenujete</em>?',
-          'wizard.step1.hint': 'Ať vím, s kým si píšu.',
-          'wizard.step2.q': 'Která <em>organizace</em>?',
-          'wizard.step2.hint': 'Stačí název hospice nebo neziskovky.',
-          'wizard.step3.q': 'Kam mám <em>odpovědět</em>?',
-          'wizard.step3.hint': 'Žádný spam, žádný newsletter &ndash; pokud o něj sami nepožádáte.',
-          'wizard.step4.q': 'Chcete mi něco <em>napsat</em>?',
-          'wizard.step4.hint': 'Volitelné &ndash; pár vět mi pomůže s přípravou.',
-          'wizard.chip.audit': 'Digital Fundraising Audit',
-          'wizard.chip.exploring': 'Zatím se jen rozhlížím',
-          'wizard.btn.back': '← Zpět',
-          'wizard.btn.skip': 'Přeskočit',
-          'wizard.btn.ok': 'OK',
-          'wizard.btn.send': 'Odeslat',
-          'wizard.btn.sending': 'Odesílám…',
-          'wizard.press_enter': 'stiskněte',
-          'wizard.error.interest': 'Vyberte prosím jednu možnost.',
-          'wizard.error.name': 'Zadejte prosím své jméno.',
-          'wizard.error.org': 'Zadejte prosím název organizace.',
-          'wizard.error.email': 'Zadejte prosím platný e-mail.',
-          'wizard.success.title': 'Mám to. <em>Brzy se ozvu.</em>',
-          'wizard.success.msg': 'Ozvu se do 24 hodin &ndash; ve všední dny většinou rychleji.',
+          'contact.salutation': 'Pane Hermanne,',
+          'contact.body': 'pokud Vás analýza zaujala, stačí mi krátce odpovědět na úvodní email. Jedna věta stačí &ndash; třeba &bdquo;Pošlete mi víc informací&ldquo; nebo &bdquo;Kdy můžeme začít?&ldquo;. Ozvu se Vám do 24 hodin.',
+          'contact.cta': 'Napsat Peterovi',
+          'contact.eyebrow': 'Další krok',
+          'contact.fallback': 'Nebo přímo napište na <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-bold underline underline-offset-4 decoration-2 decoration-[#1A1A1A] hover:decoration-[3px]">peter@ngo.digital</a>',
 
           'footer.tag': 'Konzultace digitálního fundraisingu pro evropské neziskovky, které chtějí růst. Made in Prague.',
           'footer.col.services': 'Služby',
@@ -1911,16 +1877,13 @@
           'footer.link.about': 'O Petrovi',
           'footer.link.cases': 'Případové studie',
           'footer.link.contact': 'Kontakt',
-          'footer.meta': '© 2026 Petr Chalupianský &middot; Made in Prague &middot; <a href="https://ngo.digital/#imprint" class="hover:text-[#C9F31D]">Tiráž</a> &middot; <a href="https://ngo.digital/#privacy" class="hover:text-[#C9F31D]">Soukromí</a>',
+          'footer.meta': '© 2026 Petr Chalupianský &middot; Made in Prague &middot; <a href="https://ngo.digital/#imprint" class="hover:text-[#C9F31D]">Tiráž</a> &middot; <a href="https://www.iubenda.com/privacy-policy/97343048" class="hover:text-[#C9F31D]" title="Zásady ochrany osobních údajů">Zásady ochrany osobních údajů</a> &middot; <a href="https://www.iubenda.com/privacy-policy/97343048/cookie-policy" class="hover:text-[#C9F31D]" title="Zásady cookies">Zásady cookies</a>',
 
           'audit.intro.pill': 'Osobně pro Hospiz Aargau',
           'audit.price.note': 'Audit, který vám ukáže, kde leží vaše největší fundraisingové příležitosti.',
           'audit.price.label': 'Investice',
-          'audit.price.cohort': 'Zaváděcí cena pro Hospiz Aargau &ndash; platí 30 dní',
+          'audit.price.payoff': 'Poznatky z auditu se vám mnohonásobně vrátí v darech i v renomé.',
           'audit.cta': 'Objednat Digital Fundraising Audit',
-          'audit.trust.1': '100 % nezávazně',
-          'audit.trust.2': 'Vede osobně',
-          'audit.trust.3': 'Žádné skryté náklady',
 
           'ctx.eyebrow': 'Kontext &amp; vývoj trhu',
           'ctx.h2': 'Dnes se rozhoduje o <em class="not-italic" style="font-family: \'Instrument Serif\', serif; font-style: italic; font-weight: 400;">zítřku</em> Hospiz Aargau<span class="text-[#C9F31D]">.</span>',
@@ -1970,187 +1933,24 @@
 
       setLang(initLang);
 
-      // ============ CONTACT WIZARD LOGIC (z homepage) ============
-      const wizard = document.getElementById('contactWizard');
-      if (wizard) {
-        const steps = wizard.querySelectorAll('.wizard-step');
-        const dots = wizard.querySelectorAll('.wizard-progress-dot');
-        const nextBtn = document.getElementById('wizardNext');
-        const backBtn = document.getElementById('wizardBack');
-        const skipBtn = document.getElementById('wizardSkip');
-        const controls = document.getElementById('wizardControls');
-        const successMsg = document.getElementById('wizardSuccessMsg');
-
-        let current = 0;
-        let history = [0];
-
-        function wzT(key, fallback) {
-          const lang = document.documentElement.lang || 'en';
-          if (T[lang] && T[lang][key]) return T[lang][key];
-          return fallback;
-        }
-
-        function showStep(i) {
-          steps.forEach((s, idx) => s.classList.toggle('active', idx === i));
-          dots.forEach((d, idx) => {
-            d.classList.remove('current', 'done');
-            if (idx < i) d.classList.add('done');
-            else if (idx === i) d.classList.add('current');
-          });
-          backBtn.classList.toggle('is-hidden', !(i > 0 && i < 5));
-          skipBtn.classList.toggle('is-hidden', i !== 4);
-          controls.style.display = (i === 5) ? 'none' : 'flex';
-          if (i === 4) nextBtn.innerHTML = wzT('wizard.btn.send', 'Send') + ' <span style="font-weight:400">↵</span>';
-          else nextBtn.innerHTML = wzT('wizard.btn.ok', 'OK') + ' <span style="font-weight:400">↵</span>';
-          const input = steps[i].querySelector('input[type="text"], input[type="email"], textarea');
-          if (input) setTimeout(() => input.focus(), 280);
-        }
-
-        function showError(idx, msg) {
-          const errEl = steps[idx].querySelector('.wizard-error');
-          const input = steps[idx].querySelector('input, textarea');
-          if (errEl) errEl.textContent = msg;
-          if (input) {
-            input.classList.add('is-error');
-            setTimeout(() => input.classList.remove('is-error'), 1500);
-          }
-        }
-        function clearError(idx) {
-          const errEl = steps[idx].querySelector('.wizard-error');
-          if (errEl) errEl.textContent = '';
-        }
-
-        function validateStep(idx) {
-          clearError(idx);
-          if (idx === 0) {
-            if (!wizard.querySelector('input[name="interest"]:checked')) {
-              showError(0, wzT('wizard.error.interest', 'Please pick one option.'));
-              return false;
-            }
-            return true;
-          }
-          if (idx === 1) {
-            const v = document.getElementById('wiz-name').value.trim();
-            if (v.length < 2) { showError(1, wzT('wizard.error.name', 'Please enter your name.')); return false; }
-            return true;
-          }
-          if (idx === 2) {
-            const v = document.getElementById('wiz-org').value.trim();
-            if (v.length < 1) { showError(2, wzT('wizard.error.org', 'Please enter your organization.')); return false; }
-            return true;
-          }
-          if (idx === 3) {
-            const v = document.getElementById('wiz-email').value.trim();
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { showError(3, wzT('wizard.error.email', 'Please enter a valid email.')); return false; }
-            return true;
-          }
-          return true;
-        }
-
-        function goNext() {
-          if (current === 5) return;
-          if (current === 4) { return submitForm(); }
-          if (!validateStep(current)) return;
-          current++;
-          history.push(current);
-          showStep(current);
-        }
-
-        function goBack() {
-          if (history.length <= 1) return;
-          history.pop();
-          current = history[history.length - 1];
-          showStep(current);
-        }
-
-        async function submitForm() {
-          const interest = wizard.querySelector('input[name="interest"]:checked')?.value || 'Just exploring';
-          const name = document.getElementById('wiz-name').value.trim();
-          const organization = document.getElementById('wiz-org').value.trim();
-          const email = document.getElementById('wiz-email').value.trim();
-          const message = document.getElementById('wiz-msg').value.trim();
-          nextBtn.disabled = true;
-          nextBtn.innerHTML = wzT('wizard.btn.sending', 'Sending…');
-          try {
-            const fd = new FormData();
-            fd.append('interest', interest);
-            fd.append('name', name);
-            fd.append('organization', organization);
-            fd.append('email', email);
-            fd.append('message', message || '(no message)');
-            fd.append('_subject', `Hospiz Aargau: ${interest} - ${name} (${organization})`);
-            const response = await fetch(wizard.action, {
-              method: 'POST',
-              headers: { 'Accept': 'application/json' },
-              body: fd
-            });
-            if (!response.ok) throw new Error('Formspree error');
-            successMsg.textContent = wzT('wizard.success.msg', "I'll be in touch within 24 hours – usually faster on weekdays.");
-            current = 5;
-            showStep(5);
-          } catch (err) {
-            const subject = encodeURIComponent(`Hospiz Aargau: ${interest} - ${name} (${organization})`);
-            const body = encodeURIComponent(`Hi Peter,\n\nName: ${name}\nOrganization: ${organization}\nEmail: ${email}\nInterest: ${interest}\n\nMessage:\n${message || '(no message)'}\n`);
-            window.location.href = `mailto:peter@ngo.digital?subject=${subject}&body=${body}`;
-            nextBtn.disabled = false;
-            nextBtn.innerHTML = wzT('wizard.btn.send', 'Send') + ' <span style="font-weight:400">↵</span>';
-          }
-        }
-
-        nextBtn.addEventListener('click', goNext);
-        backBtn.addEventListener('click', goBack);
-        skipBtn.addEventListener('click', () => { if (current === 4) submitForm(); });
-
-        // Auto-advance after picking chip
-        wizard.querySelectorAll('input[name="interest"]').forEach(radio => {
-          radio.addEventListener('change', () => {
-            if (current === 0) setTimeout(goNext, 220);
-          });
-        });
-
-        // Prefill z odkazů s data-interest (z prodejních tlačítek)
-        const VALID_INTERESTS = ['Digital Fundraising Audit', 'Fundraising Strategy', 'New Website', 'Long-term Partnership', 'Just exploring'];
-        function applyPrefill(interest, jumpToName) {
-          if (!VALID_INTERESTS.includes(interest)) return false;
-          const radio = wizard.querySelector(`input[name="interest"][value="${interest}"]`);
-          if (!radio) return false;
-          radio.checked = true;
-          if (jumpToName !== false) {
-            current = 1;
-            history = [1];
-            showStep(1);
-          }
-          return true;
-        }
-        document.querySelectorAll('a[data-interest]').forEach(link => {
-          link.addEventListener('click', function() {
-            applyPrefill(this.dataset.interest);
-          });
-        });
-        // URL ?interest=... nebo #contact?interest=...
-        function getPrefilledInterest() {
-          const params = new URLSearchParams(window.location.search);
-          const fromQuery = params.get('interest');
-          if (fromQuery) return fromQuery;
-          const hash = window.location.hash;
-          if (hash && hash.includes('?')) {
-            return new URLSearchParams(hash.split('?')[1]).get('interest');
-          }
-          return null;
-        }
-        const initialInterest = getPrefilledInterest();
-        if (initialInterest) applyPrefill(initialInterest);
-
-        // Enter advances
-        wizard.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' && !e.shiftKey && current < 5) {
-            e.preventDefault();
-            goNext();
-          }
-        });
-
-        showStep(0);
+      // ============ CONTACT MAILTO ============
+      // Lang-aware mailto link with pre-filled greeting + signature.
+      const MAILTO_SUBJECT = 'Digital Fundraising Audit – Hospiz Aargau';
+      const MAILTO_BODIES = {
+        de: 'Sehr geehrter Herr Chalupiansky,\r\n\r\n\r\n\r\n– Dieter Hermann\r\nHospiz Aargau',
+        en: 'Dear Mr. Chalupiansky,\r\n\r\n\r\n\r\n– Dieter Hermann\r\nHospiz Aargau',
+        cs: 'Vážený pane Chalupiansky,\r\n\r\n\r\n\r\n– Dieter Hermann\r\nHospiz Aargau'
+      };
+      function updateMailto(lang) {
+        const cta = document.getElementById('contactCta');
+        if (!cta) return;
+        const body = MAILTO_BODIES[lang] || MAILTO_BODIES.de;
+        cta.href = 'mailto:peter@ngo.digital?subject=' + encodeURIComponent(MAILTO_SUBJECT) + '&body=' + encodeURIComponent(body);
       }
+      updateMailto(initLang);
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => updateMailto(btn.dataset.lang));
+      });
 
       // Rotace headline (4s na frázi)
       const phrases = document.querySelectorAll('.rotating-headline');
