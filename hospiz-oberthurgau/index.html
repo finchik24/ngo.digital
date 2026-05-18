@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ngo.digital × Hospiz Oberthurgau</title>
+  <title>ngo.digital × Hospiz Solothurn</title>
 
   <!-- Favicon (sdílené s homepage z root složky) -->
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
-  <!-- Privacy-friendly analytics by Plausible (page view, scroll depth, CTA clicks; no heatmaps) -->
+  <!-- Privacy-friendly analytics by Plausible -->
   <script async src="https://plausible.io/js/pa-9B328kdZ_zEWlEdeo50hp.js"></script>
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
@@ -28,6 +28,27 @@
     /* Smooth scroll s offsetem pro sticky nav */
     html { scroll-behavior: smooth; scroll-padding-top: 80px; }
     body { font-family: 'Source Sans 3', sans-serif; }
+
+    /* Rotující headline (JS-řízená, grid auto-fit dle nejdelší fráze) */
+    .rotating-wrap {
+      display: inline-grid;
+      vertical-align: baseline;
+      margin-left: 0.22em;
+    }
+    .rotating-headline {
+      grid-column: 1;
+      grid-row: 1;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.65, 0, 0.35, 1),
+                  transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+      will-change: opacity, transform;
+    }
+    .rotating-headline.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* Area pills v audit sekci */
     .area-pill {
@@ -51,7 +72,7 @@
       padding: 0 0.05em;
     }
 
-    /* Bio bullet list (about section, lime dot markers) */
+    /* Bio bullet list (about section, lime dot markers, like homepage v3_3) */
     .bio-list {
       list-style: none;
       padding: 0;
@@ -84,7 +105,7 @@
       .bio-list li { font-size: 16px; }
     }
 
-    /* Recognition cards (about awards) */
+    /* Recognition cards (about awards, card grid, like homepage v3_3) */
     .recognition-grid {
       list-style: none;
       padding: 0;
@@ -148,100 +169,43 @@
     }
     .cta-pulse-lime:hover { animation: none; }
 
-    /* Bonus-box pro Sekci 9 (Was der Rabatt konkret bedeutet) */
-    .bonus-box {
-      background: linear-gradient(135deg, #FBFEEF 0%, #F5FBE3 100%);
-      border: 1px solid #EEF5C8;
-      border-left: 4px solid #C9F31D;
-      border-radius: 24px;
-      padding: 28px 28px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-    }
-    @media (min-width: 768px) {
-      .bonus-box { padding: 36px 40px; }
-    }
-    .bonus-box__header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 22px;
-    }
-    .bonus-box__icon {
-      flex-shrink: 0;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: #C9F31D;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .bonus-box__title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 800;
-      font-size: 22px;
-      line-height: 1.2;
-      letter-spacing: -0.025em;
-      color: #1A1A1A;
-    }
-    @media (min-width: 768px) {
-      .bonus-box__title { font-size: 26px; }
-    }
-    .bonus-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 18px;
-    }
-    .bonus-table th {
-      text-align: left;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #888;
-      padding: 0 0 14px 0;
-      border-bottom: 1px solid #DDE5BC;
-    }
-    .bonus-table th:last-child { text-align: right; }
-    .bonus-table td {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 16px;
-      color: #1A1A1A;
-      padding: 16px 0;
-      border-bottom: 1px solid #E5ECC5;
-      vertical-align: baseline;
-    }
-    .bonus-table tr:last-child td { border-bottom: none; }
-    .bonus-table td.bonus-table__amount {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 800;
-      font-size: 20px;
-      text-align: right;
-      letter-spacing: -0.02em;
-      color: #1A1A1A;
-    }
-    .bonus-box__footnote {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 1.5;
-      color: #555;
-      margin: 0;
-    }
-    @media (max-width: 480px) {
-      .bonus-box__title { font-size: 20px; }
-      .bonus-table td { font-size: 15px; padding: 14px 0; }
-      .bonus-table td.bonus-table__amount { font-size: 17px; }
-      .bonus-box__footnote { font-size: 15px; }
-    }
-
   </style>
 </head>
 <body class="antialiased">
 
-  <!-- ============ SEKCE 1: TOP NAV / HEADER ============ -->
+  <!--
+    ====================================================================
+    STATUS – MICROSITE HOSPIZ SOLOTHURN
+    --------------------------------------------------------------------
+    Klient: Verein Sterbehospiz Solothurn (hospiz-solothurn.ch)
+    Kontakt: Andrea Bürgi (Geschäftsleiterin od 02/2024)
+    V provozu od: 1. května 2022, 6 lůžek, první hospic v Kantonu SO
+    Roční potřeba darů: ~400'000 CHF (50% z darů, 50% Krankenkassen)
+
+    Hotovo všechny sekce:
+    - Hero (Frau Bürgi, open-letter struktura)
+    - Kontext & Marktentwicklung
+    - Drei Schlüsselbeobachtungen (IBAN-only + no recurring + FB unused)
+    - Drei konkrete Quick Wins (Spendenseite + TWINT/Apple Pay + FB-Fundraising)
+    - Synthesis (etabliertes Haus, 400+ Mitglieder, Medienpreis AG/SO)
+    - Digital Fundraising Audit + Pricing (4'800 CHF)
+    - Konkrete Ergebnisse (6 deliverables)
+    - Ablauf & Konditionen (5-step timeline, 2 × 2'400 CHF)
+    - Referenzen (Mihalco + Pecková + Dymáková)
+    - Cases (Vánoční kampaň + Klubák + Solothurn bridge)
+    - Über mich (Peter bio + Solothurn paragraf 4)
+    - Was üblicherweise folgt (4 služby v 2×2 gridu)
+    - Závěrečný kontakt (lime Aargau-style, mailto subject
+      "Hospiz Solothurn - Audit-Interesse")
+
+    Volitelné dotahy:
+    1. Foto Andrea Bürgi (aktuálně bez fotky)
+    2. Křestní jméno Andrea do mailto signatury (placeholder
+       "[Ihr Name]" zůstává v primary CTA)
+    ====================================================================
+  -->
+
+  <!-- ============ TOP NAV ============ -->
   <nav class="sticky top-0 z-50 bg-white/92 backdrop-blur-md border-b border-[#F0F0F0]">
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between gap-4">
       <div class="flex items-center gap-3 md:gap-4 min-w-0">
@@ -249,49 +213,47 @@
           ngo<span class="text-[#C9F31D]">.</span>digital
         </a>
         <span class="hidden sm:block w-px h-5 bg-[#DDDDDD] flex-shrink-0"></span>
-        <span class="hidden sm:block text-[13px] md:text-[14px] font-semibold text-[#1A1A1A] truncate" data-config="hospizName" style="font-family: 'Bricolage Grotesque', sans-serif;">
-          Hospiz Oberthurgau
+        <span class="hidden sm:block text-[13px] md:text-[14px] font-semibold text-[#1A1A1A] truncate" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          Hospiz Solothurn
         </span>
       </div>
 
       <div class="flex items-center gap-3 md:gap-4 flex-shrink-0">
-        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-[11px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[14px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.06)] hover:-translate-y-0.5 hover:shadow-[0_6px_0_rgba(0,0,0,0.06)] transition-all" style="font-family: 'Bricolage Grotesque', sans-serif;">
-          <span>Beratungstermin vereinbaren</span>
+        <a href="#audit" class="hidden sm:inline-flex items-center gap-2 px-5 py-[11px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[14px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.06)] hover:-translate-y-0.5 hover:shadow-[0_6px_0_rgba(0,0,0,0.06)] transition-all" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          <span>Digital Fundraising Audit buchen</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- ============ SEKCE 2: HERO ============ -->
+  <!-- ============ HERO ============ -->
   <section class="relative bg-white overflow-hidden">
 
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-24 md:py-32 lg:py-40 relative">
 
-      <!-- H1 — salutation + direct headline -->
+      <!-- H1 — salutation + pain-first headline (Aargau-style) -->
       <h1 class="text-[#1A1A1A] mb-12" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        <span class="block text-[26px] md:text-[32px] lg:text-[38px] italic font-normal mb-5 tracking-[-0.01em]" data-config="vorstandSalutation" style="font-family: 'Instrument Serif', serif;">Sehr geehrte Frau Jäckle,</span>
+        <span class="block text-[26px] md:text-[32px] lg:text-[38px] italic font-normal mb-5 tracking-[-0.01em]" style="font-family: 'Instrument Serif', serif;">Sehr geehrte Frau Bürgi,</span>
         <span class="block text-[32px] sm:text-[40px] md:text-[46px] lg:text-[52px] xl:text-[58px] font-extrabold leading-[1.1] tracking-[-0.045em]">
-          <span data-config="hospizName">Hospiz Oberthurgau</span> hat die Chance, eine <span class="lime-highlight">ausgezeichnete digitale Kommunikation</span> und ein <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">starkes Fundraising</em> aufzubauen<span class="text-[#C9F31D]">.</span>
+          Hospiz Solothurn <span class="lime-highlight">verliert jeden Monat hunderte Franken an Online-Spenden</span> &ndash; Spenden, die Ihren Patienten <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">würdevolle Begleitung</em> ermöglichen könnten<span class="text-[#C9F31D]">.</span>
         </span>
       </h1>
 
-      <!-- Sub headline -->
-      <p class="text-[18px] md:text-[20px] lg:text-[22px] text-[#1A1A1A] leading-[1.55] max-w-4xl mb-10 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-        Menschen in ihren letzten Wochen mit Würde zu begleiten gehört zu den wertvollsten Arbeiten, die unsere Gesellschaft kennt. Damit diese Arbeit weitergehen und wachsen kann, muss sie <strong class="font-semibold">sichtbar, hörbar und finanziell unterstützt</strong> werden. Und weil die meisten Menschen heute online suchen, sich informieren und spenden, entscheiden eine gute digitale Kommunikation und ein durchdachtes Fundraising darüber, wie viele Spender Sie finden und wie viele davon bleiben.
-      </p>
+      <!-- Letter body -->
+      <div class="max-w-3xl mb-12 space-y-7" style="font-family: 'Source Sans 3', sans-serif;">
+        <p class="text-[18px] md:text-[20px] lg:text-[22px] text-[#1A1A1A] leading-[1.55] font-light">
+          <strong class="font-semibold">Mehr Einzelspender. Erste wiederkehrende Spenden.</strong> Ein stärkeres digitales Renommee in der Region Solothurn.
+        </p>
 
-      <p class="text-[18px] md:text-[20px] lg:text-[22px] text-[#1A1A1A] leading-[1.55] max-w-4xl mb-10 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-        Sie sind seit einigen Monaten in Betrieb und haben den <strong class="font-semibold">seltensten Vorteil im Hospiz-Fundraising</strong>: Sie können von Anfang an alles richtig aufbauen.
-      </p>
-
-      <p class="text-[18px] md:text-[20px] lg:text-[22px] text-[#1A1A1A] leading-[1.55] max-w-4xl mb-14 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-        Ich habe Ihre Website, Ihre Kommunikationskanäle und Ihren aktuellen digitalen Fussabdruck analysiert, so als wäre ich ein potenzieller Spender, der Sie im Internet sucht. Hier ist, was ich gefunden habe und wie wir das gemeinsam in ein starkes Fundament verwandeln.
-      </p>
+        <p class="text-[18px] md:text-[20px] lg:text-[22px] text-[#1A1A1A] leading-[1.55] font-light">
+          Ich habe Ihre Website, Ihre Spendenseite und Ihre Social-Media-Aktivität als potenzieller Spender analysiert. Hier ist, was ich gefunden habe und wie wir das spürbar verbessern können.
+        </p>
+      </div>
 
       <!-- CTA -->
       <div class="flex flex-wrap items-center gap-x-8 gap-y-5">
-        <a href="#beobachtungen" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.10)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.10),0_12px_24px_rgba(201,243,29,0.30)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+        <a href="#findings" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.10)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.10),0_12px_24px_rgba(201,243,29,0.30)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
           <span>Drei Beobachtungen</span>
           <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
         </a>
@@ -300,7 +262,7 @@
     </div>
   </section>
 
-  <!-- ============ SEKCE 3: KONTEXT UND MARKTREALITÄT ============ -->
+  <!-- ============ CONTEXT & MARKET DEVELOPMENT ============ -->
   <section class="bg-white border-t border-[#F0F0F0]">
 
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
@@ -312,31 +274,28 @@
         <div>
           <div class="inline-flex items-center gap-3 mb-7 text-[11px] font-bold uppercase tracking-[0.16em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
             <span class="w-10 h-px bg-[#C9F31D]"></span>
-            <span>Kontext und Marktrealität</span>
+            <span>Kontext &amp; Marktentwicklung</span>
           </div>
-          <h2 class="text-[38px] sm:text-[46px] md:text-[54px] lg:text-[64px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;">
-            Die heutige Entscheidung bestimmt, welche <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">Unterstützung</em> <span data-config="hospizName">Hospiz Oberthurgau</span> in den kommenden Jahren haben wird<span class="text-[#C9F31D]">.</span>
+          <h2 class="text-[38px] sm:text-[46px] md:text-[54px] lg:text-[68px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;">
+            Heute wird <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">das Morgen</em> von Hospiz Solothurn entschieden<span class="text-[#C9F31D]">.</span>
           </h2>
         </div>
 
         <!-- RIGHT: lead paragraphs -->
         <div class="lg:pt-4">
           <p class="text-[17px] md:text-[19px] text-[#1A1A1A] leading-[1.6] mb-5 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-            Hospize, die heute eröffnen, stehen vor einer <strong class="font-semibold">historischen Chance</strong> und vor einem <strong class="font-semibold">historischen Risiko</strong>.
+            Hospize stehen heute vor grösseren Herausforderungen als je zuvor. <strong class="font-semibold">Steigende Kosten, schwindende staatliche Mittel</strong> und eine Spendergeneration, die fast ausschliesslich online spendet, verändern alles.
           </p>
           <p class="text-[17px] md:text-[19px] text-[#1A1A1A] leading-[1.6] mb-5 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-            <strong class="font-semibold">Chance:</strong> Eine neue Generation von Spendern erwartet digitale Lösungen. Wer sie von Anfang an richtig anspricht, baut eine Spenderbasis auf, die jahrzehntelang trägt.
-          </p>
-          <p class="text-[17px] md:text-[19px] text-[#1A1A1A] leading-[1.6] mb-5 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-            <strong class="font-semibold">Risiko:</strong> Wer in den ersten 6 bis 12 Monaten kein digitales Fundament legt, verliert nicht nur Spenden. Er verliert die <strong class="font-semibold">erste Spendergeneration</strong>, die ihn entdecken sollte.
+            Diese Generation erwartet mehr als nur eine IBAN-Nummer. Sie will sofortige Online-Spenden, persönliche Geschichten und das Gefühl, wirklich etwas zu bewirken. <strong class="font-semibold">Das ist kein Trend &ndash; das ist der neue Standard.</strong>
           </p>
           <p class="text-[17px] md:text-[19px] text-[#1A1A1A] leading-[1.6] font-light" style="font-family: 'Source Sans 3', sans-serif;">
-            Die Eröffnungsphase eines Hospizes ist die <strong class="font-semibold">wertvollste Marketingphase</strong> seiner gesamten Existenz. Medien berichten. Die Gemeinde ist aufmerksam. Erste Geschichten entstehen. Doch ohne digitale Infrastruktur verpufft all diese Aufmerksamkeit: Menschen möchten spenden, finden aber keinen Weg dazu.
+            Wer heute aktiv mitgestaltet, <strong class="font-semibold">sichert Stabilität.</strong> Studien zeigen: 60&ndash;70 % der mobilen Besucher springen ab, wenn der Spendenprozess nicht optimiert ist &ndash; noch bevor sie überhaupt spenden.
           </p>
         </div>
       </div>
 
-      <!-- Stats card: 3 data blocks -->
+      <!-- Stats card -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-x-2 lg:gap-x-6 py-12 px-7 md:px-10 bg-gradient-to-br from-[#FBFEEF] to-[#F5FBE3] rounded-3xl border border-[#EEF5C8]">
 
         <div class="md:border-r md:border-[#DDE5BC] md:pr-6 lg:pr-10">
@@ -347,7 +306,7 @@
             80<span class="text-[#C9F31D]">%</span>
           </div>
           <p class="text-[14px] md:text-[15px] text-[#444] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">
-            der Spender zwischen <strong class="text-[#1A1A1A] font-semibold">30 und 55 Jahren</strong> spenden bevorzugt online. Mit älteren Methoden erreichen Sie diese Spender nicht mehr.
+            der Spender zwischen <strong class="text-[#1A1A1A] font-semibold">30 und 55</strong> spenden bevorzugt online. Ältere Methoden erreichen sie nicht mehr.
           </p>
         </div>
 
@@ -359,7 +318,7 @@
             3&ndash;5<span class="text-[#C9F31D]">×</span>
           </div>
           <p class="text-[14px] md:text-[15px] text-[#444] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">
-            höherer <strong class="text-[#1A1A1A] font-semibold">Lebenswert</strong> eines wiederkehrenden Spenders im Vergleich zu einer einmaligen Spende. In der digitalen Welt wird aus einer Spende eine langfristige Beziehung.
+            höherer <strong class="text-[#1A1A1A] font-semibold">Lebenswert</strong> pro wiederkehrenden Spender im Vergleich zu einmaligen Spenden. In der digitalen Welt wird aus einer einmaligen Spende eine langfristige, vertrauensvolle Beziehung.
           </p>
         </div>
 
@@ -371,7 +330,7 @@
             70<span class="text-[#C9F31D]">%+</span>
           </div>
           <p class="text-[14px] md:text-[15px] text-[#444] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">
-            der Spendenseiten-Besuche kommen vom <strong class="text-[#1A1A1A] font-semibold">Smartphone</strong>. Jede unnötige Hürde bedeutet eine verlorene Spende.
+            aller Spendenbesuche kommen vom <strong class="text-[#1A1A1A] font-semibold">Smartphone</strong>. Jede unnötige Hürde kostet eine Spende.
           </p>
         </div>
       </div>
@@ -379,8 +338,8 @@
     </div>
   </section>
 
-  <!-- ============ SEKCE 4: DREI ZENTRALE BEOBACHTUNGEN ============ -->
-  <section id="beobachtungen" class="relative bg-[#1A1A1A] overflow-hidden border-t border-[#1A1A1A]">
+  <!-- ============ THREE KEY OBSERVATIONS ============ -->
+  <section id="findings" class="relative bg-[#1A1A1A] overflow-hidden border-t border-[#1A1A1A]">
 
     <!-- Subtle decorative blob -->
     <div aria-hidden="true" class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#C9F31D] opacity-[0.06] pointer-events-none"></div>
@@ -390,36 +349,36 @@
       <!-- Eyebrow -->
       <div class="inline-flex items-center gap-3 mb-7 text-[11px] font-bold uppercase tracking-[0.16em] text-white/60" style="font-family: 'Bricolage Grotesque', sans-serif;">
         <span class="w-2 h-2 bg-[#C9F31D] rounded-full"></span>
-        <span>Drei zentrale Beobachtungen</span>
+        <span>Drei Schlüsselbeobachtungen</span>
       </div>
 
       <!-- H2 -->
       <h2 class="text-[36px] sm:text-[42px] md:text-5xl lg:text-[60px] font-extrabold leading-[1.05] tracking-[-0.045em] text-white mb-7 max-w-5xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        Drei Chancen, die <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">Spender gewinnen</em><span class="text-[#C9F31D]">.</span>
+        Drei Bremsen, die <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">Spender kosten</em><span class="text-[#C9F31D]">.</span>
       </h2>
 
       <!-- Lead -->
       <p class="text-[17px] md:text-[19px] text-white/70 leading-[1.6] max-w-3xl mb-16 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-        Es sind keine kleinen kosmetischen Anpassungen. Es sind drei strukturelle Punkte, die eng miteinander verbunden sind und jeder einzelne entscheidet darüber, wie viele Spender, Spenden und Reputation Ihr Hospiz gewinnt. <strong class="text-white font-semibold">Die gute Nachricht: Alle drei lassen sich systematisch lösen.</strong>
+        Das sind keine kleinen kosmetischen Anpassungen. Es sind drei strukturelle Punkte, die eng miteinander verbunden sind &ndash; und jeder einzelne kostet Sie Spender, Spenden und Renommee.
       </p>
 
       <!-- 3 observation cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-        <!-- 01 - Website spricht von geplanter Eröffnung -->
+        <!-- 01 -->
         <article class="relative bg-white border border-[#E8E8E8] rounded-3xl p-8 lg:p-10 hover:border-[#C9F31D] hover:shadow-[0_24px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col overflow-hidden">
           <span aria-hidden="true" class="absolute top-2 right-5 text-[150px] leading-[0.85] italic text-[#C9F31D] opacity-40 select-none pointer-events-none" style="font-family: 'Instrument Serif', serif;">01</span>
           <div class="relative z-10 inline-flex w-14 h-14 rounded-2xl bg-[#1A1A1A] items-center justify-center mb-7">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#C9F31D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9F31D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="6" y1="7" x2="13" y2="7"/><line x1="6" y1="11" x2="15" y2="11"/></svg>
           </div>
           <div class="relative z-10 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">
             Beobachtung
           </div>
           <h3 class="relative z-10 text-[24px] md:text-[26px] font-extrabold mb-5 text-[#1A1A1A] tracking-[-0.03em] leading-[1.15]" style="font-family: 'Bricolage Grotesque', sans-serif;">
-            Ihre Website spricht noch immer von einer <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">geplanten Eröffnung</em><span class="text-[#C9F31D]">.</span>
+            Spendenseite ohne moderne Spenden-Optionen<span class="text-[#C9F31D]">.</span>
           </h3>
           <p class="relative z-10 text-[15px] md:text-[16px] text-[#555] leading-[1.65] mb-8" style="font-family: 'Source Sans 3', sans-serif;">
-            Beim Besuch von hospiz-oberthurgau.ch lese ich: <em>&bdquo;Die Eröffnung der Hospizwohnung Oberthurgau ist auf Anfang 2026 geplant.&ldquo;</em><br><br>Wir schreiben aber Mai 2026. Sie sind seit einigen Monaten in Betrieb.<br><br>Was bedeutet das konkret? Jeder Spender, der heute Ihre Website besucht, denkt: <strong class="text-[#1A1A1A] font-semibold">&bdquo;Sie sind wohl noch nicht offen. Ich warte ab.&ldquo;</strong> Sie verlieren Menschen, die jetzt spenden möchten, weil Ihre Kommunikation noch in der Vergangenheit lebt.<br><br>Das Eröffnungs-Momentum, das Sie Anfang 2026 hatten, lässt sich nicht zurückholen. Sie können jedoch <strong class="text-[#1A1A1A] font-semibold">eine neue Botschaft setzen</strong>: <em>&bdquo;Wir sind da. Wir pflegen. Wir brauchen Ihre Unterstützung.&ldquo;</em>
+            Ich habe Ihre Spendenseite analysiert &ndash; als wäre ich ein potenzieller Spender, der gerade einen Artikel über Hospiz Solothurn gelesen hat. Was ich vorfinde, ist erstaunlich:<br><br>Die einzige Spenden-Option ist eine IBAN-Nummer. Kein &bdquo;Jetzt spenden&ldquo;-Button. Kein Online-Formular. Keine Möglichkeit, sofort und spontan zu geben.<br><br>Für 80 % Ihrer potenziellen Spender zwischen 30 und 55 bedeutet das das Ende des Spendenversuchs. Sie kommen vom Smartphone, sie haben 30 Sekunden, sie wollen geben &ndash; und finden eine Hürde, die in 2026 fast niemand mehr nimmt.<br><br>Dazu kommt: Ohne Formular sammeln Sie keine Spender-Daten. Jede Person, die per IBAN spendet, ist für Sie ein anonymer Eintrag auf dem Kontoauszug &ndash; keine Beziehung, kein Dank, kein zweites Mal.<br><br>Spenden sind heute ein Moment, kein Prozess. Wenn der Moment vorbei ist, kommt der Spender selten zurück.
           </p>
           <div class="relative z-10 mt-auto pt-6 border-t border-[#E8E8E8]" style="font-family: 'Bricolage Grotesque', sans-serif;">
             <div class="flex items-center justify-between gap-3 flex-wrap">
@@ -428,26 +387,26 @@
                 <span class="text-[#C9F31D] tracking-[0.1em] text-[15px]">★★★★★</span>
               </div>
               <div class="text-[11px] font-bold tracking-[0.06em] text-[#1A1A1A] uppercase flex items-center gap-1.5">
-                <span aria-hidden="true">→</span> Lösung: Sofortige Website-Aktualisierung
+                <span aria-hidden="true">→</span> Lösung: Moderner Spendenprozess &ndash; direkt, mobil, ohne Umwege
               </div>
             </div>
           </div>
         </article>
 
-        <!-- 02 - Spendenseite akzeptiert keine Online-Spenden -->
+        <!-- 02 -->
         <article class="relative bg-white border border-[#E8E8E8] rounded-3xl p-8 lg:p-10 hover:border-[#C9F31D] hover:shadow-[0_24px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col overflow-hidden">
           <span aria-hidden="true" class="absolute top-2 right-5 text-[150px] leading-[0.85] italic text-[#C9F31D] opacity-40 select-none pointer-events-none" style="font-family: 'Instrument Serif', serif;">02</span>
           <div class="relative z-10 inline-flex w-14 h-14 rounded-2xl bg-[#1A1A1A] items-center justify-center mb-7">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#C9F31D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9F31D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
           </div>
           <div class="relative z-10 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">
             Beobachtung
           </div>
           <h3 class="relative z-10 text-[24px] md:text-[26px] font-extrabold mb-5 text-[#1A1A1A] tracking-[-0.03em] leading-[1.15]" style="font-family: 'Bricolage Grotesque', sans-serif;">
-            Ihre Spendenseite akzeptiert keine <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">Online-Spenden</em><span class="text-[#C9F31D]">.</span>
+            Keine Möglichkeit für wiederkehrende Spenden<span class="text-[#C9F31D]">.</span>
           </h3>
           <p class="relative z-10 text-[15px] md:text-[16px] text-[#555] leading-[1.65] mb-8" style="font-family: 'Source Sans 3', sans-serif;">
-            Ich habe Ihre Seite /spenden analysiert. Was ich finde: IBAN. TWINT-QR-Code zum manuellen Scannen. Die Aufforderung, manuell Name, Adresse und E-Mail anzugeben.<br><br>Keine Kreditkarten- oder Apple-Pay-Option. Kein vorausgefülltes TWINT. Keine voreingestellten Beträge. Keine Möglichkeit für <strong class="text-[#1A1A1A] font-semibold">wiederkehrende Spenden</strong>, das wichtigste Instrument für planbare Deckung der Betriebskosten.<br><br>Für bis zu 80&nbsp;% potenzieller Spender bedeutet das das Ende des Spendenversuchs. Sie kommen mit dem Smartphone, sie haben 30 Sekunden, sie möchten spenden und finden keinen einfachen Weg.
+            Auf Ihrer Spendenseite finde ich keine einzige moderne Zahlungsoption. Kein TWINT. Kein Apple Pay. Keine Kreditkarte. Kein PayPal. Nur eine IBAN-Nummer.<br><br>In der Schweiz ist TWINT heute Standard &ndash; nicht Option. Wer ihn nicht anbietet, schliesst einen grossen Teil seiner potenziellen Spender automatisch aus.<br><br>Dazu kommt: Es gibt keine vordefinierten Beträge, keine Wirkungsbeschreibungen (&bdquo;CHF 100 = ein Tag Pflege&ldquo;), keine Möglichkeit, monatlich zu geben.<br><br><strong class="text-[#1A1A1A] font-semibold">Wiederkehrendes Geben wäre für Sie der wertvollste Spender-Typ:</strong> Ein monatlicher Spender bringt 3&ndash;5&times; mehr Lebenswert als ein einmaliger Spender. Bei Ihrem jährlichen Spendenbedarf von ca. 400&rsquo;000 CHF wäre das ein Stabilitätsfaktor &ndash; aktuell unmöglich.
           </p>
           <div class="relative z-10 mt-auto pt-6 border-t border-[#E8E8E8]" style="font-family: 'Bricolage Grotesque', sans-serif;">
             <div class="flex items-center justify-between gap-3 flex-wrap">
@@ -456,13 +415,13 @@
                 <span class="text-[#C9F31D] tracking-[0.1em] text-[15px]">★★★★★</span>
               </div>
               <div class="text-[11px] font-bold tracking-[0.06em] text-[#1A1A1A] uppercase flex items-center gap-1.5">
-                <span aria-hidden="true">→</span> Lösung: Online-Spendentool mit TWINT, Kreditkarte, Apple Pay
+                <span aria-hidden="true">→</span> Lösung: TWINT, Apple Pay und wiederkehrendes Geben als Standard
               </div>
             </div>
           </div>
         </article>
 
-        <!-- 03 - Keine sozialen Medien -->
+        <!-- 03 -->
         <article class="relative bg-white border border-[#E8E8E8] rounded-3xl p-8 lg:p-10 hover:border-[#C9F31D] hover:shadow-[0_24px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col overflow-hidden">
           <span aria-hidden="true" class="absolute top-2 right-5 text-[150px] leading-[0.85] italic text-[#C9F31D] opacity-40 select-none pointer-events-none" style="font-family: 'Instrument Serif', serif;">03</span>
           <div class="relative z-10 inline-flex w-14 h-14 rounded-2xl bg-[#1A1A1A] items-center justify-center mb-7">
@@ -472,19 +431,19 @@
             Beobachtung
           </div>
           <h3 class="relative z-10 text-[24px] md:text-[26px] font-extrabold mb-5 text-[#1A1A1A] tracking-[-0.03em] leading-[1.15]" style="font-family: 'Bricolage Grotesque', sans-serif;">
-            Keine sozialen Medien. Kein Newsletter. <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">Keine digitale Reichweite</em><span class="text-[#C9F31D]">.</span>
+            Facebook existiert &ndash; wird aber nicht für Fundraising genutzt<span class="text-[#C9F31D]">.</span>
           </h3>
           <p class="relative z-10 text-[15px] md:text-[16px] text-[#555] leading-[1.65] mb-8" style="font-family: 'Source Sans 3', sans-serif;">
-            Ich habe nach Hospiz Oberthurgau auf Facebook, Instagram und LinkedIn gesucht. Ich finde nichts.<br><br>Die Meta Ads Library zeigt keine bezahlten Kampagnen. Ihre Website hat keine Newsletter-Anmeldung. Sie haben wahrscheinlich keine E-Mail-Datenbank, die Sie aufbauen und mit der Sie langfristige Beziehungen zur Öffentlichkeit pflegen könnten.<br><br>Das bedeutet: <strong class="text-[#1A1A1A] font-semibold">Im digitalen Raum sind Sie unsichtbar.</strong> Menschen in der Bodensee-Region, im Thurgau, in Amriswil, die meisten wissen vielleicht gar nicht, dass es Sie gibt. Diejenigen, die es wissen, haben keinen Weg, mit Ihnen in Verbindung zu bleiben.<br><br>Jede Woche ohne digitale Präsenz ist eine Woche, in der andere Hospize oder andere gemeinnützige Organisationen Spender gewinnen, die eigentlich zu Ihnen gehören sollten.
+            Hospiz Solothurn hat einen aktiven Facebook-Auftritt mit 1&rsquo;200+ Followern und regelmässigen Posts mit echter Reichweite in der Region &ndash; Bilder vom Garten, Personal-Highlights, Berichte aus dem Hospiz-Alltag. Eine wertvolle Basis.<br><br>Diese Basis wird aktuell jedoch nicht für Fundraising genutzt. In der Meta Ads Library finde ich keine einzige bezahlte Kampagne. Keine Spenden-CTAs in den Posts. Keine Verbindung zwischen Reichweite und Spendenseite.<br><br>Mit einem strukturierten Kampagnen-Setup könnten Sie im Raum Solothurn gezielt Menschen erreichen, denen würdevolles Sterben und stabile Hospiz-Finanzierung am Herzen liegt &ndash; mit voller messbarer Kontrolle über Reichweite, Engagement und Spender-Conversion. Empfohlen ist ein zweistufiges Vorgehen: erst Test mit kleinem Budget, dann gezielte Skalierung auf Basis der ersten Daten &ndash; Details dazu im nächsten Abschnitt.<br><br>Mehrere Schweizer Hospize positionieren sich aktuell digital neu, um die wachsende mediale und politische Aufmerksamkeit rund um Palliative Care für ihren langfristigen Spender-Aufbau zu nutzen. Aktuell verpufft die mediale Aufmerksamkeit, die Hospiz Solothurn sich erarbeitet hat.
           </p>
           <div class="relative z-10 mt-auto pt-6 border-t border-[#E8E8E8]" style="font-family: 'Bricolage Grotesque', sans-serif;">
             <div class="flex items-center justify-between gap-3 flex-wrap">
               <div class="flex items-center gap-2">
                 <span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#888]">Wirkung</span>
-                <span class="text-[#C9F31D] tracking-[0.1em] text-[15px]">★★★★★</span>
+                <span class="text-[#C9F31D] tracking-[0.1em] text-[15px]">★★★★<span class="text-[#C9F31D]/30">★</span></span>
               </div>
               <div class="text-[11px] font-bold tracking-[0.06em] text-[#1A1A1A] uppercase flex items-center gap-1.5">
-                <span aria-hidden="true">→</span> Lösung: Facebook, Instagram, Newsletter
+                <span aria-hidden="true">→</span> Lösung: Facebook-Fundraising-Strategie + gezielte Testkampagne
               </div>
             </div>
           </div>
@@ -494,14 +453,14 @@
       <!-- Sales claim above CTA -->
       <div class="mt-14 md:mt-20 text-center max-w-3xl mx-auto">
         <h3 class="text-[26px] sm:text-[32px] md:text-[38px] lg:text-[44px] font-extrabold leading-[1.1] tracking-[-0.035em] text-white" style="font-family: 'Bricolage Grotesque', sans-serif;">
-          Möchten Sie <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">weitere Chancen</em> entdecken, die Ihr Fundraising voranbringen<span class="text-[#C9F31D]">?</span>
+          Wollen Sie die weiteren Bremsen entdecken, <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">die Ihnen Spender kosten</em><span class="text-[#C9F31D]">?</span>
         </h3>
       </div>
 
-      <!-- CTA -->
+      <!-- CTA to audit -->
       <div class="mt-8 md:mt-10 flex justify-center">
-        <a href="#contact" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.20)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.20),0_12px_24px_rgba(201,243,29,0.30)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
-          <span>Gespräch vereinbaren</span>
+        <a href="#audit" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.20)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.20),0_12px_24px_rgba(201,243,29,0.30)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          <span>Digital Fundraising Audit buchen</span>
           <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
         </a>
       </div>
@@ -509,8 +468,8 @@
     </div>
   </section>
 
-  <!-- ============ SEKCE 5: QUICK WINS ============ -->
-  <section id="quickwins" class="bg-white border-t border-[#F0F0F0]">
+  <!-- ============ THREE QUICK WINS ============ -->
+  <section class="bg-white border-t border-[#F0F0F0]">
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
 
       <!-- Eyebrow -->
@@ -521,84 +480,89 @@
 
       <!-- H2 -->
       <h2 class="text-[36px] sm:text-[42px] md:text-5xl lg:text-[60px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-7 max-w-5xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        Drei konkrete Quick Wins, die <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">in den ersten Wochen</em> den grössten Unterschied machen<span class="text-[#C9F31D]">.</span>
+        Drei konkrete Quick Wins, die <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">den grössten Unterschied</em> bei Hospiz Solothurn machen<span class="text-[#C9F31D]">.</span>
       </h2>
 
       <!-- Lead -->
       <p class="text-[17px] md:text-[19px] text-[#444] leading-[1.6] max-w-3xl mb-16 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-        Auf Basis einer ersten Analyse Ihres aktuellen digitalen Fundraisings, <strong class="text-[#1A1A1A] font-semibold">sofort umsetzbar</strong> und mit hoher Wirkung.
+        Auf Basis einer ersten Analyse Ihres aktuellen Digital-Fundraisings &ndash; sofort umsetzbar und mit hoher Wirkung in den nächsten Monaten.
       </p>
 
       <!-- 3 cards grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-        <!-- Card 01 - TWINT -->
+        <!-- Card 01 - Neue Spendenseite mit klarer Sprache -->
+        <article class="relative bg-white border border-[#E8E8E8] rounded-3xl p-8 lg:p-10 hover:border-[#C9F31D] hover:shadow-[0_24px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
+          <div class="flex items-start justify-between mb-7">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#C9F31D]">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <span class="text-[13px] font-bold text-[#C9F31D] tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">01</span>
+          </div>
+          <h3 class="text-[22px] md:text-[24px] font-extrabold mb-4 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Neue Spendenseite mit moderner Spenden-Strecke</h3>
+          <p class="text-[15px] text-[#555] leading-[1.6] mb-6" style="font-family: 'Source Sans 3', sans-serif;">Bevor wir an Zahlungssysteme oder Werbung denken, muss die Seite selbst zum Spenden einladen. Aktuell beschreibt sie einen Prozess (IBAN-Nummer) &ndash; nicht eine Wirkung.</p>
+          <div class="mb-7 p-5 rounded-2xl bg-[#FBFEEF] border border-[#EEF5C8]">
+            <div class="flex items-center gap-2 mb-2.5">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;">Quick Win</span>
+            </div>
+            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5] mb-3" style="font-family: 'Source Sans 3', sans-serif;">Eine neu geschriebene Spendenseite, die den Besucher emotional abholt, die Wirkung von Hospiz Solothurn zeigt und konkret macht, was eine Spende bewirkt. Mit klaren Wirkungsbeschreibungen statt Verwaltungsvokabular.</p>
+            <p class="text-[14px] md:text-[15px] italic text-[#1A1A1A]/85 leading-[1.5]" style="font-family: 'Instrument Serif', serif; font-weight: 400;">&bdquo;Mit CHF 100 begleiten Sie einen Menschen einen ganzen Tag lang würdevoll &ndash; mit Pflege, Zeit und menschlicher Nähe.&ldquo;</p>
+          </div>
+          <div class="mt-auto pt-6 border-t border-[#E8E8E8]">
+            <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">Erwartete Wirkung</div>
+            <p class="text-[15px] md:text-[16px] text-[#1A1A1A] leading-[1.55] font-medium" style="font-family: 'Source Sans 3', sans-serif;">Mehr Spendenabschlüsse durch eine Seite, die Spender nicht abschreckt, sondern einlädt.</p>
+          </div>
+        </article>
+
+        <!-- Card 02 - TWINT und Apple Pay -->
         <article class="relative bg-white border border-[#E8E8E8] rounded-3xl p-8 lg:p-10 hover:border-[#C9F31D] hover:shadow-[0_24px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
           <div class="flex items-start justify-between mb-7">
             <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#C9F31D]">
               <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
-            <span class="text-[13px] font-bold text-[#C9F31D] tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">01</span>
-          </div>
-          <h3 class="text-[22px] md:text-[24px] font-extrabold mb-4 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">TWINT als führende Spendenmethode</h3>
-          <p class="text-[15px] text-[#555] leading-[1.6] mb-6" style="font-family: 'Source Sans 3', sans-serif;">In der Schweiz entscheiden Spender heute in Sekunden. Wer TWINT nicht optimal anbietet, verliert einen grossen Teil der Spender.</p>
-          <div class="mb-7 p-5 rounded-2xl bg-[#FBFEEF] border border-[#EEF5C8]">
-            <div class="flex items-center gap-2 mb-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;">Quick Win</span>
-            </div>
-            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5]" style="font-family: 'Source Sans 3', sans-serif;">TWINT-Spende direkt auf Ihrer Spendenseite, mit vordefinierten Beträgen (50 / 100 / 200 CHF).</p>
-          </div>
-          <div class="mt-auto pt-6 border-t border-[#E8E8E8]">
-            <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">Erwartete Wirkung</div>
-            <p class="text-[15px] md:text-[16px] text-[#1A1A1A] leading-[1.55] font-medium" style="font-family: 'Source Sans 3', sans-serif;">Spürbar mehr Sofort-Spenden vom Smartphone.</p>
-          </div>
-        </article>
-
-        <!-- Card 02 - Recurring -->
-        <article class="relative bg-white border border-[#E8E8E8] rounded-3xl p-8 lg:p-10 hover:border-[#C9F31D] hover:shadow-[0_24px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
-          <div class="flex items-start justify-between mb-7">
-            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#C9F31D]">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
-            </div>
             <span class="text-[13px] font-bold text-[#C9F31D] tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">02</span>
           </div>
-          <h3 class="text-[22px] md:text-[24px] font-extrabold mb-4 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Wiederkehrende Spenden als strategische Priorität</h3>
-          <p class="text-[15px] text-[#555] leading-[1.6] mb-6" style="font-family: 'Source Sans 3', sans-serif;">Ein Hospiz braucht planbare Einnahmen mehr als einmalige Kampagnen-Erfolge.</p>
+          <h3 class="text-[22px] md:text-[24px] font-extrabold mb-4 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">TWINT und Apple Pay als Spenden-Standard</h3>
+          <p class="text-[15px] text-[#555] leading-[1.6] mb-6" style="font-family: 'Source Sans 3', sans-serif;">In der Schweiz entscheiden Spender heute in Sekunden. Wer TWINT und Apple Pay nicht optimal anbietet, verliert einen grossen Teil der mobilen Spender.</p>
           <div class="mb-7 p-5 rounded-2xl bg-[#FBFEEF] border border-[#EEF5C8]">
             <div class="flex items-center gap-2 mb-2.5">
               <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"/></svg>
               <span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;">Quick Win</span>
             </div>
-            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5] mb-3" style="font-family: 'Source Sans 3', sans-serif;">Heben Sie monatliches Spenden als Hauptoption hervor, mit einer klaren, würdevollen Begründung:</p>
-            <p class="text-[14px] md:text-[15px] italic text-[#1A1A1A]/85 leading-[1.5]" style="font-family: 'Instrument Serif', serif; font-weight: 400;">&bdquo;Mit CHF 8&ndash;15 monatlich begleiten Sie einen Menschen mit Würde bis zum letzten Atemzug.&ldquo;</p>
+            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5] mb-3" style="font-family: 'Source Sans 3', sans-serif;">Prominenter TWINT-Button und Apple Pay direkt auf der Spendenseite &ndash; mit vordefinierten Beträgen (50 / 100 / 200 CHF) und der Option, monatlich zu geben.</p>
+            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5]" style="font-family: 'Source Sans 3', sans-serif;">Spenden in maximal zwei Klicks, ohne Formular, ohne Konto-Eingabe, ohne Überweisungsvermerk.</p>
           </div>
           <div class="mt-auto pt-6 border-t border-[#E8E8E8]">
             <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">Erwartete Wirkung</div>
-            <p class="text-[15px] md:text-[16px] text-[#1A1A1A] leading-[1.55] font-medium" style="font-family: 'Source Sans 3', sans-serif;">Mehr planbare Einnahmen durch wiederkehrende Spenden mit hohem Lebenszeitwert.</p>
+            <p class="text-[15px] md:text-[16px] text-[#1A1A1A] leading-[1.55] font-medium" style="font-family: 'Source Sans 3', sans-serif;">Spürbar mehr Sofort-Spenden vom Smartphone und deutlich höhere Wiederkehrraten durch monatliches Geben.</p>
           </div>
         </article>
 
-        <!-- Card 03 - Eröffnungs-Nachfeier-Kampagne -->
+        <!-- Card 03 - Social-Media-Start + Testkampagne -->
         <article class="relative bg-white border border-[#E8E8E8] rounded-3xl p-8 lg:p-10 hover:border-[#C9F31D] hover:shadow-[0_24px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
           <div class="flex items-start justify-between mb-7">
             <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#C9F31D]">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
             </div>
             <span class="text-[13px] font-bold text-[#C9F31D] tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">03</span>
           </div>
-          <h3 class="text-[22px] md:text-[24px] font-extrabold mb-4 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">&bdquo;Wir sind da&ldquo;-Kampagne</h3>
-          <p class="text-[15px] text-[#555] leading-[1.6] mb-6" style="font-family: 'Source Sans 3', sans-serif;">Ihre Eröffnung hat bereits stattgefunden. Doch viele Menschen im Thurgau wissen das vielleicht noch nicht. Eine kurze Facebook- und Instagram-Kampagne, die sagt: <em>&bdquo;Wir sind da. Wir beginnen. Hier ist unsere erste Geschichte&ldquo;</em> schafft einen <strong class="text-[#1A1A1A] font-semibold">emotionalen Moment</strong>, den die meisten Hospize nach der Eröffnung nutzen.</p>
+          <h3 class="text-[22px] md:text-[24px] font-extrabold mb-4 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Facebook-Fundraising-Strategie + Testkampagne</h3>
+          <p class="text-[15px] text-[#555] leading-[1.6] mb-6" style="font-family: 'Source Sans 3', sans-serif;">Hospiz Solothurn hat bereits eine aktive Facebook-Community mit 1&rsquo;200+ Likes &ndash; aber sie wird nicht für Fundraising genutzt. Die Reichweite ist da, der Spenden-Weg fehlt.</p>
           <div class="mb-7 p-5 rounded-2xl bg-[#FBFEEF] border border-[#EEF5C8]">
             <div class="flex items-center gap-2 mb-2.5">
               <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"/></svg>
               <span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;">Quick Win</span>
             </div>
-            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5]" style="font-family: 'Source Sans 3', sans-serif;">Eine 4-wöchige Mini-Kampagne auf Facebook und Instagram, ausgerichtet auf die erste Geschichte der Pflege (unter Wahrung der Anonymität der Patienten).</p>
+            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5] mb-3" style="font-family: 'Source Sans 3', sans-serif;">Strategischer Re-Launch der Facebook-Aktivität mit klarer Fundraising-Ausrichtung: Spenden-CTAs in Posts, Storytelling über das Leben im Hospiz, Verbindung zur neuen Spendenseite.</p>
+            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5] mb-3" style="font-family: 'Source Sans 3', sans-serif;">Parallel: eine erste bezahlte Testkampagne im Raum Solothurn, die gezielt Menschen erreicht, die sich für Palliative Care, Würde am Lebensende und regionale Initiativen interessieren.</p>
+            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5] mb-3" style="font-family: 'Source Sans 3', sans-serif;">Empfohlenes Vorgehen in zwei Phasen:</p>
+            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5] mb-3" style="font-family: 'Source Sans 3', sans-serif;"><strong class="font-semibold">Phase 1 &ndash; Test (Monat 1&ndash;2):</strong> Budget 800&ndash;1&rsquo;200 CHF/Monat. Ziel: erste Conversion-Daten, Kosten pro Spende, Reichweite pro Franken.</p>
+            <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.5]" style="font-family: 'Source Sans 3', sans-serif;"><strong class="font-semibold">Phase 2 &ndash; Skalierung (ab Monat 3):</strong> Budget 1&rsquo;500&ndash;2&rsquo;500 CHF/Monat &ndash; aber nur, wenn Phase 1 die erwartete Effizienz zeigt. Mehr investieren erst dann, wenn die Mechanik funktioniert.</p>
           </div>
           <div class="mt-auto pt-6 border-t border-[#E8E8E8]">
             <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">Erwartete Wirkung</div>
-            <p class="text-[15px] md:text-[16px] text-[#1A1A1A] leading-[1.55] font-medium" style="font-family: 'Source Sans 3', sans-serif;">Erste Welle neuer Spender und gelegtes Fundament für die Weihnachtskampagne 2026.</p>
+            <p class="text-[15px] md:text-[16px] text-[#1A1A1A] leading-[1.55] font-medium" style="font-family: 'Source Sans 3', sans-serif;">Aus passiver Reichweite (Medienauszeichnungen, SRF-Berichte) wird aktive Spender-Aufmerksamkeit &ndash; mit messbarem ROI pro investiertem Werbe-Franken.</p>
           </div>
         </article>
 
@@ -607,14 +571,14 @@
       <!-- Outro headline -->
       <div class="mt-14 md:mt-20 text-center max-w-3xl mx-auto">
         <h3 class="text-[26px] sm:text-[32px] md:text-[38px] lg:text-[44px] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;">
-          Entdecken Sie, welche weiteren <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">schnellen Schritte mit grosser Wirkung</em> Sie unternehmen können<span class="text-[#C9F31D]">.</span>
+          Entdecken Sie, welche weiteren schnellen Schritte <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">mit grosser Wirkung</em> Sie unternehmen können<span class="text-[#C9F31D]">.</span>
         </h3>
       </div>
 
-      <!-- CTA -->
+      <!-- CTA to audit -->
       <div class="mt-10 md:mt-12 flex justify-center">
-        <a href="#pakete" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.10)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.10),0_12px_24px_rgba(201,243,29,0.30)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
-          <span>Gespräch vereinbaren</span>
+        <a href="#audit" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.10)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.10),0_12px_24px_rgba(201,243,29,0.30)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          <span>Digital Fundraising Audit buchen</span>
           <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
         </a>
       </div>
@@ -622,7 +586,7 @@
     </div>
   </section>
 
-  <!-- ============ SEKCE 6: SYSTEMISCHE URSACHE ============ -->
+  <!-- ============ SYNTHESIS / AUDIT CTA ============ -->
   <section class="bg-white border-t border-[#F0F0F0]">
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
       <div class="relative bg-[#1A1A1A] rounded-3xl p-10 md:p-14 lg:p-20 overflow-hidden">
@@ -637,448 +601,307 @@
 
         <!-- H2 -->
         <h2 class="relative text-[36px] sm:text-[42px] md:text-5xl lg:text-[60px] font-extrabold leading-[1.05] tracking-[-0.045em] text-white mb-7 max-w-4xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
-          Drei Beobachtungen. Drei Quick Wins. <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">Eine systemische Ursache</em><span class="text-[#C9F31D]">.</span>
+          Drei Bremsen. Drei Quick Wins. <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">Eine systemische Ursache</em><span class="text-[#C9F31D]">.</span>
         </h2>
 
         <!-- Body -->
         <p class="relative text-[17px] md:text-[19px] lg:text-[20px] text-white/85 leading-[1.6] max-w-4xl mb-10 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-          Die drei Beobachtungen zeigen, <strong class="text-white font-semibold">was aktuell fehlt</strong>. Die drei Quick Wins zeigen, <strong class="text-white font-semibold">was heute machbar ist</strong>.<br><br>Beides ist jedoch nur die Oberfläche. Die eigentliche Ursache ist dieselbe: <strong class="text-[#C9F31D] font-semibold">Digitales Fundraising bei <span data-config="hospizName">Hospiz Oberthurgau</span> funktioniert noch nicht als System.</strong><br><br>Für ein Hospiz in der Aufbauphase ist das kein Zeichen von Versagen, es ist ein <strong class="text-white font-semibold">normaler Ausgangspunkt</strong>. Wahrscheinlich hatten Sie bisher schlicht nicht die Ressourcen, diese Bereiche systematisch anzugehen. Die Frage ist also nicht <em>&bdquo;Was machen Sie falsch?&ldquo;</em>, sondern <strong class="text-white font-semibold">&bdquo;Welchen Weg gehen wir, um ein Fundament zu bauen, das langfristig trägt?&ldquo;</strong><br><br>Ich habe drei Antworten für Sie, je nach Tiefe, in die Sie gehen möchten.
+          Die 3 Beobachtungen zeigen, <strong class="text-[#C9F31D] font-semibold">was nicht funktioniert</strong>. Die 3 Quick Wins zeigen, <strong class="text-[#C9F31D] font-semibold">was heute machbar ist</strong>.<br><br>Doch beides ist nur die Oberfläche. Die eigentliche Ursache ist dieselbe: Digital-Fundraising bei Hospiz Solothurn läuft noch nicht <strong class="text-[#C9F31D] font-semibold">als System</strong>.<br><br>Das <strong class="text-white font-semibold">Digital Fundraising Audit</strong> kartiert Ihr gesamtes Fundraising-System, identifiziert die grössten Chancen und liefert Ihnen <strong class="text-[#C9F31D] font-semibold">ein Ergebnis mit konkretem Aktionsplan</strong>.<br><br>Ohne aufwändige Workshops. Keine unnötigen Meetings. Keine zusätzliche Arbeit für Sie. Sie bestellen, ich liefere. Beim Audit nehme ich die Perspektive eines potenziellen Spenders ein.
         </p>
 
         <!-- CTA -->
         <div class="relative">
-          <a href="#pakete" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.20)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.20),0_12px_24px_rgba(201,243,29,0.35)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
-            <span>Drei Wege nach vorn</span>
+          <a href="#audit" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.20)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.20),0_12px_24px_rgba(201,243,29,0.35)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+            <span>Digital Fundraising Audit buchen</span>
             <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
           </a>
+          <div class="mt-5 text-[12px] text-white/60 tracking-[0.08em] uppercase font-semibold" style="font-family: 'Bricolage Grotesque', sans-serif;">
+            Personalisierte Microsite mit Audit-Ergebnis · in 15 Arbeitstagen geliefert · Präsentation für den Vorstand
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ============ SEKCE 7: DREI PAKETE (STARTER / PREMIUM / PREMIUM PLUS) ============ -->
-  <section id="pakete" class="bg-white border-t border-[#F0F0F0]">
+  <!-- ============ AUDIT DETAIL + PRICE ============ -->
+  <section class="bg-white border-t border-[#F0F0F0]" id="audit">
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
 
-      <!-- Eyebrow -->
-      <div class="flex items-center gap-3 mb-7 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        <span class="w-10 h-px bg-[#C9F31D]"></span>
-        <span>Drei Wege nach vorn</span>
+      <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-14 items-start">
+
+        <!-- LEFT COLUMN -->
+        <div>
+          <!-- Lime pill -->
+          <div class="inline-flex items-center mb-9 px-4 py-2 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[12px] font-bold uppercase tracking-[0.1em]" style="font-family: 'Bricolage Grotesque', sans-serif;">
+            <span>Digital Fundraising Audit</span>
+          </div>
+
+          <!-- H2 -->
+          <h2 class="text-[34px] sm:text-[40px] md:text-[46px] lg:text-[54px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-7" style="font-family: 'Bricolage Grotesque', sans-serif;">
+            In <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">nur</em> 15 Tagen entdecken Sie, wo Sie jeden Monat <span class="lime-highlight">Tausende Franken an Spenden verlieren</span> &ndash; und wie Sie das sofort beheben<span class="text-[#C9F31D]">.</span>
+          </h2>
+
+          <!-- Sub -->
+          <p class="text-[17px] md:text-[19px] text-[#1A1A1A] leading-[1.55] mb-9 font-light" style="font-family: 'Source Sans 3', sans-serif;">
+            <strong class="font-semibold">Keine Termine, keine Wartezeit.</strong> Das Audit läuft komplett remote &ndash; mit schriftlichem Onboarding statt Meetings. Sie erhalten sofort einsetzbare Ergebnisse &ndash; <strong class="font-semibold">ohne grösseren Aufwand für Sie und Ihr Team</strong>.
+          </p>
+
+          <!-- Lime callout -->
+          <div class="mb-9 p-6 md:p-7 rounded-2xl bg-[#FBFEEF] border border-[#EEF5C8]">
+            <p class="text-[16px] md:text-[17px] text-[#1A1A1A] leading-[1.5] mb-2 font-semibold" style="font-family: 'Source Sans 3', sans-serif;">
+              Die meisten NGOs verlieren 60&ndash;70 % der Website-Besucher, bevor sie eine Spende abschliessen.
+            </p>
+            <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55] font-light" style="font-family: 'Source Sans 3', sans-serif;">
+              Das Audit zeigt Ihnen genau wo &ndash; und wie Sie sie zurückgewinnen.
+            </p>
+          </div>
+
+          <!-- Body 1 -->
+          <p class="text-[17px] md:text-[19px] text-[#1A1A1A] leading-[1.6] mb-9 font-light" style="font-family: 'Source Sans 3', sans-serif;">
+            Das Audit ist 100 % remote &ndash; ohne jegliche Meetings, datenbasiert und komplett auf Hospiz Solothurn zugeschnitten.
+          </p>
+
+          <!-- 10 Areas pills -->
+          <div class="mb-9">
+            <div class="flex items-center gap-3 mb-5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
+              <span class="w-10 h-px bg-[#C9F31D]"></span>
+              <span>10 Bereiche unter der Lupe</span>
+            </div>
+            <div class="flex flex-wrap gap-2"><span class="area-pill">Website</span><span class="area-pill">Donor Journey</span><span class="area-pill">Social Media</span><span class="area-pill">Werbung</span><span class="area-pill">E-Mails</span><span class="area-pill">Benchmark</span><span class="area-pill">Kampagnen</span><span class="area-pill">Retention</span><span class="area-pill">Storytelling</span><span class="area-pill">Best Practices</span></div>
+          </div>
+
+          <!-- Body 2 -->
+          <p class="text-[17px] md:text-[19px] text-[#1A1A1A] leading-[1.6] font-light" style="font-family: 'Source Sans 3', sans-serif;">
+            Digital Fundraising ist <strong class="text-[#1A1A1A] font-semibold">Handwerk</strong>. Das Audit zeigt Ihnen, was Sie richtig machen, wo Reserven liegen und was Sie verbessern können.
+          </p>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Lime pricing card -->
+        <div class="lg:sticky lg:top-24">
+          <div class="relative bg-[#C9F31D] rounded-3xl p-8 md:p-10 shadow-[0_30px_70px_rgba(0,0,0,0.12)] overflow-hidden">
+
+            <!-- Decorative white blob top-right -->
+            <div aria-hidden="true" class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-white opacity-25 pointer-events-none"></div>
+
+            <!-- Intro pill (personalized framing) -->
+            <div class="relative inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full bg-white" style="font-family: 'Bricolage Grotesque', sans-serif;">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#C9F31D]"></span>
+              <span class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#1A1A1A]">Persönlich für Hospiz Solothurn</span>
+            </div>
+
+            <!-- Italic value statement (big, leads the card) -->
+            <div class="relative text-[24px] md:text-[28px] lg:text-[32px] italic text-[#1A1A1A] mb-8 leading-[1.2] tracking-[-0.02em]" style="font-family: 'Instrument Serif', serif; font-weight: 400;">
+              Ein Audit, das Ihnen zeigt, wo Ihre grössten Fundraising-Chancen nach 4 Jahren Hospiz-Betrieb wirklich liegen.
+            </div>
+
+            <!-- WHAT YOU GET checklist (value-forward) -->
+            <div class="relative mb-7">
+              <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#1A1A1A]/60 mb-4" style="font-family: 'Bricolage Grotesque', sans-serif;">
+                Was Sie bekommen
+              </div>
+              <ul class="space-y-3" style="font-family: 'Source Sans 3', sans-serif;">
+                <li class="flex items-start gap-2.5">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.45]"><strong class="font-semibold">Vollständige externe Analyse</strong> Ihres Digital-Fundraisings</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.45]"><strong class="font-semibold">Konkrete, sofort umsetzbare Quick-Wins</strong></span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.45]"><strong class="font-semibold">Personalisierte Microsite</strong> mit Handlungsempfehlungen</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.45]">Ergebnisse in nur <strong class="font-semibold">15 Tagen</strong></span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.45]"><strong class="font-semibold">100 % remote</strong> &ndash; schriftliches Onboarding, keine Meetings</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Divider -->
+            <div class="relative border-t border-[#1A1A1A]/15 mb-5"></div>
+
+            <!-- Price (hero, right-aligned) -->
+            <div class="relative mb-5 text-right">
+              <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#1A1A1A]/60 mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">Investition</div>
+              <div class="flex items-baseline gap-2 flex-wrap justify-end">
+                <div class="text-[44px] md:text-[56px] font-extrabold text-[#1A1A1A] leading-[0.95] tracking-[-0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">4&rsquo;800</div>
+                <div class="text-[14px] md:text-[18px] font-bold text-[#1A1A1A]/65 tracking-[0.06em] uppercase" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF</div>
+              </div>
+            </div>
+
+            <!-- Payoff line -->
+            <p class="relative text-center text-[14px] md:text-[15px] italic text-[#1A1A1A]/80 leading-[1.5] mb-6" style="font-family: 'Instrument Serif', serif; font-weight: 400;">
+              Die Erkenntnisse aus dem Audit zahlen sich für Sie an Spenden und Reputation um ein Vielfaches aus.
+            </p>
+
+            <!-- CTA primary (dark on lime, pulsing) -->
+            <a href="#contact" data-interest="Digital Fundraising Audit" class="cta-pulse relative group flex items-center justify-center gap-3 w-full px-6 py-[20px] rounded-full bg-[#1A1A1A] text-[#C9F31D] font-bold text-[16px] tracking-[-0.01em] hover:-translate-y-1 transition-transform duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+              <span>Digital Fundraising Audit buchen</span>
+              <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IM DETAIL - 7 DELIVERABLES (full width, card style) ============ -->
+  <section class="bg-white border-t border-[#F0F0F0]">
+    <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
+
+      <!-- Header row: eyebrow pill + meta -->
+      <div class="flex items-center justify-between gap-4 mb-9 flex-wrap">
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[11px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          <span>Im Detail</span>
+        </div>
+        <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          <span>6 Ergebnisse in 15 Tagen</span>
+        </div>
       </div>
 
       <!-- H2 -->
-      <h2 class="text-[36px] sm:text-[42px] md:text-5xl lg:text-[60px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-7 max-w-5xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        Drei Wege, ein <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">digitales Fundament</em> zu bauen &ndash; je nach Tiefe, in die Sie gehen möchten<span class="text-[#C9F31D]">.</span>
+      <h2 class="text-[34px] sm:text-[40px] md:text-[46px] lg:text-[54px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-14 max-w-4xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
+        Konkrete Ergebnisse, die Sie <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">sofort nutzen</em><span class="text-[#C9F31D]">.</span>
       </h2>
 
-      <!-- Market anchoring (subtle, italic, muted) -->
-      <p class="mt-8 text-[15px] md:text-[16px] italic text-[#666] leading-[1.65] max-w-3xl font-light" style="font-family: 'Instrument Serif', serif; font-weight: 400;">
-        Vergleichbare Fundraising- und Web-Setups bei DACH-Agenturen ohne Hospiz-Spezialisierung kosten typischerweise CHF 35&rsquo;000&ndash;60&rsquo;000. Meine Pakete sind bewusst zugänglicher, weil ich mit Hospizen langfristig arbeite, nicht projektweise.
-      </p>
+      <!-- 3-col grid (01-06) + full-width banner (07) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <!-- 3 Pakete grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-14">
-
-        <!-- STARTER -->
-        <article class="relative bg-white border border-[#E8E8E8] rounded-3xl p-8 lg:p-10 hover:border-[#C9F31D] hover:shadow-[0_24px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
-          <div class="inline-flex self-start mb-6 px-3 py-1.5 rounded-full bg-[#F4F4F4] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Starter</div>
-          <div class="mb-2 flex items-baseline gap-2 flex-wrap">
-            <div class="text-[44px] md:text-[52px] font-extrabold text-[#1A1A1A] leading-[0.95] tracking-[-0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF 7&rsquo;900</div>
-          </div>
-          <p class="text-[14px] italic text-[#888] mb-6" style="font-family: 'Instrument Serif', serif; font-weight: 400;">In Betrieb in 4&ndash;5 Wochen.</p>
-          <p class="text-[15px] text-[#555] leading-[1.6] mb-7" style="font-family: 'Source Sans 3', sans-serif;">Schneller Start im digitalen Fundraising. Minimal lebensfähige Infrastruktur für ein Hospiz, das schnell und professionell ein digitales Grundfundament haben möchte.</p>
-
-          <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888] mb-4" style="font-family: 'Bricolage Grotesque', sans-serif;">Was enthalten ist</div>
-          <ul class="space-y-3 mb-8" style="font-family: 'Source Sans 3', sans-serif;">
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">Analyse des aktuellen Stands und der Chancen (schriftlicher Bericht)</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">Hospiz-Benchmark-Report (5&ndash;7 Hospize aus dem DACH-Raum, Best Practices)</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">Einrichtung von Facebook und Instagram (inkl. Cover-Grafik und 6 Beispiel-Posts als Vorlage)</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">Anbindung einer Online-Spendenplattform (RaiseNow oder Stripe) &ndash; TWINT, Kreditkarte, Apple Pay, wiederkehrende Spenden</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">Automatische Spendenbestätigung (revDSG und Steuerabzug)</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">Einrichtung einer grundlegenden Spenderpflege nach der ersten Spende (3 automatisierte E-Mails)</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">Grundlegendes Setup von GA4 und Meta Pixel</span>
-            </li>
-          </ul>
-
-          <div class="mt-auto">
-            <a href="#contact" data-interest="Starter" class="group flex items-center justify-center gap-3 w-full px-6 py-[18px] rounded-full bg-[#1A1A1A] text-white font-bold text-[15px] tracking-[-0.01em] hover:-translate-y-1 hover:bg-black transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
-              <span>Starter vereinbaren</span>
-              <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">01</div>
+          <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Analyse-Report</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">Vollständiger schriftlicher Audit Ihres Digital-Fundraisings &ndash; was funktioniert, was nicht, wo die grössten Chancen liegen.</p>
         </article>
 
-        <!-- PREMIUM (recommended, highlighted) -->
-        <article class="relative bg-[#1A1A1A] rounded-3xl p-8 lg:p-10 shadow-[0_30px_70px_rgba(0,0,0,0.18)] hover:-translate-y-1 transition-all duration-300 flex flex-col lg:scale-[1.02] lg:z-10">
-          <!-- Empfohlen badge -->
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em] shadow-[0_4px_12px_rgba(201,243,29,0.4)]" style="font-family: 'Bricolage Grotesque', sans-serif;">Empfohlen</div>
-
-          <div class="inline-flex self-start mb-6 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Premium</div>
-          <div class="mb-2 flex items-baseline gap-2 flex-wrap">
-            <div class="text-[44px] md:text-[52px] font-extrabold text-white leading-[0.95] tracking-[-0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF 19&rsquo;900</div>
-          </div>
-          <p class="text-[14px] italic text-white/55 mb-6" style="font-family: 'Instrument Serif', serif; font-weight: 400;">In Betrieb in 8&ndash;10 Wochen.</p>
-          <p class="text-[15px] text-white/75 leading-[1.6] mb-7" style="font-family: 'Source Sans 3', sans-serif;">Komplette Grundlage für Ihre digitale Kommunikation und Ihr Fundraising. Strategie für Social-Media-Kommunikation und digitales Fundraising inklusive Redesign der aktuellen Website. Für ein Hospiz, das alles durchdacht und so aufgebaut haben möchte, dass es langfristig funktioniert.</p>
-
-          <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#C9F31D] mb-4" style="font-family: 'Bricolage Grotesque', sans-serif;">Zusätzlich zu Starter</div>
-          <ul class="space-y-3 mb-8" style="font-family: 'Source Sans 3', sans-serif;">
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#C9F31D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-white leading-[1.5]">Strategie für digitales Fundraising (Social Media, Newsletter, Spenderreise)</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#C9F31D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-white leading-[1.5]">Social-Media-Strategie (Rahmen-Inhaltsplan bis Ende des Jahres, Kampagnen, Empfehlungen zu geeigneten Formaten)</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#C9F31D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-white leading-[1.5]">Redesign der aktuellen Website inklusive Spendenseite (die aktuelle Form der Website wirkt wie ein vorübergehender Kompromiss &ndash; lassen Sie uns das ändern) &ndash; Migration weg von Wix</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#C9F31D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-white leading-[1.5]">Sprachleitfaden: Wie das Hospiz sensibel und würdevoll kommuniziert</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#C9F31D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-white leading-[1.5]">Moderne Spendenseite mit Möglichkeit für wiederkehrende Zahlungen</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#C9F31D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-white leading-[1.5]">Einrichtung der ersten Social-Media-Kampagne zur Vorstellung des Hospizes (ohne Werbebudget &ndash; empfohlener Betrag ca. 800&ndash;1&rsquo;500 CHF)</span>
-            </li>
-          </ul>
-
-          <div class="mt-auto">
-            <a href="#contact" data-interest="Premium" class="cta-pulse group flex items-center justify-center gap-3 w-full px-6 py-[18px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[15px] tracking-[-0.01em] hover:-translate-y-1 transition-transform duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
-              <span>Premium vereinbaren</span>
-              <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">02</div>
+          <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Unabhängige Diagnose</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">Was funktioniert bereits gut? Wo verlieren Sie Spender und Geld? Mit klaren Antworten &ndash; nicht mit Meinungen.</p>
         </article>
 
-        <!-- PREMIUM PLUS -->
-        <article class="relative bg-white border border-[#E8E8E8] rounded-3xl p-8 lg:p-10 hover:border-[#C9F31D] hover:shadow-[0_24px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
-          <div class="inline-flex self-start mb-6 px-3 py-1.5 rounded-full bg-[#F4F4F4] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Premium Plus</div>
-          <div class="mb-2 flex items-baseline gap-2 flex-wrap">
-            <div class="text-[44px] md:text-[52px] font-extrabold text-[#1A1A1A] leading-[0.95] tracking-[-0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF 24&rsquo;900</div>
-          </div>
-          <p class="text-[14px] italic text-[#888] mb-6" style="font-family: 'Instrument Serif', serif; font-weight: 400;">In Betrieb in 10&ndash;12 Wochen.</p>
-          <p class="text-[15px] text-[#555] leading-[1.6] mb-7" style="font-family: 'Source Sans 3', sans-serif;">Premium-Paket erweitert um Sichtbarkeit und langfristiges Wachstum. Für ein Hospiz, das nicht nur ein Fundament aufbauen, sondern es gleich sichtbar machen möchte &ndash; auf LinkedIn, in der Google-Suche und über kostenlose Google-Werbung.</p>
-
-          <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-[#888] mb-4" style="font-family: 'Bricolage Grotesque', sans-serif;">Zusätzlich zu Premium</div>
-          <ul class="space-y-3 mb-8" style="font-family: 'Source Sans 3', sans-serif;">
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">Einrichtung eines LinkedIn-Kontos und Strategie für das Hospiz-Profil</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">SEO-Audit und On-Page-Optimierung</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">Google Ad Grants Antrag und Setup (bis zu USD 10&rsquo;000/Monat kostenlose Werbung für gemeinnützige Organisationen)</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-              <span class="text-[14px] text-[#1A1A1A] leading-[1.5]">Dreimonatige Website-Betreuung nach dem Launch</span>
-            </li>
-          </ul>
-
-          <div class="mt-auto">
-            <a href="#contact" data-interest="Premium Plus" class="group flex items-center justify-center gap-3 w-full px-6 py-[18px] rounded-full bg-[#1A1A1A] text-white font-bold text-[15px] tracking-[-0.01em] hover:-translate-y-1 hover:bg-black transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
-              <span>Premium Plus vereinbaren</span>
-              <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">03</div>
+          <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Liste sofort umsetzbarer Quick Wins</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">Konkrete Massnahmen, die Ihr Team schon nächste Woche starten kann.</p>
         </article>
 
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">04</div>
+          <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Best Practices aus Europa</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">Konkrete Beispiele von Hospizen und NGOs aus ganz Europa, die Sie sofort adaptieren können.</p>
+        </article>
+
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">05</div>
+          <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Roadmap der Massnahmen</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">Strukturierter Plan, was Sie zuerst angehen sollten &ndash; mit Reihenfolge und erwartetem Nutzen, abgestimmt auf Ihre Realität als etabliertes Hospiz.</p>
+        </article>
+
+        <!-- 06 - signature deliverable, regular card with black background -->
+        <article class="bg-[#1A1A1A] rounded-3xl p-7 md:p-8 hover:shadow-[0_16px_40px_rgba(0,0,0,0.20)] hover:-translate-y-1 transition-all duration-300">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D] mb-6 text-[#1A1A1A] text-[14px] font-extrabold tracking-[0.04em]" style="font-family: 'Bricolage Grotesque', sans-serif;">06</div>
+          <h3 class="text-[19px] md:text-[20px] font-extrabold mb-3 text-white tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Präsentation für den Vorstand + konkreter Umsetzungsplan</h3>
+          <p class="text-[14px] md:text-[15px] text-white/70 leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">Fertig vorbereitete, editierbare Präsentation + realistischer Aktionsplan mit Prioritäten und Budget.</p>
+        </article>
+
+      </div>
+
+      <!-- Closing CTA with price (pulsing) -->
+      <div class="mt-12 md:mt-16 flex justify-center">
+        <a href="#contact" data-interest="Digital Fundraising Audit" class="cta-pulse-lime group inline-flex items-center gap-3 px-9 md:px-10 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] md:text-[17px] tracking-[-0.01em] hover:-translate-y-1 transition-transform duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          <span>Digital Fundraising Audit buchen</span>
+          <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
+        </a>
       </div>
 
     </div>
   </section>
 
-  <!-- ============ SEKCE 8: ERGÄNZENDE LEISTUNGEN ============ -->
+  <!-- ============ PROCESS & TERMS (timeline) ============ -->
   <section class="bg-[#FAFAFA] border-t border-[#E8E8E8]">
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
 
       <!-- Eyebrow -->
       <div class="flex items-center gap-3 mb-7 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
         <span class="w-10 h-px bg-[#C9F31D]"></span>
-        <span>Wenn Sie nur eine bestimmte Leistung benötigen</span>
+        <span>Ablauf &amp; Konditionen</span>
       </div>
 
       <!-- H2 -->
-      <h2 class="text-[34px] sm:text-[40px] md:text-[46px] lg:text-[54px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-7 max-w-4xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        Suchen Sie nur eine <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">bestimmte Leistung</em><span class="text-[#C9F31D]">?</span>
+      <h2 class="text-[34px] sm:text-[40px] md:text-[46px] lg:text-[52px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-7 max-w-4xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
+        So läuft die Zusammenarbeit &ndash; <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">transparent und ohne Überraschungen</em><span class="text-[#C9F31D]">.</span>
       </h2>
 
-      <!-- Lead -->
+      <!-- Intro -->
       <p class="text-[17px] md:text-[19px] text-[#444] leading-[1.6] max-w-3xl mb-14 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-        Einige Hospize haben bereits Strategie und digitales Fundament &ndash; sie benötigen nur eine bestimmte Leistung. Für solche Fälle biete ich Einzelleistungen an.
+        Vom Auftrag bis zur Übergabe sind es 15 Arbeitstage. Sie bezahlen die Hälfte zum Start, die Hälfte nach Lieferung &ndash; ohne versteckte Kosten, ohne automatische Verlängerung.
       </p>
 
-      <!-- 2 standalone services -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <!-- 5-step timeline cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
 
-        <!-- Visuelle Identität -->
-        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-8 md:p-10 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
-          <h3 class="text-[24px] md:text-[26px] font-extrabold mb-4 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Visuelle Identität</h3>
-          <div class="flex items-baseline gap-2 flex-wrap mb-3">
-            <div class="text-[32px] md:text-[36px] font-extrabold text-[#1A1A1A] leading-[1] tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF 8&rsquo;900</div>
-          </div>
-          <p class="text-[14px] italic text-[#888] mb-6" style="font-family: 'Instrument Serif', serif; font-weight: 400;">4&ndash;5 Wochen, eigenständiges Projekt.</p>
-          <p class="text-[15px] text-[#555] leading-[1.65]" style="font-family: 'Source Sans 3', sans-serif;">Logo, Markenrichtlinien, Sprachstil, Vorlagen für Newsletter, Social Media, Zimmerschilder und Druckmaterialien. Geeignet für Hospize, die ein professionelles visuelles Gesicht aufbauen müssen.</p>
+        <!-- Step 1: Order -->
+        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-6 md:p-7 flex flex-col h-full">
+          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Tag 0</div>
+          <h3 class="text-[18px] md:text-[19px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.02em] leading-[1.25]" style="font-family: 'Bricolage Grotesque', sans-serif;">Bestellung</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">Sie bestätigen die Bestellung per E-Mail. Ich sende Ihnen die Anzahlungsrechnung über 50&nbsp;% (CHF 2&rsquo;400).</p>
         </article>
 
-        <!-- Website-Redesign -->
-        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-8 md:p-10 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
-          <h3 class="text-[24px] md:text-[26px] font-extrabold mb-4 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Website-Redesign</h3>
-          <div class="flex items-baseline gap-2 flex-wrap mb-3">
-            <div class="text-[32px] md:text-[36px] font-extrabold text-[#1A1A1A] leading-[1] tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF 11&rsquo;900</div>
-          </div>
-          <p class="text-[14px] italic text-[#888] mb-6" style="font-family: 'Instrument Serif', serif; font-weight: 400;">6&ndash;8 Wochen, eigenständiges Projekt.</p>
-          <p class="text-[15px] text-[#555] leading-[1.65]" style="font-family: 'Source Sans 3', sans-serif;">Moderne Website mit eigenem CMS (5&ndash;7 Seiten), Redesign, Migration weg von Wix, Spendenseite mit Online-Zahlungstool. Für Hospize, die bereits Strategie und Brand haben, aber deren aktuelle Website veraltet ist.</p>
+        <!-- Step 2: Initial payment -->
+        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-6 md:p-7 flex flex-col h-full">
+          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Tag 1&ndash;7</div>
+          <h3 class="text-[18px] md:text-[19px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.02em] leading-[1.25]" style="font-family: 'Bricolage Grotesque', sans-serif;">Anzahlung</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">Sobald die Anzahlung eingegangen ist, starte ich das Audit. Zahlungsziel: 7 Tage.</p>
+        </article>
+
+        <!-- Step 3: Audit phase -->
+        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-6 md:p-7 flex flex-col h-full">
+          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Tag 1&ndash;15</div>
+          <h3 class="text-[18px] md:text-[19px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.02em] leading-[1.25]" style="font-family: 'Bricolage Grotesque', sans-serif;">Audit-Phase</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">Schriftliches Onboarding (15 Min Ihrer Zeit). Danach arbeite ich eigenständig. Keine Meetings, kein zusätzlicher Aufwand für Ihr Team.</p>
+        </article>
+
+        <!-- Step 4: Delivery -->
+        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-6 md:p-7 flex flex-col h-full">
+          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Tag 15</div>
+          <h3 class="text-[18px] md:text-[19px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.02em] leading-[1.25]" style="font-family: 'Bricolage Grotesque', sans-serif;">Lieferung</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">Sie erhalten alle Ergebnisse: Analyse-Report, Quick Wins, Roadmap und Vorstandspräsentation. Plus die Schlussrechnung über die zweiten 50&nbsp;% (CHF 2&rsquo;400).</p>
+        </article>
+
+        <!-- Step 5: Final payment -->
+        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-6 md:p-7 flex flex-col h-full">
+          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Tag 15&ndash;29</div>
+          <h3 class="text-[18px] md:text-[19px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.02em] leading-[1.25]" style="font-family: 'Bricolage Grotesque', sans-serif;">Schlusszahlung</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">Zahlungsziel der Schlussrechnung: 14 Tage. Damit ist das Audit abgeschlossen &ndash; ohne weitere Verpflichtungen.</p>
         </article>
 
       </div>
 
-      <!-- Warning note -->
-      <div class="mt-10 p-6 md:p-7 rounded-2xl bg-white border-l-4 border-[#C9F31D]">
-        <p class="text-[14px] md:text-[15px] text-[#1A1A1A] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">
-          <strong class="font-semibold">Wichtiger Hinweis:</strong> Diese Leistungen enthalten <strong class="font-semibold">keine</strong> Strategie für digitales Fundraising, keine Einrichtung von Social Media, keine Spendentool-Anbindung und keine Spenderpflege. Wenn Sie ein komplettes digitales Fundament möchten, empfehle ich das Paket <strong class="font-semibold">Premium</strong> (CHF 19&rsquo;900) oder <strong class="font-semibold">Premium Plus</strong> (CHF 24&rsquo;900), das den Website-Redesign beinhaltet.
+      <!-- Footer line: VAT + contact -->
+      <div class="mt-10 md:mt-12 pt-6 border-t border-[#E8E8E8] flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <p class="text-[13px] md:text-[14px] text-[#888] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">
+          Alle Beträge in CHF. Zahlung per Bank-Überweisung.
+        </p>
+        <p class="text-[13px] md:text-[14px] text-[#555] leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">
+          Bei Fragen zum Ablauf oder zur Rechnungsstellung schreiben Sie mir direkt: <a href="mailto:peter@ngo.digital" class="text-[#1A1A1A] font-semibold border-b border-[#1A1A1A]/40 hover:border-[#1A1A1A]">peter@ngo.digital</a>
         </p>
       </div>
 
     </div>
   </section>
 
-  <!-- ============ SEKCE 9: FIRST CH HOSPIZ PARTNER BONUS ============ -->
-  <section class="bg-white border-t border-[#F0F0F0]">
-    <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
-
-      <div class="relative bg-gradient-to-br from-[#FBFEEF] to-[#F5FBE3] rounded-3xl p-10 md:p-14 lg:p-20 border border-[#EEF5C8] overflow-hidden">
-
-        <!-- Decorative lime blob -->
-        <div aria-hidden="true" class="absolute -top-24 -right-24 w-72 h-72 md:w-96 md:h-96 rounded-full bg-[#C9F31D] opacity-30 pointer-events-none"></div>
-
-        <!-- Eyebrow pill -->
-        <div class="relative inline-flex items-center mb-8 px-5 py-2 rounded-full bg-[#1A1A1A] text-[#C9F31D] text-[11px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">
-          <span>Spezielles Angebot</span>
-        </div>
-
-        <!-- H2 -->
-        <h2 class="relative text-[34px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-7 max-w-4xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
-          Mein Angebot: Oberthurgau als <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">erster Schweizer Hospiz-Partner</em><span class="text-[#C9F31D]">.</span>
-        </h2>
-
-        <!-- Lead -->
-        <p class="relative text-[17px] md:text-[19px] text-[#1A1A1A] leading-[1.6] max-w-4xl mb-12 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-          Ich erweitere meine Praxis bewusst in den Schweizer Hospiz-Bereich. Statt Preisrabatt biete ich meinem ersten Schweizer Partner etwas Wertvolleres: <strong class="font-semibold">ein Jahr persönliche Begleitung und strategische Inspiration</strong>.
-        </p>
-
-        <!-- Two boxes: Premium/Premium Plus vs Starter -->
-        <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-5">
-
-          <!-- Premium / Premium Plus -->
-          <div class="bg-white rounded-2xl p-7 md:p-8 border border-[#E8E8E8]">
-            <div class="inline-flex items-center mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Bei Premium oder Premium Plus</div>
-            <ul class="space-y-4" style="font-family: 'Source Sans 3', sans-serif;">
-              <li class="flex items-start gap-3">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1.5 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span class="text-[15px] text-[#1A1A1A] leading-[1.55]"><strong class="font-semibold">Quartals-Best-Practice-Report</strong> &middot; 4× jährlich Überblick über die besten Praktiken in Social-Media-Kommunikation und Fundraising von Hospizen und gemeinnützigen Organisationen in Europa (8&ndash;12 Seiten Inspiration mit konkreten Beispielen)</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1.5 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span class="text-[15px] text-[#1A1A1A] leading-[1.55]"><strong class="font-semibold">Quartals-Digital-Fundraising- und Kommunikations-Audit</strong> &middot; 4× jährlich kurzer Audit Ihrer digitalen Kommunikation und Ihres Fundraisings mit Verbesserungstipps (ca. 4&ndash;6 Seiten, klare Handlungsschritte)</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1.5 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span class="text-[15px] text-[#1A1A1A] leading-[1.55]"><strong class="font-semibold">10&nbsp;% Rabatt</strong> auf Laufende Begleitung in den ersten zwei Jahren der Zusammenarbeit</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Starter -->
-          <div class="bg-white rounded-2xl p-7 md:p-8 border border-[#E8E8E8]">
-            <div class="inline-flex items-center mb-5 px-3 py-1.5 rounded-full bg-[#F4F4F4] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Bei Starter</div>
-            <ul class="space-y-4" style="font-family: 'Source Sans 3', sans-serif;">
-              <li class="flex items-start gap-3">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1.5 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span class="text-[15px] text-[#1A1A1A] leading-[1.55]"><strong class="font-semibold">2× Quartals-Best-Practice-Report</strong> im ersten Jahr (statt 4×)</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1.5 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span class="text-[15px] text-[#1A1A1A] leading-[1.55]"><strong class="font-semibold">1× verkürzter Audit</strong> nach 6 Monaten (statt 4×)</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-1.5 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span class="text-[15px] text-[#1A1A1A] leading-[1.55]"><strong class="font-semibold">10&nbsp;% Rabatt</strong> auf Laufende Begleitung in den ersten zwei Jahren der Zusammenarbeit</span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        <!-- Closing manifesto -->
-        <div class="relative mt-12 pt-10 border-t border-[#DDE5BC]">
-          <p class="text-[20px] md:text-[24px] italic text-[#1A1A1A] leading-[1.45] tracking-[-0.01em] max-w-3xl" style="font-family: 'Instrument Serif', serif; font-weight: 400;">
-            Es ist kein Rabatt. Es ist eine <strong style="font-family: 'Bricolage Grotesque', sans-serif; font-style: normal; font-weight: 800;">Partnerschaft</strong>.
-          </p>
-          <p class="mt-5 text-[16px] md:text-[17px] text-[#1A1A1A] leading-[1.65] max-w-3xl font-light" style="font-family: 'Source Sans 3', sans-serif;">
-            Durch unsere Zusammenarbeit entsteht eine wertvolle Referenz für den Schweizer Markt. Im Gegenzug erhalten Sie die volle Qualität meiner Arbeit sowie ein Jahr strategische Begleitung. Nach 12 Monaten bestätigen wir gemeinsam, dass es funktioniert.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============ SEKCE 10: LAUFENDE BEGLEITUNG (RETAINER) ============ -->
-  <section id="retainer" class="bg-[#F5F5F5] border-t border-[#E8E8E8]">
-    <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
-
-      <!-- Eyebrow -->
-      <div class="flex items-center gap-3 mb-7 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        <span class="w-10 h-px bg-[#C9F31D]"></span>
-        <span>Nach dem Launch</span>
-      </div>
-
-      <!-- H2 -->
-      <h2 class="text-[34px] sm:text-[40px] md:text-[46px] lg:text-[54px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-7 max-w-4xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        Sie kümmern sich um Menschen. <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">Ich kümmere mich um den Rest</em><span class="text-[#C9F31D]">.</span>
-      </h2>
-
-      <!-- Lead -->
-      <p class="text-[17px] md:text-[19px] text-[#444] leading-[1.6] max-w-3xl mb-10 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-        Hospizarbeit ist enorm anspruchsvoll und erfordert volle Konzentration auf Ihre Patienten. Wahrscheinlich haben Sie aktuell weder Zeit noch Energie, jede Woche Instagram-Posts zu schreiben, Fundraising-Kampagnen zu konzipieren, regelmässige Newsletter zu verfassen. Genau dafür bin ich da.
-      </p>
-
-      <p class="text-[17px] md:text-[19px] text-[#444] leading-[1.6] max-w-3xl mb-8 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-        Während Sie sich auf Pflege, Begleitung und Ihre Patienten konzentrieren, übernehme ich:
-      </p>
-
-      <!-- Bullet deliverables -->
-      <ul class="bio-list mb-12 max-w-3xl">
-        <li><strong>Ihre digitale Sichtbarkeit</strong> &middot; Facebook, Instagram, LinkedIn &ndash; strategisch und sensibel</li>
-        <li><strong>Ihre Fundraising-Kampagnen</strong> &middot; Weihnachten, Frühjahr, Herbst &ndash; geplant, umgesetzt, ausgewertet</li>
-        <li><strong>Ihre Newsletter</strong> &middot; regelmässig, persönlich, mit klarer Geschichte</li>
-        <li><strong>Ihre Spenderbeziehungen</strong> &middot; regelmässiges E-Mailing, Segmentierung</li>
-        <li><strong>Ihre Website</strong> &middot; aktuell, optimiert, funktionierend</li>
-      </ul>
-
-      <p class="text-[17px] md:text-[19px] text-[#444] leading-[1.6] max-w-3xl mb-14 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-        Monatlich erhalten Sie einen Bericht mit konkreten KPIs und quartalsweise eine umfassende Auswertung. Sie sehen die Ergebnisse, ohne sich um den Prozess kümmern zu müssen.
-      </p>
-
-      <!-- Retainer pricing table (3 tiers) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-
-        <!-- Light -->
-        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-7 md:p-8 flex flex-col">
-          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#F4F4F4] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Light</div>
-          <div class="text-[11px] uppercase tracking-[0.14em] font-bold text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">30 Stunden / Monat</div>
-          <div class="flex items-baseline gap-2 flex-wrap">
-            <div class="text-[34px] md:text-[40px] font-extrabold text-[#1A1A1A] leading-[1] tracking-[-0.035em]" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF 6&rsquo;000</div>
-            <span class="text-[14px] text-[#888] font-medium" style="font-family: 'Source Sans 3', sans-serif;">/ Monat</span>
-          </div>
-        </article>
-
-        <!-- Standard (highlighted) -->
-        <article class="bg-[#1A1A1A] rounded-2xl p-7 md:p-8 flex flex-col">
-          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Standard</div>
-          <div class="text-[11px] uppercase tracking-[0.14em] font-bold text-white/55 mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">40 Stunden / Monat</div>
-          <div class="flex items-baseline gap-2 flex-wrap">
-            <div class="text-[34px] md:text-[40px] font-extrabold text-white leading-[1] tracking-[-0.035em]" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF 8&rsquo;000</div>
-            <span class="text-[14px] text-white/55 font-medium" style="font-family: 'Source Sans 3', sans-serif;">/ Monat</span>
-          </div>
-        </article>
-
-        <!-- Premium -->
-        <article class="bg-white border border-[#E8E8E8] rounded-2xl p-7 md:p-8 flex flex-col">
-          <div class="inline-flex self-start mb-5 px-3 py-1.5 rounded-full bg-[#F4F4F4] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.14em]" style="font-family: 'Bricolage Grotesque', sans-serif;">Premium</div>
-          <div class="text-[11px] uppercase tracking-[0.14em] font-bold text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">50 Stunden / Monat</div>
-          <div class="flex items-baseline gap-2 flex-wrap">
-            <div class="text-[34px] md:text-[40px] font-extrabold text-[#1A1A1A] leading-[1] tracking-[-0.035em]" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF 10&rsquo;000</div>
-            <span class="text-[14px] text-[#888] font-medium" style="font-family: 'Source Sans 3', sans-serif;">/ Monat</span>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Conditions line -->
-      <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6] mb-12" style="font-family: 'Source Sans 3', sans-serif;">
-        <strong class="text-[#1A1A1A] font-semibold">10&nbsp;% Rabatt</strong> bei gebuchtem Paket Premium oder Premium Plus (gültig in den ersten 2 Jahren). Vertragslaufzeit mindestens 3 Monate.
-      </p>
-
-      <!-- BONUS BOX: Was der Rabatt konkret bedeutet -->
-      <div class="bonus-box">
-        <div class="bonus-box__header">
-          <div class="bonus-box__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
-              <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
-              <path d="M9 18h6"/>
-              <path d="M10 22h4"/>
-            </svg>
-          </div>
-          <h3 class="bonus-box__title">Was der Rabatt konkret bedeutet</h3>
-        </div>
-
-        <table class="bonus-table">
-          <thead>
-            <tr>
-              <th>Retainer-Stufe</th>
-              <th>Ihre Ersparnis über 2 Jahre</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Light <span style="color:#888;">(30 h/Monat)</span></td>
-              <td class="bonus-table__amount">CHF 14&rsquo;400</td>
-            </tr>
-            <tr>
-              <td>Standard <span style="color:#888;">(40 h/Monat)</span></td>
-              <td class="bonus-table__amount">CHF 19&rsquo;200</td>
-            </tr>
-            <tr>
-              <td>Premium <span style="color:#888;">(50 h/Monat)</span></td>
-              <td class="bonus-table__amount">CHF 24&rsquo;000</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="bonus-box__footnote">
-          Bei Retainer Premium übersteigt Ihre Ersparnis sogar die Investition in das Premium-Paket. Bei Standard amortisiert es sich nahezu vollständig.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============ SEKCE 11: REFERENZEN ============ -->
-  <section id="referenzen" class="bg-[#0A0A0A] border-t border-[#0A0A0A]">
+  <!-- ============ REFERENCES / TESTIMONIALS ============ -->
+  <section class="bg-[#0A0A0A] border-t border-[#0A0A0A]">
     <div class="max-w-5xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-32">
 
       <!-- Eyebrow with dot -->
@@ -1117,32 +940,32 @@
         </div>
       </div>
 
-      <!-- Lime divider -->
+      <!-- Lime divider (separates references from closing CTA) -->
       <div class="mt-14 md:mt-16 flex justify-center">
         <div class="w-40 md:w-56 h-[3px] bg-[#C9F31D] rounded-full"></div>
       </div>
 
-      <!-- Closing headline -->
+      <!-- Closing CTA headline -->
       <div class="mt-10 md:mt-12 text-center max-w-3xl mx-auto">
         <h3 class="text-[26px] sm:text-[32px] md:text-[38px] lg:text-[44px] font-extrabold leading-[1.1] tracking-[-0.035em] text-white" style="font-family: 'Bricolage Grotesque', sans-serif;">
           Die nächste Case-Referenz<br><em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">könnte Ihre sein</em><span class="text-[#C9F31D]">.</span>
         </h3>
         <p class="mt-6 md:mt-7 text-[15px] md:text-[17px] text-white/70 leading-[1.6] max-w-2xl mx-auto font-light" style="font-family: 'Source Sans 3', sans-serif;">
-          Was in Tschechien funktioniert hat, wird auch bei <span data-config="hospizName">Hospiz Oberthurgau</span> funktionieren. Die Logik der Spenderreise ist grenzüberschreitend dieselbe, nur Zahlungsmethoden und Sprache ändern sich.
+          Was in Tschechien funktioniert hat, wird auch bei Hospiz Solothurn funktionieren. Die Donor-Journey-Logik ist grenzüberschreitend dieselbe &ndash; nur Zahlungsmethoden, Sprache und kulturelle Nuancen unterscheiden sich.
         </p>
       </div>
 
       <!-- CTA button -->
       <div class="mt-8 md:mt-10 flex justify-center">
         <a href="#contact" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.20)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.20),0_12px_24px_rgba(201,243,29,0.30)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
-          <span>Gespräch vereinbaren</span>
+          <span>Digital Fundraising Audit buchen</span>
           <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ============ SEKCE 12: CASES ============ -->
+  <!-- ============ CASES ============ -->
   <section id="cases" class="bg-white border-t border-[#F0F0F0]">
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
 
@@ -1154,50 +977,41 @@
 
       <!-- H2 -->
       <h2 class="text-[36px] sm:text-[42px] md:text-5xl lg:text-[60px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-7 max-w-5xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        Zahlen, die <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">wirklich bewegt</em> haben<span class="text-[#C9F31D]">.</span>
+        Zahlen, die <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">wirklich</em> bewegt haben<span class="text-[#C9F31D]">.</span>
       </h2>
 
       <!-- Lead -->
       <p class="text-[17px] md:text-[19px] text-[#444] leading-[1.6] max-w-3xl mb-16 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-        Dieselben Prinzipien funktionieren in der Schweiz, Deutschland und Österreich, nur mit lokalen Zahlungsmethoden (TWINT, PayPal, SEPA, Apple Pay) und regulatorischen Spezifika (revDSG, DSGVO/GDPR).
+        Dieselben Prinzipien funktionieren in der Schweiz, Deutschland und Österreich &ndash; die Mechanik der Donor Journey, das Gamification-Design und die Storytelling-Logik sind grenzüberschreitend identisch.<br><br>Die Anpassung an den Schweizer Markt ist Teil meiner Arbeit &ndash; keine Lernkurve auf Ihre Kosten.
       </p>
 
       <!-- 2 case cards -->
       <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-5">
 
-        <!-- Featured case: Tschechiens #1 Weihnachtskampagne -->
+        <!-- Featured case -->
         <article class="relative bg-[#1A1A1A] rounded-3xl p-8 md:p-10 lg:p-12 overflow-hidden flex flex-col justify-between">
           <div>
             <div class="inline-flex px-3 py-1 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.12em] mb-7" style="font-family: 'Bricolage Grotesque', sans-serif;">Referenz-Case</div>
             <h3 class="text-[26px] md:text-[32px] lg:text-[38px] font-extrabold text-white leading-[1.1] tracking-[-0.03em] mb-4" style="font-family: 'Bricolage Grotesque', sans-serif;">Tschechiens #1 Weihnachtskampagne 2025</h3>
-            <p class="text-[15px] md:text-[16px] text-white/70 leading-[1.6] mb-6" style="font-family: 'Source Sans 3', sans-serif;">Aufgebaut mit einem Team von Freiwilligen, der erfolgreichste Weihnachts-Fundraiser des Landes in diesem Jahr. Powered by Gamification, Spenderreise-Design und Medien-Partnerschaften.</p>
-            <div class="p-4 md:p-5 rounded-xl bg-[#C9F31D]/10 border-l-[3px] border-[#C9F31D] mb-6">
+            <p class="text-[15px] md:text-[16px] text-white/70 leading-[1.6] mb-6" style="font-family: 'Source Sans 3', sans-serif;">Mit einem Team von Freiwilligen aufgebaut &ndash; der erfolgreichste Weihnachts-Fundraiser des Landes in diesem Jahr. Powered by Gamification, Donor Journey Design und Medien-Partnerschaften.</p>
+            <div class="p-4 md:p-5 rounded-xl bg-[#C9F31D]/10 border-l-[3px] border-[#C9F31D] mb-8">
               <div class="text-[18px] md:text-[22px] font-extrabold text-white leading-[1.2] tracking-[-0.025em]" style="font-family: 'Bricolage Grotesque', sans-serif;"><strong>Jeder 175. Tscheche</strong> <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #C9F31D;">spendete</em><span class="text-[#C9F31D]">.</span></div>
               <div class="text-[13px] md:text-[14px] text-[#C9F31D] mt-2 font-semibold" style="font-family: 'Source Sans 3', sans-serif;">Eine Reichweite, die fast keine tschechische NGO je erreicht hat.</div>
             </div>
-            <!-- Hospiz context callout -->
-            <div class="p-4 md:p-5 rounded-xl bg-white/5 border border-white/10 mb-8">
-              <div class="text-[10px] uppercase tracking-[0.16em] font-bold text-[#C9F31D] mb-2" style="font-family: 'Bricolage Grotesque', sans-serif;">Wichtiger Hospiz-Kontext</div>
-              <p class="text-[14px] md:text-[15px] text-white/85 leading-[1.55]" style="font-family: 'Source Sans 3', sans-serif;">Diese Kampagne hat über 2 Jahre systematisch <strong class="text-white font-semibold">11 tschechische Hospize unterstützt</strong> &ndash; mit konkreten Mitteln für Palliativpflege, Ausstattung und weitere notwendige Kosten.</p>
-            </div>
           </div>
           <!-- Stats -->
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-white/10">
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
             <div>
-              <div class="text-[22px] md:text-[26px] font-extrabold text-white leading-none tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF 660K</div>
+              <div class="text-[24px] md:text-[28px] font-extrabold text-white leading-none tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">CHF 660K</div>
               <div class="text-[11px] uppercase tracking-[0.1em] text-white/55 mt-2" style="font-family: 'Bricolage Grotesque', sans-serif;">gesammelt</div>
             </div>
             <div>
-              <div class="text-[22px] md:text-[26px] font-extrabold text-white leading-none tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">60&rsquo;000+</div>
+              <div class="text-[24px] md:text-[28px] font-extrabold text-white leading-none tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">60&rsquo;000+</div>
               <div class="text-[11px] uppercase tracking-[0.1em] text-white/55 mt-2" style="font-family: 'Bricolage Grotesque', sans-serif;">Spender</div>
             </div>
             <div>
-              <div class="text-[22px] md:text-[26px] font-extrabold text-white leading-none tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">3&rsquo;700 %</div>
+              <div class="text-[24px] md:text-[28px] font-extrabold text-white leading-none tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">3&rsquo;700 %</div>
               <div class="text-[11px] uppercase tracking-[0.1em] text-white/55 mt-2" style="font-family: 'Bricolage Grotesque', sans-serif;">ROI in 1 Monat</div>
-            </div>
-            <div>
-              <div class="text-[22px] md:text-[26px] font-extrabold text-[#C9F31D] leading-none tracking-[-0.03em]" style="font-family: 'Bricolage Grotesque', sans-serif;">11</div>
-              <div class="text-[11px] uppercase tracking-[0.1em] text-white/55 mt-2" style="font-family: 'Bricolage Grotesque', sans-serif;">Hospize unterstützt</div>
             </div>
           </div>
         </article>
@@ -1208,8 +1022,8 @@
             <div class="inline-flex px-3 py-1 rounded-full bg-[#1A1A1A] text-[#C9F31D] text-[10px] font-bold uppercase tracking-[0.12em] mb-7" style="font-family: 'Bricolage Grotesque', sans-serif;">Regionale Kampagne</div>
             <h3 class="text-[24px] md:text-[28px] font-extrabold text-[#1A1A1A] leading-[1.15] tracking-[-0.03em] mb-2" style="font-family: 'Bricolage Grotesque', sans-serif;">Klubák</h3>
             <p class="text-[14px] text-[#888] mb-4" style="font-family: 'Source Sans 3', sans-serif;">Tschechisches Sozialunternehmen für Menschen mit Behinderungen</p>
-            <p class="text-[15px] text-[#555] leading-[1.6] mb-6" style="font-family: 'Source Sans 3', sans-serif;">Eine 2-monatige regionale Fundraising-Kampagne, aufgebaut, um Spender direkt in den Gemeinden zu erreichen, in denen die Organisation tatsächlich tätig ist. Powered by Spenderreise-Design, Gamification und Meta Ads.</p>
-            <div class="inline-flex px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.08em] mb-6" style="font-family: 'Bricolage Grotesque', sans-serif;">Übertragbar in den DACH-Raum</div>
+            <p class="text-[15px] text-[#555] leading-[1.6] mb-6" style="font-family: 'Source Sans 3', sans-serif;">Eine 2-monatige regionale Fundraising-Kampagne &ndash; aufgebaut, um Spender in den Gemeinden zu erreichen, in denen die Organisation tatsächlich arbeitet. Powered by Donor Journey Design, Gamification und Meta Ads.</p>
+            <div class="inline-flex px-3 py-1.5 rounded-full bg-[#C9F31D] text-[#1A1A1A] text-[10px] font-bold uppercase tracking-[0.08em] mb-6" style="font-family: 'Bricolage Grotesque', sans-serif;">Mechanik 1:1 übertragbar &ndash; Lokalisierung inklusive</div>
           </div>
           <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#E8E8E8]">
             <div>
@@ -1228,66 +1042,38 @@
         </article>
 
       </div>
-    </div>
-  </section>
 
-  <!-- ============ SEKCE 13: WARUM HOSPIZE ============ -->
-  <section class="bg-[#FAFAFA] border-t border-[#E8E8E8]">
-    <div class="max-w-5xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
-
-      <!-- Eyebrow -->
-      <div class="flex items-center gap-3 mb-7 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        <span class="w-10 h-px bg-[#C9F31D]"></span>
-        <span>Warum Hospize</span>
-      </div>
-
-      <!-- H2 -->
-      <h2 class="text-[34px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-9 max-w-4xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
-        Hospize sind nicht nur Kunden. <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">Sie sind Berufung</em><span class="text-[#C9F31D]">.</span>
-      </h2>
-
-      <!-- Lead -->
-      <p class="text-[17px] md:text-[19px] text-[#1A1A1A] leading-[1.65] mb-12 font-light max-w-3xl" style="font-family: 'Source Sans 3', sans-serif;">
-        Mein Fokus auf Hospize ist weder Zufall noch eine Marketing-Spezialisierung. Es ist ein langfristiges persönliches Engagement, das prägt, wie ich digitales Fundraising für diesen Sektor angehe.
-      </p>
-
-      <!-- Bullet engagement list -->
-      <div class="mb-12">
-        <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-[#888] mb-5" style="font-family: 'Bricolage Grotesque', sans-serif;">In den letzten 2 Jahren</div>
-        <ul class="bio-list max-w-3xl">
-          <li><strong>11 unterstützte Hospize</strong> im Rahmen der grössten Weihnachtskampagne in Tschechien</li>
-          <li><strong>Benefiz-Gospelkonzerte</strong> für ein Hospiz in meiner Heimatstadt &ndash; pro bono, jährlich</li>
-          <li><strong>PechaKucha Night</strong> für ein Hospiz &ndash; Konzept und Umsetzung einer Gemeinschaftsveranstaltung</li>
-        </ul>
-      </div>
-
-      <!-- Closing manifesto -->
-      <div class="p-7 md:p-9 rounded-2xl bg-white border-l-4 border-[#C9F31D] max-w-3xl">
-        <p class="text-[17px] md:text-[19px] text-[#1A1A1A] leading-[1.65] mb-4 font-light" style="font-family: 'Source Sans 3', sans-serif;">
-          Ich arbeite mit Hospizen, weil ich verstehe, dass <strong class="font-semibold">jeder gesammelte Franken sich direkt in Würde der letzten Wochen eines Menschen verwandelt</strong>.
-        </p>
-        <p class="text-[16px] md:text-[17px] text-[#555] leading-[1.65] font-light" style="font-family: 'Source Sans 3', sans-serif;">
-          Dieses Verständnis prägt, wie ich digitales Fundraising angehe: mit Sensibilität für das Thema, Respekt vor der Spenderpsychologie und kompromissloser Aufmerksamkeit für Ergebnisse.
+      <!-- Solothurn bridge -->
+      <div class="mt-14 md:mt-20 text-center max-w-3xl mx-auto">
+        <p class="text-[24px] sm:text-[28px] md:text-[32px] italic text-[#1A1A1A] leading-[1.3] tracking-[-0.02em]" style="font-family: 'Instrument Serif', serif; font-weight: 400;">
+          Ähnliche Resultate sind auch für Hospiz Solothurn möglich<span class="text-[#C9F31D] not-italic">.</span>
         </p>
       </div>
 
+      <!-- CTA to contact -->
+      <div class="mt-8 md:mt-10 flex justify-center">
+        <a href="#contact" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.10)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.10),0_12px_24px_rgba(201,243,29,0.30)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          <span>Digital Fundraising Audit buchen</span>
+          <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- ============ SEKCE 14: ÜBER MICH ============ -->
+  <!-- ============ ABOUT / WHO'S BEHIND IT ============ -->
   <section id="about" class="bg-[#F5F5F5] border-t border-[#E8E8E8]">
     <div class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
 
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
 
-        <!-- LEFT COLUMN: photo -->
+        <!-- LEFT COLUMN: photo + personal quote -->
         <div class="lg:sticky lg:top-24">
           <figure class="relative rounded-2xl overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.18)] aspect-[4/5] bg-[#C9F31D]">
             <img src="../images/petr-portret.jpg" alt="Peter Chalupianský" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
           </figure>
         </div>
 
-        <!-- RIGHT COLUMN: bio + recognition -->
+        <!-- RIGHT COLUMN: bio + recognition (matched to homepage v3_3) -->
         <div>
           <!-- Eyebrow -->
           <div class="inline-flex items-center gap-2.5 mb-9 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
@@ -1302,28 +1088,23 @@
 
           <!-- Bio paragraph 1 (intro) -->
           <p class="text-[17px] md:text-[18px] text-[#1A1A1A] leading-[1.65] mb-6" style="font-family: 'Source Sans 3', sans-serif;">
-            Ich bin Peter Chalupianský, Fundraising-Berater mit Sitz in Prag. In den letzten <strong>zehn Jahren</strong> habe ich Non-Profits dabei begleitet, digitales Spenden in einen verlässlichen Einnahmekanal zu verwandeln.
+            Ich bin Peter Chalupiansky, ein Fundraising-Berater mit Sitz in Prag. In den letzten <strong>zehn Jahren</strong> habe ich Non-Profits dabei begleitet, digitales Spenden in einen verlässlichen Einnahmekanal zu verwandeln.
           </p>
 
-          <!-- Bio bullet list -->
+          <!-- Bio bullet list (lime dot markers) -->
           <ul class="bio-list">
-            <li><strong>Kaufland Tschechien</strong> &middot; CSR &amp; ESG Lead (8+ Jahre), <span class="lime-highlight">Teil der Schwarz Gruppe</span> (Europas grösster Einzelhändler). Weihnachtskampagne für <em>Světluška</em> &middot; CHF 4,6 Mio. Fundraising-Maschine über sieben Jahre. PR und Umsetzung landesweiter Marketingkampagnen.</li>
+            <li><strong>Kaufland Tschechien</strong> &middot; CSR- &amp; ESG-Lead (8+ Jahre), <span class="lime-highlight">Teil der Schwarz Gruppe</span> (Europas grösster Einzelhändler). Weihnachtskampagne für <em>Světluška</em> &middot; 4,6 Mio. CHF Fundraising-Maschine über sieben Jahre. PR und Umsetzung landesweiter Marketingkampagnen.</li>
             <li><strong>Vorstandsmitglied der Stiftung des Tschechischen Rundfunks</strong> &middot; eine der grössten NGOs in Tschechien.</li>
             <li><strong>Unabhängiger Berater</strong> &middot; digitales Fundraising für europäische Non-Profits.</li>
-            <li><strong>Autor der erfolgreichsten Weihnachtskampagne 2025</strong> in Tschechien.</li>
+            <li><strong>Erfolgreichste Weihnachtskampagne 2025</strong> &middot; in Tschechien des Jahres.</li>
           </ul>
 
           <!-- Bio paragraph 3 -->
-          <p class="text-[17px] md:text-[18px] text-[#1A1A1A] leading-[1.65] mb-5" style="font-family: 'Source Sans 3', sans-serif;">
-            Meine Kampagnen liefern konsequent <strong>positiven ROI</strong> und bauen <strong>Spenderbasen, die bleiben</strong>.
-          </p>
-
-          <!-- Bio paragraph 4 -->
           <p class="text-[17px] md:text-[18px] text-[#1A1A1A] leading-[1.65]" style="font-family: 'Source Sans 3', sans-serif;">
-            Jetzt möchte ich all das zu Ihrer Organisation bringen und Ihnen helfen, einen <strong>digitalen Fundraising-Kanal zu bauen, der wirklich funktioniert</strong>.
+            Meine Kampagnen liefern konsequent <strong>positiven ROI</strong> und bauen <strong>Spenderbasen</strong>, die bleiben.
           </p>
 
-          <!-- Awards & Recognition -->
+          <!-- Awards & Recognition (card grid, lime left border) -->
           <div class="mt-12 pt-9 border-t border-black/10">
             <div class="inline-flex items-center gap-2.5 mb-6 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
               <span class="w-2 h-2 rounded-full bg-[#C9F31D]"></span>
@@ -1335,7 +1116,7 @@
               <div class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">Persönlich</div>
               <div class="recognition-grid">
                 <div class="recognition-card"><strong>TEDx, PechaKucha Nights &amp; Konferenzsprecher</strong>über 20 Veranstaltungen</div>
-                <div class="recognition-card"><strong>The Kind Heart Award</strong>Karel-Janeček-Stiftung</div>
+                <div class="recognition-card"><strong>Preis des guten Herzens</strong>Karel-Janeček-Stiftung</div>
                 <div class="recognition-card"><strong>Persönlichkeit der Philanthropie</strong>Czech Donors Forum</div>
                 <div class="recognition-card"><strong>Persönlichkeit des Jahres</strong>Wheelchair Sport Club Prag</div>
               </div>
@@ -1343,7 +1124,7 @@
 
             <!-- Tier 2: With Kaufland team -->
             <div>
-              <div class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">Mit dem Team von Kaufland Tschechien (Schwarz Gruppe)</div>
+              <div class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#888] mb-3" style="font-family: 'Bricolage Grotesque', sans-serif;">Mit dem Team von Kaufland Tschechien (Teil der Schwarz Gruppe)</div>
               <div class="recognition-grid">
                 <div class="recognition-card"><strong>Tschechischer Nationaler Qualitätspreis 2022 für Nachhaltigkeit</strong>Ministerium für Industrie und Handel</div>
                 <div class="recognition-card"><strong>Viermalig Verantwortungsvoller Einzelhändler des Jahres (2020, 2022, 2024, 2025)</strong>Tschechische Konföderation für Handel und Tourismus</div>
@@ -1357,13 +1138,105 @@
     </div>
   </section>
 
-  <!-- ============ SEKCE 15: KONTAKT ============ -->
+  <!-- ============ WAS NACH DEM AUDIT OFT FOLGT (no prices, no CTAs) ============ -->
+  <section class="bg-[#FAFAFA] border-t border-[#E8E8E8]">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 py-20 md:py-24 lg:py-28">
+
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-3 mb-7 text-[10px] font-bold uppercase tracking-[0.18em] text-[#888]" style="font-family: 'Bricolage Grotesque', sans-serif;">
+        <span class="w-10 h-px bg-[#C9F31D]"></span>
+        <span>Nach dem Audit</span>
+      </div>
+
+      <!-- H2 -->
+      <h2 class="text-[34px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[#1A1A1A] mb-7 max-w-4xl" style="font-family: 'Bricolage Grotesque', sans-serif;">
+        Was Organisationen häufig <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;">nach dem Audit</em> anfragen<span class="text-[#C9F31D]">.</span>
+      </h2>
+
+      <!-- Lead -->
+      <p class="text-[17px] md:text-[19px] text-[#444] leading-[1.6] max-w-3xl mb-14 font-light" style="font-family: 'Source Sans 3', sans-serif;">
+        Das Audit ist der erste Schritt. Was danach folgt, hängt von Ihren Prioritäten ab &ndash; hier sind die häufigsten nächsten Schritte, die Organisationen auf Basis der Audit-Ergebnisse beauftragen.
+      </p>
+
+      <!-- 4 service cards (2×2 on desktop, 1 col on mobile) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <!-- Card 01: Fundraising-Strategie -->
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
+          <div class="flex items-start justify-between mb-6">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D]">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <span class="text-[28px] italic text-[#C9F31D] tracking-[-0.02em] leading-none" style="font-family: 'Instrument Serif', serif; font-weight: 400;">01</span>
+          </div>
+          <h3 class="text-[20px] md:text-[22px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Fundraising-Strategie</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">Eine durchdachte 12-Monats-Strategie für Ihr Digital-Fundraising &ndash; mit konkreten Massnahmen, KPIs und einem realistischen Budgetrahmen.</p>
+        </article>
+
+        <!-- Card 02: Donor Microsite für Hospiz Solothurn -->
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
+          <div class="flex items-start justify-between mb-6">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D]">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <span class="text-[28px] italic text-[#C9F31D] tracking-[-0.02em] leading-none" style="font-family: 'Instrument Serif', serif; font-weight: 400;">02</span>
+          </div>
+          <h3 class="text-[20px] md:text-[22px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Donor Microsite für Hospiz Solothurn</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6] mb-4" style="font-family: 'Source Sans 3', sans-serif;">Eine eigene Microsite, die Spender emotional einbindet und konkret zeigt, wofür ihre Spende verwendet wird.</p>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">Mit Storytelling über das Leben im Hospiz, Patenschafts-Optionen (&bdquo;Spenderzimmer&ldquo;, &bdquo;Pflegetag&ldquo;, &bdquo;Begleitstunde&ldquo;) und direkter Anbindung an TWINT/Apple Pay/Kreditkarte.</p>
+        </article>
+
+        <!-- Card 03: Social-Media-Strategie & Kampagnen -->
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
+          <div class="flex items-start justify-between mb-6">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D]">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+            </div>
+            <span class="text-[28px] italic text-[#C9F31D] tracking-[-0.02em] leading-none" style="font-family: 'Instrument Serif', serif; font-weight: 400;">03</span>
+          </div>
+          <h3 class="text-[20px] md:text-[22px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Social-Media-Strategie &amp; Kampagnen</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">Aufbau einer professionellen Fundraising-Präsenz auf Facebook und Instagram, kombiniert mit gezielten Spendenkampagnen im Raum Solothurn. Inklusive Content-Plan, visueller Identität und laufender Optimierung.</p>
+        </article>
+
+        <!-- Card 04: Laufende Begleitung -->
+        <article class="bg-white border border-[#E8E8E8] rounded-3xl p-7 md:p-8 hover:border-[#C9F31D] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col">
+          <div class="flex items-start justify-between mb-6">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#C9F31D]">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
+            </div>
+            <span class="text-[28px] italic text-[#C9F31D] tracking-[-0.02em] leading-none" style="font-family: 'Instrument Serif', serif; font-weight: 400;">04</span>
+          </div>
+          <h3 class="text-[20px] md:text-[22px] font-extrabold mb-3 text-[#1A1A1A] tracking-[-0.025em] leading-[1.2]" style="font-family: 'Bricolage Grotesque', sans-serif;">Laufende Begleitung</h3>
+          <p class="text-[14px] md:text-[15px] text-[#555] leading-[1.6]" style="font-family: 'Source Sans 3', sans-serif;">Monatliches Sparring, Kampagnen-Optimierung und strategische Beratung. Wie ein externer Fundraising-Verantwortlicher, der nur dann da ist, wenn Sie ihn brauchen.</p>
+        </article>
+
+      </div>
+
+      <!-- Closing bridge headline -->
+      <div class="mt-14 md:mt-20 text-center max-w-3xl mx-auto">
+        <h3 class="text-[26px] sm:text-[32px] md:text-[38px] lg:text-[44px] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#1A1A1A]" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          Was Sinn macht für Hospiz Solothurn, klären wir <em class="not-italic" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em;">Schritt für Schritt</em> &ndash; nach dem Audit<span class="text-[#C9F31D]">.</span>
+        </h3>
+      </div>
+
+      <!-- CTA to contact -->
+      <div class="mt-8 md:mt-10 flex justify-center">
+        <a href="#contact" class="group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#C9F31D] text-[#1A1A1A] font-bold text-[16px] tracking-[-0.01em] shadow-[0_4px_0_rgba(0,0,0,0.10)] hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(0,0,0,0.10),0_12px_24px_rgba(201,243,29,0.30)] transition-all duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+          <span>Digital Fundraising Audit buchen</span>
+          <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CONTACT (final lime letter-style CTA) ============ -->
   <section id="contact" class="relative bg-[#C9F31D] border-t border-[#C9F31D] overflow-hidden">
     <!-- Subtle dark glow accents -->
     <div aria-hidden="true" class="absolute -top-40 -left-40 w-[32rem] h-[32rem] rounded-full bg-[#1A1A1A] opacity-[0.06] blur-3xl pointer-events-none"></div>
     <div aria-hidden="true" class="absolute -bottom-40 -right-40 w-[28rem] h-[28rem] rounded-full bg-[#1A1A1A] opacity-[0.05] blur-3xl pointer-events-none"></div>
 
-    <div class="relative max-w-3xl mx-auto px-6 md:px-12 py-24 md:py-28 lg:py-32">
+    <div class="relative max-w-4xl mx-auto px-6 md:px-12 py-24 md:py-28 lg:py-32">
 
       <!-- Eyebrow -->
       <div class="flex items-center gap-3 mb-10 text-[10px] font-bold uppercase tracking-[0.18em] text-[#1A1A1A]/55" style="font-family: 'Bricolage Grotesque', sans-serif;">
@@ -1371,20 +1244,16 @@
         <span>Nächster Schritt</span>
       </div>
 
-      <!-- Salutation -->
-      <h2 class="text-[28px] sm:text-[34px] md:text-[40px] lg:text-[44px] italic font-normal text-[#1A1A1A] tracking-[-0.02em] mb-8" data-config="vorstandSalutation" style="font-family: 'Instrument Serif', serif;">Sehr geehrte Frau Jäckle,</h2>
+      <!-- Salutation (letter-style close) -->
+      <h2 class="text-[28px] sm:text-[34px] md:text-[40px] lg:text-[48px] italic font-normal text-[#1A1A1A] tracking-[-0.02em] mb-8" style="font-family: 'Instrument Serif', serif;">Sehr geehrte Frau Bürgi,</h2>
 
       <!-- Body -->
-      <p class="text-[18px] md:text-[20px] text-[#1A1A1A] leading-[1.65] mb-6 font-light max-w-2xl" style="font-family: 'Source Sans 3', sans-serif;">
-        wenn diese Analyse Sie überzeugt hat, antworten Sie mir kurz auf meine erste E-Mail. Ein Satz reicht: <em>&bdquo;Bitte senden Sie mir mehr Informationen&ldquo;</em> oder <em>&bdquo;Wann können wir starten?&ldquo;</em>.
-      </p>
-
       <p class="text-[18px] md:text-[20px] text-[#1A1A1A] leading-[1.65] mb-12 font-light max-w-2xl" style="font-family: 'Source Sans 3', sans-serif;">
-        Ich melde mich innerhalb von 24 Stunden.
+        wenn die Analyse Sie überzeugt hat, antworten Sie mir einfach kurz auf meine erste E-Mail. Ein Satz reicht &ndash; etwa &bdquo;Bitte senden Sie mir mehr Informationen&ldquo; oder &bdquo;Wann können wir starten?&ldquo;. Ich melde mich innerhalb von 24 Stunden.
       </p>
 
-      <!-- Primary CTA (mailto) -->
-      <a id="contactCta" href="mailto:peter@ngo.digital?subject=Digital%20Fundraising%20-%20Hospiz%20Oberthurgau&body=Sehr%20geehrter%20Herr%20Chalupiansky%2C%0D%0A%0D%0A%0D%0A%0D%0A%E2%80%93%20Miriam%20J%C3%A4ckle%0D%0AHospiz%20Oberthurgau" class="cta-pulse group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#1A1A1A] text-[#C9F31D] font-bold text-[17px] md:text-[18px] tracking-[-0.01em] hover:-translate-y-1 transition-transform duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
+      <!-- Primary CTA (mailto with pre-filled greeting + signature) -->
+      <a id="contactCta" href="mailto:peter@ngo.digital?subject=Hospiz%20Solothurn%20-%20Audit-Interesse&body=Sehr%20geehrter%20Herr%20Chalupiansky%2C%0D%0A%0D%0A%0D%0A%0D%0A%E2%80%93%20%5BIhr%20Name%5D%0D%0AHospiz%20Solothurn" class="cta-pulse group inline-flex items-center gap-3 px-9 py-[20px] rounded-full bg-[#1A1A1A] text-[#C9F31D] font-bold text-[17px] md:text-[18px] tracking-[-0.01em] hover:-translate-y-1 transition-transform duration-300" style="font-family: 'Bricolage Grotesque', sans-serif;">
         <span>Peter schreiben</span>
         <span class="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">&rarr;</span>
       </a>
@@ -1397,7 +1266,7 @@
     </div>
   </section>
 
-  <!-- ============ SEKCE 16: FOOTER ============ -->
+  <!-- ============ FOOTER ============ -->
   <footer class="bg-[#0A0A0A] border-t border-[#1A1A1A]">
     <div class="max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-10">
 
@@ -1418,9 +1287,7 @@
         <div>
           <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-white/40 mb-4" style="font-family: 'Bricolage Grotesque', sans-serif;">Leistungen</div>
           <div class="flex flex-col gap-2.5 text-[14px]" style="font-family: 'Source Sans 3', sans-serif;">
-            <a href="#quickwins" class="text-white/75 hover:text-[#C9F31D] transition-colors">Digital Fundraising Audit</a>
-            <a href="#pakete" class="text-white/75 hover:text-[#C9F31D] transition-colors">Starter / Premium / Premium Plus</a>
-            <a href="#retainer" class="text-white/75 hover:text-[#C9F31D] transition-colors">Laufende Begleitung</a>
+            <a href="#audit" class="text-white/75 hover:text-[#C9F31D] transition-colors">Digital Fundraising Audit</a>
           </div>
         </div>
 
@@ -1448,55 +1315,18 @@
     </div>
   </footer>
 
-  <!-- ============ PERSONALIZATION CONFIG + LIGHTWEIGHT JS ============ -->
   <script>
-    /**
-     * Microsite personalization config.
-     * Pro klonování pro další hospic stačí změnit tyto 3 hodnoty + mailto-link v sekci Kontakt.
-     * Všechny prvky s [data-config="..."] se přepíšou automaticky.
-     */
-    const config = {
-      hospizName: "Hospiz Oberthurgau",
-      vorstandPerson: "Frau Jäckle",
-      vorstandSalutation: "Sehr geehrte Frau Jäckle,"
-    };
-
-    // Apply config to all [data-config] elements
-    (function applyConfig() {
-      document.querySelectorAll('[data-config]').forEach(el => {
-        const key = el.getAttribute('data-config');
-        if (config[key]) el.textContent = config[key];
-      });
-    })();
-
-    // Lightweight CTA click tracking (Plausible custom events)
-    (function trackCtas() {
-      if (typeof window.plausible !== 'function') return;
-      document.querySelectorAll('a[href^="#"], a[href^="mailto:"]').forEach(link => {
-        link.addEventListener('click', () => {
-          const interest = link.getAttribute('data-interest');
-          const label = interest || link.textContent.trim().slice(0, 60);
-          window.plausible('CTA Click', { props: { label } });
-        }, { passive: true });
-      });
-    })();
-
-    // Scroll-depth tracking (25 / 50 / 75 / 100 %)
-    (function trackScrollDepth() {
-      if (typeof window.plausible !== 'function') return;
-      const milestones = [25, 50, 75, 100];
-      const fired = new Set();
-      function onScroll() {
-        const h = document.documentElement;
-        const scrolled = (h.scrollTop + window.innerHeight) / h.scrollHeight * 100;
-        milestones.forEach(m => {
-          if (scrolled >= m && !fired.has(m)) {
-            fired.add(m);
-            window.plausible('Scroll Depth', { props: { depth: m + '%' } });
-          }
-        });
+    // Rotace headline (4s na frázi) — pokud nějaké .rotating-headline existují
+    (function() {
+      const phrases = document.querySelectorAll('.rotating-headline');
+      if (phrases.length > 1) {
+        let idx = 0;
+        setInterval(() => {
+          phrases[idx].classList.remove('is-visible');
+          idx = (idx + 1) % phrases.length;
+          phrases[idx].classList.add('is-visible');
+        }, 4000);
       }
-      window.addEventListener('scroll', onScroll, { passive: true });
     })();
   </script>
 
