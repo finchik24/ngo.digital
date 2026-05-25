@@ -346,10 +346,11 @@
   /* ---- about ---- */
   .about { background: var(--gray-100); }
   .about-photo {
-    aspect-ratio: 4/5; background: var(--charcoal); border-radius: 16px;
-    display:flex; align-items:flex-end; padding: 24px; color:#666; font-size:13px;
-    position: sticky; top: 40px;
+    aspect-ratio: 4/5; background: #C9F31D; border-radius: 16px;
+    overflow: hidden; position: sticky; top: 40px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.18);
   }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .awards { margin-top: 20px; display:flex; flex-wrap:wrap; gap:8px; }
   .award { background:var(--white); border:0.5px solid var(--gray-100); border-radius:100px; padding:7px 14px; font-size:13px; font-weight:600; }
 
@@ -1070,7 +1071,7 @@
 <!-- ===================== 8. O PETROVI ===================== -->
 <section class="about">
   <div class="container grid-2">
-    <div class="about-photo">[ Fotka Petra à natural, eye-level ]</div>
+    <div class="about-photo"><img src="/images/petr-portret.jpg" alt="Peter Chalupiansky" loading="lazy"></div>
     <div>
       <div class="eyebrow">Wer das umsetzt</div>
       <h2 class="section-title reveal">Ich helfe Nonprofit-Organisationen in ganz Europa, <em>echtes Geld</em> zu gewinnen — nicht nur Aufmerksamkeit.</h2>
