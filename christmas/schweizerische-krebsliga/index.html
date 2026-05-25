@@ -137,7 +137,7 @@
     overflow: hidden;
   }
   .proj-card:hover { transform: rotate(0deg) translateY(-5px); }
-  .proj-card::before { content:'�"'; position:absolute; top:14px; right:18px; font-size:48px; color:var(--lime); opacity:0.12; }
+  .proj-card::before { content:'❄'; position:absolute; top:14px; right:18px; font-size:48px; color:var(--lime); opacity:0.12; }
   .pc-eyebrow { font-family:'Bricolage Grotesque'; font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--lime); display:flex; align-items:center; gap:8px; }
   .pc-eyebrow::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--lime); }
   .pc-big { font-family:'Bricolage Grotesque'; font-weight:800; font-size:50px; letter-spacing:-0.04em; color:var(--lime); line-height:1; margin:14px 0 4px; }
@@ -168,7 +168,7 @@
   .mockup-bar .url { margin-left:10px; font-size:11px; color:#999; background:#fff; border-radius:6px; padding:4px 12px; flex:1; font-family:'Source Sans 3'; }
   .mockup-body { padding: 0; background: var(--charcoal); color:#fff; }
   .mockup-hero { padding: 26px 24px 22px; position:relative; overflow:hidden; }
-  .mockup-hero::before { content:'�"'; position:absolute; top:8px; right:14px; font-size:42px; color:var(--lime); opacity:0.14; }
+  .mockup-hero::before { content:'❄'; position:absolute; top:8px; right:14px; font-size:42px; color:var(--lime); opacity:0.14; }
   .mockup-eyebrow { font-family:'Bricolage Grotesque'; font-weight:700; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--lime); }
   .mockup-title { font-family:'Bricolage Grotesque'; font-weight:800; font-size:22px; line-height:1.1; letter-spacing:-0.03em; margin:8px 0 6px; }
   .mockup-title em { font-family:'Instrument Serif'; font-style:italic; font-weight:400; }
@@ -763,7 +763,7 @@
 <!-- ===================== 1. HERO (max personalizace) ===================== -->
 <header class="hero">
   <div class="snow" id="snow"></div>
-  <div class="xmas-flake-deco" style="top:60px; right:80px;">�"</div>
+  <div class="xmas-flake-deco" style="top:60px; right:80px;">❄</div>
   <div class="container">
     <!-- {{PERSONALIZACE: org_name badge}} -->
     <span class="eyebrow-pill reveal">Vorschlag für Schweizerische Krebsliga</span>
@@ -822,7 +822,7 @@
 <section id="nabidka" style="background:var(--gray-100); position:relative; overflow:hidden;">
   <div class="deco-circle" style="top:-100px; right:-80px;"></div>
   <div class="deco-circle" style="bottom:-140px; left:-120px; width:360px; height:360px;"></div>
-  <div class="xmas-flake-deco" style="bottom:40px; right:60px; font-size:90px;">�"</div>
+  <div class="xmas-flake-deco" style="bottom:40px; right:60px; font-size:90px;">❄</div>
   <div class="container">
     <div class="eyebrow">Was beinhaltet meine Lösung alles?</div>
     <h2 class="section-title reveal">Die gesamte Kampagne <em>schlüsselfertig</em>. Sie helfen nur mit.</h2>
@@ -839,7 +839,7 @@
 
 <!-- ===================== 5. STANDARD vs PREMIUM ===================== -->
 <section style="position:relative; overflow:hidden;">
-  <div class="xmas-flake-deco" style="top:50px; right:70px; font-size:80px;">�"</div>
+  <div class="xmas-flake-deco" style="top:50px; right:70px; font-size:80px;">❄</div>
   <div class="container">
     <div class="eyebrow">Wählen Sie Ihre Variante</div>
     <h2 class="section-title reveal">Standard oder <em>Premium?</em></h2>
@@ -926,7 +926,7 @@
 
 <!-- ===================== 6c. KALKULA�KA MEDIA BUDGETU ===================== -->
 <section class="calc">
-  <div class="xmas-flake-deco" style="bottom:50px; left:60px; font-size:90px; opacity:0.08;">�"</div>
+  <div class="xmas-flake-deco" style="bottom:50px; left:60px; font-size:90px; opacity:0.08;">❄</div>
   <div class="container">
     <span class="eyebrow-pill">… Rechnen Sie selbst nach</span>
     <h2 class="section-title reveal">Wie viel sollten Sie in die Kampagne <em>investieren</em>?</h2>
@@ -1128,7 +1128,7 @@
   (function(){
     var snow = document.getElementById('snow');
     if (!snow || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var glyphs = ['?','?','?','?','?']; // à à à à �
+    var glyphs = ['❄','❅','❆','✻','✳']; // snowflakes
     var N = 26;
     for (var i=0;i<N;i++){
       var f = document.createElement('span');
