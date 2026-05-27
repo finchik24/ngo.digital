@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campagne de Noël 2026 : proposition pour JALMALV Morbihan</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231A1A1A'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23C9F31D'%3E%E2%9D%84%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     ngo.digital · Váno�ní sbírka 2026
+     PERSONALIZOVANà SALES MICROSITE (template)
+     Brand tokeny dle brand bible v1.0
+     ---------------------------------------------------------
+     PRO CLAUDE CODE: veškerá personalizace je v sekci
+     :root prom�nných níže + v blocích ozna�ených {{...}}.
+     Nová microsite = vým�na t�chto hodnot.
+     ========================================================= */
+
+  :root {
+    /* --- PERSONALIZACE (m�ní se na klienta) --- */
+    --org-name: "JALMALV Morbihan";
+    --org-accent: #C9F31D;       /* volitelnà barva klienta, jinak brand lime */
+
+    /* --- BRAND (konstanty) --- */
+    --charcoal: #1A1A1A;
+    --white: #FFFFFF;
+    --lime: #C9F31D;
+    --lime-hover: #B5DC1A;
+    --lime-tint: #F5FBE3;
+    --lime-border: #E1F297;
+    --gray-600: #444444;
+    --gray-400: #888888;
+    --gray-100: #F5F5F5;
+    --hairline: #00000010;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--charcoal);
+    background: var(--white);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+
+  /* ---- typografie ---- */
+  .eyebrow {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 12px; font-weight: 700; color: var(--gray-400);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+  }
+  .eyebrow::before {
+    content: ''; width: 8px; height: 8px; background: var(--lime);
+    border-radius: 50%; display: inline-block;
+  }
+  .eyebrow-pill {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 12px; font-weight: 700; color: var(--charcoal);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--lime); padding: 8px 16px; border-radius: 100px;
+    display: inline-block; margin-bottom: 24px;
+  }
+  .section-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 52px; font-weight: 800; line-height: 1.02;
+    letter-spacing: -0.045em; margin-bottom: 22px;
+  }
+  .section-title em {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-weight: 400; letter-spacing: -0.02em;
+  }
+  .lead { font-size: 20px; color: var(--gray-600); max-width: 620px; line-height: 1.5; }
+  section { padding: 92px 0; }
+
+  /* ---- tla�ítka ---- */
+  .btn-primary {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; font-weight: 700; color: var(--charcoal);
+    background: var(--lime); padding: 16px 26px; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: 10px;
+    box-shadow: 0 4px 0 var(--hairline); transition: transform 0.15s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-secondary {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; font-weight: 600; color: var(--charcoal);
+    display: inline-flex; align-items: center; gap: 8px;
+    border-bottom: 1.5px solid var(--charcoal); padding-bottom: 3px;
+  }
+
+  /* ---- nav ---- */
+  nav.top-nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px; background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px); border-bottom: 0.5px solid var(--hairline);
+  }
+  .logo { font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.04em; }
+  .logo .dot { color: var(--lime); }
+  .nav-prep { font-size: 13px; color: var(--gray-400); font-weight: 600; }
+  .nav-prep b { color: var(--charcoal); }
+
+  /* ====== 1. HERO (max personalizace) ====== */
+  .hero { padding: 90px 0 80px; position: relative; overflow: hidden; }
+  .hero::after {
+    content: ''; position: absolute; top: -120px; right: -120px;
+    width: 380px; height: 380px; border-radius: 50%;
+    background: var(--lime); opacity: 0.10; filter: blur(20px);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 52px; align-items: center; }
+  .hero h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 64px; font-weight: 800; line-height: 1.02;
+    letter-spacing: -0.04em; margin: 18px 0 26px; max-width: 880px;
+  }
+  .hero h1 em {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-weight: 400; letter-spacing: -0.01em;
+  }
+
+  /* projek�ní karta à výt�žek za první rok */
+  .proj-card {
+    position: relative; z-index: 1;
+    background: var(--charcoal); color: #fff;
+    border-radius: 20px; padding: 32px 30px;
+    box-shadow: 0 30px 70px -28px rgba(0,0,0,0.4);
+    transform: rotate(1.2deg);
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    overflow: hidden;
+  }
+  .proj-card:hover { transform: rotate(0deg) translateY(-5px); }
+  .proj-card::before { content:'❄'; position:absolute; top:14px; right:18px; font-size:48px; color:var(--lime); opacity:0.12; }
+  .pc-eyebrow { font-family:'Bricolage Grotesque'; font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--lime); display:flex; align-items:center; gap:8px; }
+  .pc-eyebrow::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--lime); }
+  .pc-big { font-family:'Bricolage Grotesque'; font-weight:800; font-size:50px; letter-spacing:-0.04em; color:var(--lime); line-height:1; margin:14px 0 4px; }
+  .pc-big-sub { font-size:13px; color:#bbb; margin-bottom:24px; }
+  .pc-row { display:flex; align-items:center; justify-content:space-between; padding:13px 0; border-bottom:0.5px solid #ffffff14; }
+  .pc-row:last-child { border-bottom:none; }
+  .pc-row .lbl { font-size:13px; color:#ccc; display:flex; align-items:center; gap:9px; }
+  .pc-row .val { font-family:'Bricolage Grotesque'; font-weight:800; font-size:19px; letter-spacing:-0.02em; }
+  .pc-row.cost .lbl, .pc-row.cost .val { color:#999; }
+  .pc-net { display:flex; align-items:center; justify-content:space-between; margin-top:14px; padding:16px 18px; background:var(--lime); border-radius:12px; }
+  .pc-net .lbl { font-family:'Bricolage Grotesque'; font-weight:700; font-size:14px; color:var(--charcoal); }
+  .pc-net .val { font-family:'Bricolage Grotesque'; font-weight:800; font-size:26px; letter-spacing:-0.03em; color:var(--charcoal); }
+  .pc-partners { font-size:12.5px; color:var(--lime); font-weight:600; margin-top:14px; line-height:1.45; display:flex; gap:8px; align-items:flex-start; }
+  .pc-partners::before { content:'+'; font-family:'Bricolage Grotesque'; font-weight:800; font-size:15px; line-height:1.1; flex-shrink:0; }
+  .pc-note { font-size:11px; color:#888; margin-top:12px; line-height:1.4; }
+
+  /* mockup prohlíže�e s náhledem microsite */
+  .hero-mockup {
+    position: relative; z-index: 1;
+    background: var(--white); border-radius: 16px;
+    box-shadow: 0 30px 70px -25px rgba(0,0,0,0.35), 0 0 0 1px #00000008;
+    overflow: hidden; transform: rotate(1.5deg);
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .hero-mockup:hover { transform: rotate(0deg) translateY(-6px); }
+  .mockup-bar { display:flex; align-items:center; gap:6px; padding:11px 14px; background:#f3f3f3; border-bottom:1px solid #e8e8e8; }
+  .mockup-bar .dot { width:10px; height:10px; border-radius:50%; }
+  .mockup-bar .url { margin-left:10px; font-size:11px; color:#999; background:#fff; border-radius:6px; padding:4px 12px; flex:1; font-family:'Source Sans 3'; }
+  .mockup-body { padding: 0; background: var(--charcoal); color:#fff; }
+  .mockup-hero { padding: 26px 24px 22px; position:relative; overflow:hidden; }
+  .mockup-hero::before { content:'❄'; position:absolute; top:8px; right:14px; font-size:42px; color:var(--lime); opacity:0.14; }
+  .mockup-eyebrow { font-family:'Bricolage Grotesque'; font-weight:700; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--lime); }
+  .mockup-title { font-family:'Bricolage Grotesque'; font-weight:800; font-size:22px; line-height:1.1; letter-spacing:-0.03em; margin:8px 0 6px; }
+  .mockup-title em { font-family:'Instrument Serif'; font-style:italic; font-weight:400; }
+  .mockup-sub { font-size:12px; color:#bbb; line-height:1.4; margin-bottom:18px; }
+  /* gamifika�ní teplom�r */
+  .mockup-goal { display:flex; justify-content:space-between; font-size:11px; margin-bottom:7px; }
+  .mockup-goal .raised { color:var(--lime); font-weight:700; font-family:'Bricolage Grotesque'; }
+  .mockup-goal .target { color:#999; }
+  .mockup-progress { height:10px; background:#333; border-radius:999px; overflow:hidden; margin-bottom:6px; }
+  .mockup-progress-fill { height:100%; width:0%; background:linear-gradient(90deg,#9bbf16,var(--lime)); border-radius:999px; animation: fillbar 2s 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+  @keyframes fillbar { from{width:0%;} to{width:68%;} }
+  .mockup-pct { font-size:10px; color:#999; text-align:right; margin-bottom:16px; }
+  .mockup-btn { background:var(--lime); color:var(--charcoal); font-family:'Bricolage Grotesque'; font-weight:700; font-size:12px; text-align:center; padding:11px; border-radius:999px; }
+  .mockup-donors { display:flex; gap:6px; margin-top:14px; align-items:center; }
+  .mockup-avatar { width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg,#9bbf16,var(--lime)); border:2px solid var(--charcoal); margin-left:-8px; }
+  .mockup-avatar:first-child { margin-left:0; }
+  .mockup-donors-txt { font-size:10px; color:#bbb; margin-left:6px; }
+  @media (prefers-reduced-motion: reduce){ .mockup-progress-fill{ animation:none; width:68%; } }
+
+  .hero-sub { font-size: 21px; color: var(--gray-600); max-width: 600px; margin-bottom: 28px; }
+  .hero-lead { font-size: 22px; color: var(--charcoal); max-width: 640px; margin-bottom: 20px; line-height: 1.5; }
+  .hero-lead b { font-weight: 700; }
+  .hero-benefits { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+  .hero-benefits-row2 { margin-bottom: 34px; }
+  .hero-benefit {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--lime-tint); border: 1px solid var(--lime-border);
+    border-radius: 100px; padding: 10px 18px 10px 12px;
+    font-size: 15px; font-weight: 600; color: var(--charcoal);
+  }
+  .hero-benefit svg { flex-shrink: 0; }
+  @media (max-width: 860px) { .hero-benefit { font-size: 14px; } }
+  .hero-cta { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .hero-note {
+    margin-top: 40px; padding: 18px 22px; background: var(--lime-tint);
+    border: 1px solid var(--lime-border); border-radius: 12px;
+    max-width: 560px; font-size: 16px; color: var(--charcoal);
+  }
+
+  /* ---- generické dvousloupcové ---- */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+
+  /* ---- karty služeb ---- */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+  .card {
+    background: var(--white); border: 0.5px solid var(--gray-100);
+    border-radius: 16px; padding: 28px; min-height: 200px;
+  }
+  .card .num { font-family:'Bricolage Grotesque'; font-weight:800; color: var(--lime); font-size: 14px; }
+  .card h3 { font-family:'Bricolage Grotesque'; font-weight:800; font-size: 21px; letter-spacing:-0.03em; margin: 12px 0 8px; }
+  .card p { font-size: 15px; color: var(--gray-600); }
+
+  /* ---- důkaz / �ísla ---- */
+  .proof { background: var(--charcoal); color: var(--white); }
+  .proof .section-title { color: var(--white); }
+  .stats { display:grid; grid-template-columns: repeat(3,1fr); gap: 40px; margin-top: 50px; }
+  .stat .big { font-family:'Bricolage Grotesque'; font-weight:800; font-size: 50px; color: var(--lime); letter-spacing:-0.04em; line-height:1; }
+  .stat .lbl { font-size: 15px; color: #DDD; margin-top: 10px; }
+  .quote { margin-top: 56px; font-family:'Instrument Serif'; font-style:italic; font-size: 26px; line-height:1.4; max-width: 760px; }
+  .quote .who { display:block; font-family:'Source Sans 3'; font-style:normal; font-size:15px; color:#DDD; margin-top:16px; }
+  .disclaimer { margin-top: 36px; font-size: 13px; color: var(--gray-400); max-width: 620px; }
+
+  /* ---- standard vs premium ---- */
+  .tiers { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
+  .tier { border-radius: 16px; padding: 36px; }
+  .tier.std { background: var(--white); border: 0.5px solid var(--gray-100); }
+  .tier.prem { background: var(--charcoal); color: var(--white); }
+  .tier h3 { font-family:'Bricolage Grotesque'; font-weight:800; font-size: 26px; letter-spacing:-0.03em; }
+  .tier.prem h3 { color: var(--lime); }
+  .tier .price-old {
+    font-family:'Bricolage Grotesque'; font-weight:700; font-size: 18px;
+    color: var(--gray-400); text-decoration: line-through; margin-top: 10px;
+  }
+  .tier.prem .price-old { color: #888; }
+  .tier .price-eb-label {
+    font-family:'Bricolage Grotesque'; font-weight:700; font-size: 11px;
+    letter-spacing:0.08em; text-transform:uppercase; color: var(--charcoal);
+    background: var(--lime); padding: 4px 10px; border-radius: 100px;
+    display:inline-block; margin: 8px 0 6px;
+  }
+  .tier .price { font-family:'Bricolage Grotesque'; font-weight:800; font-size: 38px; letter-spacing:-0.04em; margin: 0 0 4px; }
+  .tier .price-czk { font-size: 14px; color: var(--gray-400); margin-bottom: 22px; }
+  .tier.prem .price-czk { color: #BBB; }
+  .tier .price-note { font-size: 13px; line-height: 1.45; color: var(--charcoal); background: var(--lime); border-radius: 10px; padding: 10px 14px; margin: 0 0 22px; font-weight: 600; }
+  .tier.prem .price-note { background: rgba(201,243,29,0.16); color: var(--lime); }
+
+  /* doporu�eno badge na Premium */
+  .tier { position: relative; }
+  .tier-badge {
+    position:absolute; top:-13px; right:28px;
+    font-family:'Bricolage Grotesque'; font-weight:800; font-size:11px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--charcoal);
+    background:var(--lime); padding:7px 16px; border-radius:100px;
+    box-shadow:0 6px 20px -6px rgba(201,243,29,0.6);
+  }
+  /* v�ta pro koho */
+  .tier-for {
+    font-size:14px; color:var(--gray-600); line-height:1.45;
+    margin:6px 0 22px; padding-bottom:20px; border-bottom:0.5px solid var(--gray-100);
+  }
+  .tier.prem .tier-for { color:#bbb; border-bottom-color:#ffffff14; }
+  /* položky navíc v Premium à zvýrazn�né lime te�kou */
+  .tier ul li.plus { position:relative; }
+  .tier.prem ul li.plus::marker { color:var(--lime); }
+  /* nadpis "navíc oproti Standardu" */
+  .tier-plus-label {
+    font-family:'Bricolage Grotesque'; font-weight:700; font-size:11px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--lime);
+    margin:6px 0 2px;
+  }
+  /* odkaz na sekci partnerů pod kartami */
+  .tiers-partners-link {
+    margin-top:28px; text-align:center;
+    background:var(--lime-tint); border:1px solid var(--lime-border);
+    border-radius:16px; padding:20px 28px;
+    font-size:17px; color:var(--charcoal);
+  }
+  .tiers-partners-link a {
+    font-family:'Bricolage Grotesque'; font-weight:800; color:var(--charcoal);
+    text-decoration:none; border-bottom:2px solid var(--lime);
+  }
+  .tiers-partners-link a:hover { border-bottom-width:3px; }
+
+  /* ---- může to být zadarmo ---- */
+  .free { background: var(--charcoal); color: var(--white); }
+  .free .section-title { color: var(--white); }
+  .free .lead { color: #DDD; max-width: 680px; }
+  .free-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
+  .free-card { background: #242424; border: 0.5px solid #ffffff14; border-radius: 16px; padding: 30px; }
+  .free-card.lit { background: var(--lime); color: var(--charcoal); border: none; }
+  .free-card h3 { font-family:'Bricolage Grotesque'; font-weight:800; font-size: 22px; letter-spacing:-0.03em; margin-bottom: 10px; }
+  .free-card p { font-size: 16px; color: #CCC; line-height:1.5; }
+  .free-card.lit p { color: var(--charcoal); }
+  .free-card .tag { font-family:'Bricolage Grotesque'; font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color: var(--lime); margin-bottom:14px; display:block; }
+  .free-card.lit .tag { color: var(--charcoal); opacity:0.6; }
+
+  /* ---- hero oslovení ---- */
+  .hero-greeting {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-size: 30px; color: var(--charcoal); margin-bottom: 4px;
+  }
+  .tier ul { list-style:none; }
+  .tier li { font-size: 15px; padding: 9px 0; border-bottom: 0.5px solid var(--hairline); display:flex; gap:10px; }
+  .tier.prem li { border-bottom: 0.5px solid #ffffff18; }
+  .tier li::before { content:'…'; color: var(--lime); font-weight:700; }
+
+  /* ---- cena podmínky ---- */
+  .terms { display:grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 40px; }
+
+  /* kompaktní �ádek podmínek pod tarify */
+  .terms-strip {
+    display:flex; flex-wrap:wrap; justify-content:center; gap:14px;
+    margin-top:24px;
+  }
+  .terms-chip {
+    display:flex; align-items:center; gap:10px;
+    background:var(--white); border:0.5px solid var(--gray-100);
+    border-radius:12px; padding:14px 20px; flex:1; min-width:240px;
+  }
+  .terms-chip svg { flex-shrink:0; }
+  .terms-chip .tc-txt { font-size:14px; line-height:1.35; color:var(--gray-600); }
+  .terms-chip .tc-txt b { font-family:'Bricolage Grotesque'; font-weight:800; color:var(--charcoal); display:block; font-size:14.5px; letter-spacing:-0.01em; }
+  @media (max-width:860px){ .terms-strip{ flex-direction:column; } .terms-chip{ min-width:0; } }
+  .term { background: var(--lime-tint); border: 1px solid var(--lime-border); border-radius: 12px; padding: 22px; }
+  .term h4 { font-family:'Bricolage Grotesque'; font-weight:800; font-size: 17px; margin-bottom: 6px; }
+  .term p { font-size: 14px; color: var(--gray-600); }
+
+  /* ---- harmonogram ---- */
+  .timeline { margin-top: 44px; border-left: 2px solid var(--lime); padding-left: 32px; }
+  .tl-item { position: relative; padding-bottom: 34px; }
+  .tl-item::before { content:''; position:absolute; left:-40px; top:4px; width:14px; height:14px; background:var(--lime); border-radius:50%; }
+  .tl-item .when { font-family:'Bricolage Grotesque'; font-weight:800; font-size:14px; color: var(--gray-400); text-transform:uppercase; letter-spacing:0.06em; }
+  .tl-item .what { font-size: 18px; font-weight:600; margin-top:4px; }
+
+  /* ---- about ---- */
+  .about { background: var(--gray-100); }
+  .about-photo {
+    aspect-ratio: 4/5; background: #C9F31D; border-radius: 16px;
+    overflow: hidden; position: sticky; top: 40px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.18);
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .awards { margin-top: 20px; display:flex; flex-wrap:wrap; gap:8px; }
+  .award { background:var(--white); border:0.5px solid var(--gray-100); border-radius:100px; padding:7px 14px; font-size:13px; font-weight:600; }
+
+  /* strukturované bio */
+  .bio-creds { list-style:none; margin:26px 0 0; padding:0; display:flex; flex-direction:column; gap:18px; }
+  .bio-creds li { position:relative; padding-left:24px; font-size:16px; line-height:1.5; color:var(--gray-600); }
+  .bio-creds li::before { content:''; position:absolute; left:0; top:8px; width:9px; height:9px; border-radius:50%; background:var(--lime); }
+  .bio-creds li b { color:var(--charcoal); font-weight:700; }
+  .bio-creds li em { font-style:italic; }
+  .bio-close { font-size:18px; line-height:1.55; margin-top:26px; color:var(--charcoal); }
+  .bio-close b { font-weight:700; }
+  /* ocen�ní */
+  .awards-section { margin-top:48px; padding-top:40px; border-top:0.5px solid #00000010; }
+  .awards-eyebrow { font-family:'Bricolage Grotesque'; font-weight:700; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray-400); margin-bottom:18px; display:flex; align-items:center; gap:9px; }
+  .awards-eyebrow::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--lime); }
+  .awards-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .award-card { background:var(--white); border:0.5px solid var(--gray-100); border-left:3px solid var(--lime); border-radius:12px; padding:16px 18px; }
+  .award-card .ac-title { font-family:'Bricolage Grotesque'; font-weight:700; font-size:15px; color:var(--charcoal); line-height:1.3; letter-spacing:-0.01em; }
+  .award-card .ac-sub { font-size:13px; color:var(--gray-400); margin-top:5px; }
+  @media (max-width:860px){ .about-photo{ position:static; } .awards-grid{ grid-template-columns:1fr; } }
+
+  /* ---- final CTA ---- */
+  .final { background: var(--lime); text-align: center; }
+  .final .section-title { font-size: 60px; }
+  .final .lead { margin: 0 auto 36px; color: var(--charcoal); }
+
+  /* ---- footer ---- */
+  footer { background: var(--charcoal); color: #999; padding: 50px 0; }
+  footer .container { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  .made { font-size: 13px; }
+  .lang { display:flex; gap:14px; font-size:13px; }
+  .lang a:hover { color: var(--lime); }
+
+  /* =========================================================
+     VIZU�LNà VYLEPà EN�: animace, hloubka, textura
+     ========================================================= */
+
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal.d1 { transition-delay: 0.08s; }
+  .reveal.d2 { transition-delay: 0.16s; }
+  .reveal.d3 { transition-delay: 0.24s; }
+  .reveal.d4 { transition-delay: 0.32s; }
+  .reveal.d5 { transition-delay: 0.40s; }
+  .reveal.d6 { transition-delay: 0.48s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* sníh v heru à vlo�ky */
+  .snow { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+  .flake {
+    position: absolute; top: -16px; color: var(--lime); opacity: 0;
+    animation: fall linear infinite;
+    will-change: transform; user-select: none;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(-16px) translateX(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.85; }
+    50%  { transform: translateY(310px) translateX(24px) rotate(180deg); }
+    90%  { opacity: 0.55; }
+    100% { transform: translateY(640px) translateX(-18px) rotate(360deg); opacity: 0; }
+  }
+  .hero .container { position: relative; z-index: 1; }
+
+  /* rotující slovo v hero headline */
+  .rot-wrap { display:inline-block; position:relative; }
+  .rot { display:inline-block; }
+  .rot em {
+    font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing:-0.01em;
+    display:inline-block; position:relative;
+    background: linear-gradient(90deg, currentColor 0%, currentColor 40%, var(--lime-hover) 50%, currentColor 60%, currentColor 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    animation: shimmer 6s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0%, 100% { background-position: 130% 0; }
+    50%      { background-position: -30% 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rot em { animation: none; background: none; -webkit-background-clip: initial; background-clip: initial; }
+  }
+
+  /* count-up staty drží layout, jen vizuál */
+  .stat .big { transition: transform 0.3s ease; }
+  .proof:hover .stat .big { }
+
+  /* hover lift na kartách */
+  .card { transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease, border-color 0.25s ease; }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px -18px rgba(0,0,0,0.18); border-color: var(--lime-border); }
+  .card:hover .num { color: var(--charcoal); }
+  .card .num { transition: color 0.25s ease; }
+
+  .free-card { transition: transform 0.25s cubic-bezier(0.22,1,0.36,1); }
+  .free-card:hover { transform: translateY(-5px); }
+
+  .tier { transition: transform 0.25s cubic-bezier(0.22,1,0.36,1); }
+  .tier:hover { transform: translateY(-4px); }
+
+  .term { transition: transform 0.2s ease; }
+  .term:hover { transform: translateY(-3px); }
+
+  /* award pill hover */
+  .award { transition: background 0.2s ease, transform 0.2s ease; }
+  .award:hover { background: var(--lime); transform: translateY(-2px); }
+
+  /* CTA pulse ring */
+  @keyframes btn-pulse {
+    0%   { box-shadow: 0 4px 0 var(--hairline), 0 0 0 0 rgba(201,243,29,0.5); }
+    70%  { box-shadow: 0 4px 0 var(--hairline), 0 0 0 16px rgba(201,243,29,0); }
+    100% { box-shadow: 0 4px 0 var(--hairline), 0 0 0 0 rgba(201,243,29,0); }
+  }
+  .btn-primary.pulse { animation: btn-pulse 2.4s ease-out infinite; }
+  .btn-primary.pulse:hover { animation-play-state: paused; }
+
+  /* jemný grain na tmavých sekcích */
+  .proof, .free, footer { position: relative; }
+  .proof::before, .free::before {
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .proof .container, .free .container { position: relative; z-index: 1; }
+
+  /* dekorativní lime kruh v sekci �ešení */
+  .deco-circle { position:absolute; width:300px; height:300px; border:1px solid var(--lime-border); border-radius:50%; opacity:0.5; pointer-events:none; }
+
+  /* hairline progress naho�e */
+  .scroll-progress { position: fixed; top:0; left:0; height:3px; background: var(--lime); width:0%; z-index:200; transition: width 0.1s linear; }
+
+  /* big stat number hover glow-free emphasis */
+  .stat { transition: transform 0.25s ease; }
+  .stat:hover { transform: translateY(-4px); }
+
+  /* =========================================================
+     V�NO�Nà DEKORACE (evropsky neutrální: vlo�ky, hv�zdy, jedle, sv�týlka)
+     ========================================================= */
+  /* girlanda sv�týlek à odd�lovaà mezi sekcemi */
+  .xmas-lights {
+    display:flex; justify-content:center; gap:34px; padding:0; margin:0;
+    list-style:none; height:0; position:relative; top:-1px; z-index:5;
+  }
+  .xmas-lights li {
+    width:9px; height:9px; border-radius:50%; background:var(--lime);
+    position:relative; box-shadow:0 0 8px 1px rgba(201,243,29,0.6);
+    animation: twinkle 3s ease-in-out infinite;
+  }
+  .xmas-lights li::before {
+    content:''; position:absolute; top:-7px; left:50%; transform:translateX(-50%);
+    width:2px; height:7px; background:var(--gray-400); opacity:0.4;
+  }
+  .xmas-lights li:nth-child(2n){ animation-delay:0.6s; background:#fff; box-shadow:0 0 8px 1px rgba(255,255,255,0.5); }
+  .xmas-lights li:nth-child(3n){ animation-delay:1.2s; }
+  .xmas-lights li:nth-child(4n){ animation-delay:1.8s; }
+  @keyframes twinkle { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:0.35; transform:scale(0.82);} }
+  @media (prefers-reduced-motion: reduce){ .xmas-lights li{ animation:none; } }
+
+  /* dekorativní vlo�ka u rohu sekcí */
+  .xmas-flake-deco {
+    position:absolute; color:var(--lime); opacity:0.12; pointer-events:none;
+    font-size:120px; line-height:1; z-index:0; user-select:none;
+    animation: slowspin 40s linear infinite;
+  }
+  @keyframes slowspin { from{transform:rotate(0);} to{transform:rotate(360deg);} }
+  @media (prefers-reduced-motion: reduce){ .xmas-flake-deco{ animation:none; } }
+
+  /* mini jedle do pati�ky */
+  .footer-tree { display:inline-block; vertical-align:middle; margin-right:8px; }
+  .calc { background: var(--charcoal); color: var(--white); position: relative; }
+  .calc::before {
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)'/%3E%3C/svg%3E");
+  }
+  .calc .container { position: relative; z-index: 1; }
+  .calc .section-title { color: var(--white); }
+  .calc .lead { color: #DDD; }
+
+  .calc-box {
+    margin-top: 48px; background: #242424; border: 0.5px solid #ffffff14;
+    border-radius: 20px; padding: 44px; display: grid;
+    grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center;
+  }
+
+  /* slider strana */
+  .calc-budget-val {
+    font-family:'Bricolage Grotesque'; font-weight:800; font-size: 54px;
+    letter-spacing:-0.04em; color: var(--lime); line-height:1;
+  }
+  .calc-budget-lbl { font-size: 14px; color: var(--gray-400); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; font-family:'Bricolage Grotesque'; margin-bottom: 6px; }
+  .slider-wrap { margin-top: 32px; }
+  input[type=range].slider {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 6px;
+    border-radius: 999px; background: #3a3a3a; outline: none; cursor: pointer;
+  }
+  input[type=range].slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 28px; height: 28px;
+    border-radius: 50%; background: var(--lime); cursor: pointer;
+    border: 4px solid var(--charcoal); box-shadow: 0 0 0 1px var(--lime);
+    transition: transform 0.15s ease;
+  }
+  input[type=range].slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  input[type=range].slider::-moz-range-thumb {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--lime);
+    cursor: pointer; border: 4px solid var(--charcoal); box-shadow: 0 0 0 1px var(--lime);
+  }
+  .slider-ends { display:flex; justify-content:space-between; margin-top: 12px; font-size: 13px; color: var(--gray-400); }
+
+  /* p�epínaà scéná�ů */
+  .scen-toggle { display:flex; gap:8px; margin-bottom: 28px; background:#1d1d1d; padding:6px; border-radius:999px; border:0.5px solid #ffffff10; }
+  .scen-btn {
+    flex:1; font-family:'Bricolage Grotesque'; font-weight:700; font-size:14px;
+    color:#999; background:transparent; border:none; padding:11px 8px; border-radius:999px;
+    cursor:pointer; transition: all 0.2s ease; letter-spacing:-0.01em;
+  }
+  .scen-btn:hover { color:#fff; }
+  .scen-btn.active { background: var(--lime); color: var(--charcoal); }
+  .scen-desc { font-size:13px; color: var(--gray-400); margin-bottom:4px; min-height:18px; transition: opacity 0.2s ease; }
+
+  /* výsledky strana */
+  .calc-results { display:flex; flex-direction:column; gap: 18px; }
+  .res-row {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 22px; background: #1d1d1d; border-radius: 14px;
+    border: 0.5px solid #ffffff10;
+  }
+  .res-row.lit { background: var(--lime); border:none; }
+  .res-label { display:flex; flex-direction:column; }
+  .res-label .t { font-weight:700; font-size: 16px; }
+  .res-label .s { font-size: 13px; color: var(--gray-400); }
+  .res-row.lit .res-label .t { color: var(--charcoal); }
+  .res-row.lit .res-label .s { color: #3a4a05; }
+  .res-val {
+    font-family:'Bricolage Grotesque'; font-weight:800; font-size: 30px;
+    letter-spacing:-0.03em; color: var(--white); white-space:nowrap;
+  }
+  .res-row.lit .res-val { color: var(--charcoal); font-size: 34px; }
+  .calc-note { margin-top: 28px; font-size: 13px; color: var(--gray-400); max-width: 720px; line-height:1.5; }
+  .calc-note b { color: #BBB; }
+
+  @media (max-width: 860px) {
+    .calc-box { grid-template-columns: 1fr; gap: 36px; padding: 28px; }
+    .calc-budget-val { font-size: 42px; }
+  }
+
+  /* ---- mobile ---- */
+  @media (max-width: 860px) {
+    .container { padding: 0 22px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-mockup { transform: none; max-width: 380px; }
+    .hero h1 { font-size: 40px; }
+    .section-title { font-size: 36px; }
+    .final .section-title { font-size: 40px; }
+    .grid-2, .cards, .tiers, .stats, .terms { grid-template-columns: 1fr; gap: 28px; }
+    .hero-cta { gap: 16px; }
+    section { padding: 60px 0; }
+  }
+
+  /* ===== 5LETà PROJEKCE (sekce 6d) ===== */
+  .proj{background:var(--charcoal);color:var(--white);padding:80px 0;}
+  .proj .section-title{color:var(--white);}
+
+  .proj-box{margin-top:48px;background:#242424;border:0.5px solid #ffffff14;border-radius:20px;padding:44px;display:grid;grid-template-columns:0.95fr 1.05fr;gap:52px;align-items:center;}
+
+  .editor-group{margin-bottom:26px;}
+  .editor-label{font-family:'Bricolage Grotesque';font-weight:700;font-size:13px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;}
+  .pkg-toggle{display:flex;gap:8px;background:#1d1d1d;padding:6px;border-radius:999px;border:0.5px solid #ffffff10;}
+  .pkg-btn{flex:1;font-family:'Bricolage Grotesque';font-weight:700;font-size:14px;color:#999;background:transparent;border:none;padding:12px 8px;border-radius:999px;cursor:pointer;transition:all 0.2s;}
+  .pkg-btn.active{background:var(--lime);color:var(--charcoal);}
+  .pkg-price{font-size:12px;color:var(--gray-400);text-align:center;margin-top:10px;}
+  .pkg-price b{color:#CCC;font-weight:700;}
+
+  /* p�epínaà scéná�ů */
+  .scen-toggle{display:flex;gap:6px;background:#1d1d1d;padding:5px;border-radius:999px;border:0.5px solid #ffffff10;}
+  .scen-btn{flex:1;font-family:'Bricolage Grotesque';font-weight:700;font-size:13px;color:#999;background:transparent;border:none;padding:10px 6px;border-radius:999px;cursor:pointer;transition:all 0.2s;}
+  .scen-btn.active{background:var(--lime);color:var(--charcoal);}
+
+  /* partnerská �ást */
+  .partner-block{background:#1d1d1d;border:0.5px solid #ffffff14;border-radius:14px;padding:20px;}
+  .partner-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+  .partner-count{font-family:'Bricolage Grotesque';font-weight:800;font-size:22px;color:var(--lime);letter-spacing:-0.03em;}
+  .partner-fee-field{display:flex;align-items:center;gap:8px;margin:14px 0;}
+  .partner-fee-field label{font-size:12px;color:var(--gray-400);font-weight:600;white-space:nowrap;}
+  .partner-fee-field input{flex:1;background:#161616;border:0.5px solid #ffffff14;border-radius:8px;color:#fff;padding:9px 10px;font-family:'Bricolage Grotesque';font-weight:700;font-size:14px;text-align:right;}
+  .partner-fee-field input:focus{outline:none;border-color:var(--lime);}
+  .partner-fee-field .suffix{font-size:13px;color:var(--gray-400);font-weight:600;}
+  .coverage-wrap{margin-top:16px;}
+  .coverage-bar{height:12px;background:#333;border-radius:999px;overflow:hidden;position:relative;}
+  .coverage-fill{height:100%;background:linear-gradient(90deg,#9bbf16,var(--lime));border-radius:999px;width:0%;transition:width 0.5s cubic-bezier(0.22,1,0.36,1);}
+  .coverage-line{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;}
+  .coverage-pct{font-family:'Bricolage Grotesque';font-weight:800;font-size:30px;color:var(--lime);letter-spacing:-0.03em;line-height:1;}
+  .coverage-pct .small{font-size:14px;color:#CCC;font-weight:700;}
+  .coverage-sum{font-size:13px;color:var(--gray-400);text-align:right;}
+  .coverage-sum b{color:#CCC;font-weight:700;}
+  .coverage-msg{font-size:13px;color:var(--lime);font-weight:600;margin-top:10px;}
+
+  .slider-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+  .slider-val{font-family:'Bricolage Grotesque';font-weight:800;font-size:24px;color:var(--lime);letter-spacing:-0.03em;}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;background:#3a3a3a;outline:none;cursor:pointer;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--lime);cursor:pointer;border:4px solid var(--charcoal);box-shadow:0 0 0 1px var(--lime);}
+  input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--lime);cursor:pointer;border:4px solid var(--charcoal);}
+
+  .inline-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field label{font-size:11px;color:var(--gray-400);font-weight:600;display:block;margin-bottom:6px;}
+  .field input{width:100%;background:#1d1d1d;border:0.5px solid #ffffff14;border-radius:10px;color:#fff;padding:12px;font-family:'Bricolage Grotesque';font-weight:700;font-size:15px;}
+  .field input:focus{outline:none;border-color:var(--lime);}
+
+  /* výsledky */
+  .res-headline{text-align:center;margin-bottom:26px;}
+  .res-big-lbl{font-size:14px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;font-family:'Bricolage Grotesque';}
+  .res-big{font-family:'Bricolage Grotesque';font-weight:800;font-size:58px;color:var(--lime);letter-spacing:-0.04em;line-height:1.05;margin-top:6px;}
+  .res-big-czk{font-size:15px;color:#BBB;margin-top:6px;}
+
+  /* p�epínaà Celkem / Année par année */
+  .res-view-toggle{display:inline-flex;gap:6px;background:var(--gray-100);padding:5px;border-radius:999px;border:0.5px solid #00000010;margin-bottom:22px;}
+  .rv-btn{font-family:'Bricolage Grotesque';font-weight:700;font-size:13px;color:var(--gray-600);background:transparent;border:none;padding:9px 18px;border-radius:999px;cursor:pointer;transition:all 0.2s;}
+  .rv-btn.active{background:var(--lime);color:var(--charcoal);}
+  /* pohled po letech */
+  .res-years{display:none;flex-direction:column;gap:12px;margin-top:8px;}
+  .res-years.show{display:flex;}
+  .res-headline.hide{display:none;}
+  .ry-row{display:flex;align-items:center;gap:14px;}
+  .ry-label{font-family:'Bricolage Grotesque';font-weight:700;font-size:13px;color:var(--gray-600);width:54px;flex-shrink:0;}
+  .ry-bar-wrap{flex:1;height:30px;background:#e4e4e4;border-radius:7px;overflow:hidden;position:relative;display:block;}
+  .ry-bar{display:block;height:30px;background:linear-gradient(90deg,#8fb50e,#b6e016);border-radius:7px;width:0;transition:width 0.7s cubic-bezier(0.22,1,0.36,1);}
+  .ry-val{font-family:'Bricolage Grotesque';font-weight:800;font-size:14px;color:var(--charcoal);width:96px;text-align:right;flex-shrink:0;letter-spacing:-0.02em;}
+
+  /* lime bonus banner pod projekcí */
+  .proj-bonus{
+    display:flex; align-items:flex-start; gap:12px;
+    background:var(--lime-tint); border:1px solid var(--lime-border);
+    border-radius:14px; padding:18px 24px; margin-top:36px;
+    font-size:16px; color:var(--charcoal); line-height:1.5; font-weight:600;
+  }
+  .proj-bonus .pb-plus{
+    font-family:'Bricolage Grotesque'; font-weight:800; font-size:22px;
+    color:#5a8a00; line-height:1; flex-shrink:0;
+  }
+  .res-sub{display:flex;justify-content:center;gap:40px;margin-top:22px;}
+  .res-sub .item{text-align:center;}
+  .res-sub .item .s{font-size:12px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;font-family:'Bricolage Grotesque';}
+  .res-sub .item .v{color:#fff;font-family:'Bricolage Grotesque';font-size:22px;font-weight:800;letter-spacing:-0.03em;margin-top:4px;}
+
+  .recur-highlight{background:var(--lime-tint);color:var(--charcoal);border-radius:14px;padding:20px 24px;margin-top:28px;display:flex;align-items:center;gap:18px;}
+  .recur-highlight .rh-num{font-family:'Bricolage Grotesque';font-weight:800;font-size:40px;color:var(--charcoal);letter-spacing:-0.03em;line-height:1;}
+  .recur-highlight .rh-txt{font-size:14px;line-height:1.45;}
+  .recur-highlight .rh-txt b{font-weight:700;}
+
+  .proj-note{margin-top:30px;font-size:13px;color:var(--gray-400);max-width:780px;line-height:1.5;}
+  .proj-note b{color:#BBB;}
+
+  @media(max-width:860px){
+    .proj-box{grid-template-columns:1fr;gap:36px;padding:26px;}
+    .section-title{font-size:34px;}
+    .res-big{font-size:44px;}
+    .res-sub{gap:24px;}
+  }
+
+  /* ----- vizuální odd�lení sekcí: sv�tlá à tmavá à sv�tlá rytmus ----- */
+  /* partne�i (free) p�eklopeny na sv�tlé lime-tint pozadí */
+  .free { background: var(--lime-tint) !important; color: var(--charcoal) !important; }
+  .free::before { display:none !important; } /* zrušit grain */
+  .free .section-title { color: var(--charcoal) !important; }
+  .free .lead { color: var(--gray-600) !important; }
+  .free .eyebrow-pill { background: var(--charcoal); color: var(--lime); }
+  /* karty uvnità partnerské sekce na sv�tlém */
+  .free .free-card { background: var(--white); border:0.5px solid var(--lime-border); color:var(--charcoal); }
+  .free .free-card.lit { background: var(--lime); }
+  .free .free-card p { color: var(--gray-600); }
+  .free .free-card .tag { color: #6a7a1a; }
+  .free .free-card.lit p, .free .free-card.lit .tag { color: var(--charcoal); }
+
+  /* kalkula�ka zůstává tmavá (kontrast) */
+  .calc { background: var(--charcoal); }
+
+  /* projekce (proj) p�eklopena na sv�tlé šedé pozadí */
+  .proj { background: var(--gray-100) !important; color: var(--charcoal) !important; }
+  .proj .section-title { color: var(--charcoal) !important; }
+  .proj .lead { color: var(--gray-600) !important; }
+  .proj .proj-box { background: var(--white); border:0.5px solid #00000010; }
+  .proj .pkg-toggle, .proj .scen-toggle { background: var(--gray-100); border:0.5px solid #00000010; }
+  .proj .pkg-btn, .proj .scen-btn { color: var(--gray-600); }
+  .proj .pkg-btn.active, .proj .scen-btn.active { background: var(--lime); color: var(--charcoal); }
+  .proj .editor-label { color: var(--gray-400); }
+  .proj .partner-block { background: var(--gray-100); border:0.5px solid #00000010; }
+  .proj .partner-fee-field input, .proj .field input { background: var(--white); border:0.5px solid #00000018; color:var(--charcoal); }
+  .proj input[type=range] { background:#d8d8d8; }
+  .proj .res-big-lbl, .proj .editor-label { color: var(--gray-400); }
+  .proj .res-sub .item .v { color: var(--charcoal); }
+  .proj .coverage-bar { background:#d8d8d8; }
+  .proj .slider-val { color: #5a6b1a; }
+  .proj .res-big { color: #5a8a00; }
+  .proj .coverage-msg { color: #5a6b1a; }
+  .proj span[style*="color:var(--gray-400)"] { color: var(--gray-600) !important; }
+  .proj .pkg-price, .proj .pkg-price b { color: var(--gray-600); }
+  .proj .proj-note, .proj .proj-note b { color: var(--gray-400); }
+  .proj .recur-highlight { background: var(--lime); }
+
+</style>
+
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-9B328kdZ_zEWlEdeo50hp.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav class="top-nav">
+  <div class="logo">ngo<span class="dot">.</span>digital</div>
+  <!-- {{PERSONALIZACE}} -->
+  <div class="nav-prep">Proposition préparée pour <b>JALMALV Morbihan</b></div>
+</nav>
+
+<!-- ===================== 1. HERO (max personalizace) ===================== -->
+<header class="hero">
+  <div class="snow" id="snow"></div>
+  <div class="xmas-flake-deco" style="top:60px; right:80px;">❄</div>
+  <div class="container">
+    <!-- {{PERSONALIZACE: org_name badge}} -->
+    <span class="eyebrow-pill reveal">Proposition pour JALMALV Morbihan</span>
+    <!-- {{PERSONALIZACE: oslovení konkrétní osoby}} -->
+    <!-- {{PERSONALIZACE: H1 magic moment à otázka}} -->
+    <h1 class="reveal d2">Et si les les personnes que vous accompagnez recevaient cette année à Noël <em>beaucoup plus de dons</em> ?</h1>
+    <!-- {{PERSONALIZACE: hlavní v�ta à výzva k vyzkoušení}} -->
+    <p class="hero-lead reveal d3">Découvrez le <b>fundraising digital moderne avec un effort minimal</b>. Je vous prépare une microsite de dons de Noël avec des éléments de gamification qui transforme les émotions des visiteurs en soutien concret pour ceux dont vous prenez soin.</p>
+    <div class="hero-benefits reveal d5">
+      <span class="hero-benefit">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="#5a6b1a" stroke-width="2"/><path d="M3 8h18" stroke="#5a6b1a" stroke-width="2"/><circle cx="12" cy="13" r="2.5" fill="#C9F31D" stroke="#5a6b1a" stroke-width="1.5"/></svg>
+        Microsite de dons professionnelle
+      </span>
+      <span class="hero-benefit">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#5a6b1a" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Gain de temps pour vous
+      </span>
+      <span class="hero-benefit">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="#5a6b1a" stroke-width="2"/><path d="M3.5 19a5.5 5.5 0 0111 0" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round"/><path d="M16 6.5a3 3 0 010 5.5M18 19a5 5 0 00-3-4.6" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="6" r="1.5" fill="#C9F31D"/></svg>
+        Nouveaux donateurs
+      </span>
+    </div>
+    <div class="hero-benefits hero-benefits-row2 reveal d6">
+      <span class="hero-benefit">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 10v4l13 5V5L3 10z" fill="#C9F31D" stroke="#5a6b1a" stroke-width="2" stroke-linejoin="round"/><path d="M19 9a3 3 0 010 6" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round"/></svg>
+        Promotion de l’organisation & PR
+      </span>
+      <span class="hero-benefit">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="#C9F31D" stroke="#5a6b1a" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Solution complète
+      </span>
+    </div>
+    <div class="hero-cta reveal d6">
+      <a href="#nabidka" class="btn-primary pulse">Voir la proposition →</a>
+      <a href="#projekce" class="btn-secondary">Voir combien vous pourriez collecter en 5 ans →</a>
+    </div>
+
+  </div>
+</header>
+
+<!-- ===================== 2. PROBL�M ===================== -->
+<section>
+  <div class="container grid-2">
+    <div>
+      <div class="eyebrow">Pourquoi maintenant ?</div>
+      <h2 class="section-title reveal">La plupart des organisations à but non lucratif laissent <em>de l’argent sur la table</em> à Noël.</h2>
+    </div>
+    <div>
+      <p class="lead reveal d1">À Noël, les organisations à but non lucratif ont la plus grande chance d’obtenir un soutien significatif de la part des donateurs. Pourtant, beaucoup se contentent encore d’une page basique et de quelques e-mails — sans histoire forte, sans gamification et sans suivi systématique des donateurs.<br><br><strong>Changeons cela cette année !</strong><br><br>C’est le moment idéal pour préparer votre campagne de Noël !</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3. �Eà ENà ===================== -->
+<section id="nabidka" style="background:var(--gray-100); position:relative; overflow:hidden;">
+  <div class="deco-circle" style="top:-100px; right:-80px;"></div>
+  <div class="deco-circle" style="bottom:-140px; left:-120px; width:360px; height:360px;"></div>
+  <div class="xmas-flake-deco" style="bottom:40px; right:60px; font-size:90px;">❄</div>
+  <div class="container">
+    <div class="eyebrow">Que contient ma solution ?</div>
+    <h2 class="section-title reveal">Toute la campagne <em>clé en main</em>. Vous n’avez qu’à aider.</h2>
+    <p class="lead">Toute la campagne est livrée clé en main avec un effort minimal de votre côté. Le temps gagné peut être réinvesti dans la mission de votre organisation. <strong>Cinq briques fondamentales</strong> qui forment ensemble une collecte de Noël moderne. Je les construis pour vous.</p>
+    <div class="cards">
+      <div class="card reveal"><div class="num">01</div><h3>Microsite avec gamification</h3><p>Une page de dons moderne où les éléments de gamification et une histoire forte transforment chaque visiteur en donateur. Connectée à une passerelle de paiement pour un don le plus simple possible.</p></div>
+      <div class="card reveal d1"><div class="num">02</div><h3>Campagnes Meta Ads</h3><p>Configuration et gestion complètes des publicités Facebook et Instagram pendant toute la durée de la campagne. En plus des nouveaux donateurs, vous obtiendrez une excellente visibilité PR pour votre organisation.</p></div>
+      <div class="card reveal d2"><div class="num">03</div><h3>Suivi des donateurs</h3><p>Je prends soin de vos donateurs grâce à une séquence d’e-mails prête à l’emploi qui transforme les donateurs ponctuels en donateurs réguliers et construit un effet positif durable pour votre organisation.</p></div>
+      <div class="card reveal d3"><div class="num">04</div><h3>Partenaires entreprises & grands donateurs</h3><p>Dans le cadre de la campagne, je recherche activement des partenaires entreprises et grands donateurs qui peuvent couvrir les coûts et augmenter le montant collecté en échange d’une mise en avant en tant qu’entreprise socialement responsable.</p></div>
+      <div class="card reveal d4"><div class="num">05</div><h3>Pilotage & reporting</h3><p>Je pilote et dirige l’ensemble du projet. Vous recevez des rapports réguliers sur les résultats et l’avancement de la campagne.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5. STANDARD vs PREMIUM ===================== -->
+<section style="position:relative; overflow:hidden;">
+  <div class="xmas-flake-deco" style="top:50px; right:70px; font-size:80px;">❄</div>
+  <div class="container">
+    <div class="eyebrow">Choisissez votre formule</div>
+    <h2 class="section-title reveal">Standard ou <em>Premium ?</em></h2>
+    <div class="tiers">
+      <div class="tier std reveal">
+        <h3>Standard</h3>
+        <p class="tier-for">Pour les organisations qui souhaitent tester le fundraising digital moderne pour la première fois.</p>
+        <!-- {{LOKALIZACE: cena dle trhu}} -->
+        <div class="price-old">Prix normal 16 500 EUR</div>
+        <div class="price-eb-label">Early Bird jusqu’au 30 juin, économisez 1 500 EUR</div>
+        <div class="price">15 000 EUR</div>
+        <div class="price-czk"></div>
+        <div class="price-note">Prix fixe incluant tous les services IT et techniques. Je ne prends <b>aucun pourcentage de vos recettes</b> — tout ce que vous collectez vous revient.</div>
+        <ul>
+          <li>Microsite de dons moderne</li>
+          <li>Gamification de base des donateurs</li>
+          <li>Connexion à une passerelle de paiement</li>
+          <li>Meta Ads (configuration + gestion)</li>
+          <li>Storytelling + séquences d’e-mails</li>
+          <li>Modèles pour partenaires entreprises & PR (vous gérez les contacts)</li>
+          <li>Reporting de base de la campagne</li>
+        </ul>
+      </div>
+      <div class="tier prem reveal d2">
+        <span class="tier-badge">Recommandé</span>
+        <h3>Premium</h3>
+        <p class="tier-for">Pour les organisations qui veulent maximiser pleinement la campagne de cette année.</p>
+        <!-- {{LOKALIZACE: cena dle trhu}} -->
+        <div class="price-old">Prix normal 28 000 EUR</div>
+        <div class="price-eb-label">Early Bird jusqu’au 30 juin, économisez 2 500 EUR</div>
+        <div class="price">25 500 EUR</div>
+        <div class="price-czk"></div>
+        <div class="price-note">Prix fixe incluant tous les services IT et techniques. Je ne prends <b>aucun pourcentage de vos recettes</b> — tout ce que vous collectez vous revient.</div>
+        <div class="tier-plus-label">Tout du Standard, plus :</div>
+        <ul>
+          <li class="plus">Gamification avancée des donateurs</li>
+          <li class="plus">Recherche active de partenaires entreprises</li>
+          <li class="plus">PR active (démarchage médias, …)</li>
+          <li class="plus">Reporting étendu de la campagne</li>
+          <li class="plus">Approche complète d’acquisition de donateurs réguliers</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tiers-partners-link reveal">
+      Pourrait-ce être encore plus avantageux ? <a href="#partneri">Et si cela ne vous coûtait rien ? →</a>
+    </div>
+    <div class="terms-strip reveal">
+      <div class="terms-chip">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="2" stroke="#5a6b1a" stroke-width="2"/><path d="M2 9h20" stroke="#5a6b1a" stroke-width="2"/></svg>
+        <span class="tc-txt"><b>Échéancier 50 / 40 / 10</b>50 % à la signature · 40 % après validation de la microsite · 10 % au lancement le 1er décembre</span>
+      </div>
+      <div class="terms-chip">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 019-9 9 9 0 016.7 3M21 12a9 9 0 01-9 9 9 9 0 01-6.7-3" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round"/><path d="M18 3v3.5h-3.5M6 21v-3.5h3.5" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="tc-txt"><b>Deuxième année à 60 % du prix</b>Si vous souhaitez continuer l’année prochaine, je serai ravi de prendre en charge l’intégralité de la campagne de A à Z.</span>
+      </div>
+      <div class="terms-chip">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#5a6b1a" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="tc-txt"><b>Early Bird jusqu’au 30 juin</b>Signature avant fin juin = prix Early Bird.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6b. MŮŽE TO B�T ZADARMO ===================== -->
+<section class="free" id="partneri">
+  <div class="container">
+    <span class="eyebrow-pill">… Astuce — comment faire</span>
+    <h2 class="section-title reveal">Et si cela ne vous <em>coûtait rien</em> ?</h2>
+    <p class="lead">Les coûts de la campagne (ou d’une partie) peuvent être pris en charge par des partenaires entreprises. En échange, ils obtiennent une visibilité en tant qu’entreprise socialement responsable aux côtés d’un projet porteur de sens — et vous bénéficiez de la campagne complète sans impact sur votre propre budget.</p>
+    <div class="free-grid">
+      <div class="free-card lit reveal">
+        <span class="tag">Déjà inclus dans le Standard</span>
+        <h3>Je vous prépare une microsite dédiée aux partenaires</h3>
+        <p>Une page dédiée que vous pouvez utiliser pour contacter les entreprises de votre région, avec une offre claire de ce que le partenaire reçoit en retour. Un outil prêt à l’emploi qu’il suffit d’envoyer.</p>
+      </div>
+      <div class="free-card reveal d2">
+        <span class="tag">En plus dans le Premium</span>
+        <h3>Je recherche et contacte activement les partenaires</h3>
+        <p>Dans la formule Premium, je recherche activement les partenaires entreprises et négocie pour vous. Je présente cela comme une démarche proactive (sans garantie), mais c’est souvent ici que la campagne s’autofinance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6c. KALKULA�KA MEDIA BUDGETU ===================== -->
+<section class="calc">
+  <div class="xmas-flake-deco" style="bottom:50px; left:60px; font-size:90px; opacity:0.08;">❄</div>
+  <div class="container">
+    <span class="eyebrow-pill">… Calculez vous-même</span>
+    <h2 class="section-title reveal">Combien <em>investir</em> dans la campagne ?</h2>
+    <p class="lead reveal d1">Chaque organisation décide elle-même du montant à investir dans la promotion de la campagne en plus de son budget de base. Les fonds investis dans le budget média apportent non seulement de nouveaux donateurs, mais aussi une excellente visibilité PR pour votre organisation. Déplacez le curseur et découvrez ce qu’un budget média peut représenter en termes de portée, de donateurs et de dons collectés.</p>
+
+    <div class="calc-box reveal d2">
+      <!-- slider -->
+      <div>
+        <div class="calc-budget-lbl">Votre budget média</div>
+        <div class="calc-budget-val" id="budgetVal">5 000 EUR</div>
+        <div class="slider-wrap">
+          <input type="range" class="slider" id="budgetSlider" min="1000" max="15000" step="500" value="5000">
+          <div class="slider-ends"><span>1 000 EUR</span><span>15 000 EUR</span></div>
+        </div>
+      </div>
+      <!-- výsledky -->
+      <div class="calc-results">
+        <div class="scen-toggle">
+          <button class="scen-btn" data-scen="careful">Prudent</button>
+          <button class="scen-btn active" data-scen="real">Réaliste</button>
+          <button class="scen-btn" data-scen="ambit">Ambitieux</button>
+        </div>
+        <div class="scen-desc" id="scenDesc">CPM 13 EUR · conversion 0,25 % · don moyen 50 EUR</div>
+        <div class="res-row">
+          <div class="res-label"><span class="t">La campagne touche</span><span class="s">portée publicitaire estimée</span></div>
+          <div class="res-val" id="resReach">�</div>
+        </div>
+        <div class="res-row">
+          <div class="res-label"><span class="t">Parmi eux, donnent</span><span class="s">nombre estimé de donateurs</span></div>
+          <div class="res-val" id="resDonors">�</div>
+        </div>
+        <div class="res-row lit">
+          <div class="res-label"><span class="t">Collecté en dons</span><span class="s">estimation modélisée du résultat</span></div>
+          <div style="text-align:right;">
+            <div class="res-val" id="resRevenue">�</div>
+            <div style="font-size:13px; color:#3a4a05; font-weight:700; margin-top:2px;" id="resRevenueCzk">�</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="calc-note">
+      <b>Comment lire ceci :</b> le sélecteur propose trois scénarios pour votre marché : <b>prudent</b> (suppose des publicités plus chères et une conversion plus faible), <b>réaliste</b> (estimation moyenne) et <b>ambitieux</b> (optimiste mais atteignable avec une campagne solide).
+      Toutes les variantes sont une <b>estimation indicative, pas une garantie de résultat</b> ; la réalité dépend de l’histoire, du public et de l’organisation.</p>
+  </div>
+</section>
+
+<!-- ===================== 6d. 5LETà PROJEKCE ===================== -->
+<section class="proj" id="projekce">
+  <div class="container">
+    <span class="eyebrow-pill">… Vision à long terme</span>
+    <h2 class="section-title">Que rapportera la campagne <em>sur cinq ans</em> ?</h2>
+    <p class="lead">Une campagne ponctuelle n’est que le début. La vraie puissance réside dans la répétition : chaque année vous pouvez toucher un cercle plus large de donateurs et construire une base sur laquelle vous pourrez compter les années suivantes. Ajustez les paramètres et découvrez l’effet cumulatif.</p>
+
+    <div class="proj-box">
+      <!-- EDITOR -->
+      <div>
+        <div class="editor-group">
+          <div class="editor-label">Scénario</div>
+          <div class="scen-toggle">
+            <button class="scen-btn" data-scen="careful">Prudent</button>
+            <button class="scen-btn active" data-scen="real">Réaliste</button>
+            <button class="scen-btn" data-scen="ambit">Ambitieux</button>
+          </div>
+        </div>
+        <div class="editor-group">
+          <div class="editor-label">Formule</div>
+          <div class="pkg-toggle">
+            <button class="pkg-btn active" data-pkg="std">Standard</button>
+            <button class="pkg-btn" data-pkg="prem">Premium</button>
+          </div>
+          <div class="pkg-price" id="pkgPrice">Prix année 1 : <b>15 000 EUR</b> · années 2—5 : <b>9 000 EUR/an</b></div>
+        </div>
+        <div class="editor-group">
+          <div class="slider-row"><span class="editor-label" style="margin:0;">Budget média / an (sur 5 ans)</span><span class="slider-val" id="vBudget">5 000 EUR</span></div>
+          <input type="range" id="sBudget" min="1000" max="15000" step="500" value="5000">
+        </div>
+      </div>
+
+      <!-- V�SLEDKY -->
+      <div>
+        <div style="text-align:center;">
+          <div class="res-view-toggle">
+            <button class="rv-btn active" data-view="total">Total sur 5 ans</button>
+            <button class="rv-btn" data-view="years">Année par année</button>
+          </div>
+        </div>
+        <div class="res-headline" id="resTotal">
+          <div class="res-big-lbl">Total des dons sur 5 ans</div>
+          <div class="res-big" id="vTotal">�</div>
+          <div class="res-big-czk" id="vTotalCzk">�</div>
+          <div class="res-sub">
+            <div class="item"><div class="s">Coûts totaux</div><div class="v" id="vCost">�</div></div>
+            <div class="item"><div class="s">Résultat net</div><div class="v" id="vNet">�</div></div>
+          </div>
+        </div>
+        <div class="res-years" id="resYears"></div>
+      </div>
+    </div>
+
+    <div class="proj-bonus reveal">
+      <span class="pb-plus">+</span>
+      <span>Cette projection <b>ne tient pas compte des partenaires entreprises ni des donateurs réguliers</b>, qui peuvent encore augmenter significativement le résultat.</span>
+    </div>
+    <p class="proj-note">
+      <b>Comment nous calculons :</b> un scénario réaliste (CPM ~13 EUR, conversion ~0,25 %, don 50 EUR) ajusté au budget. À partir de l’année 2, le prix de la formule baisse à 60 % (selon la grille) et le nombre de donateurs croît d’environ 15 % par an. Tous les chiffres sont des <b>estimations de modèle indicatives dans des conditions favorables, pas une garantie de résultat.</b></p>
+  </div>
+</section>
+
+<!-- ===================== 7. HARMONOGRAM ===================== -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Le chemin jusqu’au 1er décembre</div>
+    <h2 class="section-title reveal">Du choix <em>au lancement</em>.</h2>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="when">Avant le 30 juin 2026</div><div class="what">Décision et signature : verrouillage du prix Early Bird</div></div>
+      <div class="tl-item reveal"><div class="when">Juin — novembre</div><div class="what">Production de la campagne : microsite, histoire, partenaires entreprises & donateurs, préparation, création graphique, e-mailing</div></div>
+      <div class="tl-item reveal"><div class="when">1er décembre 2026</div><div class="what">Lancement de la campagne</div></div>
+      <div class="tl-item reveal"><div class="when">Décembre 2026</div><div class="what">Pilotage de la campagne en pleine saison + reporting continu</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4. DŮKAZ ===================== -->
+<section class="proof">
+  <div class="container">
+    <div class="eyebrow" style="color:#DDD;">Des preuves, pas des promesses</div>
+    <h2 class="section-title reveal">Je sais <em>ce qui fonctionne en collecte de fonds.</em></h2>
+    <div class="stats">
+      <div class="stat reveal"><div class="big" data-count="1,2" data-suffix=" mil. EUR+">0</div><div class="lbl">Créateur de la campagne de Noël la plus réussie de 2025 en République tchèque</div></div>
+      <div class="stat reveal d2"><div class="big" data-count="60000" data-suffix="+">0</div><div class="lbl">donateurs touchés grâce à la simplicité et à la gamification</div></div>
+      <div class="stat reveal d4"><div class="big" data-count="2100" data-suffix=" %">0</div><div class="lbl">Je gère aussi des campagnes locales plus petites. Une campagne de deux mois pour une petite association a transformé 1 tis. EUR investis en 27 tis. EUR (ROI 2 100 %)</div></div>
+    </div>
+    <blockquote class="quote">
+      « Grâce à la simplicité et à la gamification, il a touché plus de 60 000 donateurs et créé la campagne de Noël la plus réussie de l’an dernier en République tchèque. »
+      <span class="who">— Zdeněk Mihalco, directeur de la Fondation Via</span>
+    </blockquote>
+    <p class="disclaimer">Mes résultats à ce jour servent de preuve de compétence et d’inspiration, et non de garantie du même résultat. Je construirai votre campagne de A à Z, sur mesure pour votre organisation.</p>
+  </div>
+</section>
+
+<!-- ===================== 8. O PETROVI ===================== -->
+<section class="about">
+  <div class="container grid-2">
+    <div class="about-photo"><img src="/images/petr-portret.jpg" alt="Peter Chalupiansky" loading="lazy"></div>
+    <div>
+      <div class="eyebrow">Qui réalise cela</div>
+      <h2 class="section-title reveal">J’aide les organisations à but non lucratif partout en Europe à collecter de <em>vrais dons</em> — pas seulement de l’attention.</h2>
+      <p class="lead reveal d1">Je suis Peter Chalupiansky, consultant en fundraising digital basé à Prague. Ces <b>dix dernières années</b>, j’ai aidé des organisations à but non lucratif à transformer les dons en ligne en une source de revenus durable.</p>
+      <ul class="bio-creds reveal d2">
+        <li><b>Responsable CSR & ESG, Kaufland Tchéquie</b> (8+ ans) — membre du <b>groupe Schwarz</b>, le plus grand groupe de distribution européen. Pendant sept ans, j’ai dirigé la campagne de collecte de Noël qui a réuni plus de <b>4,9 M €</b>, y compris la PR et l’exécution de campagnes marketing nationales.</li>
+        <li><b>Membre du conseil d’administration</b> de l’une des plus grandes fondations caritatives nationales du pays (gérée par le radiodiffuseur public).</li>
+        <li><b>Créateur de la campagne de collecte de Noël la plus réussie de 2025</b> en République tchèque.</li>
+        <li><b>Consultant indépendant</b> en collecte de fonds digitale pour les associations européennes.</li>
+      </ul>
+      <p class="bio-close reveal d3">Mes campagnes génèrent un <b>ROI constamment positif</b> et construisent des <b>bases de donateurs durables</b>. Je veux maintenant apporter tout cela à votre organisation et vous aider à bâtir un <b>canal de collecte digital qui fonctionne vraiment</b>.</p>
+
+      <div class="awards-section reveal d4">
+        <div class="awards-eyebrow">Récompenses et reconnaissance</div>
+        <div class="awards-grid">
+          <div class="award-card"><div class="ac-title">Intervenant à TEDx, PechaKucha Nights et conférences</div><div class="ac-sub">plus de 20 interventions</div></div>
+          <div class="award-card"><div class="ac-title">The Kind Heart Award</div><div class="ac-sub">prix national de la philanthropie</div></div>
+          <div class="award-card"><div class="ac-title">Personnalité de la philanthropie</div><div class="ac-sub">principale association nationale de donateurs</div></div>
+          <div class="award-card"><div class="ac-title">Personnalité de l’année</div><div class="ac-sub">organisation sportive à but non lucratif</div></div>
+          <div class="award-card"><div class="ac-title">Prix national de la qualité pour le développement durable 2022</div><div class="ac-sub">Ministère de l’Industrie et du Commerce (avec l’équipe Kaufland Tchéquie)</div></div>
+          <div class="award-card"><div class="ac-title">4× Distributeur responsable de l’année (2020, 2022, 2024, 2025)</div><div class="ac-sub">association nationale du commerce et du tourisme (avec l’équipe Kaufland Tchéquie)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 9. FIN�LNà CTA (personalizace) ===================== -->
+<section class="final" id="kontakt">
+  <div class="container">
+    <!-- {{PERSONALIZACE: org_name}} -->
+    <h2 class="section-title reveal">Faisons de Noël 2026 <em>le plus beau</em>.</h2>
+    <p class="lead">Vous aimez la proposition pour JALMALV Morbihan ? Répondez simplement à mon e-mail et nous discuterons des prochaines étapes. Quelques lignes suffisent — aucune obligation.</p>
+    <!-- {{PERSONALIZACE: e-mail + p�edm�t}} -->
+    <a href="mailto:peter@ngo.digital?subject=Re%3A%20Campagne%20de%20No%C3%ABl%202026%20pour%20JALMALV%20Morbihan" class="btn-primary" style="background:var(--charcoal); color:var(--white);">Écrire à Peter →</a>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div style="display:flex;align-items:center;"><svg class="footer-tree" width="20" height="22" viewBox="0 0 20 22" fill="none"><path d="M10 1L4 8h3l-4 6h4l-4 6h14l-4-6h4l-4-6h3L10 1z" fill="#C9F31D" opacity="0.85"/><rect x="9" y="20" width="2" height="2" fill="#888"/></svg><span class="logo" style="color:#fff; font-size:18px;">ngo<span class="dot">.</span>digital</span></div>
+    <div class="made">Made in Prague.</div>
+    <div class="lang">
+      <a href="#">CS</a><a href="#">DE</a><a href="#">EN</a><a href="#">DA</a><a href="#">SV</a><a href="#">NO</a><a href="#">FR</a>
+    </div>
+  </div>
+</footer>
+
+<div class="scroll-progress" id="progress"></div>
+
+<script>
+  /* ---- sníh v heru à vlo�ky ---- */
+  (function(){
+    var snow = document.getElementById('snow');
+    if (!snow || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var glyphs = ['❄','❅','❆','✻','✳']; // snowflakes
+    var N = 26;
+    for (var i=0;i<N;i++){
+      var f = document.createElement('span');
+      f.className = 'flake';
+      f.textContent = glyphs[Math.floor(Math.random()*glyphs.length)];
+      var size = 9 + Math.random()*16;
+      f.style.fontSize = size+'px';
+      f.style.left = (Math.random()*100)+'%';
+      f.style.animationDuration = (7+Math.random()*8)+'s';
+      f.style.animationDelay = (-Math.random()*12)+'s';
+      f.style.opacity = 0;
+      snow.appendChild(f);
+    }
+  })();
+
+  /* ---- scroll reveal ---- */
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function(e){ e.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(function(e){ io.observe(e); });
+  })();
+
+  /* ---- count-up staty ---- */
+  (function(){
+    var done = new WeakSet();
+    function fmt(n){ return n.toLocaleString('cs-CZ'); }
+    function run(el){
+      var raw = el.getAttribute('data-count').replace(',', '.');
+      var target = parseFloat(raw);
+      var decimals = (raw.indexOf('.') >= 0) ? (raw.split('.')[1].length) : 0;
+      var suffix = el.getAttribute('data-suffix') || '';
+      function fmtN(n){ return n.toLocaleString('cs-CZ', {minimumFractionDigits: decimals, maximumFractionDigits: decimals}); }
+      var dur = 1400, start = null;
+      function step(ts){
+        if (!start) start = ts;
+        var p = Math.min((ts-start)/dur, 1);
+        var eased = 1 - Math.pow(1-p, 3);
+        var val = target*eased;
+        el.textContent = fmtN(val) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = fmtN(target) + suffix;
+      }
+      requestAnimationFrame(step);
+    }
+    var nums = document.querySelectorAll('.big[data-count]');
+    if (!('IntersectionObserver' in window)) { nums.forEach(run); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting && !done.has(en.target)){ done.add(en.target); run(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(function(n){ io.observe(n); });
+  })();
+
+  /* ---- kalkula�ka media budgetu ---- */
+  (function(){
+    var slider = document.getElementById('budgetSlider');
+    if (!slider) return;
+
+    /* {{LOKALIZACE: scéná�e + m�na dle trhu}} */
+    /* à V�CARSKO à t�i scéná�e (data: reklamní benchmarky 2026 + Swissfundraising/Zewo) */
+    var SCEN = {
+      careful: { cpm: 16, conv: 0.0018, gift: 42, label: 'CPM 16 EUR · conversion 0,18 % · don moyen 42 EUR',
+                 name: 'opatrný', cpmTxt: '16 EUR', convTxt: '0,18 %', giftTxt: '42 EUR' },
+      real:    { cpm: 13, conv: 0.0025, gift: 50, label: 'CPM 13 EUR · conversion 0,25 % · don moyen 50 EUR',
+                 name: 'realistický', cpmTxt: '13 EUR', convTxt: '0,25 %', giftTxt: '50 EUR' },
+      ambit:   { cpm: 10, conv: 0.0035, gift: 58, label: 'CPM 10 EUR · conversion 0,35 % · don moyen 58 EUR',
+                 name: 'ambiciózní', cpmTxt: '10 EUR', convTxt: '0,35 %', giftTxt: '58 EUR' }
+    };
+    var current = 'real';
+    var CUR = 'EUR';
+    var CZK_RATE = 0;
+
+    function fmt(n){ return Math.round(n).toLocaleString('cs-CZ'); }
+
+    /* degradace s budgetem: CPM roste, konverze klesá; kotveno na REF budgetu */
+    var REF = 5000;          // referen�ní budget = hodnoty scéná�e platí p�esnà zde
+    var DECAY = 0.18;        // síla degradace (st�ední)
+
+    function update(){
+      var s = SCEN[current];
+      var budget = parseInt(slider.value, 10);
+
+      var ratio = budget / REF;
+      var factor = Math.pow(ratio, DECAY);
+      var cpm = s.cpm * factor;        // CPM roste s budgetem
+      var conv = s.conv / factor;      // konverze klesá s budgetem
+      var reach = (budget / cpm) * 1000;
+      var donors = reach * conv;
+      var revenue = donors * s.gift;
+
+      document.getElementById('budgetVal').textContent = fmt(budget) + ' ' + CUR;
+      document.getElementById('resReach').textContent = fmt(reach) + ' personnes';
+      document.getElementById('resDonors').textContent = fmt(donors) + ' donateurs';
+      document.getElementById('resRevenue').textContent = fmt(revenue) + ' ' + CUR;
+
+      var revCzk = document.getElementById('resRevenueCzk');
+      if (revCzk) { if (CZK_RATE > 0) { revCzk.textContent = 'à ' + fmt(revenue * CZK_RATE) + ' K�'; } else { revCzk.style.display = 'none'; } }
+
+      /* aktuální (p�epo�tené) hodnoty pro popisek i poznámku */
+      var cpmTxt = cpm.toLocaleString('cs-CZ', {maximumFractionDigits: 1}) + ' EUR';
+      var convTxt = (conv * 100).toLocaleString('cs-CZ', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' %';
+      var giftTxt = s.gift + ' EUR';
+
+      var desc = document.getElementById('scenDesc');
+      if (desc) desc.textContent = 'CPM ' + cpmTxt + ' · conversion ' + convTxt + ' · don moyen ' + giftTxt;
+
+      var nScen = document.getElementById('noteScen'); if (nScen) nScen.textContent = s.name;
+      var nCpm  = document.getElementById('noteCpm');  if (nCpm)  nCpm.textContent  = cpmTxt;
+      var nConv = document.getElementById('noteConv'); if (nConv) nConv.textContent = convTxt;
+      var nGift = document.getElementById('noteGift'); if (nGift) nGift.textContent = giftTxt;
+
+      var pct = (budget - slider.min) / (slider.max - slider.min) * 100;
+      slider.style.background = 'linear-gradient(90deg, var(--lime) 0%, var(--lime) ' + pct + '%, #3a3a3a ' + pct + '%, #3a3a3a 100%)';
+    }
+
+    /* p�epínání scéná�ů */
+    var btns = document.querySelectorAll('.scen-btn');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        btns.forEach(function(x){ x.classList.remove('active'); });
+        b.classList.add('active');
+        current = b.getAttribute('data-scen');
+        update();
+      });
+    });
+
+    slider.addEventListener('input', update);
+    update();
+  })();
+
+  (function(){
+    var bar = document.getElementById('progress');
+    window.addEventListener('scroll', function(){
+      var h = document.documentElement;
+      var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      bar.style.width = scrolled + '%';
+    }, { passive: true });
+  })();
+
+  /* ===== 5LETà PROJEKCE ===== */
+  (function(){
+  var REF=5000, DECAY=0.18;
+  /* scéná�e (shodné s hlavní kalkula�kou) */
+  var SCEN={
+    careful:{cpm:16, conv:0.0018, gift:42},
+    real:   {cpm:13, conv:0.0025, gift:50},
+    ambit:  {cpm:10, conv:0.0035, gift:58}
+  };
+  var GROWTH=0.15, RECUR_RATE=0.10, RECUR_GIFT=120, RETENTION=0.75;
+  var CZK=0;
+  var PKG={ std:{price:15000, bonus:1.0}, prem:{price:25500, bonus:1.18} };
+  var pkg='std', scen='real';
+
+  function fmt(n){return Math.round(n).toLocaleString('cs-CZ');}
+  function num(id){return parseFloat(document.getElementById(id).value)||0;}
+
+  function calc(){
+    var s=SCEN[scen];
+    var budget=parseInt(document.getElementById('sBudget').value,10);
+    var price=PKG[pkg].price, bonus=PKG[pkg].bonus;
+
+    document.getElementById('vBudget').textContent=fmt(budget)+' EUR';
+    document.getElementById('pkgPrice').innerHTML='Prix année 1 : <b>'+fmt(price)+' EUR</b> · années 2—5 : <b>'+fmt(price*0.6)+' EUR/an</b>';
+
+    var f=Math.pow(budget/REF, DECAY);
+    var cpm=s.cpm*f, conv=s.conv/f;
+    var baseDonors=(budget/cpm*1000)*conv*bonus;
+
+    var donorsPrev=null, cum=0, cumCost=0, years=[];
+    for(var y=1;y<=5;y++){
+      var donors = donorsPrev===null ? baseDonors : donorsPrev*(1+GROWTH);
+      donorsPrev=donors;
+      var yearRev=donors*s.gift;
+      years.push(yearRev);
+      cum += yearRev;
+      cumCost += (y===1 ? price : price*0.6) + budget;
+    }
+
+    document.getElementById('vTotal').textContent=fmt(cum)+' EUR';
+    var vtc=document.getElementById('vTotalCzk');
+    if(CZK>0){ vtc.textContent='à '+fmt(cum*CZK)+' K�'; } else { vtc.style.display='none'; }
+    document.getElementById('vCost').textContent=fmt(cumCost)+' EUR';
+    document.getElementById('vNet').textContent=fmt(cum-cumCost)+' EUR';
+
+    /* pohled po letech */
+    var maxY=Math.max.apply(null, years);
+    var rows='';
+    for(var i=0;i<5;i++){
+      var pct=Math.round(years[i]/maxY*100);
+      rows+='<div class="ry-row"><span class="ry-label">Rok '+(i+1)+'</span>'+
+            '<span class="ry-bar-wrap"><span class="ry-bar" style="width:'+pct+'%"></span></span>'+
+            '<span class="ry-val">'+fmt(years[i])+' EUR</span></div>';
+    }
+    document.getElementById('resYears').innerHTML=rows;
+  }
+
+  document.querySelectorAll('.scen-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.scen-btn').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active'); scen=b.getAttribute('data-scen'); calc();
+    });
+  });
+  document.querySelectorAll('.pkg-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.pkg-btn').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active'); pkg=b.getAttribute('data-pkg'); calc();
+    });
+  });
+  ['sBudget'].forEach(function(id){
+    document.getElementById(id).addEventListener('input',calc);
+  });
+  /* p�epínaà Celkem / Année par année */
+  document.querySelectorAll('.rv-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.rv-btn').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      var v=b.getAttribute('data-view');
+      document.getElementById('resTotal').classList.toggle('hide', v==='years');
+      var yrs=document.getElementById('resYears');
+      yrs.classList.toggle('show', v==='years');
+      if(v==='years'){
+        /* re-trigger animace pruhů po zobrazení */
+        var bars=yrs.querySelectorAll('.ry-bar');
+        bars.forEach(function(bar){ var w=bar.style.width; bar.style.width='0'; void bar.offsetWidth; bar.style.width=w; });
+      }
+    });
+  });
+  calc();
+})();
+</script>
+
+</body>
+</html>
