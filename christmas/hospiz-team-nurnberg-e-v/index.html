@@ -96,9 +96,46 @@
     border-bottom: 1.5px solid var(--charcoal); padding-bottom: 3px;
   }
 
+  /* ---- promo banner (Christmas 2026 early-bird offer) ---- */
+  .promo-banner {
+    background: var(--lime);
+    color: var(--charcoal);
+    padding: 11px 24px;
+    text-align: center;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    line-height: 1.4;
+    border-bottom: 1.5px solid var(--charcoal);
+    position: sticky; top: 0; z-index: 101;
+  }
+  .promo-banner .promo-label {
+    display: inline-block;
+    background: var(--charcoal);
+    color: var(--lime);
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: 10px;
+    vertical-align: 1px;
+  }
+  .promo-banner s { color: #555; font-weight: 500; }
+  .promo-banner b { font-weight: 800; }
+  .promo-banner .sep { color: #555; margin: 0 8px; font-weight: 400; }
+  .promo-banner .deadline { font-weight: 700; }
+  @media (max-width: 720px) {
+    .promo-banner { font-size: 12.5px; padding: 10px 16px; }
+    .promo-banner .promo-label { display: block; margin: 0 0 4px 0; }
+    .promo-banner .sep { display: block; height: 2px; margin: 4px 0; }
+  }
+
   /* ---- nav ---- */
   nav.top-nav {
-    position: sticky; top: 0; z-index: 100;
+    position: sticky; top: 47px; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 18px 40px; background: rgba(255,255,255,0.92);
     backdrop-filter: blur(16px); border-bottom: 0.5px solid var(--hairline);
@@ -760,6 +797,16 @@
 </head>
 <body>
 
+<!-- ===================== PROMO BANNER (Early-bird) ===================== -->
+<div class="promo-banner">
+  <span class="promo-label">Frühbucher-Bonus</span>
+  Die ersten <b>3 gemeinnützigen Organisationen</b>, die bis <span class="deadline">30. Juni 2026</span> bestellen, sparen:
+  <span class="sep">·</span>
+  Standard <s>Regulär 15&#39;000 EUR</s> <b>12&#39;000 EUR</b>
+  <span class="sep">·</span>
+  Premium <s>Regulär 25&#39;500 EUR</s> <b>19&#39;000 EUR</b>
+</div>
+
 <!-- ===================== NAV ===================== -->
 <nav class="top-nav">
   <div class="logo">ngo<span class="dot">.</span>digital</div>
@@ -775,7 +822,6 @@
     <!-- {{PERSONALIZACE: org_name badge}} -->
     <span class="eyebrow-pill reveal">Vorschlag für Hospiz-Team Nürnberg e.V.</span>
     <!-- {{PERSONALIZACE: oslovení konkrétní osoby}} -->
-    <p class="hero-greeting reveal d1">Lieber Herr Münch,</p>
     <!-- {{PERSONALIZACE: H1 magic moment à otázka}} -->
     <h1 class="reveal d2">Was wäre, wenn die Menschen am Lebensende dieses Jahr zu Weihnachten <em>deutlich mehr Spenden</em> erhalten würden?</h1>
     <!-- {{PERSONALIZACE: hlavní v�ta à výzva k vyzkoušení}} -->
@@ -855,9 +901,9 @@
         <h3>Standard</h3>
         <p class="tier-for">Für Organisationen, die modernen digitalen Fundraising zum ersten Mal ausprobieren möchten.</p>
         <!-- {{LOKALIZACE: cena dle trhu}} -->
-        <div class="price-old">Regulär 16 500 EUR</div>
-        <div class="price-eb-label">Early Bird bis 30. Juni, sparen Sie 1 500 EUR</div>
-        <div class="price">15 000 EUR</div>
+        <div class="price-old">Regulär 15 000 EUR</div>
+        <div class="price-eb-label">Early Bird bis 30. Juni, sparen Sie 3 000 EUR</div>
+        <div class="price">12 000 EUR</div>
         <div class="price-czk"></div>
         <div class="price-note">Festpreis inklusive aller IT- und technischen Leistungen. Von Ihrem Erlös nehme ich <b>keinen Prozentsatz</b> — alles Gesammelte bleibt bei Ihnen.</div>
         <ul>
@@ -875,9 +921,9 @@
         <h3>Premium</h3>
         <p class="tier-for">Für Organisationen, die die diesjährige Kampagne voll ausschöpfen möchten.</p>
         <!-- {{LOKALIZACE: cena dle trhu}} -->
-        <div class="price-old">Regulär 28 000 EUR</div>
-        <div class="price-eb-label">Early Bird bis 30. Juni, sparen Sie 2 500 EUR</div>
-        <div class="price">25 500 EUR</div>
+        <div class="price-old">Regulär 25 500 EUR</div>
+        <div class="price-eb-label">Early Bird bis 30. Juni, sparen Sie 6 500 EUR</div>
+        <div class="price">19 000 EUR</div>
         <div class="price-czk"></div>
         <div class="price-note">Festpreis inklusive aller IT- und technischen Leistungen. Von Ihrem Erlös nehme ich <b>keinen Prozentsatz</b> — alles Gesammelte bleibt bei Ihnen.</div>
         <div class="tier-plus-label">Alles aus dem Standard, plus:</div>
@@ -1005,7 +1051,7 @@
             <button class="pkg-btn active" data-pkg="std">Standard</button>
             <button class="pkg-btn" data-pkg="prem">Premium</button>
           </div>
-          <div class="pkg-price" id="pkgPrice">Preis Jahr 1: <b>15 000 EUR</b> · Jahre 2—5: <b>9 000 EUR/Jahr</b></div>
+          <div class="pkg-price" id="pkgPrice">Preis Jahr 1: <b>12 000 EUR</b> · Jahre 2—5: <b>7 200 EUR/Jahr</b></div>
         </div>
         <div class="editor-group">
           <div class="slider-row"><span class="editor-label" style="margin:0;">Media-Budget / Jahr (über 5 Jahre)</span><span class="slider-val" id="vBudget">5 000 EUR</span></div>
@@ -1295,7 +1341,7 @@
   };
   var GROWTH=0.15, RECUR_RATE=0.10, RECUR_GIFT=120, RETENTION=0.75;
   var CZK=0;
-  var PKG={ std:{price:15000, bonus:1.0}, prem:{price:25500, bonus:1.18} };
+  var PKG={ std:{price:12000, bonus:1.0}, prem:{price:19000, bonus:1.18} };
   var pkg='std', scen='real';
 
   function fmt(n){return Math.round(n).toLocaleString('cs-CZ');}
