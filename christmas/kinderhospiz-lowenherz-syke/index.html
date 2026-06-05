@@ -749,6 +749,75 @@
   .proj .proj-note, .proj .proj-note b { color: var(--gray-400); }
   .proj .recur-highlight { background: var(--lime); }
 
+  /* ============================================================
+     RESPONSIVE OVERRIDES — mobile-first hardening
+     Prevents horizontal overflow + scales calculator on small screens
+     ============================================================ */
+  html, body { overflow-x: hidden; max-width: 100vw; }
+  img, svg, video, iframe { max-width: 100%; height: auto; }
+  table, pre { max-width: 100%; overflow-x: auto; }
+
+  /* Tablet + mobile (< 860px) */
+  @media (max-width: 860px) {
+    .container { padding: 0 24px; }
+    section { padding: 64px 0; }
+    .hero { padding: 64px 0 56px; }
+    .section-title { font-size: clamp(32px, 6vw, 44px); letter-spacing: -0.035em; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero h1 { font-size: clamp(36px, 7.5vw, 56px); }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 32px; }
+    .pricing-grid, .pricing { grid-template-columns: 1fr; gap: 20px; }
+    .hero-cta { flex-wrap: wrap; gap: 12px; }
+    .hero-benefits { flex-wrap: wrap; gap: 10px; }
+    /* Calculator — stack and shrink */
+    .calc-box { grid-template-columns: 1fr !important; gap: 32px; padding: 24px; }
+    .calc-budget-val { font-size: 40px; letter-spacing: -0.03em; }
+    .ry-label { width: 44px; font-size: 12px; }
+    .ry-val { width: 80px; font-size: 12px; }
+    /* Projection row (year by year) */
+    .proj-row { flex-wrap: wrap; gap: 8px; }
+    .proj-row .ry-bar-wrap { flex-basis: 100%; order: 3; }
+  }
+
+  /* Phone (< 560px) */
+  @media (max-width: 560px) {
+    .container { padding: 0 18px; }
+    section { padding: 48px 0; }
+    .hero { padding: 48px 0 40px; }
+    .section-title { font-size: clamp(28px, 7vw, 36px); }
+    .hero h1 { font-size: clamp(30px, 8.5vw, 40px); letter-spacing: -0.035em; }
+    .lead, .hero-lead, .hero-sub { font-size: 17px; }
+    .eyebrow-pill, .eyebrow { font-size: 11px; }
+    .btn-primary, .btn-secondary { font-size: 14px; padding: 14px 22px; }
+    .calc-box { padding: 20px; gap: 24px; }
+    .calc-budget-val { font-size: 32px; }
+    .pillar, .price-card, .col-card { padding: 22px; }
+    .pricing-grid, .pricing { gap: 16px; }
+    .timeline-item { padding-left: 32px; }
+    /* Tier / kalkulačka stack */
+    .calc-results { gap: 14px; }
+    .ry-row { flex-wrap: wrap; }
+    .ry-label { width: auto; min-width: 44px; }
+    .ry-val { width: auto; min-width: 60px; text-align: left; padding-top: 4px; }
+    .ry-bar-wrap { width: 100%; order: 99; margin-top: 6px; }
+    /* Top nav */
+    nav.top-nav { padding: 14px 18px; }
+    .nav-prep { font-size: 12px; max-width: 60%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    /* Snowflakes + decorations hidden on mobile to prevent overflow */
+    .xmas-flake-deco, .deco-circle { display: none; }
+    .snow { opacity: 0.4; }
+    /* Hero mockup centered + smaller */
+    .hero-mockup { transform: none; max-width: 100%; margin: 0 auto; }
+  }
+
+  /* Very narrow (< 380px) — emergency */
+  @media (max-width: 380px) {
+    .container { padding: 0 14px; }
+    .calc-budget-val { font-size: 28px; }
+    .section-title { font-size: 26px; }
+    .price-amount { font-size: 32px; }
+  }
+
 </style>
 
 <!-- Privacy-friendly analytics by Plausible -->
@@ -775,6 +844,7 @@
     <!-- {{PERSONALIZACE: org_name badge}} -->
     <span class="eyebrow-pill reveal">Vorschlag für Kinderhospiz Löwenherz Syke</span>
     <!-- {{PERSONALIZACE: oslovení konkrétní osoby}} -->
+    <p class="hero-greeting reveal d1">Liebe Frau Höfer,</p>
     <!-- {{PERSONALIZACE: H1 magic moment à otázka}} -->
     <h1 class="reveal d2">Was wäre, wenn die schwerkranke Kinder und ihre Familien dieses Jahr zu Weihnachten <em>deutlich mehr Spenden</em> erhalten würden?</h1>
     <!-- {{PERSONALIZACE: hlavní v�ta à výzva k vyzkoušení}} -->
