@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Campagne de Noël 2026 : proposition pour Alzheimer Bern – Beratungsstelle Biel/Berner Jura</title>
+<title>Weihnachtskampagne 2026: Vorschlag für Alzheimer Bern – Beratungsstelle Biel/Berner Jura</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231A1A1A'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23C9F31D'%3E%E2%9D%84%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,9 +96,51 @@
     border-bottom: 1.5px solid var(--charcoal); padding-bottom: 3px;
   }
 
+  /* ---- promo banner (elegantní, tmavá s lime accentem) ---- */
+  .top-stack { position: sticky; top: 0; z-index: 101; }
+  .promo-banner {
+    background: #0E0E0E; color: var(--white);
+    padding: 13px 40px; text-align: center;
+    font-family: 'Source Sans 3', sans-serif; font-size: 13.5px; line-height: 1.5;
+    border-top: 1.5px solid var(--lime);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
+  }
+  .promo-banner .pb-row {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 22px; flex-wrap: wrap;
+  }
+  .promo-banner .pb-pill {
+    color: var(--lime);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 100px;
+    border: 1px solid rgba(201, 243, 29, 0.45);
+    background: rgba(201, 243, 29, 0.05);
+    white-space: nowrap; flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .promo-banner .pb-pill::before {
+    content: ''; width: 5px; height: 5px; background: var(--lime);
+    border-radius: 50%; display: inline-block; flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(201, 243, 29, 0.6);
+  }
+  .promo-banner .pb-text { color: rgba(255,255,255,0.78); font-weight: 400; }
+  .promo-banner .pb-text b { color: var(--white); font-weight: 600; }
+  .promo-banner .pb-divider {
+    display: inline-block; width: 1px; height: 14px;
+    background: rgba(255,255,255,0.18); margin: 0 4px;
+    vertical-align: middle;
+  }
+  .promo-banner .pb-extra { color: rgba(255,255,255,0.55); }
+  .promo-banner .pb-extra b { color: var(--lime); font-weight: 500; }
+  /* vyhodit v mobilu */
+  @media (max-width: 860px) {
+    .promo-banner { display: none; }
+  }
+
   /* ---- nav ---- */
   nav.top-nav {
-    position: sticky; top: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 18px 40px; background: rgba(255,255,255,0.92);
     backdrop-filter: blur(16px); border-bottom: 0.5px solid var(--hairline);
@@ -297,6 +339,23 @@
   .free .section-title { color: var(--white); }
   .free .lead { color: #DDD; max-width: 680px; }
   .free-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
+  .free-deadline {
+    margin-top: 32px; padding: 22px 26px; border-radius: 18px;
+    background: var(--charcoal);
+    display: flex; align-items: flex-start; gap: 18px; flex-wrap: wrap;
+  }
+  .free-deadline .fd-pill {
+    background: var(--lime); color: var(--charcoal);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+    font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+  }
+  .free-deadline .fd-text { color: var(--white); font-size: 16px; line-height: 1.55; flex: 1 1 320px; margin: 0; }
+  .free-deadline .fd-text b { color: var(--lime); font-weight: 700; }
+  @media (max-width: 720px) {
+    .free-deadline { padding: 18px 20px; gap: 12px; }
+    .free-deadline .fd-text { font-size: 14.5px; }
+  }
   .free-card { background: #242424; border: 0.5px solid #ffffff14; border-radius: 16px; padding: 30px; }
   .free-card.lit { background: var(--lime); color: var(--charcoal); border: none; }
   .free-card h3 { font-family:'Bricolage Grotesque'; font-weight:800; font-size: 22px; letter-spacing:-0.03em; margin-bottom: 10px; }
@@ -664,7 +723,7 @@
   .res-big{font-family:'Bricolage Grotesque';font-weight:800;font-size:58px;color:var(--lime);letter-spacing:-0.04em;line-height:1.05;margin-top:6px;}
   .res-big-czk{font-size:15px;color:#BBB;margin-top:6px;}
 
-  /* p�epínaà Celkem / Année par année */
+  /* p�epínaà Celkem / Jahr für Jahr */
   .res-view-toggle{display:inline-flex;gap:6px;background:var(--gray-100);padding:5px;border-radius:999px;border:0.5px solid #00000010;margin-bottom:22px;}
   .rv-btn{font-family:'Bricolage Grotesque';font-weight:700;font-size:13px;color:var(--gray-600);background:transparent;border:none;padding:9px 18px;border-radius:999px;cursor:pointer;transition:all 0.2s;}
   .rv-btn.active{background:var(--lime);color:var(--charcoal);}
@@ -829,12 +888,24 @@
 </head>
 <body>
 
-<!-- ===================== NAV ===================== -->
-<nav class="top-nav">
-  <div class="logo">ngo<span class="dot">.</span>digital</div>
-  <!-- {{PERSONALIZACE}} -->
-  <div class="nav-prep">Proposition préparée pour <b>Alzheimer Bern – Beratungsstelle Biel/Berner Jura</b></div>
-</nav>
+<!-- ===================== TOP STACK (promo banner + nav, both sticky) ===================== -->
+<div class="top-stack">
+  <div class="promo-banner">
+    <div class="pb-row">
+      <span class="pb-pill">Exklusiv</span>
+      <span class="pb-text">
+        Für die <b>ersten 3 Organisationen in der Schweiz</b> mit Vertrag bis <b>30. Juni 2026</b>.
+        <span class="pb-divider"></span>
+        <span class="pb-extra">Vorbereitung im Sommer erhöht die Chance, dass <b>Unternehmenspartner die Kosten übernehmen</b>.</span>
+      </span>
+    </div>
+  </div>
+  <nav class="top-nav">
+    <div class="logo">ngo<span class="dot">.</span>digital</div>
+    <!-- {{PERSONALIZACE}} -->
+    <div class="nav-prep">Vorschlag erstellt für <b>Alzheimer Bern – Beratungsstelle Biel/Berner Jura</b></div>
+  </nav>
+</div>
 
 <!-- ===================== 1. HERO (max personalizace) ===================== -->
 <header class="hero">
@@ -842,40 +913,40 @@
   <div class="xmas-flake-deco" style="top:60px; right:80px;">❄</div>
   <div class="container">
     <!-- {{PERSONALIZACE: org_name badge}} -->
-    <span class="eyebrow-pill reveal">Proposition pour Alzheimer Bern – Beratungsstelle Biel/Berner Jura</span>
+    <span class="eyebrow-pill reveal">Vorschlag für Alzheimer Bern – Beratungsstelle Biel/Berner Jura</span>
     <!-- {{PERSONALIZACE: oslovení konkrétní osoby}} -->
-    <p class="hero-greeting reveal d1">Chère Madame Manser,</p>
+    <p class="hero-greeting reveal d1">Liebe Frau Manser,</p>
     <!-- {{PERSONALIZACE: H1 magic moment à otázka}} -->
-    <h1 class="reveal d2">Et si les les personnes atteintes d'une maladie grave recevaient cette année à Noël <em>beaucoup plus de dons</em> ?</h1>
+    <h1 class="reveal d2">Was wäre, wenn die Menschen am Lebensende dieses Jahr zu Weihnachten <em>deutlich mehr Spenden</em> erhalten würden?</h1>
     <!-- {{PERSONALIZACE: hlavní v�ta à výzva k vyzkoušení}} -->
-    <p class="hero-lead reveal d3">Découvrez le <b>fundraising digital moderne avec un effort minimal</b>. Je vous prépare une microsite de dons de Noël avec des éléments de gamification qui transforme les émotions des visiteurs en soutien concret pour les patients et familles que vous accompagnez.</p>
+    <p class="hero-lead reveal d3">Erleben Sie <b>modernen digitalen Fundraising mit minimalem Aufwand</b>. Ich erstelle für Sie eine weihnachtliche Spenden-Microsite mit Gamification-Elementen, die Besucheremotionen in konkrete Unterstützung für die Menschen in Ihrer Obhut verwandelt.</p>
     <div class="hero-benefits reveal d5">
       <span class="hero-benefit">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="#5a6b1a" stroke-width="2"/><path d="M3 8h18" stroke="#5a6b1a" stroke-width="2"/><circle cx="12" cy="13" r="2.5" fill="#C9F31D" stroke="#5a6b1a" stroke-width="1.5"/></svg>
-        Microsite de dons professionnelle
+        Professionelle Spenden-Microsite
       </span>
       <span class="hero-benefit">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#5a6b1a" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Gain de temps pour vous
+        Zeitersparnis für Sie
       </span>
       <span class="hero-benefit">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="#5a6b1a" stroke-width="2"/><path d="M3.5 19a5.5 5.5 0 0111 0" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round"/><path d="M16 6.5a3 3 0 010 5.5M18 19a5 5 0 00-3-4.6" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="6" r="1.5" fill="#C9F31D"/></svg>
-        Nouveaux donateurs
+        Neue Gönner
       </span>
     </div>
     <div class="hero-benefits hero-benefits-row2 reveal d6">
       <span class="hero-benefit">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 10v4l13 5V5L3 10z" fill="#C9F31D" stroke="#5a6b1a" stroke-width="2" stroke-linejoin="round"/><path d="M19 9a3 3 0 010 6" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round"/></svg>
-        Promotion de l’organisation & PR
+        Promotion Ihrer Organisation & PR
       </span>
       <span class="hero-benefit">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="#C9F31D" stroke="#5a6b1a" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Solution complète
+        Komplettservice
       </span>
     </div>
     <div class="hero-cta reveal d6">
-      <a href="#nabidka" class="btn-primary pulse">Voir la proposition →</a>
-      <a href="#projekce" class="btn-secondary">Voir combien vous pourriez collecter en 5 ans →</a>
+      <a href="#nabidka" class="btn-primary pulse">Vorschlag ansehen →</a>
+      <a href="#partneri" class="btn-secondary">Was, wenn es Sie nichts kostet? →</a>
     </div>
 
   </div>
@@ -885,11 +956,11 @@
 <section>
   <div class="container grid-2">
     <div>
-      <div class="eyebrow">Pourquoi maintenant ?</div>
-      <h2 class="section-title reveal">La plupart des organisations à but non lucratif laissent <em>de l’argent sur la table</em> à Noël.</h2>
+      <div class="eyebrow">Warum gerade jetzt?</div>
+      <h2 class="section-title reveal">Die meisten Nonprofit-Organisationen lassen zu Weihnachten <em>Geld auf dem Tisch liegen</em>.</h2>
     </div>
     <div>
-      <p class="lead reveal d1">À Noël, les organisations à but non lucratif ont la plus grande chance d’obtenir un soutien significatif de la part des donateurs. Pourtant, beaucoup se contentent encore d’une page basique et de quelques e-mails — sans histoire forte, sans gamification et sans suivi systématique des donateurs.<br><br><strong>Changeons cela cette année !</strong><br><br>C’est le moment idéal pour préparer votre campagne de Noël !</p>
+      <p class="lead reveal d1">Zu Weihnachten haben Nonprofit-Organisationen die grösste Chance auf deutliche Unterstützung von Gönnern. Viele setzen jedoch immer noch nur auf eine einfache Seite und ein paar E-Mails — ohne starke Geschichte, ohne Gamification und ohne systematische Gönnerpflege.<br><br><strong>Lassen Sie uns das dieses Jahr ändern!</strong><br><br>Jetzt ist der ideale Zeitpunkt, mit der Vorbereitung Ihrer Weihnachtskampagne zu beginnen!</p>
     </div>
   </div>
 </section>
@@ -900,15 +971,15 @@
   <div class="deco-circle" style="bottom:-140px; left:-120px; width:360px; height:360px;"></div>
   <div class="xmas-flake-deco" style="bottom:40px; right:60px; font-size:90px;">❄</div>
   <div class="container">
-    <div class="eyebrow">Que contient ma solution ?</div>
-    <h2 class="section-title reveal">Toute la campagne <em>clé en main</em>. Vous n’avez qu’à aider.</h2>
-    <p class="lead">Toute la campagne est livrée clé en main avec un effort minimal de votre côté. Le temps gagné peut être réinvesti dans la mission de votre organisation. <strong>Cinq briques fondamentales</strong> qui forment ensemble une collecte de Noël moderne. Je les construis pour vous.</p>
+    <div class="eyebrow">Was beinhaltet meine Lösung alles?</div>
+    <h2 class="section-title reveal">Die gesamte Kampagne <em>schlüsselfertig</em>. Sie helfen nur mit.</h2>
+    <p class="lead">Die gesamte Kampagne wird schlüsselfertig mit minimalem Aufwand Ihrerseits geliefert. Die gewonnene Zeit können Sie Ihrer eigentlichen Mission widmen. <strong>Fünf Bausteine</strong>, die zusammen eine moderne Weihnachts-Spendenaktion ergeben. Ich baue sie für Sie.</p>
     <div class="cards">
-      <div class="card reveal"><div class="num">01</div><h3>Microsite avec gamification</h3><p>Une page de dons moderne où les éléments de gamification et une histoire forte transforment chaque visiteur en donateur. Connectée à une passerelle de paiement pour un don le plus simple possible.</p></div>
-      <div class="card reveal d1"><div class="num">02</div><h3>Campagnes Meta Ads</h3><p>Configuration et gestion complètes des publicités Facebook et Instagram pendant toute la durée de la campagne. En plus des nouveaux donateurs, vous obtiendrez une excellente visibilité PR pour votre organisation.</p></div>
-      <div class="card reveal d2"><div class="num">03</div><h3>Suivi des donateurs</h3><p>Je prends soin de vos donateurs grâce à une séquence d’e-mails prête à l’emploi qui transforme les donateurs ponctuels en donateurs réguliers et construit un effet positif durable pour votre organisation.</p></div>
-      <div class="card reveal d3"><div class="num">04</div><h3>Partenaires entreprises & grands donateurs</h3><p>Dans le cadre de la campagne, je recherche activement des partenaires entreprises et grands donateurs qui peuvent couvrir les coûts et augmenter le montant collecté en échange d’une mise en avant en tant qu’entreprise socialement responsable.</p></div>
-      <div class="card reveal d4"><div class="num">05</div><h3>Pilotage & reporting</h3><p>Je pilote et dirige l’ensemble du projet. Vous recevez des rapports réguliers sur les résultats et l’avancement de la campagne.</p></div>
+      <div class="card reveal"><div class="num">01</div><h3>Microsite mit Gamification</h3><p>Eine moderne Spendenseite, auf der Gamification-Elemente und eine starke Geschichte jeden Besucher in einen Gönner verwandeln. Direkt an ein Zahlungsgateway angebunden für möglichst einfaches Spenden.</p></div>
+      <div class="card reveal d1"><div class="num">02</div><h3>Meta Ads Kampagnen</h3><p>Komplette Einrichtung und Steuerung von Facebook- und Instagram-Werbung während der gesamten Kampagne. Neben neuen Gönnern gewinnen Sie auch positive PR für Ihre Organisation.</p></div>
+      <div class="card reveal d2"><div class="num">03</div><h3>Gönnerpflege</h3><p>Ich kümmere mich um Ihre Gönner durch eine fertige E-Mail-Sequenz, die Einmalgönner zu regelmässigen Unterstützern macht und langfristig positives Image für Ihre Organisation aufbaut.</p></div>
+      <div class="card reveal d3"><div class="num">04</div><h3>Unternehmenspartner & Grossgönner</h3><p>Im Rahmen der Kampagne suche ich aktiv nach Unternehmenspartnern und Grossgönnern, die die Kosten übernehmen und den Spendenerlös steigern können — im Austausch für die Präsentation als sozial verantwortliches Unternehmen.</p></div>
+      <div class="card reveal d4"><div class="num">05</div><h3>Projektleitung & Reporting</h3><p>Ich leite und steuere das gesamte Projekt. Sie erhalten laufend Berichte zu Ergebnissen und Fortschritt der Kampagne.</p></div>
     </div>
   </div>
 </section>
@@ -917,63 +988,63 @@
 <section style="position:relative; overflow:hidden;">
   <div class="xmas-flake-deco" style="top:50px; right:70px; font-size:80px;">❄</div>
   <div class="container">
-    <div class="eyebrow">Choisissez votre formule</div>
-    <h2 class="section-title reveal">Standard ou <em>Premium ?</em></h2>
+    <div class="eyebrow">Wählen Sie Ihre Variante</div>
+    <h2 class="section-title reveal">Standard oder <em>Premium?</em></h2>
     <div class="tiers">
       <div class="tier std reveal">
         <h3>Standard</h3>
-        <p class="tier-for">Pour les organisations qui souhaitent tester le fundraising digital moderne pour la première fois.</p>
+        <p class="tier-for">Für Organisationen, die modernen digitalen Fundraising zum ersten Mal ausprobieren möchten.</p>
         <!-- {{LOKALIZACE: cena dle trhu}} -->
-        <div class="price-old">Prix normal 20 000 CHF</div>
-        <div class="price-eb-label">Early Bird jusqu’au 30 juin, économisez 2 000 CHF</div>
-        <div class="price">18 000 CHF</div>
+        <div class="price-old">Regulär 17 900 CHF</div>
+        <div class="price-eb-label">Early Bird bis 30. Juni, sparen Sie 3 000 CHF</div>
+        <div class="price">14 900 CHF</div>
         <div class="price-czk"></div>
-        <div class="price-note">Prix fixe incluant tous les services IT et techniques. Je ne prends <b>aucun pourcentage de vos recettes</b> — tout ce que vous collectez vous revient.</div>
+        <div class="price-note">Festpreis inklusive aller IT- und technischen Leistungen. Von Ihrem Erlös nehme ich <b>keinen Prozentsatz</b> — alles Gesammelte bleibt bei Ihnen.</div>
         <ul>
-          <li>Microsite de dons moderne</li>
-          <li>Gamification de base des donateurs</li>
-          <li>Connexion à une passerelle de paiement</li>
-          <li>Meta Ads (configuration + gestion)</li>
-          <li>Storytelling + séquences d’e-mails</li>
-          <li>Modèles pour partenaires entreprises & PR (vous gérez les contacts)</li>
-          <li>Reporting de base de la campagne</li>
+          <li>Moderne Spenden-Microsite</li>
+          <li>Basis-Gamification für Gönner</li>
+          <li>Anbindung an Zahlungsgateway</li>
+          <li>Meta Ads (Einrichtung + Steuerung)</li>
+          <li>Storytelling + E-Mail-Sequenzen</li>
+          <li>Vorlagen für Unternehmenspartner & PR (Sie übernehmen die Ansprache)</li>
+          <li>Basis-Reporting der Kampagne</li>
         </ul>
       </div>
       <div class="tier prem reveal d2">
-        <span class="tier-badge">Recommandé</span>
+        <span class="tier-badge">Empfohlen</span>
         <h3>Premium</h3>
-        <p class="tier-for">Pour les organisations qui veulent maximiser pleinement la campagne de cette année.</p>
+        <p class="tier-for">Für Organisationen, die die diesjährige Kampagne voll ausschöpfen möchten.</p>
         <!-- {{LOKALIZACE: cena dle trhu}} -->
-        <div class="price-old">Prix normal 35 000 CHF</div>
-        <div class="price-eb-label">Early Bird jusqu’au 30 juin, économisez 3 000 CHF</div>
-        <div class="price">32 000 CHF</div>
+        <div class="price-old">Regulär 23 900 CHF</div>
+        <div class="price-eb-label">Early Bird bis 30. Juni, sparen Sie 3 000 CHF</div>
+        <div class="price">19 900 CHF</div>
         <div class="price-czk"></div>
-        <div class="price-note">Prix fixe incluant tous les services IT et techniques. Je ne prends <b>aucun pourcentage de vos recettes</b> — tout ce que vous collectez vous revient.</div>
-        <div class="tier-plus-label">Tout du Standard, plus :</div>
+        <div class="price-note">Festpreis inklusive aller IT- und technischen Leistungen. Von Ihrem Erlös nehme ich <b>keinen Prozentsatz</b> — alles Gesammelte bleibt bei Ihnen.</div>
+        <div class="tier-plus-label">Alles aus dem Standard, plus:</div>
         <ul>
-          <li class="plus">Gamification avancée des donateurs</li>
-          <li class="plus">Recherche active de partenaires entreprises</li>
-          <li class="plus">PR active (démarchage médias, …)</li>
-          <li class="plus">Reporting étendu de la campagne</li>
-          <li class="plus">Approche complète d’acquisition de donateurs réguliers</li>
+          <li class="plus">Fortgeschrittene Gönner-Gamification</li>
+          <li class="plus">Aktive Suche nach Unternehmenspartnern</li>
+          <li class="plus">Aktive PR (Medienansprache, …)</li>
+          <li class="plus">Erweitertes Kampagnen-Reporting</li>
+          <li class="plus">Umfassende Gewinnung von Dauergönnern</li>
         </ul>
       </div>
     </div>
     <div class="tiers-partners-link reveal">
-      Pourrait-ce être encore plus avantageux ? <a href="#partneri">Et si cela ne vous coûtait rien ? →</a>
+      Könnte es noch vorteilhafter sein? <a href="#partneri">Und was, wenn es Sie nichts kosten würde? →</a>
     </div>
     <div class="terms-strip reveal">
       <div class="terms-chip">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="2" stroke="#5a6b1a" stroke-width="2"/><path d="M2 9h20" stroke="#5a6b1a" stroke-width="2"/></svg>
-        <span class="tc-txt"><b>Échéancier 50 / 40 / 10</b>50 % à la signature · 40 % après validation de la microsite · 10 % au lancement le 1er décembre</span>
+        <span class="tc-txt"><b>Ratenzahlung 50 / 40 / 10</b>50 % bei Vertragsunterzeichnung · 40 % nach Freigabe der Microsite · 10 % beim Launch am 1. Dezember</span>
       </div>
       <div class="terms-chip">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 019-9 9 9 0 016.7 3M21 12a9 9 0 01-9 9 9 9 0 01-6.7-3" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round"/><path d="M18 3v3.5h-3.5M6 21v-3.5h3.5" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="tc-txt"><b>Deuxième année à 60 % du prix</b>Si vous souhaitez continuer l’année prochaine, je serai ravi de prendre en charge l’intégralité de la campagne de A à Z.</span>
+        <span class="tc-txt"><b>Zweites Jahr zum Preis von 60 %</b>Falls Sie nächstes Weihnachten weitermachen möchten, übernehme ich die gesamte Kampagne wieder komplett von A bis Z.</span>
       </div>
       <div class="terms-chip">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#5a6b1a" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="#5a6b1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="tc-txt"><b>Early Bird jusqu’au 30 juin</b>Signature avant fin juin = prix Early Bird.</span>
+        <span class="tc-txt"><b>Early Bird bis 30. Juni</b>Bei Unterzeichnung bis Ende Juni gilt der Early-Bird-Preis.</span>
       </div>
     </div>
   </div>
@@ -982,19 +1053,23 @@
 <!-- ===================== 6b. MŮŽE TO B�T ZADARMO ===================== -->
 <section class="free" id="partneri">
   <div class="container">
-    <span class="eyebrow-pill">… Astuce — comment faire</span>
-    <h2 class="section-title reveal">Et si cela ne vous <em>coûtait rien</em> ?</h2>
-    <p class="lead">Les coûts de la campagne (ou d’une partie) peuvent être pris en charge par des partenaires entreprises. En échange, ils obtiennent une visibilité en tant qu’entreprise socialement responsable aux côtés d’un projet porteur de sens — et vous bénéficiez de la campagne complète sans impact sur votre propre budget.</p>
+    <span class="eyebrow-pill">… Tipp, wie es geht</span>
+    <h2 class="section-title reveal">Was wäre, wenn es Sie <em>nichts</em> kosten würde?</h2>
+    <p class="lead">Die Kosten der gesamten Kampagne (oder eines Teils davon) können von Unternehmenspartnern übernommen werden. Im Gegenzug erhalten sie Sichtbarkeit als sozial verantwortliches Unternehmen neben einem sinnvollen Projekt — und Sie bekommen die komplette Kampagne ohne Belastung Ihres eigenen Budgets.</p>
+    <div class="free-deadline reveal">
+      <div class="fd-pill">Wichtig fürs Timing</div>
+      <p class="fd-text">Wenn wir die Zusammenarbeit <b>bis 30. Juni 2026</b> vereinbaren, kann ich bereits <b>ab September</b> aktiv Unternehmenspartner für Sie ansprechen. Das erhöht deutlich die Chance, dass die Kampagnenkosten vollständig durch Partner gedeckt werden — und Ihre Organisation am Ende keinen Cent aus eigenem Budget zahlt.</p>
+    </div>
     <div class="free-grid">
       <div class="free-card lit reveal">
-        <span class="tag">Déjà inclus dans le Standard</span>
-        <h3>Je vous prépare une microsite dédiée aux partenaires</h3>
-        <p>Une page dédiée que vous pouvez utiliser pour contacter les entreprises de votre région, avec une offre claire de ce que le partenaire reçoit en retour. Un outil prêt à l’emploi qu’il suffit d’envoyer.</p>
+        <span class="tag">Bereits im Standard enthalten</span>
+        <h3>Ich erstelle Ihnen eine Partner-Microsite</h3>
+        <p>Eine eigene Seite, mit der Sie Unternehmen in Ihrer Region ansprechen können — mit klarer Übersicht, was der Partner für seine Unterstützung erhält. Ein fertiges Tool, das Sie nur noch verschicken müssen.</p>
       </div>
       <div class="free-card reveal d2">
-        <span class="tag">En plus dans le Premium</span>
-        <h3>Je recherche et contacte activement les partenaires</h3>
-        <p>Dans la formule Premium, je recherche activement les partenaires entreprises et négocie pour vous. Je présente cela comme une démarche proactive (sans garantie), mais c’est souvent ici que la campagne s’autofinance.</p>
+        <span class="tag">Zusätzlich im Premium-Paket</span>
+        <h3>Ich suche und kontaktiere Partner aktiv selbst</h3>
+        <p>Im Premium-Paket suche ich aktiv nach Unternehmenspartnern und verhandle für Sie. Ich kommuniziere das als aktive Bemühung (keine Garantie), aber genau hier finanziert sich die Kampagne oft komplett selbst.</p>
       </div>
     </div>
   </div>
@@ -1004,38 +1079,38 @@
 <section class="calc">
   <div class="xmas-flake-deco" style="bottom:50px; left:60px; font-size:90px; opacity:0.08;">❄</div>
   <div class="container">
-    <span class="eyebrow-pill">… Calculez vous-même</span>
-    <h2 class="section-title reveal">Combien <em>investir</em> dans la campagne ?</h2>
-    <p class="lead reveal d1">Chaque organisation décide elle-même du montant à investir dans la promotion de la campagne en plus de son budget de base. Les fonds investis dans le budget média apportent non seulement de nouveaux donateurs, mais aussi une excellente visibilité PR pour votre organisation. Déplacez le curseur et découvrez ce qu’un budget média peut représenter en termes de portée, de donateurs et de dons collectés.</p>
+    <span class="eyebrow-pill">… Rechnen Sie selbst nach</span>
+    <h2 class="section-title reveal">Wie viel sollten Sie in die Kampagne <em>investieren</em>?</h2>
+    <p class="lead reveal d1">Jede Organisation entscheidet selbst, wie viel sie zusätzlich zum Kernbudget in die Kampagnenwerbung investiert. Geld, das in das Media-Budget fliesst, bringt nicht nur neue Gönner, sondern auch positive PR für Ihre Organisation. Bewegen Sie den Regler und sehen Sie, was ein Media-Budget in Reichweite, Gönnern und Spendensumme bedeuten kann.</p>
 
     <div class="calc-box reveal d2">
       <!-- slider -->
       <div>
-        <div class="calc-budget-lbl">Votre budget média</div>
+        <div class="calc-budget-lbl">Ihr Media-Budget</div>
         <div class="calc-budget-val" id="budgetVal">5 000 CHF</div>
         <div class="slider-wrap">
           <input type="range" class="slider" id="budgetSlider" min="1000" max="15000" step="500" value="5000">
-          <div class="slider-ends"><span>1 000 CHF</span><span>15 000 CHF</span></div>
+          <div class="slider-ends"><span>1 000 CHF</span><span>14 900 CHF</span></div>
         </div>
       </div>
       <!-- výsledky -->
       <div class="calc-results">
         <div class="scen-toggle">
-          <button class="scen-btn" data-scen="careful">Prudent</button>
-          <button class="scen-btn active" data-scen="real">Réaliste</button>
-          <button class="scen-btn" data-scen="ambit">Ambitieux</button>
+          <button class="scen-btn" data-scen="careful">Vorsichtig</button>
+          <button class="scen-btn active" data-scen="real">Realistisch</button>
+          <button class="scen-btn" data-scen="ambit">Ambitioniert</button>
         </div>
-        <div class="scen-desc" id="scenDesc">CPM 12 CHF · conversion 0,25 % · don moyen 82 CHF</div>
+        <div class="scen-desc" id="scenDesc">CPM 13 CHF · Konversion 0,25 % · durchschnittliche Spende 50 CHF</div>
         <div class="res-row">
-          <div class="res-label"><span class="t">La campagne touche</span><span class="s">portée publicitaire estimée</span></div>
+          <div class="res-label"><span class="t">Die Kampagne erreicht</span><span class="s">geschätzte Werbereichweite</span></div>
           <div class="res-val" id="resReach">�</div>
         </div>
         <div class="res-row">
-          <div class="res-label"><span class="t">Parmi eux, donnent</span><span class="s">nombre estimé de donateurs</span></div>
+          <div class="res-label"><span class="t">Davon spenden</span><span class="s">geschätzte Anzahl Gönner</span></div>
           <div class="res-val" id="resDonors">�</div>
         </div>
         <div class="res-row lit">
-          <div class="res-label"><span class="t">Collecté en dons</span><span class="s">estimation modélisée du résultat</span></div>
+          <div class="res-label"><span class="t">An Spenden gesammelt</span><span class="s">modellierte Ertragsschätzung</span></div>
           <div style="text-align:right;">
             <div class="res-val" id="resRevenue">�</div>
             <div style="font-size:13px; color:#3a4a05; font-weight:700; margin-top:2px;" id="resRevenueCzk">�</div>
@@ -1045,39 +1120,39 @@
     </div>
 
     <p class="calc-note">
-      <b>Comment lire ceci :</b> le sélecteur propose trois scénarios pour votre marché : <b>prudent</b> (suppose des publicités plus chères et une conversion plus faible), <b>réaliste</b> (estimation moyenne) et <b>ambitieux</b> (optimiste mais atteignable avec une campagne solide).
-      Toutes les variantes sont une <b>estimation indicative, pas une garantie de résultat</b> ; la réalité dépend de l’histoire, du public et de l’organisation.</p>
+      <b>So lesen Sie das:</b> der Schalter bietet drei Szenarien für Ihren Markt: <b>vorsichtig</b> (rechnet mit teurerer Werbung und geringerer Konversion), <b>realistisch</b> (mittlere Schätzung) und <b>ambitioniert</b> (optimistisch, aber mit einer starken Kampagne erreichbar).
+      Alle Varianten sind eine <b>illustrative Schätzung, keine Ergebnisgarantie</b>; die Realität hängt von Geschichte, Publikum und Organisation ab.</p>
   </div>
 </section>
 
 <!-- ===================== 6d. 5LETà PROJEKCE ===================== -->
 <section class="proj" id="projekce">
   <div class="container">
-    <span class="eyebrow-pill">… Vision à long terme</span>
-    <h2 class="section-title">Que rapportera la campagne <em>sur cinq ans</em> ?</h2>
-    <p class="lead">Une campagne ponctuelle n’est que le début. La vraie puissance réside dans la répétition : chaque année vous pouvez toucher un cercle plus large de donateurs et construire une base sur laquelle vous pourrez compter les années suivantes. Ajustez les paramètres et découvrez l’effet cumulatif.</p>
+    <span class="eyebrow-pill">… Langfristige Perspektive</span>
+    <h2 class="section-title">Was bringt die Kampagne <em>in fünf Jahren</em>?</h2>
+    <p class="lead">Eine einmalige Kampagne ist nur der Anfang. Die wahre Kraft liegt in der Wiederholung: Jedes Jahr können Sie einen grösseren Kreis von Gönnern erreichen und eine Basis aufbauen, aus der Sie auch in den Folgejahren schöpfen. Stellen Sie Ihre Werte ein und sehen Sie den kumulativen Effekt.</p>
 
     <div class="proj-box">
       <!-- EDITOR -->
       <div>
         <div class="editor-group">
-          <div class="editor-label">Scénario</div>
+          <div class="editor-label">Szenario</div>
           <div class="scen-toggle">
-            <button class="scen-btn" data-scen="careful">Prudent</button>
-            <button class="scen-btn active" data-scen="real">Réaliste</button>
-            <button class="scen-btn" data-scen="ambit">Ambitieux</button>
+            <button class="scen-btn" data-scen="careful">Vorsichtig</button>
+            <button class="scen-btn active" data-scen="real">Realistisch</button>
+            <button class="scen-btn" data-scen="ambit">Ambitioniert</button>
           </div>
         </div>
         <div class="editor-group">
-          <div class="editor-label">Formule</div>
+          <div class="editor-label">Paket</div>
           <div class="pkg-toggle">
             <button class="pkg-btn active" data-pkg="std">Standard</button>
             <button class="pkg-btn" data-pkg="prem">Premium</button>
           </div>
-          <div class="pkg-price" id="pkgPrice">Prix année 1 : <b>18 000 CHF</b> · années 2—5 : <b>10 800 CHF/an</b></div>
+          <div class="pkg-price" id="pkgPrice">Preis Jahr 1: <b>14 900 CHF</b> · Jahre 2—5: <b>9 000 CHF/Jahr</b></div>
         </div>
         <div class="editor-group">
-          <div class="slider-row"><span class="editor-label" style="margin:0;">Budget média / an (sur 5 ans)</span><span class="slider-val" id="vBudget">5 000 CHF</span></div>
+          <div class="slider-row"><span class="editor-label" style="margin:0;">Media-Budget / Jahr (über 5 Jahre)</span><span class="slider-val" id="vBudget">5 000 CHF</span></div>
           <input type="range" id="sBudget" min="1000" max="15000" step="500" value="5000">
         </div>
       </div>
@@ -1086,17 +1161,17 @@
       <div>
         <div style="text-align:center;">
           <div class="res-view-toggle">
-            <button class="rv-btn active" data-view="total">Total sur 5 ans</button>
-            <button class="rv-btn" data-view="years">Année par année</button>
+            <button class="rv-btn active" data-view="total">Gesamt über 5 Jahre</button>
+            <button class="rv-btn" data-view="years">Jahr für Jahr</button>
           </div>
         </div>
         <div class="res-headline" id="resTotal">
-          <div class="res-big-lbl">Total des dons sur 5 ans</div>
+          <div class="res-big-lbl">Gesamtspenden über 5 Jahre</div>
           <div class="res-big" id="vTotal">�</div>
           <div class="res-big-czk" id="vTotalCzk">�</div>
           <div class="res-sub">
-            <div class="item"><div class="s">Coûts totaux</div><div class="v" id="vCost">�</div></div>
-            <div class="item"><div class="s">Résultat net</div><div class="v" id="vNet">�</div></div>
+            <div class="item"><div class="s">Gesamtkosten</div><div class="v" id="vCost">�</div></div>
+            <div class="item"><div class="s">Nettoertrag</div><div class="v" id="vNet">�</div></div>
           </div>
         </div>
         <div class="res-years" id="resYears"></div>
@@ -1105,23 +1180,23 @@
 
     <div class="proj-bonus reveal">
       <span class="pb-plus">+</span>
-      <span>Cette projection <b>ne tient pas compte des partenaires entreprises ni des donateurs réguliers</b>, qui peuvent encore augmenter significativement le résultat.</span>
+      <span>Die Prognose berücksichtigt <b>noch keine Unternehmenspartner oder Dauergönner</b>, die den Ertrag weiter steigern können.</span>
     </div>
     <p class="proj-note">
-      <b>Comment nous calculons :</b> un scénario réaliste (CPM ~12 CHF, conversion ~0,25 %, don 82 CHF) ajusté au budget. À partir de l’année 2, le prix de la formule baisse à 60 % (selon la grille) et le nombre de donateurs croît d’environ 15 % par an. Tous les chiffres sont des <b>estimations de modèle indicatives dans des conditions favorables, pas une garantie de résultat.</b></p>
+      <b>So rechnen wir:</b> ein realistisches Szenario (CPM ~13 CHF, Konversion ~0,25 %, Spende 50 CHF) an das Budget angepasst. Ab Jahr 2 sinkt der Paketpreis auf 60 % (gemäss Preisliste) und die Gönnerzahl wächst ~15 % pro Jahr. Alle Zahlen sind <b>illustrative Modellschätzungen unter günstigen Bedingungen, keine Ergebnisgarantie.</b></p>
   </div>
 </section>
 
 <!-- ===================== 7. HARMONOGRAM ===================== -->
 <section>
   <div class="container">
-    <div class="eyebrow">Le chemin jusqu’au 1er décembre</div>
-    <h2 class="section-title reveal">Du choix <em>au lancement</em>.</h2>
+    <div class="eyebrow">Der Weg zum 1. Dezember</div>
+    <h2 class="section-title reveal">Vom Entschluss <em>zum Launch</em>.</h2>
     <div class="timeline">
-      <div class="tl-item reveal"><div class="when">Avant le 30 juin 2026</div><div class="what">Décision et signature : verrouillage du prix Early Bird</div></div>
-      <div class="tl-item reveal"><div class="when">Juin — novembre</div><div class="what">Production de la campagne : microsite, histoire, partenaires entreprises & donateurs, préparation, création graphique, e-mailing</div></div>
-      <div class="tl-item reveal"><div class="when">1er décembre 2026</div><div class="what">Lancement de la campagne</div></div>
-      <div class="tl-item reveal"><div class="when">Décembre 2026</div><div class="what">Pilotage de la campagne en pleine saison + reporting continu</div></div>
+      <div class="tl-item reveal"><div class="when">Bis 30. Juni 2026</div><div class="what">Entscheidung und Unterzeichnung: Sicherung des Early-Bird-Preises</div></div>
+      <div class="tl-item reveal"><div class="when">Juni — November</div><div class="what">Kampagnenproduktion: Microsite, Geschichte, Unternehmenspartner & Gönner, Kampagnenvorbereitung, Grafik, E-Mailing</div></div>
+      <div class="tl-item reveal"><div class="when">1. Dezember 2026</div><div class="what">Start der Kampagne</div></div>
+      <div class="tl-item reveal"><div class="when">Dezember 2026</div><div class="what">Kampagnensteuerung in der Hochsaison + laufendes Reporting</div></div>
     </div>
   </div>
 </section>
@@ -1129,18 +1204,18 @@
 <!-- ===================== 4. DŮKAZ ===================== -->
 <section class="proof">
   <div class="container">
-    <div class="eyebrow" style="color:#DDD;">Des preuves, pas des promesses</div>
-    <h2 class="section-title reveal">Je sais <em>ce qui fonctionne en collecte de fonds.</em></h2>
+    <div class="eyebrow" style="color:#DDD;">Beweise, keine Versprechen</div>
+    <h2 class="section-title reveal">Ich weiss, <em>was im Fundraising funktioniert.</em></h2>
     <div class="stats">
-      <div class="stat reveal"><div class="big" data-count="1,1" data-suffix=" mil. CHF+">0</div><div class="lbl">Créateur de la campagne de Noël la plus réussie de 2025 en République tchèque</div></div>
-      <div class="stat reveal d2"><div class="big" data-count="60000" data-suffix="+">0</div><div class="lbl">donateurs touchés grâce à la simplicité et à la gamification</div></div>
-      <div class="stat reveal d4"><div class="big" data-count="2100" data-suffix=" %">0</div><div class="lbl">Je gère aussi des campagnes locales plus petites. Une campagne de deux mois pour une petite association a transformé 1 tis. CHF investis en 25 tis. CHF (ROI 2 100 %)</div></div>
+      <div class="stat reveal"><div class="big" data-count="1,2" data-suffix=" mil. CHF+">0</div><div class="lbl">Schöpfer der erfolgreichsten Weihnachtskampagne 2025 in Tschechien</div></div>
+      <div class="stat reveal d2"><div class="big" data-count="60000" data-suffix="+">0</div><div class="lbl">Gönner erreicht durch Einfachheit und Gamification</div></div>
+      <div class="stat reveal d4"><div class="big" data-count="2100" data-suffix=" %">0</div><div class="lbl">Ich übernehme auch kleinere lokale Kampagnen. Eine zweimonatige Kampagne für eine kleine Non-Profit machte aus 1 tis. CHF Investition 27 tis. CHF (ROI 2 100 %)</div></div>
     </div>
     <blockquote class="quote">
-      « Grâce à la simplicité et à la gamification, il a touché plus de 60 000 donateurs et créé la campagne de Noël la plus réussie de l’an dernier en République tchèque. »
-      <span class="who">— Zdeněk Mihalco, directeur de la Fondation Via</span>
+      „Durch Einfachheit und Gamification erreichte er über 60 000 Gönner und schuf die erfolgreichste Weihnachtskampagne des letzten Jahres in Tschechien.“
+      <span class="who">— Zdeněk Mihalco, Direktor der Via-Stiftung</span>
     </blockquote>
-    <p class="disclaimer">Mes résultats à ce jour servent de preuve de compétence et d’inspiration, et non de garantie du même résultat. Je construirai votre campagne de A à Z, sur mesure pour votre organisation.</p>
+    <p class="disclaimer">Meine bisherigen Ergebnisse dienen als Nachweis der Fähigkeit und als Inspiration, nicht als Garantie für dasselbe Ergebnis. Ich baue Ihre Kampagne von Grund auf, massgeschneidert für Ihre Organisation.</p>
   </div>
 </section>
 
@@ -1149,26 +1224,26 @@
   <div class="container grid-2">
     <div class="about-photo"><img src="/images/petr-portret.jpg" alt="Peter Chalupiansky" loading="lazy"></div>
     <div>
-      <div class="eyebrow">Qui réalise cela</div>
-      <h2 class="section-title reveal">J’aide les organisations à but non lucratif partout en Europe à collecter de <em>vrais dons</em> — pas seulement de l’attention.</h2>
-      <p class="lead reveal d1">Je suis Peter Chalupiansky, consultant en fundraising digital basé à Prague. Ces <b>dix dernières années</b>, j’ai aidé des organisations à but non lucratif à transformer les dons en ligne en une source de revenus durable.</p>
+      <div class="eyebrow">Wer das umsetzt</div>
+      <h2 class="section-title reveal">Ich helfe Nonprofit-Organisationen in ganz Europa, <em>echtes Geld</em> zu gewinnen — nicht nur Aufmerksamkeit.</h2>
+      <p class="lead reveal d1">Ich bin Peter Chalupiansky, Digital-Fundraising-Berater mit Sitz in Prag. In den letzten <b>zehn Jahren</b> habe ich Nonprofit-Organisationen dabei unterstützt, Online-Spenden in eine nachhaltige Einnahmequelle zu verwandeln.</p>
       <ul class="bio-creds reveal d2">
-        <li><b>Responsable CSR & ESG, Kaufland Tchéquie</b> (8+ ans) — membre du <b>groupe Schwarz</b>, le plus grand groupe de distribution européen. Pendant sept ans, j’ai dirigé la campagne de collecte de Noël qui a réuni plus de <b>4,9 M €</b>, y compris la PR et l’exécution de campagnes marketing nationales.</li>
-        <li><b>Membre du conseil d’administration</b> de l’une des plus grandes fondations caritatives nationales du pays (gérée par le radiodiffuseur public).</li>
-        <li><b>Créateur de la campagne de collecte de Noël la plus réussie de 2025</b> en République tchèque.</li>
-        <li><b>Consultant indépendant</b> en collecte de fonds digitale pour les associations européennes.</li>
+        <li><b>CSR & ESG Lead, Kaufland Tschechien</b> (8+ Jahre) — Teil der <b>Schwarz Gruppe</b>, des grössten europäischen Handelskonzerns. Sieben Jahre lang leitete ich die Weihnachts-Fundraisingkampagne, die über <b>4,9 Mio. €</b> sammelte, inklusive PR und Umsetzung landesweiter Marketingkampagnen.</li>
+        <li><b>Vorstandsmitglied</b> einer der grössten nationalen gemeinnützigen Stiftungen des Landes (betrieben vom öffentlich-rechtlichen Rundfunk).</li>
+        <li><b>Schöpfer der erfolgreichsten Weihnachts-Fundraisingkampagne 2025</b> in Tschechien.</li>
+        <li><b>Unabhängiger Berater</b> für digitales Fundraising für europäische Non-Profits.</li>
       </ul>
-      <p class="bio-close reveal d3">Mes campagnes génèrent un <b>ROI constamment positif</b> et construisent des <b>bases de donateurs durables</b>. Je veux maintenant apporter tout cela à votre organisation et vous aider à bâtir un <b>canal de collecte digital qui fonctionne vraiment</b>.</p>
+      <p class="bio-close reveal d3">Meine Kampagnen liefern einen <b>konstant positiven ROI</b> und bauen <b>Gönnerbasen auf, die bleiben</b>. Jetzt möchte ich all das in Ihre Organisation bringen und Ihnen helfen, einen <b>digitalen Fundraising-Kanal aufzubauen, der wirklich funktioniert</b>.</p>
 
       <div class="awards-section reveal d4">
-        <div class="awards-eyebrow">Récompenses et reconnaissance</div>
+        <div class="awards-eyebrow">Auszeichnungen und Anerkennung</div>
         <div class="awards-grid">
-          <div class="award-card"><div class="ac-title">Intervenant à TEDx, PechaKucha Nights et conférences</div><div class="ac-sub">plus de 20 interventions</div></div>
-          <div class="award-card"><div class="ac-title">The Kind Heart Award</div><div class="ac-sub">prix national de la philanthropie</div></div>
-          <div class="award-card"><div class="ac-title">Personnalité de la philanthropie</div><div class="ac-sub">principale association nationale de donateurs</div></div>
-          <div class="award-card"><div class="ac-title">Personnalité de l’année</div><div class="ac-sub">organisation sportive à but non lucratif</div></div>
-          <div class="award-card"><div class="ac-title">Prix national de la qualité pour le développement durable 2022</div><div class="ac-sub">Ministère de l’Industrie et du Commerce (avec l’équipe Kaufland Tchéquie)</div></div>
-          <div class="award-card"><div class="ac-title">4× Distributeur responsable de l’année (2020, 2022, 2024, 2025)</div><div class="ac-sub">association nationale du commerce et du tourisme (avec l’équipe Kaufland Tchéquie)</div></div>
+          <div class="award-card"><div class="ac-title">Speaker bei TEDx, PechaKucha Nights und Konferenzen</div><div class="ac-sub">über 20 Auftritte</div></div>
+          <div class="award-card"><div class="ac-title">The Kind Heart Award</div><div class="ac-sub">nationale Philanthropie-Auszeichnung</div></div>
+          <div class="award-card"><div class="ac-title">Persönlichkeit der Philanthropie</div><div class="ac-sub">führender nationaler Spenderverband</div></div>
+          <div class="award-card"><div class="ac-title">Persönlichkeit des Jahres</div><div class="ac-sub">gemeinnützige Sportorganisation</div></div>
+          <div class="award-card"><div class="ac-title">Nationaler Qualitätspreis für Nachhaltigkeit 2022</div><div class="ac-sub">Ministerium für Industrie und Handel (mit dem Team Kaufland Tschechien)</div></div>
+          <div class="award-card"><div class="ac-title">4× Verantwortungsvoller Händler des Jahres (2020, 2022, 2024, 2025)</div><div class="ac-sub">nationaler Handels- und Tourismusverband (mit dem Team Kaufland Tschechien)</div></div>
         </div>
       </div>
     </div>
@@ -1179,10 +1254,10 @@
 <section class="final" id="kontakt">
   <div class="container">
     <!-- {{PERSONALIZACE: org_name}} -->
-    <h2 class="section-title reveal">Faisons de Noël 2026 <em>le plus beau</em>.</h2>
-    <p class="lead">Vous aimez la proposition pour Alzheimer Bern – Beratungsstelle Biel/Berner Jura ? Répondez simplement à mon e-mail et nous discuterons des prochaines étapes. Quelques lignes suffisent — aucune obligation.</p>
+    <h2 class="section-title reveal">Machen wir Weihnachten 2026 <em>zu den besten</em>.</h2>
+    <p class="lead">Gefällt Ihnen der Vorschlag für Alzheimer Bern – Beratungsstelle Biel/Berner Jura? Antworten Sie einfach auf meine E-Mail, dann besprechen wir die nächsten Schritte. Auch nur ein paar Zeilen reichen — keinerlei Verpflichtung.</p>
     <!-- {{PERSONALIZACE: e-mail + p�edm�t}} -->
-    <a href="mailto:peter@ngo.digital?subject=Re%3A%20Campagne%20de%20No%C3%ABl%202026%20pour%20Alzheimer%20Bern%20%E2%80%93%20Beratungsstelle%20Biel%2FBerner%20Jura" class="btn-primary" style="background:var(--charcoal); color:var(--white);">Écrire à Peter →</a>
+    <a href="mailto:peter@ngo.digital?subject=Re%3A%20Weihnachtskampagne%202026%20f%C3%BCr%20Hospiz%20Mittelhessen%20gGmbH" class="btn-primary" style="background:var(--charcoal); color:var(--white);">An Peter schreiben →</a>
   </div>
 </section>
 
@@ -1275,15 +1350,15 @@
     /* {{LOKALIZACE: scéná�e + m�na dle trhu}} */
     /* à V�CARSKO à t�i scéná�e (data: reklamní benchmarky 2026 + Swissfundraising/Zewo) */
     var SCEN = {
-      careful: { cpm: 15, conv: 0.0018, gift: 70, label: 'CPM 15 CHF · conversion 0,18 % · don moyen 70 CHF',
-                 name: 'opatrný', cpmTxt: '15 CHF', convTxt: '0,18 %', giftTxt: '70 CHF' },
-      real:    { cpm: 12, conv: 0.0025, gift: 82, label: 'CPM 12 CHF · conversion 0,25 % · don moyen 82 CHF',
-                 name: 'realistický', cpmTxt: '12 CHF', convTxt: '0,25 %', giftTxt: '82 CHF' },
-      ambit:   { cpm: 9, conv: 0.0035, gift: 95, label: 'CPM 9 CHF · conversion 0,35 % · don moyen 95 CHF',
-                 name: 'ambiciózní', cpmTxt: '9 CHF', convTxt: '0,35 %', giftTxt: '95 CHF' }
+      careful: { cpm: 16, conv: 0.0018, gift: 42, label: 'CPM 16 CHF · Konversion 0,18 % · durchschnittliche Spende 42 CHF',
+                 name: 'opatrný', cpmTxt: '16 CHF', convTxt: '0,18 %', giftTxt: '42 CHF' },
+      real:    { cpm: 13, conv: 0.0025, gift: 50, label: 'CPM 13 CHF · Konversion 0,25 % · durchschnittliche Spende 50 CHF',
+                 name: 'realistický', cpmTxt: '13 CHF', convTxt: '0,25 %', giftTxt: '50 CHF' },
+      ambit:   { cpm: 10, conv: 0.0035, gift: 58, label: 'CPM 10 CHF · Konversion 0,35 % · durchschnittliche Spende 58 CHF',
+                 name: 'ambiciózní', cpmTxt: '10 CHF', convTxt: '0,35 %', giftTxt: '58 CHF' }
     };
     var current = 'real';
-    var CUR = 'CHF';
+    var CUR = 'EUR';
     var CZK_RATE = 0;
 
     function fmt(n){ return Math.round(n).toLocaleString('cs-CZ'); }
@@ -1305,8 +1380,8 @@
       var revenue = donors * s.gift;
 
       document.getElementById('budgetVal').textContent = fmt(budget) + ' ' + CUR;
-      document.getElementById('resReach').textContent = fmt(reach) + ' personnes';
-      document.getElementById('resDonors').textContent = fmt(donors) + ' donateurs';
+      document.getElementById('resReach').textContent = fmt(reach) + ' Menschen';
+      document.getElementById('resDonors').textContent = fmt(donors) + ' Gönner';
       document.getElementById('resRevenue').textContent = fmt(revenue) + ' ' + CUR;
 
       var revCzk = document.getElementById('resRevenueCzk');
@@ -1318,7 +1393,7 @@
       var giftTxt = s.gift + ' CHF';
 
       var desc = document.getElementById('scenDesc');
-      if (desc) desc.textContent = 'CPM ' + cpmTxt + ' · conversion ' + convTxt + ' · don moyen ' + giftTxt;
+      if (desc) desc.textContent = 'CPM ' + cpmTxt + ' · Konversion ' + convTxt + ' · durchschnittliche Spende ' + giftTxt;
 
       var nScen = document.getElementById('noteScen'); if (nScen) nScen.textContent = s.name;
       var nCpm  = document.getElementById('noteCpm');  if (nCpm)  nCpm.textContent  = cpmTxt;
@@ -1358,13 +1433,13 @@
   var REF=5000, DECAY=0.18;
   /* scéná�e (shodné s hlavní kalkula�kou) */
   var SCEN={
-    careful:{cpm:15, conv:0.0018, gift:70},
-    real:   {cpm:12, conv:0.0025, gift:82},
-    ambit:  {cpm:9, conv:0.0035, gift:95}
+    careful:{cpm:16, conv:0.0018, gift:42},
+    real:   {cpm:13, conv:0.0025, gift:50},
+    ambit:  {cpm:10, conv:0.0035, gift:58}
   };
   var GROWTH=0.15, RECUR_RATE=0.10, RECUR_GIFT=120, RETENTION=0.75;
   var CZK=0;
-  var PKG={ std:{price:18000, bonus:1.0}, prem:{price:32000, bonus:1.18} };
+  var PKG={ std:{price:15000, bonus:1.0}, prem:{price:25500, bonus:1.18} };
   var pkg='std', scen='real';
 
   function fmt(n){return Math.round(n).toLocaleString('cs-CZ');}
@@ -1376,7 +1451,7 @@
     var price=PKG[pkg].price, bonus=PKG[pkg].bonus;
 
     document.getElementById('vBudget').textContent=fmt(budget)+' CHF';
-    document.getElementById('pkgPrice').innerHTML='Prix année 1 : <b>'+fmt(price)+' CHF</b> · années 2—5 : <b>'+fmt(price*0.6)+' CHF/an</b>';
+    document.getElementById('pkgPrice').innerHTML='Preis Jahr 1: <b>'+fmt(price)+' CHF</b> · Jahre 2—5: <b>'+fmt(price*0.6)+' CHF/Jahr</b>';
 
     var f=Math.pow(budget/REF, DECAY);
     var cpm=s.cpm*f, conv=s.conv/f;
@@ -1425,7 +1500,7 @@
   ['sBudget'].forEach(function(id){
     document.getElementById(id).addEventListener('input',calc);
   });
-  /* p�epínaà Celkem / Année par année */
+  /* p�epínaà Celkem / Jahr für Jahr */
   document.querySelectorAll('.rv-btn').forEach(function(b){
     b.addEventListener('click',function(){
       document.querySelectorAll('.rv-btn').forEach(function(x){x.classList.remove('active');});

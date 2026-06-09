@@ -96,9 +96,51 @@
     border-bottom: 1.5px solid var(--charcoal); padding-bottom: 3px;
   }
 
+  /* ---- promo banner (elegantní, tmavá s lime accentem) ---- */
+  .top-stack { position: sticky; top: 0; z-index: 101; }
+  .promo-banner {
+    background: #0E0E0E; color: var(--white);
+    padding: 13px 40px; text-align: center;
+    font-family: 'Source Sans 3', sans-serif; font-size: 13.5px; line-height: 1.5;
+    border-top: 1.5px solid var(--lime);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
+  }
+  .promo-banner .pb-row {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 22px; flex-wrap: wrap;
+  }
+  .promo-banner .pb-pill {
+    color: var(--lime);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 100px;
+    border: 1px solid rgba(201, 243, 29, 0.45);
+    background: rgba(201, 243, 29, 0.05);
+    white-space: nowrap; flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .promo-banner .pb-pill::before {
+    content: ''; width: 5px; height: 5px; background: var(--lime);
+    border-radius: 50%; display: inline-block; flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(201, 243, 29, 0.6);
+  }
+  .promo-banner .pb-text { color: rgba(255,255,255,0.78); font-weight: 400; }
+  .promo-banner .pb-text b { color: var(--white); font-weight: 600; }
+  .promo-banner .pb-divider {
+    display: inline-block; width: 1px; height: 14px;
+    background: rgba(255,255,255,0.18); margin: 0 4px;
+    vertical-align: middle;
+  }
+  .promo-banner .pb-extra { color: rgba(255,255,255,0.55); }
+  .promo-banner .pb-extra b { color: var(--lime); font-weight: 500; }
+  /* vyhodit v mobilu */
+  @media (max-width: 860px) {
+    .promo-banner { display: none; }
+  }
+
   /* ---- nav ---- */
   nav.top-nav {
-    position: sticky; top: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 18px 40px; background: rgba(255,255,255,0.92);
     backdrop-filter: blur(16px); border-bottom: 0.5px solid var(--hairline);
@@ -297,6 +339,23 @@
   .free .section-title { color: var(--white); }
   .free .lead { color: #DDD; max-width: 680px; }
   .free-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
+  .free-deadline {
+    margin-top: 32px; padding: 22px 26px; border-radius: 18px;
+    background: var(--charcoal);
+    display: flex; align-items: flex-start; gap: 18px; flex-wrap: wrap;
+  }
+  .free-deadline .fd-pill {
+    background: var(--lime); color: var(--charcoal);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+    font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+  }
+  .free-deadline .fd-text { color: var(--white); font-size: 16px; line-height: 1.55; flex: 1 1 320px; margin: 0; }
+  .free-deadline .fd-text b { color: var(--lime); font-weight: 700; }
+  @media (max-width: 720px) {
+    .free-deadline { padding: 18px 20px; gap: 12px; }
+    .free-deadline .fd-text { font-size: 14.5px; }
+  }
   .free-card { background: #242424; border: 0.5px solid #ffffff14; border-radius: 16px; padding: 30px; }
   .free-card.lit { background: var(--lime); color: var(--charcoal); border: none; }
   .free-card h3 { font-family:'Bricolage Grotesque'; font-weight:800; font-size: 22px; letter-spacing:-0.03em; margin-bottom: 10px; }
@@ -829,12 +888,24 @@
 </head>
 <body>
 
-<!-- ===================== NAV ===================== -->
-<nav class="top-nav">
-  <div class="logo">ngo<span class="dot">.</span>digital</div>
-  <!-- {{PERSONALIZACE}} -->
-  <div class="nav-prep">Vorschlag erstellt für <b>Fachstelle OKey Winterthur</b></div>
-</nav>
+<!-- ===================== TOP STACK (promo banner + nav, both sticky) ===================== -->
+<div class="top-stack">
+  <div class="promo-banner">
+    <div class="pb-row">
+      <span class="pb-pill">Exklusiv</span>
+      <span class="pb-text">
+        Für die <b>ersten 3 Organisationen in der Schweiz</b> mit Vertrag bis <b>30. Juni 2026</b>.
+        <span class="pb-divider"></span>
+        <span class="pb-extra">Vorbereitung im Sommer erhöht die Chance, dass <b>Unternehmenspartner die Kosten übernehmen</b>.</span>
+      </span>
+    </div>
+  </div>
+  <nav class="top-nav">
+    <div class="logo">ngo<span class="dot">.</span>digital</div>
+    <!-- {{PERSONALIZACE}} -->
+    <div class="nav-prep">Vorschlag erstellt für <b>Fachstelle OKey Winterthur</b></div>
+  </nav>
+</div>
 
 <!-- ===================== 1. HERO (max personalizace) ===================== -->
 <header class="hero">
@@ -844,8 +915,9 @@
     <!-- {{PERSONALIZACE: org_name badge}} -->
     <span class="eyebrow-pill reveal">Vorschlag für Fachstelle OKey Winterthur</span>
     <!-- {{PERSONALIZACE: oslovení konkrétní osoby}} -->
+    <p class="hero-greeting reveal d1">Sehr geehrte Damen und Herren,</p>
     <!-- {{PERSONALIZACE: H1 magic moment à otázka}} -->
-    <h1 class="reveal d2">Was wäre, wenn die die Menschen, denen Sie helfen dieses Jahr zu Weihnachten <em>deutlich mehr Spenden</em> erhalten würden?</h1>
+    <h1 class="reveal d2">Was wäre, wenn die Menschen am Lebensende dieses Jahr zu Weihnachten <em>deutlich mehr Spenden</em> erhalten würden?</h1>
     <!-- {{PERSONALIZACE: hlavní v�ta à výzva k vyzkoušení}} -->
     <p class="hero-lead reveal d3">Erleben Sie <b>modernen digitalen Fundraising mit minimalem Aufwand</b>. Ich erstelle für Sie eine weihnachtliche Spenden-Microsite mit Gamification-Elementen, die Besucheremotionen in konkrete Unterstützung für die Menschen in Ihrer Obhut verwandelt.</p>
     <div class="hero-benefits reveal d5">
@@ -874,7 +946,7 @@
     </div>
     <div class="hero-cta reveal d6">
       <a href="#nabidka" class="btn-primary pulse">Vorschlag ansehen →</a>
-      <a href="#projekce" class="btn-secondary">Sehen Sie, wie viel Sie in 5 Jahren einnehmen könnten →</a>
+      <a href="#partneri" class="btn-secondary">Was, wenn es Sie nichts kostet? →</a>
     </div>
 
   </div>
@@ -923,9 +995,9 @@
         <h3>Standard</h3>
         <p class="tier-for">Für Organisationen, die modernen digitalen Fundraising zum ersten Mal ausprobieren möchten.</p>
         <!-- {{LOKALIZACE: cena dle trhu}} -->
-        <div class="price-old">Regulär 20 000 CHF</div>
-        <div class="price-eb-label">Early Bird bis 30. Juni, sparen Sie 2 000 CHF</div>
-        <div class="price">18 000 CHF</div>
+        <div class="price-old">Regulär 17 900 CHF</div>
+        <div class="price-eb-label">Early Bird bis 30. Juni, sparen Sie 3 000 CHF</div>
+        <div class="price">14 900 CHF</div>
         <div class="price-czk"></div>
         <div class="price-note">Festpreis inklusive aller IT- und technischen Leistungen. Von Ihrem Erlös nehme ich <b>keinen Prozentsatz</b> — alles Gesammelte bleibt bei Ihnen.</div>
         <ul>
@@ -943,9 +1015,9 @@
         <h3>Premium</h3>
         <p class="tier-for">Für Organisationen, die die diesjährige Kampagne voll ausschöpfen möchten.</p>
         <!-- {{LOKALIZACE: cena dle trhu}} -->
-        <div class="price-old">Regulär 35 000 CHF</div>
+        <div class="price-old">Regulär 23 900 CHF</div>
         <div class="price-eb-label">Early Bird bis 30. Juni, sparen Sie 3 000 CHF</div>
-        <div class="price">32 000 CHF</div>
+        <div class="price">19 900 CHF</div>
         <div class="price-czk"></div>
         <div class="price-note">Festpreis inklusive aller IT- und technischen Leistungen. Von Ihrem Erlös nehme ich <b>keinen Prozentsatz</b> — alles Gesammelte bleibt bei Ihnen.</div>
         <div class="tier-plus-label">Alles aus dem Standard, plus:</div>
@@ -984,6 +1056,10 @@
     <span class="eyebrow-pill">… Tipp, wie es geht</span>
     <h2 class="section-title reveal">Was wäre, wenn es Sie <em>nichts</em> kosten würde?</h2>
     <p class="lead">Die Kosten der gesamten Kampagne (oder eines Teils davon) können von Unternehmenspartnern übernommen werden. Im Gegenzug erhalten sie Sichtbarkeit als sozial verantwortliches Unternehmen neben einem sinnvollen Projekt — und Sie bekommen die komplette Kampagne ohne Belastung Ihres eigenen Budgets.</p>
+    <div class="free-deadline reveal">
+      <div class="fd-pill">Wichtig fürs Timing</div>
+      <p class="fd-text">Wenn wir die Zusammenarbeit <b>bis 30. Juni 2026</b> vereinbaren, kann ich bereits <b>ab September</b> aktiv Unternehmenspartner für Sie ansprechen. Das erhöht deutlich die Chance, dass die Kampagnenkosten vollständig durch Partner gedeckt werden — und Ihre Organisation am Ende keinen Cent aus eigenem Budget zahlt.</p>
+    </div>
     <div class="free-grid">
       <div class="free-card lit reveal">
         <span class="tag">Bereits im Standard enthalten</span>
@@ -1014,7 +1090,7 @@
         <div class="calc-budget-val" id="budgetVal">5 000 CHF</div>
         <div class="slider-wrap">
           <input type="range" class="slider" id="budgetSlider" min="1000" max="15000" step="500" value="5000">
-          <div class="slider-ends"><span>1 000 CHF</span><span>15 000 CHF</span></div>
+          <div class="slider-ends"><span>1 000 CHF</span><span>14 900 CHF</span></div>
         </div>
       </div>
       <!-- výsledky -->
@@ -1024,7 +1100,7 @@
           <button class="scen-btn active" data-scen="real">Realistisch</button>
           <button class="scen-btn" data-scen="ambit">Ambitioniert</button>
         </div>
-        <div class="scen-desc" id="scenDesc">CPM 12 CHF · Konversion 0,25 % · durchschnittliche Spende 82 CHF</div>
+        <div class="scen-desc" id="scenDesc">CPM 13 CHF · Konversion 0,25 % · durchschnittliche Spende 50 CHF</div>
         <div class="res-row">
           <div class="res-label"><span class="t">Die Kampagne erreicht</span><span class="s">geschätzte Werbereichweite</span></div>
           <div class="res-val" id="resReach">�</div>
@@ -1073,7 +1149,7 @@
             <button class="pkg-btn active" data-pkg="std">Standard</button>
             <button class="pkg-btn" data-pkg="prem">Premium</button>
           </div>
-          <div class="pkg-price" id="pkgPrice">Preis Jahr 1: <b>18 000 CHF</b> · Jahre 2—5: <b>10 800 CHF/Jahr</b></div>
+          <div class="pkg-price" id="pkgPrice">Preis Jahr 1: <b>14 900 CHF</b> · Jahre 2—5: <b>9 000 CHF/Jahr</b></div>
         </div>
         <div class="editor-group">
           <div class="slider-row"><span class="editor-label" style="margin:0;">Media-Budget / Jahr (über 5 Jahre)</span><span class="slider-val" id="vBudget">5 000 CHF</span></div>
@@ -1107,7 +1183,7 @@
       <span>Die Prognose berücksichtigt <b>noch keine Unternehmenspartner oder Dauergönner</b>, die den Ertrag weiter steigern können.</span>
     </div>
     <p class="proj-note">
-      <b>So rechnen wir:</b> ein realistisches Szenario (CPM ~12 CHF, Konversion ~0,25 %, Spende 82 CHF) an das Budget angepasst. Ab Jahr 2 sinkt der Paketpreis auf 60 % (gemäss Preisliste) und die Gönnerzahl wächst ~15 % pro Jahr. Alle Zahlen sind <b>illustrative Modellschätzungen unter günstigen Bedingungen, keine Ergebnisgarantie.</b></p>
+      <b>So rechnen wir:</b> ein realistisches Szenario (CPM ~13 CHF, Konversion ~0,25 %, Spende 50 CHF) an das Budget angepasst. Ab Jahr 2 sinkt der Paketpreis auf 60 % (gemäss Preisliste) und die Gönnerzahl wächst ~15 % pro Jahr. Alle Zahlen sind <b>illustrative Modellschätzungen unter günstigen Bedingungen, keine Ergebnisgarantie.</b></p>
   </div>
 </section>
 
@@ -1131,9 +1207,9 @@
     <div class="eyebrow" style="color:#DDD;">Beweise, keine Versprechen</div>
     <h2 class="section-title reveal">Ich weiss, <em>was im Fundraising funktioniert.</em></h2>
     <div class="stats">
-      <div class="stat reveal"><div class="big" data-count="1,1" data-suffix=" mil. CHF+">0</div><div class="lbl">Schöpfer der erfolgreichsten Weihnachtskampagne 2025 in Tschechien</div></div>
+      <div class="stat reveal"><div class="big" data-count="1,2" data-suffix=" mil. CHF+">0</div><div class="lbl">Schöpfer der erfolgreichsten Weihnachtskampagne 2025 in Tschechien</div></div>
       <div class="stat reveal d2"><div class="big" data-count="60000" data-suffix="+">0</div><div class="lbl">Gönner erreicht durch Einfachheit und Gamification</div></div>
-      <div class="stat reveal d4"><div class="big" data-count="2100" data-suffix=" %">0</div><div class="lbl">Ich übernehme auch kleinere lokale Kampagnen. Eine zweimonatige Kampagne für eine kleine Non-Profit machte aus 1 tis. CHF Investition 25 tis. CHF (ROI 2 100 %)</div></div>
+      <div class="stat reveal d4"><div class="big" data-count="2100" data-suffix=" %">0</div><div class="lbl">Ich übernehme auch kleinere lokale Kampagnen. Eine zweimonatige Kampagne für eine kleine Non-Profit machte aus 1 tis. CHF Investition 27 tis. CHF (ROI 2 100 %)</div></div>
     </div>
     <blockquote class="quote">
       „Durch Einfachheit und Gamification erreichte er über 60 000 Gönner und schuf die erfolgreichste Weihnachtskampagne des letzten Jahres in Tschechien.“
@@ -1181,7 +1257,7 @@
     <h2 class="section-title reveal">Machen wir Weihnachten 2026 <em>zu den besten</em>.</h2>
     <p class="lead">Gefällt Ihnen der Vorschlag für Fachstelle OKey Winterthur? Antworten Sie einfach auf meine E-Mail, dann besprechen wir die nächsten Schritte. Auch nur ein paar Zeilen reichen — keinerlei Verpflichtung.</p>
     <!-- {{PERSONALIZACE: e-mail + p�edm�t}} -->
-    <a href="mailto:peter@ngo.digital?subject=Re%3A%20Weihnachtskampagne%202026%20f%C3%BCr%20Fachstelle%20OKey%20Winterthur" class="btn-primary" style="background:var(--charcoal); color:var(--white);">An Peter schreiben →</a>
+    <a href="mailto:peter@ngo.digital?subject=Re%3A%20Weihnachtskampagne%202026%20f%C3%BCr%20Hospiz%20Mittelhessen%20gGmbH" class="btn-primary" style="background:var(--charcoal); color:var(--white);">An Peter schreiben →</a>
   </div>
 </section>
 
@@ -1274,15 +1350,15 @@
     /* {{LOKALIZACE: scéná�e + m�na dle trhu}} */
     /* à V�CARSKO à t�i scéná�e (data: reklamní benchmarky 2026 + Swissfundraising/Zewo) */
     var SCEN = {
-      careful: { cpm: 15, conv: 0.0018, gift: 70, label: 'CPM 15 CHF · Konversion 0,18 % · durchschnittliche Spende 70 CHF',
-                 name: 'opatrný', cpmTxt: '15 CHF', convTxt: '0,18 %', giftTxt: '70 CHF' },
-      real:    { cpm: 12, conv: 0.0025, gift: 82, label: 'CPM 12 CHF · Konversion 0,25 % · durchschnittliche Spende 82 CHF',
-                 name: 'realistický', cpmTxt: '12 CHF', convTxt: '0,25 %', giftTxt: '82 CHF' },
-      ambit:   { cpm: 9, conv: 0.0035, gift: 95, label: 'CPM 9 CHF · Konversion 0,35 % · durchschnittliche Spende 95 CHF',
-                 name: 'ambiciózní', cpmTxt: '9 CHF', convTxt: '0,35 %', giftTxt: '95 CHF' }
+      careful: { cpm: 16, conv: 0.0018, gift: 42, label: 'CPM 16 CHF · Konversion 0,18 % · durchschnittliche Spende 42 CHF',
+                 name: 'opatrný', cpmTxt: '16 CHF', convTxt: '0,18 %', giftTxt: '42 CHF' },
+      real:    { cpm: 13, conv: 0.0025, gift: 50, label: 'CPM 13 CHF · Konversion 0,25 % · durchschnittliche Spende 50 CHF',
+                 name: 'realistický', cpmTxt: '13 CHF', convTxt: '0,25 %', giftTxt: '50 CHF' },
+      ambit:   { cpm: 10, conv: 0.0035, gift: 58, label: 'CPM 10 CHF · Konversion 0,35 % · durchschnittliche Spende 58 CHF',
+                 name: 'ambiciózní', cpmTxt: '10 CHF', convTxt: '0,35 %', giftTxt: '58 CHF' }
     };
     var current = 'real';
-    var CUR = 'CHF';
+    var CUR = 'EUR';
     var CZK_RATE = 0;
 
     function fmt(n){ return Math.round(n).toLocaleString('cs-CZ'); }
@@ -1357,13 +1433,13 @@
   var REF=5000, DECAY=0.18;
   /* scéná�e (shodné s hlavní kalkula�kou) */
   var SCEN={
-    careful:{cpm:15, conv:0.0018, gift:70},
-    real:   {cpm:12, conv:0.0025, gift:82},
-    ambit:  {cpm:9, conv:0.0035, gift:95}
+    careful:{cpm:16, conv:0.0018, gift:42},
+    real:   {cpm:13, conv:0.0025, gift:50},
+    ambit:  {cpm:10, conv:0.0035, gift:58}
   };
   var GROWTH=0.15, RECUR_RATE=0.10, RECUR_GIFT=120, RETENTION=0.75;
   var CZK=0;
-  var PKG={ std:{price:18000, bonus:1.0}, prem:{price:32000, bonus:1.18} };
+  var PKG={ std:{price:15000, bonus:1.0}, prem:{price:25500, bonus:1.18} };
   var pkg='std', scen='real';
 
   function fmt(n){return Math.round(n).toLocaleString('cs-CZ');}
