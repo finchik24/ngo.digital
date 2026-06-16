@@ -778,6 +778,13 @@ footer {
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 footer strong { color: var(--gray-300); }
+
+.lang-switch {
+  display: inline-block; font-size: 12.5px; color: var(--gray-500);
+  text-decoration: none; padding: 4px 10px; border: 1px solid var(--gray-100);
+  border-radius: 100px;
+}
+.lang-switch:hover { color: var(--gray-900); border-color: var(--gray-300); }
 </style>
 </head>
 <body>
@@ -786,7 +793,10 @@ footer strong { color: var(--gray-300); }
 <header>
   <div class="container header-inner">
     <div class="logo">ngo.digital</div>
-    <div class="header-context">Persönlicher Vorschlag für <strong>ProRaris Schweiz</strong></div>
+    <div class="header-context">
+      Persönlicher Vorschlag für <strong>ProRaris Schweiz</strong> &nbsp;·&nbsp;
+      <a href="/proraris-schweiz/cz" class="lang-switch">CZ</a>
+    </div>
   </div>
 </header>
 

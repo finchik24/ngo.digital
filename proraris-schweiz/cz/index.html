@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digitální fundraising a komunikace pro ProRaris Schweiz</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #C5F03A;
+  --accent-dark: #A8D420;
+  --accent-soft: #F0FAD0;
+  --black: #0A0A0A;
+  --gray-900: #1A1A1A;
+  --gray-700: #4A4A4A;
+  --gray-500: #767676;
+  --gray-300: #D4D4D4;
+  --gray-100: #F5F5F5;
+  --gray-50: #FAFAFA;
+  --white: #FFFFFF;
+  --max-w: 920px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--gray-900);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+header {
+  border-bottom: 1px solid var(--gray-100);
+  padding: 20px 0;
+  position: sticky; top: 0;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.03em; }
+.header-context { font-size: 13px; color: var(--gray-500); }
+.header-context strong { color: var(--gray-900); font-weight: 600; }
+
+.hero { padding: 110px 0 90px; }
+.eyebrow {
+  display: inline-block; background: var(--accent); color: var(--black);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 6px 14px;
+  border-radius: 100px; margin-bottom: 32px;
+}
+.greeting {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 26px; color: var(--gray-700);
+  margin-bottom: 18px; font-weight: 400; letter-spacing: -0.005em;
+}
+h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(40px, 5.5vw, 60px);
+  font-weight: 800; line-height: 1.04; letter-spacing: -0.028em;
+  margin-bottom: 28px; color: var(--black);
+}
+h1 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.005em; }
+.hero-sub {
+  font-size: 20px; line-height: 1.55; color: var(--gray-700);
+  max-width: 760px; margin-bottom: 32px; font-weight: 500;
+}
+.hero-sub strong { color: var(--black); font-weight: 600; }
+.hero-intro {
+  font-size: 17px; line-height: 1.65; color: var(--gray-700);
+  max-width: 720px; margin-bottom: 18px;
+}
+
+section { padding: 100px 0; border-top: 1px solid var(--gray-100); }
+section.dark { background: var(--black); color: var(--white); }
+section.dark h2, section.dark h3 { color: var(--white); }
+section.dark p, section.dark li { color: var(--gray-100); }
+section.dark .lead { color: var(--gray-100); }
+
+.section-tag {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gray-500);
+  margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+}
+.section-tag::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+}
+section.dark .section-tag { color: var(--gray-300); }
+
+h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(32px, 4.2vw, 46px);
+  font-weight: 800; line-height: 1.08; letter-spacing: -0.025em;
+  margin-bottom: 24px; color: var(--black);
+}
+h2 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.005em; }
+
+.lead {
+  font-size: 18px; line-height: 1.6; color: var(--gray-700);
+  margin-bottom: 32px; max-width: 760px;
+}
+.lead strong { color: var(--black); font-weight: 600; }
+
+.observation-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
+.obs-card {
+  background: var(--white); border: 1px solid var(--gray-100);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 14px 14px 0; padding: 26px 30px;
+  display: grid; grid-template-columns: 60px 1fr;
+  gap: 18px; align-items: start;
+}
+.obs-num {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 38px; font-weight: 800; letter-spacing: -0.04em;
+  color: var(--accent-dark); line-height: 1;
+}
+.obs-content h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+  margin-bottom: 8px; color: var(--black);
+}
+.obs-content p { font-size: 15.5px; line-height: 1.55; color: var(--gray-700); }
+.obs-closing {
+  margin-top: 36px; padding: 22px 28px;
+  background: var(--gray-50); border-radius: 14px;
+  font-size: 16px; line-height: 1.6; color: var(--gray-700);
+}
+.obs-closing strong { color: var(--black); font-weight: 600; }
+
+.outcomes-grid { display: grid; gap: 16px; margin-top: 38px; }
+.outcome {
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid var(--accent);
+  padding: 22px 26px; border-radius: 0 12px 12px 0;
+}
+.outcome-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700; font-size: 17px; color: var(--white);
+  margin-bottom: 8px; letter-spacing: -0.005em;
+}
+.outcome-desc { font-size: 15.5px; color: var(--gray-100); line-height: 1.55; }
+.outcome-closing {
+  margin-top: 36px; line-height: 1.6; color: var(--gray-100);
+  font-style: italic; font-family: 'Instrument Serif', serif;
+  font-weight: 400; font-size: 19px; max-width: 760px;
+}
+
+.fundament-section { padding: 110px 0; background: linear-gradient(180deg, var(--white) 0%, #FCFEF6 100%); }
+.fundament-wrap {
+  background: var(--white); border: 1px solid var(--gray-100);
+  border-radius: 22px; padding: 48px; margin-top: 36px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.04);
+}
+.fundament-block {
+  display: grid; grid-template-columns: 160px 1fr;
+  gap: 28px; padding: 28px 0; border-bottom: 1px solid var(--gray-100);
+}
+.fundament-block:last-of-type { border-bottom: none; padding-bottom: 8px; }
+.fundament-block:first-of-type { padding-top: 8px; }
+.fundament-phase {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent-dark); padding-top: 4px;
+}
+.fundament-content h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px; font-weight: 700; letter-spacing: -0.015em;
+  margin-bottom: 12px; color: var(--black);
+}
+.fundament-content p { font-size: 16px; line-height: 1.65; color: var(--gray-700); }
+.fundament-bottom {
+  margin-top: 32px; padding: 22px 28px;
+  background: var(--black); color: var(--white);
+  border-radius: 14px; line-height: 1.55; text-align: center;
+  font-style: italic; font-family: 'Instrument Serif', serif; font-size: 19px;
+}
+
+.leistungen-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 18px; margin-top: 38px;
+}
+.leistung {
+  background: var(--white); border: 1px solid var(--gray-100);
+  border-radius: 14px; padding: 26px 28px;
+}
+.leistung-num {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  color: var(--accent-dark); font-size: 16px; margin-bottom: 6px;
+}
+.leistung h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 18px; font-weight: 700; letter-spacing: -0.01em;
+  margin-bottom: 12px; color: var(--black); line-height: 1.25;
+}
+.leistung .leistung-label {
+  display: inline-block; background: var(--accent-soft); color: var(--accent-dark);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 3px 9px;
+  border-radius: 100px; margin-bottom: 10px;
+}
+.leistung p { font-size: 14.5px; line-height: 1.6; color: var(--gray-700); }
+@media (max-width: 720px) { .leistungen-grid { grid-template-columns: 1fr; } }
+
+.pricing-section {
+  background:
+    radial-gradient(ellipse 100% 70% at 50% 0%, rgba(197, 240, 58, 0.32) 0%, rgba(197, 240, 58, 0) 60%),
+    #FBFCF3;
+  position: relative; padding: 110px 0;
+}
+.pricing-section .lead { color: var(--gray-700); }
+
+.value-anchor {
+  background: var(--white); border: 1px solid var(--gray-100);
+  border-radius: 16px; padding: 28px 32px; margin-bottom: 32px;
+}
+.value-anchor-label {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gray-500); margin-bottom: 14px;
+}
+.value-anchor h4 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 17px; font-weight: 700; letter-spacing: -0.01em;
+  margin-bottom: 16px; color: var(--black);
+}
+.value-anchor ul { list-style: none; margin-bottom: 18px; }
+.value-anchor li {
+  padding: 9px 0; border-bottom: 1px dashed var(--gray-100);
+  font-size: 14.5px; color: var(--gray-700);
+  display: flex; justify-content: space-between; gap: 16px;
+}
+.value-anchor li:last-child { border-bottom: none; }
+.value-anchor li .va-label { flex: 1; }
+.value-anchor li .va-price {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700; color: var(--gray-900); white-space: nowrap;
+}
+.value-anchor-total {
+  margin-top: 14px; padding-top: 16px;
+  border-top: 2px solid var(--black);
+  font-size: 14.5px; color: var(--gray-700); line-height: 1.55;
+}
+.value-anchor-total strong { color: var(--black); font-weight: 700; }
+
+.pricing-card {
+  background: var(--white); border: 3px solid var(--accent);
+  border-radius: 22px; padding: 48px 44px; margin-bottom: 28px;
+  box-shadow: 0 0 0 8px rgba(197, 240, 58, 0.14), 0 12px 40px rgba(0,0,0,0.06);
+}
+.price-badge {
+  display: inline-block; background: var(--black); color: var(--white);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; padding: 6px 14px;
+  border-radius: 100px; margin-bottom: 16px;
+}
+.pricing-card h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 26px; font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 8px; color: var(--black);
+}
+.pricing-card-sub { font-size: 15px; color: var(--gray-700); margin-bottom: 32px; }
+.price-main-block {
+  text-align: center; padding: 36px 24px;
+  background: linear-gradient(180deg, rgba(197,240,58,0.10) 0%, rgba(197,240,58,0) 100%);
+  border-radius: 14px; margin-bottom: 24px;
+}
+.price-main-amount {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(56px, 8vw, 84px);
+  font-weight: 800; letter-spacing: -0.035em; line-height: 1;
+  margin-bottom: 10px; color: var(--black);
+}
+.price-main-period { font-size: 16px; color: var(--gray-700); font-weight: 500; }
+.price-main-total {
+  margin-top: 16px; padding-top: 16px;
+  border-top: 1px solid var(--gray-100);
+  font-size: 14.5px; color: var(--gray-700);
+}
+.price-main-total strong { color: var(--black); font-weight: 700; }
+
+.pricing-card .price-rationale {
+  font-size: 15px; color: var(--gray-700);
+  line-height: 1.6; margin-bottom: 20px; padding: 0 4px;
+}
+.price-alt {
+  font-size: 13.5px; color: var(--gray-700);
+  padding: 12px 18px; background: var(--gray-50);
+  border-radius: 8px; margin-bottom: 24px; text-align: center;
+}
+.price-alt strong { color: var(--black); font-weight: 700; }
+
+.pricing-scope {
+  background: var(--gray-50); padding: 20px 24px; border-radius: 10px;
+  font-size: 14.5px; color: var(--gray-700); line-height: 1.6; margin-bottom: 18px;
+}
+.pricing-scope strong { color: var(--black); font-weight: 600; }
+
+.addon-note {
+  font-size: 14.5px; color: var(--gray-700); line-height: 1.6;
+  padding: 20px 24px; background: var(--gray-50); border-radius: 10px;
+}
+.addon-note strong { color: var(--black); font-weight: 700; }
+
+.pricing-trust {
+  text-align: center; font-size: 17px; color: var(--gray-700);
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  margin-top: 32px; max-width: 680px; margin-left: auto; margin-right: auto;
+  line-height: 1.5;
+}
+
+.risk-section {
+  background: linear-gradient(180deg, var(--accent-soft) 0%, #F8FCE8 100%);
+  padding: 110px 0;
+}
+.risk-arg {
+  margin-top: 28px; padding: 24px 28px;
+  background: var(--white); border-radius: 14px;
+  border: 1px solid var(--gray-100);
+}
+.risk-arg-num {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  color: var(--accent-dark); font-size: 15px; margin-bottom: 6px;
+}
+.risk-arg h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+  margin-bottom: 10px; color: var(--black);
+}
+.risk-arg p { font-size: 15.5px; line-height: 1.6; color: var(--gray-700); }
+
+.risk-box {
+  margin-top: 48px; background: var(--black); color: var(--white);
+  border-radius: 22px; padding: 44px 44px;
+}
+.risk-box-tag {
+  display: inline-block; background: var(--accent); color: var(--black);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 5px 12px;
+  border-radius: 100px; margin-bottom: 18px;
+}
+.risk-box h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 24px; font-weight: 700; letter-spacing: -0.015em;
+  margin-bottom: 28px; color: var(--white);
+}
+.absicherung {
+  padding: 18px 0 18px 38px; position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+.absicherung:last-of-type { border-bottom: none; padding-bottom: 8px; }
+.absicherung::before {
+  content: '\2713'; position: absolute; left: 0; top: 18px;
+  color: var(--accent);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800; font-size: 22px;
+}
+.absicherung h4 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 17px; font-weight: 700; letter-spacing: -0.005em;
+  margin-bottom: 6px; color: var(--white);
+}
+.absicherung p { font-size: 15px; line-height: 1.55; color: var(--gray-100); }
+
+.risk-closing {
+  margin-top: 36px; padding: 24px 28px;
+  background: rgba(197, 240, 58, 0.10);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 19px; line-height: 1.55; color: var(--white);
+}
+
+.timeline { margin-top: 44px; position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 11px; top: 14px; bottom: 14px;
+  width: 2px; background: var(--gray-100);
+}
+.timeline-item { position: relative; padding-left: 44px; padding-bottom: 36px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before {
+  content: ''; position: absolute; left: 4px; top: 8px;
+  width: 16px; height: 16px;
+  background: var(--accent); border: 3px solid var(--white);
+  border-radius: 50%; z-index: 1;
+  box-shadow: 0 0 0 2px var(--gray-100);
+}
+.timeline-phase {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent-dark); margin-bottom: 8px;
+}
+.timeline-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 21px; font-weight: 700; letter-spacing: -0.015em;
+  margin-bottom: 10px; color: var(--black);
+}
+.timeline-content {
+  font-size: 15.5px; line-height: 1.6;
+  color: var(--gray-700); margin-bottom: 12px;
+}
+.milestone {
+  background: var(--accent-soft); border-left: 3px solid var(--accent);
+  padding: 12px 18px; border-radius: 0 8px 8px 0;
+  font-size: 14.5px; line-height: 1.5; color: var(--gray-900);
+}
+.milestone strong {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; font-size: 11px;
+  color: var(--accent-dark); display: block; margin-bottom: 4px;
+}
+
+.cta-section {
+  background: var(--black); color: var(--white);
+  padding: 110px 0 110px; text-align: center;
+}
+.cta-section h2 { color: var(--white); max-width: 720px; margin: 0 auto 24px; }
+.cta-section .lead { color: var(--gray-100); max-width: 680px; margin: 0 auto 40px; }
+.cta-section .section-tag { justify-content: center; color: var(--gray-300); }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px; margin: 40px 0; text-align: left;
+}
+@media (max-width: 720px) { .steps-grid { grid-template-columns: 1fr; } }
+.step {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 26px 24px;
+}
+.step-num {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 36px; font-weight: 800; letter-spacing: -0.03em;
+  color: var(--accent); line-height: 1; margin-bottom: 12px;
+}
+.step h4 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 17px; font-weight: 700; letter-spacing: -0.005em;
+  margin-bottom: 10px; color: var(--white);
+}
+.step p { font-size: 14.5px; line-height: 1.55; color: var(--gray-100); }
+
+.cta-action { margin-top: 24px; }
+.cta-button {
+  display: inline-block; background: var(--accent); color: var(--black);
+  text-decoration: none;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800; font-size: 18px; letter-spacing: -0.01em;
+  padding: 20px 40px; border-radius: 100px;
+  transition: transform 0.15s;
+}
+.cta-button:hover { transform: translateY(-2px); }
+.cta-subtext {
+  margin-top: 20px; color: var(--gray-300);
+  font-style: italic; font-family: 'Instrument Serif', serif; font-size: 17px;
+}
+.cta-signature {
+  margin-top: 48px; padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  color: var(--gray-500); font-size: 14px;
+}
+.cta-signature strong { color: var(--white); font-weight: 600; }
+
+.lang-switch {
+  display: inline-block; font-size: 12.5px; color: var(--gray-500);
+  text-decoration: none; padding: 4px 10px; border: 1px solid var(--gray-100);
+  border-radius: 100px;
+}
+.lang-switch:hover { color: var(--gray-900); border-color: var(--gray-300); }
+
+footer {
+  background: var(--black); color: var(--gray-500);
+  padding: 28px 0; font-size: 13px; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+footer strong { color: var(--gray-300); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <div class="logo">ngo.digital</div>
+    <div class="header-context">
+      Osobní návrh pro <strong>ProRaris Schweiz</strong> &nbsp;·&nbsp;
+      <a href="/proraris-schweiz" class="lang-switch">DE</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Osobní návrh</div>
+    <p class="greeting">Vážená paní Joss,</p>
+    <h1>Aby byla ProRaris digitálně tak viditelná, jak si její <em>poslání zaslouží</em>.</h1>
+    <p class="hero-sub">12měsíční model se strukturovaným auditem, mezinárodní rešerší best practices a kontinuální péčí. <strong>Jasná struktura, jasná investice, jasná zodpovědnost.</strong></p>
+    <p class="hero-intro">Po našem prvním rozhovoru jsem ještě jednou promyslel výchozí situaci ProRaris. Jednorázová vánoční kampaň není ten správný první krok. Co ProRaris teď potřebuje, je stabilní digitální základ, na kterém teprve větší kampaně mohou rozvinout svůj plný účinek.</p>
+    <p class="hero-intro">Přesně to je návrh na následujících stránkách.</p>
+  </div>
+</section>
+
+<!-- 2. AUSGANGSLAGE / PROBLÉM -->
+<section>
+  <div class="container">
+    <div class="section-tag">Výchozí situace</div>
+    <h2>Tři otevřená místa, která <em>stojí dary</em>.</h2>
+    <p class="lead">Při přípravě na možnou spolupráci jsem si tři dny detailně prohlížel digitální přítomnost ProRaris. Z perspektivy potenciální dárkyně. Z perspektivy možného partnera nadace. Z perspektivy novinářky hledající příběh. Tři pozorování mi zvlášť padla do oka:</p>
+
+    <div class="observation-grid">
+      <div class="obs-card">
+        <div class="obs-num">01</div>
+        <div class="obs-content">
+          <h3>Sociální sítě</h3>
+          <p>Facebooková stránka byla dva roky neaktivní. Na Instagramu, kde by byly nejlépe dosažitelné postižené rodiny, mladší dárci a multiplikátoři, ProRaris zcela chybí. Konkrétně to znamená: lidé, kteří by ProRaris podpořili, se o její práci vůbec nedozvědí.</p>
+        </div>
+      </div>
+      <div class="obs-card">
+        <div class="obs-num">02</div>
+        <div class="obs-content">
+          <h3>Žádné systematické kampaně</h3>
+          <p>Ani Den vzácných onemocnění koncem února, který by měl být fakticky nejdůležitější událostí roku, se digitálně téměř nevyužívá. To je ztracený dosah a ztracený potenciál darů v období, kdy pozornost na tématu stejně leží.</p>
+        </div>
+      </div>
+      <div class="obs-card">
+        <div class="obs-num">03</div>
+        <div class="obs-content">
+          <h3>Žádná donor journey</h3>
+          <p>Co se děje po daru (poděkování, příběhy o dopadu, konvertování na pravidelné dárce), není systematicky vybudované. Jednorázoví dárci zůstávají jednorázovými, přestože by většina ráda udělala víc.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="obs-closing">
+      <strong>Tohle není kritika ProRaris.</strong> Je to popis toho, co se děje v každé specializované pacientské organizaci, jakmile provozní práce vyplní den. Přesně pro tuhle mezeru je moje nabídka určená.
+    </div>
+  </div>
+</section>
+
+<!-- 3. POTENZIAL / VIZE -->
+<section class="dark">
+  <div class="container">
+    <div class="section-tag">Potenciál</div>
+    <h2>Co je za 12 měsíců <em>možné</em>.</h2>
+    <p class="lead">Představte si, jak ProRaris vypadá za rok. Ne za pět let, ne někdy, ale za 12 měsíců.</p>
+
+    <div class="outcomes-grid">
+      <div class="outcome">
+        <div class="outcome-title">Živá komunita na sociálních sítích</div>
+        <div class="outcome-desc">Na Facebooku a Instagramu se každý týden objevují příběhy postižených, věcná osvěta o vzácných onemocněních a konkrétní úspěchy z práce ProRaris. Rostoucí followerská základna pacientek a pacientů, příbuzných, odborníků a angažovaných dárců.</div>
+      </div>
+      <div class="outcome">
+        <div class="outcome-title">2 až 3 kampaně ročně, které skutečně přinášejí dary</div>
+        <div class="outcome-desc">Den vzácných onemocnění v únoru se promění v profesionálně připravenou awareness kampaň s měřitelným dosahem. Podzimní akce posiluje vazbu členů. Vánoční kampaň s jasným storytellingem přináší spolehlivý příliv darů.</div>
+      </div>
+      <div class="outcome">
+        <div class="outcome-title">Potenciál darů je využit</div>
+        <div class="outcome-desc">Jednorázoví dárci jsou systematicky doprovázeni a konvertováni na pravidelné podporovatele. Stránka pro dary je přepracovaná, donor journey nastavená, každý nový dárce dostává personalizované poděkování. Ze 100 jednorázových dárců se průměrně stane 15 až 25 pravidelných.</div>
+      </div>
+      <div class="outcome">
+        <div class="outcome-title">Každý měsíc vidíte, kde ProRaris stojí</div>
+        <div class="outcome-desc">Místo intuice máte jasná čísla: kolik lidí jste oslovili, kolik se vybralo, jak roste základna pravidelných dárců. Čtvrtletní strategická review ukazují, co funguje a co se upravuje.</div>
+      </div>
+      <div class="outcome">
+        <div class="outcome-title">ProRaris působí ve veřejnosti</div>
+        <div class="outcome-desc">Když někdo googluje «vzácná onemocnění Švýcarsko», ProRaris se objeví. Když novinář hledá příběh, ProRaris má obsah připravený. Když partner nadace hledá kompetentního zastřešujícího partnera, hned vidí, že ProRaris vystupuje profesionálně.</div>
+      </div>
+    </div>
+
+    <p class="outcome-closing">To není zbožné přání. To jsou běžné výsledky kontinuální péče s jasnou strategií. Kroky k tomu jsou známé a plánovatelné.</p>
+  </div>
+</section>
+
+<!-- 4. FUNDAMENT -->
+<section class="fundament-section">
+  <div class="container">
+    <div class="section-tag">Cesta k tomu</div>
+    <h2>Začíná to upřímným pohledem. A tím, <em>co jinde už funguje</em>.</h2>
+    <p class="lead">Většina poradců prodává okamžitou aktivitu. Víc postů, víc reklam, víc kampaní. U ProRaris by to bylo předčasné. Bez jasného obrazu výchozí situace a bez znalosti toho, co u srovnatelných organizací skutečně funguje, by každá investice stála na domněnkách místo na faktech. Proto spolupráce začíná dvěma týdny naslouchání a šesti týdny rešerše.</p>
+
+    <div class="fundament-wrap">
+      <div class="fundament-block">
+        <div class="fundament-phase">Týdny 1 až 3</div>
+        <div class="fundament-content">
+          <h3>Audit</h3>
+          <p>Systematická inventura celé digitální přítomnosti. Web, stránka pro dary, kanály sociálních sítí, existující data dárců, stávající donor journey. Každá stránka pro dary se prověřuje na konverzní překážky, každá komunikace s dárci na chybějící follow-upy, každý kanál na obsahovou substanci. Na konci leží černé na bílém, co funguje, co brzdí a kde jsou možné rychlé výhry.</p>
+        </div>
+      </div>
+
+      <div class="fundament-block">
+        <div class="fundament-phase">Týdny 3 až 6</div>
+        <div class="fundament-content">
+          <h3>Rešerše best practices ze Švýcarska</h3>
+          <p>Jak to dělají srovnatelné švýcarské pacientské organizace a zastřešující svazy? Které nadace jsou úspěšné v získávání prostředků? Co ve Švýcarsku funguje kulturně, jazykově, regulačně? Systematicky prozkoumám 8 až 12 srovnatelných švýcarských organizací a přenesu úspěšné vzorce do kontextu ProRaris.</p>
+        </div>
+      </div>
+
+      <div class="fundament-block">
+        <div class="fundament-phase">Týdny 5 až 7</div>
+        <div class="fundament-content">
+          <h3>Mezinárodní rešerše best practices</h3>
+          <p>V Německu, Rakousku, Skandinávii a Velké Británii existují zastřešující svazy pro vzácná onemocnění, které jsou digitálně výrazně dál. Jak pracují na sociálních sítích? Jak běží jejich kampaně? Jaké donor journeys vybudovaly? Systematicky prozkoumám 8 až 10 mezinárodních organizací a identifikuji 3 až 5 přístupů, které se dají nejlépe přenést na Švýcarsko.</p>
+        </div>
+      </div>
+
+      <div class="fundament-block">
+        <div class="fundament-phase">Týden 8</div>
+        <div class="fundament-content">
+          <h3>Písemný strategický dokument</h3>
+          <p>Všechny poznatky se promítají do konkrétního 12měsíčního strategického dokumentu pro ProRaris. S prioritami, měřitelnými cíli a akčním plánem. Důležité: tento dokument zůstává u ProRaris. I když naše spolupráce po roce skončí, základ je u vás. Jiná agentura by na něm mohla stavět, nebo by ProRaris mohla mnohé vést dál interně.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fundament-bottom">
+      Teprve po těchto 8 týdnech začíná průběžná realizace. Jinak bychom optimalizovali jenom domněnky.
+    </div>
+  </div>
+</section>
+
+<!-- 5. LEISTUNGEN -->
+<section>
+  <div class="container">
+    <div class="section-tag">Rozsah služeb</div>
+    <h2>Co ProRaris <em>každý měsíc</em> dostává.</h2>
+    <p class="lead">Po 8 týdnech budování základu začíná kontinuální práce. Osm průběžných služeb, které ProRaris doprovázejí celý rok. Flexibilně rozložených na <strong>25 až 40 hodin měsíčně</strong> podle fáze kampaně.</p>
+
+    <div class="leistungen-grid">
+      <div class="leistung">
+        <div class="leistung-num">01</div>
+        <span class="leistung-label">Co dostáváte</span>
+        <h3>Aktivní přítomnost na sociálních sítích</h3>
+        <p>Týdenní příspěvky na Facebooku a Instagramu. Storytelling, osvěta, úspěchy, výzvy k darům. Jedna osoba se stará o to, aby ProRaris byla ve vnímání dárců, příbuzných a odborníků přítomná.</p>
+      </div>
+
+      <div class="leistung">
+        <div class="leistung-num">02</div>
+        <span class="leistung-label">Co dostáváte</span>
+        <h3>Profesionální obsah bez interního nákladu</h3>
+        <p>Redakční plán, texty, grafika, AI-generovaná videa. ProRaris dodává informace zevnitř. Já přebírám produkci a publikaci. Nemusíte vyčleňovat zaměstnance na sociální sítě.</p>
+      </div>
+
+      <div class="leistung">
+        <div class="leistung-num">03</div>
+        <span class="leistung-label">Co dostáváte</span>
+        <h3>Meta Ads, které skutečně přinášejí dary</h3>
+        <p>Cílené reklamní kampaně na Facebooku a Instagramu, data-driven optimalizované. Vy určujete reklamní rozpočet. Já zajišťuji, aby každý frank byl nasazen nejlépe. Dosah, noví dárci, awareness, vše měřitelné.</p>
+      </div>
+
+      <div class="leistung">
+        <div class="leistung-num">04</div>
+        <span class="leistung-label">Co dostáváte</span>
+        <h3>Stránka pro dary, která funguje</h3>
+        <p>Krok za krokem se přepracovává stránka pro dary. Lepší UX, jasný storytelling, opce pravidelných darů prominentně umístěná. Ze zkušenosti i malé změny mohou zdvojnásobit příjmy z darů.</p>
+      </div>
+
+      <div class="leistung">
+        <div class="leistung-num">05</div>
+        <span class="leistung-label">Co dostáváte</span>
+        <h3>Čistá donor journey</h3>
+        <p>Každý nový dárce dostává personalizované poděkování. Po několika týdnech následuje příběh o dopadu daru. Po třech měsících elegantní pozvánka k pravidelnému dárcovství. Ne dotěrně, ale s respektem.</p>
+      </div>
+
+      <div class="leistung">
+        <div class="leistung-num">06</div>
+        <span class="leistung-label">Co dostáváte</span>
+        <h3>2 až 3 kampaně ročně, čistě naplánované</h3>
+        <p>Den vzácných onemocnění, podzimní awareness, vánoční kampaň. Každá kampaň s jasným cílem, čistým plánem, kompletním nasazením reklamy a poctivým vyhodnocením. Vy se soustředíte na obsahovou substanci, já na realizaci.</p>
+      </div>
+
+      <div class="leistung">
+        <div class="leistung-num">07</div>
+        <span class="leistung-label">Co dostáváte</span>
+        <h3>Reporting, kterému rozumíte</h3>
+        <p>Měsíční reporty s nejdůležitějšími metrikami. Čtvrtletní strategická review s doporučeními. Kdykoli vidíte, co investice přináší. Žádné PowerPoint-bitvy, jen jasná čísla v jasném kontextu.</p>
+      </div>
+
+      <div class="leistung">
+        <div class="leistung-num">08</div>
+        <span class="leistung-label">Co dostáváte</span>
+        <h3>Jedna osoba, která nese zodpovědnost</h3>
+        <p>Jsem vaše jediná kontaktní osoba. Žádný měnící se tým, žádný junior konzultant. Měsíční strategický call (60 minut), mezi tím kdykoli k zastižení přes e-mail. Přímý vztah místo agenturní hierarchie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PRICING -->
+<section class="pricing-section">
+  <div class="container">
+    <div class="section-tag">Investice</div>
+    <h2>Jasná <em>pevná cena</em>. Jediné doporučení.</h2>
+    <p class="lead">Po výčtu všech služeb by normálně přišla tabulka se třemi tarify, «Doporučeno»-stickerem a upsell opcemi. To by pro ProRaris nebylo užitečné. Existuje správná odpověď pro vaši situaci, a přesně tu navrhuji.</p>
+
+    <div class="value-anchor">
+      <div class="value-anchor-label">Pro srovnání</div>
+      <h4>Co by středně velká švýcarská agentura za tento rozsah služeb účtovala</h4>
+      <ul>
+        <li><span class="va-label">Strategie a audit (jednorázově)</span><span class="va-price">8'000 až 15'000 CHF</span></li>
+        <li><span class="va-label">Měsíční péče o sociální sítě</span><span class="va-price">2'500 až 4'500 CHF</span></li>
+        <li><span class="va-label">Řízení Meta Ads</span><span class="va-price">1'200 až 2'500 CHF</span></li>
+        <li><span class="va-label">Optimalizace fundraisingu (jednorázově)</span><span class="va-price">6'000 až 12'000 CHF</span></li>
+        <li><span class="va-label">Reporting a strategy calls</span><span class="va-price">většinou zvlášť</span></li>
+      </ul>
+      <div class="value-anchor-total">
+        <strong>Total za první rok u švýcarské agentury: 65'000 až 110'000 CHF.</strong><br>
+        Většinou s měnícími se kontaktními osobami a roztříštěnou zodpovědností.
+      </div>
+    </div>
+
+    <div class="pricing-card">
+      <div class="price-badge">Nabídka pro ProRaris</div>
+      <h3>Kontinuální péče</h3>
+      <p class="pricing-card-sub">Jedna jediná kontaktní osoba. Všechny služby v ceně. 12 měsíců.</p>
+
+      <div class="price-main-block">
+        <div class="price-main-amount">3'590 CHF</div>
+        <div class="price-main-period">měsíčně, při 12měsíčním kontraktu</div>
+        <div class="price-main-total"><strong>Total rok 1: 43'080 CHF.</strong> Bez skrytých nákladů. Bez procentuální účasti na darech.</div>
+      </div>
+
+      <p class="price-rationale">
+        Rok je minimální doba, ve které seriózní digitální fundraising může ukázat efekt. Nastavit audit a strategii, vybudovat kanály, provést první kampaň, vyhodnotit data, optimalizovat. Kratší období vedou zkušenostně k předčasným závěrům.
+      </p>
+
+      <div class="price-alt">
+        Alternativa bez ročního závazku: <strong>3'990 CHF měsíčně</strong>, vypověditelné po měsíci.
+      </div>
+
+      <div class="pricing-scope">
+        <strong>V pevné ceně inkludováno:</strong> audit, obě rešerše best practices, písemný strategický dokument, budování a péče o sociální sítě, řízení Meta Ads, optimalizace fundraisingu, donor journey, 2 až 3 kampaně ročně, měsíční reporting, čtvrtletní strategická review a všechny konzultace.
+        <br><br>
+        <strong>Neinkludováno:</strong> reklamní rozpočet pro Meta Ads (platí se přímo Metě, výši určujete vy sami, doporučení 800 až 2'500 CHF měsíčně podle kampaně) a případné transakční poplatky platebního poskytovatele.
+      </div>
+
+      <div class="addon-note">
+        <strong>Jednorázový doplněk, 1'200 CHF:</strong> Profesionální šablony pro posty na sociální sítě v corporate identity ProRaris. Ve spolupráci s mým externím grafikem. Dodány v prvním měsíci a používány celý rok.
+      </div>
+    </div>
+
+    <p class="pricing-trust">
+      Žádný success fee. Žádná procentuální účast na darech. Vše, co kampaně vydělají, zůstává v plné výši u ProRaris.
+    </p>
+  </div>
+</section>
+
+<!-- 7. RISK REVERSAL -->
+<section class="risk-section">
+  <div class="container">
+    <div class="section-tag">Proč rok</div>
+    <h2>Proč 12měsíční kontrakt ProRaris <em>chrání</em>, ne svazuje.</h2>
+    <p class="lead">Často se mě ptají, proč standardně nenabízím jednoduchý měsíční kontrakt bez minimální doby. Upřímná odpověď: protože by to pro ProRaris byla horší volba.</p>
+
+    <div class="risk-arg">
+      <div class="risk-arg-num">Argument 1</div>
+      <h3>Digitální fundraising ukazuje účinek v cyklech, ne v měsících.</h3>
+      <p>Audit trvá 8 týdnů. První kampaň se vyvíjí přes tři měsíce. Donor journey se měří nejdřív po čtyřech až šesti měsících. Kdo vyhodnocuje po třech měsících, vyvozuje závěry z dat, která ještě nemají význam. Rok je minimální doba pro seriózní posouzení.</p>
+    </div>
+
+    <div class="risk-arg">
+      <div class="risk-arg-num">Argument 2</div>
+      <h3>Pracuji jinak, když můžu plánovat.</h3>
+      <p>Když vím, že spolupráce trvá 12 měsíců, plánuji kampaně šest měsíců dopředu, buduji donor journey přes celý rok a investuji přípravný čas do oblastí, které ukáží efekt teprve po měsících. Při měsíční vypověditelnosti nuceně optimalizuji na krátkodobé quick wins. Obojí má své místo. Pro ProRaris je dlouhodobá varianta ta správná.</p>
+    </div>
+
+    <div class="risk-arg">
+      <div class="risk-arg-num">Argument 3</div>
+      <h3>Cena je výhodnější.</h3>
+      <p>3'590 CHF při ročním kontraktu versus 3'990 CHF měsíčně vypověditelně odpovídá úspoře 4'800 CHF ročně. Tuhle slevu dávám, protože plánovatelnost mi stojí za stejnou hodnotu.</p>
+    </div>
+
+    <div class="risk-box">
+      <div class="risk-box-tag">Co vás chrání</div>
+      <h3>Tři konkrétní podmínky, které vás zajišťují.</h3>
+
+      <div class="absicherung">
+        <h4>Vstupní fáze bez dlouhodobé vazby</h4>
+        <p>Prvních 60 dní můžete bez udání důvodu vypovědět. Platíte pouze odvedené týdny pro rata. Když po prvních 8 týdnech auditu vyjde najevo, že formát nesedí, rozejdeme se, aniž by to bolelo.</p>
+      </div>
+
+      <div class="absicherung">
+        <h4>Strategický dokument zůstává u vás</h4>
+        <p>I když spolupráce po 12 měsících skončí, ProRaris si ponechá kompletní strategický dokument, všechny výsledky auditu a obě rešerše best practices. Jiná agentura by na tom mohla stavět. Neztrácíte nic, když se rozejdeme.</p>
+      </div>
+
+      <div class="absicherung">
+        <h4>Vše zůstává ve vašem vlastnictví</h4>
+        <p>Účty na sociálních sítích, reklamní účet Meta, mailing listy, obsah, grafika. Vše se vytváří v kanálech a účtech ProRaris. Při ukončení smlouvy vše dokumentovaně předám. Žádný lock-in, žádná rukojmí dat.</p>
+      </div>
+
+      <p class="risk-closing">Můj obchodní model staví na tom, že ProRaris bude za rok lépe stát než dnes. Když k tomu nedojde, nebyl jsem dost dobrý. A za to nemůžu chtít, abyste byli svázáni.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ROADMAP -->
+<section>
+  <div class="container">
+    <div class="section-tag">Roadmapa</div>
+    <h2>Co se v dalších 12 měsících <em>konkrétně</em> děje.</h2>
+    <p class="lead">Tahle roadmapa je závazná, ne nezávazná. Je součástí strategického dokumentu a čtvrtletně se reviduje.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-phase">Fáze 1 · měsíc 1 a 2</div>
+        <div class="timeline-title">Základ</div>
+        <div class="timeline-content">Audit, rešerše best practices Švýcarsko, mezinárodní rešerše best practices, písemný strategický dokument pro 12 měsíců, nastavení reportingu.</div>
+        <div class="milestone"><strong>Milník</strong>Strategický dokument je hotový. Od měsíce 3 přesně víte, kam se jde.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-phase">Fáze 2 · měsíc 3 až 5</div>
+        <div class="timeline-title">Aktivace</div>
+        <div class="timeline-content">Restart komunikace na Facebooku. Budování Instagram profilu. První obsahy podle redakčního plánu. První Meta-Ads testy s malým rozpočtem. Příprava první větší kampaně.</div>
+        <div class="milestone"><strong>Milník</strong>ProRaris je viditelná na obou kanálech. První data k akvizici dárců jsou k dispozici.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-phase">Fáze 3 · měsíc 6 a 7</div>
+        <div class="timeline-title">První velká kampaň</div>
+        <div class="timeline-content">Realizace awareness kampaně ke Dni vzácných onemocnění. Kompletní nasazení reklamy, optimalizovaná stránka pro dary, storytelling obsah, donor journey pro nové dárce.</div>
+        <div class="milestone"><strong>Milník</strong>První tvrdý datapoint: kolik dárců a jaký objem darů kampaň vygenerovala.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-phase">Fáze 4 · měsíc 8 až 10</div>
+        <div class="timeline-title">Rozšíření a donor journey</div>
+        <div class="timeline-content">Optimalizace stránky pro dary na základě dat z kampaně. Budování konverze pravidelných dárců. Druhá větší kampaň (podzimní awareness). Příprava prvních oslovení nadací.</div>
+        <div class="milestone"><strong>Milník</strong>První konverze pravidelných dárců viditelné. Stránka pro dary měřitelně lepší.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-phase">Fáze 5 · měsíc 11 a 12</div>
+        <div class="timeline-title">Vánoční kampaň a výhled</div>
+        <div class="timeline-content">Vánoční kampaň jako vrchol roku. Roční reporting. Strategie pro následující rok. Předání nebo prodloužení spolupráce.</div>
+        <div class="milestone"><strong>Milník</strong>Kompletní roční obraz digitálního dopadu darů. Jasná faktická základna pro rozhodnutí o roce 2.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-tag">Další krok</div>
+    <h2>Telefonát. <em>30 minut</em>. Bez závazku.</h2>
+    <p class="lead">Rozhodnutí o dvanáctiměsíční spolupráci se nedělá z PDF. Potřebuje rozhovor, ve kterém se zodpoví otevřené otázky, ve kterém můžete posoudit můj způsob práce a ve kterém já lépe pochopím, co ProRaris potřebuje.</p>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>30minutový hovor</h4>
+        <p>Telefonát nebo video call. Vy se ptáte, já odpovídám. Společně prověříme, jestli sedí chemie a formát.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Prohlubující setkání</h4>
+        <p>Pokud chtějí obě strany pokračovat: 90minutový strategický rozhovor, osobně nebo přes video. Přinesu první konkrétní nápady pro ProRaris. Zdarma a nezávazně.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Rozhodnutí</h4>
+        <p>Teprve když jsou obě strany přesvědčené, uzavřeme smlouvu. První faktura přichází se startem skutečné spolupráce, ne dřív.</p>
+      </div>
+    </div>
+
+    <div class="cta-action">
+      <a href="mailto:peter@ngo.digital?subject=ProRaris%20Schweiz%20-%20Navrh%20terminu" class="cta-button">Navrhnout termín</a>
+      <p class="cta-subtext">Napište mi krátký e-mail s dvěma nebo třemi možnými časovými okny. Odpovím do 24 hodin.</p>
+    </div>
+
+    <div class="cta-signature">
+      <strong>Peter Chalupiansky</strong> · Digital Fundraising Consultant<br>
+      ngo.digital · peter@ngo.digital
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>ngo.digital</strong> · Made in Prag · Digitální fundraising, který skutečně přináší dary.
+  </div>
+</footer>
+
+</body>
+</html>
