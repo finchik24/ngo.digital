@@ -296,8 +296,17 @@ h2 em {
   letter-spacing: -0.015em;
   margin-bottom: 12px;
   color: var(--black);
+  overflow-wrap: break-word;
 }
 .fundament-content p { font-size: 16px; line-height: 1.65; color: var(--gray-700); }
+
+@media (max-width: 720px) {
+  .fundament-wrap { padding: 26px 22px; }
+  .fundament-block { grid-template-columns: 1fr; gap: 10px; padding: 22px 0; }
+  .fundament-phase { padding-top: 0; }
+  .fundament-content h3 { font-size: 20px; }
+}
+
 .fundament-bottom {
   margin-top: 32px;
   padding: 22px 28px;
