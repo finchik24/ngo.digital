@@ -531,6 +531,93 @@ footer {
 }
 
 footer strong { color: var(--gray-300); }
+
+/* FOUNDATION (Audit + Best Practice block) */
+.foundation {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 14px 14px 0;
+  padding: 32px 36px;
+  margin: 36px 0 50px;
+}
+.foundation-tag {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent-dark);
+  margin-bottom: 12px;
+}
+.foundation-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 26px; font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 14px; color: var(--black);
+}
+.foundation-intro {
+  font-size: 17px; line-height: 1.6; color: var(--gray-700);
+  margin-bottom: 24px;
+}
+.foundation-list { list-style: none; }
+.foundation-list li {
+  padding: 14px 0 14px 28px;
+  position: relative;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-700);
+}
+.foundation-list li:last-child { border-bottom: none; }
+.foundation-list li::before {
+  content: '\2713'; position: absolute; left: 0; top: 16px;
+  color: var(--accent-dark);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800; font-size: 16px;
+}
+.foundation-list .item-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700; font-size: 16px; color: var(--black);
+  display: block; margin-bottom: 3px; letter-spacing: -0.01em;
+}
+.foundation-list .item-desc { font-size: 14px; line-height: 1.5; }
+
+.leistung-section-h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px; font-weight: 700; letter-spacing: -0.015em;
+  margin: 8px 0 10px; color: var(--black);
+}
+.leistung-intro { font-size: 16px; line-height: 1.6; color: var(--gray-700); margin-bottom: 0; }
+
+/* PRICING new bits */
+.price-badge {
+  display: inline-block; background: var(--accent); color: var(--black);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 5px 12px;
+  border-radius: 100px; margin-bottom: 14px;
+}
+.price-main-block {
+  background: var(--black); color: var(--white);
+  padding: 28px 32px; border-radius: 14px;
+  margin-bottom: 18px; text-align: center;
+}
+.price-main-amount {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 54px; font-weight: 800; letter-spacing: -0.03em;
+  line-height: 1; margin-bottom: 8px; color: var(--white);
+}
+.price-main-period { font-size: 15px; color: var(--gray-300); font-weight: 500; }
+.price-rationale {
+  font-size: 14px; color: var(--gray-700);
+  line-height: 1.55; margin-bottom: 16px; padding: 0 4px;
+}
+.price-alt {
+  font-size: 13px; color: var(--gray-700);
+  padding: 12px 18px; background: var(--gray-50);
+  border-radius: 8px; margin-bottom: 20px; text-align: center;
+}
+.price-alt strong { color: var(--black); font-weight: 700; }
+.pricing-trust {
+  text-align: center; font-size: 15px; color: var(--gray-300);
+  font-style: italic; font-family: 'Instrument Serif', serif;
+  margin-top: 24px;
+}
 </style>
 </head>
 <body>
@@ -549,8 +636,8 @@ footer strong { color: var(--gray-300); }
     <div class="eyebrow">Persönlicher Vorschlag</div>
     <p class="greeting">Liebe Frau Joss,</p>
     <h1>Ein <em>nachhaltiges Modell</em> für ProRaris Schweiz.</h1>
-    <p>Nach unserem ersten Austausch habe ich noch einmal über die Ausgangslage von ProRaris nachgedacht. Meine ursprüngliche Idee einer einmaligen Weihnachtskampagne war möglicherweise nicht der passende erste Schritt — gerade weil ProRaris zunächst eine kontinuierliche digitale Basis braucht, bevor grössere Kampagnen ihre volle Wirkung entfalten können.</p>
-    <p>Auf dieser Seite finden Sie einen alternativen Vorschlag: eine <strong>kontinuierliche Betreuung</strong>, die das digitale Fundament Schritt für Schritt aufbaut und langfristig trägt.</p>
+    <p>Nach unserem ersten Austausch habe ich noch einmal über die Ausgangslage von ProRaris nachgedacht. Eine einmalige Weihnachtskampagne ist nicht der richtige erste Schritt: dafür braucht ProRaris zuerst ein stabiles digitales Fundament, auf dem grössere Kampagnen überhaupt Wirkung entfalten können.</p>
+    <p>Auf dieser Seite finden Sie einen alternativen Vorschlag. Eine <strong>kontinuierliche Betreuung</strong>, die mit einem strukturierten Audit beginnt, sich an Best Practices aus der Schweiz und dem Ausland orientiert und Schritt für Schritt eine tragfähige Grundlage für seriöses digitales Fundraising aufbaut.</p>
   </div>
 </section>
 
@@ -559,15 +646,15 @@ footer strong { color: var(--gray-300); }
   <div class="container">
     <div class="section-tag">Ausgangslage</div>
     <h2>Was mir <em>aufgefallen</em> ist.</h2>
-    <p class="lead">Bei meiner Vorbereitung auf eine mögliche Zusammenarbeit habe ich mir die digitale Präsenz von ProRaris angesehen. Drei Beobachtungen, die ich Ihnen gerne offen mitteilen möchte:</p>
+    <p class="lead">Bei meiner Vorbereitung auf eine mögliche Zusammenarbeit habe ich mir die digitale Präsenz von ProRaris angesehen. Drei Beobachtungen, die ich Ihnen gerne offen mitteile:</p>
 
     <div class="observation">
-      <p><strong>1. Soziale Medien:</strong> Die Facebook-Seite von ProRaris war in den letzten zwei Jahren nicht aktiv. Auf Instagram, wo gerade jüngere Spender und Multiplikatoren erreichbar wären, ist ProRaris bisher nicht präsent.</p>
-      <p><strong>2. Fundraising-Kampagnen:</strong> Aktuell finden keine systematischen Fundraising-Kampagnen statt — weder zum Tag der Seltenen Krankheiten (Ende Februar), noch in der spendenstarken Weihnachtszeit.</p>
-      <p><strong>3. Online-Spenderkommunikation:</strong> Die Donor Journey nach einer Spende — Dankeskommunikation, Reaktivierung, Konvertierung zu Dauerspendern — scheint nicht systematisch aufgebaut zu sein.</p>
+      <p><strong>1. Soziale Medien.</strong> Die Facebook-Seite von ProRaris war in den letzten zwei Jahren nicht aktiv. Auf Instagram, wo gerade jüngere Spender, Multiplikatoren und betroffene Familien erreichbar wären, ist ProRaris bisher nicht präsent.</p>
+      <p><strong>2. Fundraising-Kampagnen.</strong> Es finden aktuell keine systematischen Fundraising-Kampagnen statt. Auch nicht zum Tag der Seltenen Krankheiten Ende Februar, der für ProRaris eigentlich der wichtigste Anlass des Jahres sein könnte.</p>
+      <p><strong>3. Online-Spenderkommunikation.</strong> Die Donor Journey nach einer Spende, also Dankeskommunikation, Reaktivierung und Konvertierung zu Dauerspendern, scheint nicht systematisch aufgebaut zu sein.</p>
     </div>
 
-    <p class="lead" style="margin-top: 30px;">Das ist keine Kritik. Es ist eine häufige Situation bei spezialisierten Organisationen — die operative Arbeit füllt den Tag, und Bereiche wie Social Media, Aufklärungskampagnen oder Online-Fundraising bleiben oft im Hintergrund. <strong>Genau hier könnte eine kontinuierliche externe Unterstützung den Unterschied machen.</strong></p>
+    <p class="lead" style="margin-top: 30px;">Das ist keine Kritik. Es ist eine häufige Situation bei spezialisierten Organisationen. Die operative Arbeit füllt den Tag, und Bereiche wie Social Media, Aufklärungskampagnen oder Online-Fundraising bleiben oft im Hintergrund. <strong>Genau hier kann eine kontinuierliche externe Unterstützung den Unterschied machen.</strong></p>
   </div>
 </section>
 
@@ -586,7 +673,7 @@ footer strong { color: var(--gray-300); }
 
       <div class="outcome">
         <div class="outcome-title">Aufklärung über seltene Krankheiten</div>
-        <div class="outcome-desc">Storytelling-Kampagnen, die die Realität von Betroffenen sichtbar machen. AI-gestützte Videos, persönliche Geschichten und faktische Aufklärung — Inhalte, die berühren und informieren.</div>
+        <div class="outcome-desc">Storytelling-Kampagnen, die die Realität von Betroffenen sichtbar machen. AI-gestützte Videos, persönliche Geschichten und faktische Aufklärung: Inhalte, die berühren und informieren.</div>
       </div>
 
       <div class="outcome">
@@ -612,40 +699,69 @@ footer strong { color: var(--gray-300); }
   <div class="container">
     <div class="section-tag">Leistungsumfang</div>
     <h2>Was die Betreuung <em>konkret</em> umfasst.</h2>
-    <p class="lead">Eine monatliche Pauschalbetreuung im Umfang von <strong>25–40 Stunden</strong> pro Monat. Flexibel verteilt nach Bedarf und Kampagnen-Phasen.</p>
+    <p class="lead">25 bis 40 Stunden pro Monat, flexibel nach Bedarf und Kampagnen-Phasen. Vor Kampagnen werden mehr Stunden investiert, in ruhigeren Phasen weniger. Die Pauschale gibt beiden Seiten Planungssicherheit.</p>
+
+    <div class="foundation">
+      <div class="foundation-tag">Fundament der Zusammenarbeit</div>
+      <h3 class="foundation-title">Audit und Best-Practice-Recherche zu Beginn.</h3>
+      <p class="foundation-intro">
+        Bevor wir Inhalte produzieren oder Werbebudgets ausgeben, schauen wir hin. In den ersten 6 bis 8 Wochen entsteht die Grundlage, auf der die gesamte weitere Zusammenarbeit aufbaut.
+      </p>
+      <ul class="foundation-list">
+        <li>
+          <span class="item-title">Strukturierter Audit der digitalen Präsenz</span>
+          <span class="item-desc">Website, Spendenseite, Social-Media-Kanäle, Donor Journey, vorhandene Daten und Reporting. Eine ehrliche Bestandsaufnahme: was funktioniert, was bremst, wo liegt schnelles Potenzial.</span>
+        </li>
+        <li>
+          <span class="item-title">Best-Practice-Recherche Schweiz</span>
+          <span class="item-desc">Wie arbeiten vergleichbare Schweizer Patientenorganisationen und Dachverbände im digitalen Fundraising. Was funktioniert hier kulturell, sprachlich und regulatorisch besonders gut.</span>
+        </li>
+        <li>
+          <span class="item-title">Best-Practice-Recherche international</span>
+          <span class="item-desc">Was tun führende Rare-Disease-Organisationen und vergleichbare Verbände in Deutschland, Österreich, Skandinavien und im Vereinigten Königreich. Welche Ansätze lassen sich sinnvoll auf die Schweiz übertragen.</span>
+        </li>
+        <li>
+          <span class="item-title">Schriftliches Strategiedokument für 12 Monate</span>
+          <span class="item-desc">Konkrete Empfehlungen, Prioritäten, messbare Ziele und ein Aktionsplan. Diese Grundlage bleibt bei ProRaris, unabhängig vom weiteren Verlauf der Zusammenarbeit.</span>
+        </li>
+      </ul>
+    </div>
+
+    <h3 class="leistung-section-h3">Laufende Leistungen während der gesamten Betreuung</h3>
+    <p class="leistung-intro">Nach dem Audit beginnt die kontinuierliche Arbeit. Diese Leistungen begleiten ProRaris durch das ganze Jahr.</p>
 
     <ul class="included-list">
       <li>
-        <span class="item-title">Strategie und Planung</span>
-        <span class="item-desc">Entwicklung einer mehrjährigen Digital-Fundraising- und Kommunikationsstrategie. Jährlicher und vierteljährlicher Aktionsplan.</span>
+        <span class="item-title">Restart der Facebook-Kommunikation und Aufbau des Instagram-Profils</span>
+        <span class="item-desc">Reaktivierung der bestehenden Facebook-Präsenz, Aufbau eines neuen Instagram-Auftritts mit klarer Positionierung für ProRaris.</span>
       </li>
       <li>
-        <span class="item-title">Restart der Kommunikation auf Facebook und Aufbau eines Instagram-Profils</span>
-        <span class="item-desc">Reaktivierung der bestehenden Facebook-Präsenz, Aufbau eines neuen Instagram-Auftritts mit klarer Positionierung.</span>
+        <span class="item-title">Redaktioneller Plan und Inhaltserstellung</span>
+        <span class="item-desc">Storytelling rund um seltene Krankheiten, Aufklärungs-Content, Informationen über die Arbeit von ProRaris, Fundraising-Posts und AI-gestützte Videos. Konsistente Frequenz, abgestimmt auf Ihre Kapazität.</span>
       </li>
       <li>
-        <span class="item-title">Inhaltserstellung für Social Media (FB, IG, LinkedIn, …)</span>
-        <span class="item-desc">Storytelling, Aufklärungskampagnen, Information über Ihre Arbeit, Fundraising-Posts, AI-gestützte Videos. Redaktioneller Plan mit konsistenter Frequenz.</span>
+        <span class="item-title">Meta Ads für Aufklärung und Fundraising</span>
+        <span class="item-desc">Gezielte Reichweiten- und Fundraising-Kampagnen auf Facebook und Instagram. Datenbasierte Optimierung von Targeting, Creatives und Budgetverteilung. Sie behalten die volle Kontrolle über die Werbeausgaben.</span>
       </li>
       <li>
-        <span class="item-title">Steuerung und Optimierung von Aufklärungs- und Fundraising-Kampagnen über Meta Ads</span>
-        <span class="item-desc">Gezielte Reichweitenkampagnen auf Facebook und Instagram. Datenbasierte Optimierung von Targeting, Creatives und Budget.</span>
+        <span class="item-title">Fundraising-Optimierung und Donor Journey</span>
+        <span class="item-desc">Überarbeitung der Spendenseite (Storytelling, Dauerspende, bessere UX/UI). Aufbau einer durchdachten Donor Journey, Spenderpflege, Vorbereitung kleinerer Kampagnen und personalisierter Microsites.</span>
       </li>
       <li>
-        <span class="item-title">Fundraising-Optimierung</span>
-        <span class="item-desc">Überarbeitung der Spendenseite (Storytelling, Dauerspende, bessere UX/UI). Aufbau einer Donor Journey, Spenderpflege, Vorbereitung kleinerer Kampagnen und personalisierter Microsites.</span>
+        <span class="item-title">Planung und Steuerung der Jahreskampagnen</span>
+        <span class="item-desc">2 bis 3 grössere Kampagnen pro Jahr (z.B. Tag der Seltenen Krankheiten, Herbst-Awareness, Weihnachtszeit). Jede Kampagne mit klarem Ziel, sauberem Plan, Messung und Auswertung.</span>
       </li>
       <li>
-        <span class="item-title">Reporting und Analyse</span>
-        <span class="item-desc">Monatliche Kennzahlen-Berichte, vierteljährliche Strategie-Reviews mit Empfehlungen für die nächsten Schritte.</span>
+        <span class="item-title">Reporting und Strategie-Reviews</span>
+        <span class="item-desc">Monatliche Kennzahlen-Berichte, vierteljährliche Strategie-Reviews mit konkreten Empfehlungen. Sie sehen jederzeit, was die Investition bewirkt.</span>
       </li>
       <li>
-        <span class="item-title">Best-Practice-Recherche aus der Schweiz und international</span>
-        <span class="item-desc">Was funktioniert bei vergleichbaren Organisationen im In- und Ausland? Übertragung relevanter Ansätze auf ProRaris.</span>
+        <span class="item-title">Laufende Best-Practice-Beobachtung</span>
+        <span class="item-desc">Auch nach dem initialen Audit beobachte ich kontinuierlich, wie sich vergleichbare Organisationen in der Schweiz und international weiterentwickeln. Relevantes fliesst direkt in unsere Arbeit ein.</span>
       </li>
       <li>
         <span class="item-title">Regelmässige Konsultationen</span>
-        <span class="item-desc">Monatlicher Strategie-Call (60 Minuten). Laufende Erreichbarkeit per E-Mail für operative Abstimmungen.</span>
+        <span class="item-desc">Monatlicher Strategie-Call von 60 Minuten. Laufende Erreichbarkeit per E-Mail für operative Abstimmungen. Keine Stundenuhr bei jedem Telefonat.</span>
       </li>
     </ul>
   </div>
@@ -655,35 +771,40 @@ footer strong { color: var(--gray-300); }
 <section class="dark">
   <div class="container">
     <div class="section-tag">Investition</div>
-    <h2>Eine <em>transparente</em> Pauschalbetreuung.</h2>
-    <p class="lead">Ein klar definierter Festpreis — kein Prozentsatz von eingehenden Spenden, keine versteckten Kosten. Alles, was die Kampagnen erbringen, bleibt vollständig bei ProRaris.</p>
+    <h2>Ein <em>klarer</em> Festpreis. Kein Risiko, keine Überraschungen.</h2>
+    <p class="lead">Pauschalbetreuung von 25 bis 40 Stunden pro Monat. Flexibel verteilt: in ruhigen Monaten reichen 25 Stunden, vor und während Kampagnen werden es 40. Sie zahlen nicht pro Stunde, sondern für ein vereinbartes Resultat.</p>
 
     <div class="pricing-card">
-      <h3 style="color: var(--black);">Monatliche Betreuung — 25–40 Stunden</h3>
+      <div class="price-badge">Empfohlene Lösung</div>
+      <h3 style="color: var(--black);">Kontinuierliche Betreuung von ProRaris</h3>
 
-      <div class="price-options">
-        <div class="price-option">
-          <div class="price-option-label">Monatliche Abrechnung</div>
-          <div class="price-amount">XXXX CHF</div>
-          <div class="price-period">pro Monat</div>
-        </div>
+      <div class="price-main-block">
+        <div class="price-main-amount">3'590 CHF</div>
+        <div class="price-main-period">pro Monat, bei 12-monatigem Vertrag</div>
+      </div>
 
-        <div class="price-option price-yearly">
-          <span class="savings-badge">10 % Rabatt</span>
-          <div class="price-option-label">Bei Jahresvertrag</div>
-          <div class="price-amount">XXXX CHF</div>
-          <div class="price-period">pro Monat · 12 Monate</div>
-        </div>
+      <p class="price-rationale">
+        Ein Jahr ist die Mindestdauer, in der seriöses digitales Fundraising Wirkung zeigen kann. Audit und Strategie aufsetzen, Kanäle aufbauen, erste Kampagne durchführen, Daten auswerten, optimieren. Kürzere Zeiträume führen erfahrungsgemäss zu vorzeitigen Schlussfolgerungen.
+      </p>
+
+      <div class="price-alt">
+        Alternative ohne Jahresvertrag: <strong>3'990 CHF pro Monat</strong>, monatlich kündbar.
       </div>
 
       <div class="pricing-scope">
-        <strong>Im Festpreis enthalten:</strong> alle oben aufgeführten Leistungen (Strategie, Social Media, Meta-Ads-Steuerung, Fundraising-Optimierung, Reporting, Konsultationen). <strong>Nicht enthalten:</strong> Werbebudget für Meta Ads (wird direkt an Meta gezahlt, Höhe legen Sie fest), Transaktionsgebühren des Zahlungsdienstleisters.
+        <strong>Im Festpreis enthalten:</strong> der initiale Audit, Best-Practice-Recherche (Schweiz und international), Strategieentwicklung, Social-Media-Aufbau und -Betreuung, Steuerung und Optimierung der Meta Ads, Fundraising-Optimierung, Reporting und alle Konsultationen.
+        <br><br>
+        <strong>Nicht enthalten:</strong> das Werbebudget für Meta Ads (wird direkt an Meta gezahlt, die Höhe legen Sie selbst fest) und allfällige Transaktionsgebühren des Zahlungsdienstleisters.
       </div>
 
       <div class="addon-note">
-        <strong>Optionaler Zusatz — einmalig 1 200 CHF:</strong> Erstellung professioneller Vorlagen für Social-Media-Posts gemäss Ihrer Corporate Identity (in Zusammenarbeit mit meinem externen Grafiker). Diese Vorlagen werden im ersten Monat erstellt und können dann das ganze Jahr verwendet werden.
+        <strong>Optionaler Zusatz, einmalig 1'200 CHF:</strong> Professionelle Vorlagen für Social-Media-Posts in Ihrer Corporate Identity. Werden im ersten Monat erstellt (in Zusammenarbeit mit meinem externen Grafiker) und das ganze Jahr genutzt.
       </div>
     </div>
+
+    <p class="pricing-trust">
+      Keine prozentuale Beteiligung an Ihren Spenden. Alles, was die Kampagnen erbringen, bleibt vollständig bei ProRaris.
+    </p>
   </div>
 </section>
 
@@ -692,7 +813,7 @@ footer strong { color: var(--gray-300); }
   <div class="container">
     <div class="section-tag">Roadmap</div>
     <h2>Was im <em>ersten Jahr</em> passiert.</h2>
-    <p class="lead">Eine schrittweise Entwicklung — vom Audit über die Aktivierung bis zur Konversion. Jede Phase baut auf der vorherigen auf.</p>
+    <p class="lead">Eine schrittweise Entwicklung vom Audit über die Aktivierung bis zur Konversion. Jede Phase baut auf der vorherigen auf.</p>
 
     <div class="timeline">
       <div class="timeline-item">
@@ -738,7 +859,7 @@ footer strong { color: var(--gray-300); }
 <section class="closing">
   <div class="container">
     <h2>Bereit für ein <em>Gespräch</em>?</h2>
-    <p>Falls Sie diesen Ansatz interessant finden und mehr darüber erfahren möchten, schreiben Sie mir einfach. Ohne Druck, ohne Verpflichtung — gerne erkläre ich Ihnen die Details persönlich und gehe auf Ihre Fragen ein.</p>
+    <p>Falls Sie diesen Ansatz interessant finden, schreiben Sie mir einfach. Ohne Druck, ohne Verpflichtung. Wir können die Details in einem ersten Telefonat besprechen, und ich gehe gerne auf Ihre Fragen ein.</p>
     <a href="mailto:peter@ngo.digital" class="cta">An Peter schreiben →</a>
     <div class="signature">
       <strong>Peter Chalupiansky</strong> · Digital Fundraising Consultant<br>
