@@ -614,10 +614,19 @@ footer strong { color: var(--gray-300); }
 }
 .price-alt strong { color: var(--black); font-weight: 700; }
 .pricing-trust {
-  text-align: center; font-size: 15px; color: var(--gray-300);
+  text-align: center; font-size: 16px; color: var(--gray-500);
   font-style: italic; font-family: 'Instrument Serif', serif;
-  margin-top: 24px;
+  margin-top: 28px;
 }
+
+/* PRICING SECTION (positive light background) */
+.pricing-section {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(197, 240, 58, 0.28) 0%, rgba(197, 240, 58, 0) 65%),
+    #FBFCF3;
+  position: relative;
+}
+.pricing-section .lead { color: var(--gray-700); }
 </style>
 </head>
 <body>
@@ -768,7 +777,7 @@ footer strong { color: var(--gray-300); }
 </section>
 
 <!-- PRICING -->
-<section class="dark">
+<section class="pricing-section">
   <div class="container">
     <div class="section-tag">Investition</div>
     <h2>Ein <em>klarer</em> Festpreis. Kein Risiko, keine Überraschungen.</h2>
