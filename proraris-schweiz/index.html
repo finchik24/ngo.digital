@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digitales Fundraising & Kommunikation für ProRaris Schweiz</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #C5F03A;
+  --accent-dark: #A8D420;
+  --black: #0A0A0A;
+  --gray-900: #1A1A1A;
+  --gray-700: #4A4A4A;
+  --gray-500: #767676;
+  --gray-300: #D4D4D4;
+  --gray-100: #F5F5F5;
+  --gray-50: #FAFAFA;
+  --white: #FFFFFF;
+  --max-w: 880px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--gray-900);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* HEADER */
+header {
+  border-bottom: 1px solid var(--gray-100);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+
+.logo {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+}
+
+.header-context { font-size: 13px; color: var(--gray-500); }
+.header-context strong { color: var(--gray-900); font-weight: 600; }
+
+/* HERO */
+.hero { padding: 80px 0 60px; }
+
+.eyebrow {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--black);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+
+.greeting {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 26px;
+  color: var(--gray-700);
+  margin-bottom: 16px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(38px, 5vw, 56px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 28px;
+  color: var(--black);
+}
+
+h1 em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.hero p {
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--gray-700);
+  max-width: 720px;
+  margin-bottom: 18px;
+}
+.hero p strong { color: var(--black); font-weight: 600; }
+
+/* SECTIONS */
+section {
+  padding: 70px 0;
+  border-top: 1px solid var(--gray-100);
+}
+
+section.dark {
+  background: var(--black);
+  color: var(--white);
+}
+section.dark h2, section.dark h3, section.dark .pillar-title { color: var(--white); }
+section.dark p, section.dark li { color: var(--gray-100); }
+section.dark .lead { color: var(--gray-100); }
+
+.section-tag {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: var(--black);
+}
+
+h2 em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.lead {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--gray-700);
+  margin-bottom: 28px;
+  max-width: 720px;
+}
+.lead strong { color: var(--black); font-weight: 600; }
+
+/* OBSERVATION BOX */
+.observation {
+  background: var(--gray-50);
+  border-left: 3px solid var(--accent);
+  padding: 28px 32px;
+  border-radius: 0 12px 12px 0;
+  margin-top: 30px;
+}
+.observation p { margin-bottom: 14px; color: var(--gray-700); }
+.observation p:last-child { margin-bottom: 0; }
+.observation strong { color: var(--black); font-weight: 600; }
+
+/* PILLARS */
+.pillars { display: grid; gap: 24px; margin-top: 36px; }
+
+.pillar {
+  border: 1px solid var(--gray-100);
+  border-radius: 14px;
+  padding: 30px;
+  background: var(--white);
+  transition: border-color 0.2s;
+}
+.pillar:hover { border-color: var(--gray-300); }
+
+.pillar-num {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--accent-dark);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.pillar-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin-bottom: 14px;
+  color: var(--black);
+}
+
+.pillar p { color: var(--gray-700); }
+.pillar p strong { color: var(--black); font-weight: 600; }
+
+/* INCLUDED LIST */
+.included-list {
+  list-style: none;
+  margin-top: 28px;
+}
+
+.included-list li {
+  padding: 16px 0 16px 32px;
+  position: relative;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-700);
+}
+
+.included-list li:last-child { border-bottom: none; }
+
+.included-list li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  top: 16px;
+  color: var(--accent-dark);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.included-list .item-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--black);
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.included-list .item-desc {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* PRICING */
+.pricing-card {
+  background: var(--white);
+  border: 2px solid var(--accent);
+  border-radius: 18px;
+  padding: 40px;
+  margin-top: 36px;
+  box-shadow: 0 0 0 6px rgba(197, 240, 58, 0.12);
+}
+
+.pricing-card h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: var(--black);
+}
+
+.price-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 720px) { .price-options { grid-template-columns: 1fr; } }
+
+.price-option { padding: 0; }
+
+.price-option-label {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 10px;
+}
+
+.price-amount {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--black);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.price-period {
+  font-size: 14px;
+  color: var(--gray-700);
+  font-weight: 500;
+}
+
+.price-yearly {
+  background: var(--accent);
+  padding: 24px 28px;
+  border-radius: 14px;
+  position: relative;
+}
+
+.price-yearly .savings-badge {
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.price-yearly .price-option-label,
+.price-yearly .price-amount,
+.price-yearly .price-period {
+  color: var(--black);
+}
+
+.pricing-scope {
+  background: var(--gray-50);
+  padding: 18px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--gray-700);
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.pricing-scope strong { color: var(--black); }
+
+.addon-note {
+  font-size: 14px;
+  color: var(--gray-700);
+  line-height: 1.55;
+  padding: 18px 22px;
+  background: var(--gray-50);
+  border-radius: 10px;
+}
+
+.addon-note strong { color: var(--black); font-weight: 700; }
+
+/* TIMELINE */
+.timeline {
+  margin-top: 40px;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: var(--gray-100);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 40px;
+  padding-bottom: 32px;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-phase {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 8px;
+}
+
+.timeline-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  color: var(--black);
+}
+
+.timeline-list { list-style: none; }
+
+.timeline-list li {
+  font-size: 15px;
+  color: var(--gray-700);
+  padding: 4px 0 4px 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.timeline-list li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: var(--gray-500);
+}
+
+/* OUTCOMES */
+.outcomes-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.outcome {
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid var(--accent);
+  padding: 20px 24px;
+  border-radius: 0 10px 10px 0;
+}
+
+.outcome-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--white);
+  margin-bottom: 6px;
+  letter-spacing: -0.005em;
+}
+
+.outcome-desc {
+  font-size: 15px;
+  color: var(--gray-100);
+  line-height: 1.5;
+}
+
+/* CLOSING */
+.closing {
+  background: var(--black);
+  color: var(--white);
+  padding: 90px 0;
+  text-align: center;
+}
+
+.closing h2 {
+  color: var(--white);
+  max-width: 720px;
+  margin: 0 auto 24px;
+}
+
+.closing p {
+  color: var(--gray-100);
+  max-width: 580px;
+  margin: 0 auto 30px;
+  font-size: 18px;
+}
+
+.closing .cta {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--black);
+  text-decoration: none;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  padding: 16px 32px;
+  border-radius: 100px;
+  transition: transform 0.15s;
+}
+
+.closing .cta:hover { transform: translateY(-2px); }
+
+.closing .signature {
+  margin-top: 40px;
+  color: var(--gray-500);
+  font-size: 14px;
+}
+
+.closing .signature strong { color: var(--white); }
+
+/* FOOTER */
+footer {
+  background: var(--black);
+  color: var(--gray-500);
+  padding: 30px 0;
+  font-size: 13px;
+  text-align: center;
+  border-top: 1px solid var(--gray-900);
+}
+
+footer strong { color: var(--gray-300); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <div class="logo">ngo.digital</div>
+    <div class="header-context">Persönlicher Vorschlag für <strong>ProRaris Schweiz</strong></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Persönlicher Vorschlag</div>
+    <p class="greeting">Liebe Frau Joss,</p>
+    <h1>Ein <em>nachhaltiges Modell</em> für ProRaris Schweiz.</h1>
+    <p>Nach unserem ersten Austausch habe ich noch einmal über die Ausgangslage von ProRaris nachgedacht. Meine ursprüngliche Idee einer einmaligen Weihnachtskampagne war möglicherweise nicht der passende erste Schritt — gerade weil ProRaris zunächst eine kontinuierliche digitale Basis braucht, bevor grössere Kampagnen ihre volle Wirkung entfalten können.</p>
+    <p>Auf dieser Seite finden Sie einen alternativen Vorschlag: eine <strong>kontinuierliche Betreuung</strong>, die das digitale Fundament Schritt für Schritt aufbaut und langfristig trägt.</p>
+  </div>
+</section>
+
+<!-- OBSERVATIONS -->
+<section>
+  <div class="container">
+    <div class="section-tag">Ausgangslage</div>
+    <h2>Was mir <em>aufgefallen</em> ist.</h2>
+    <p class="lead">Bei meiner Vorbereitung auf eine mögliche Zusammenarbeit habe ich mir die digitale Präsenz von ProRaris angesehen. Drei Beobachtungen, die ich Ihnen gerne offen mitteilen möchte:</p>
+
+    <div class="observation">
+      <p><strong>1. Soziale Medien:</strong> Die Facebook-Seite von ProRaris war in den letzten zwei Jahren nicht aktiv. Auf Instagram, wo gerade jüngere Spender und Multiplikatoren erreichbar wären, ist ProRaris bisher nicht präsent.</p>
+      <p><strong>2. Fundraising-Kampagnen:</strong> Aktuell finden keine systematischen Fundraising-Kampagnen statt — weder zum Tag der Seltenen Krankheiten (Ende Februar), noch in der spendenstarken Weihnachtszeit.</p>
+      <p><strong>3. Online-Spenderkommunikation:</strong> Die Donor Journey nach einer Spende — Dankeskommunikation, Reaktivierung, Konvertierung zu Dauerspendern — scheint nicht systematisch aufgebaut zu sein.</p>
+    </div>
+
+    <p class="lead" style="margin-top: 30px;">Das ist keine Kritik. Es ist eine häufige Situation bei spezialisierten Organisationen — die operative Arbeit füllt den Tag, und Bereiche wie Social Media, Aufklärungskampagnen oder Online-Fundraising bleiben oft im Hintergrund. <strong>Genau hier könnte eine kontinuierliche externe Unterstützung den Unterschied machen.</strong></p>
+  </div>
+</section>
+
+<!-- POTENTIAL / VISION -->
+<section class="dark">
+  <div class="container">
+    <div class="section-tag">Potenzial</div>
+    <h2>Was ProRaris <em>aufbauen</em> könnte.</h2>
+    <p class="lead">Stellen Sie sich vor, wie ProRaris in einem Jahr aussehen könnte:</p>
+
+    <div class="outcomes-grid">
+      <div class="outcome">
+        <div class="outcome-title">Eine aktive Community auf Social Media</div>
+        <div class="outcome-desc">Regelmässige, professionelle Kommunikation auf Facebook und Instagram. Eine wachsende Followerschaft aus Betroffenen, Angehörigen, Fachpersonen und Spendern.</div>
+      </div>
+
+      <div class="outcome">
+        <div class="outcome-title">Aufklärung über seltene Krankheiten</div>
+        <div class="outcome-desc">Storytelling-Kampagnen, die die Realität von Betroffenen sichtbar machen. AI-gestützte Videos, persönliche Geschichten und faktische Aufklärung — Inhalte, die berühren und informieren.</div>
+      </div>
+
+      <div class="outcome">
+        <div class="outcome-title">2–3 grössere Spendenkampagnen pro Jahr</div>
+        <div class="outcome-desc">Strategisch geplant: zum Tag der Seltenen Krankheiten (Februar), zu einem Sommer-Anlass, zur Weihnachtszeit. Jede Kampagne professionell aufgesetzt, gemessen und optimiert.</div>
+      </div>
+
+      <div class="outcome">
+        <div class="outcome-title">Eine wachsende Basis von Dauerspendern</div>
+        <div class="outcome-desc">Optimierte Spenden-Microsite, durchdachte Donor Journey, personalisierte Dankes-Kommunikation. Einmalspender werden systematisch zu monatlichen Unterstützern entwickelt.</div>
+      </div>
+
+      <div class="outcome">
+        <div class="outcome-title">Klare Kennzahlen und Reporting</div>
+        <div class="outcome-desc">Monatliche und vierteljährliche Berichte zu Reichweite, Engagement, Spendeneinnahmen und Donor Retention. Entscheidungen basieren auf Daten, nicht auf Bauchgefühl.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAS DER RETAINER UMFASST -->
+<section>
+  <div class="container">
+    <div class="section-tag">Leistungsumfang</div>
+    <h2>Was die Betreuung <em>konkret</em> umfasst.</h2>
+    <p class="lead">Eine monatliche Pauschalbetreuung im Umfang von <strong>25–40 Stunden</strong> pro Monat. Flexibel verteilt nach Bedarf und Kampagnen-Phasen.</p>
+
+    <ul class="included-list">
+      <li>
+        <span class="item-title">Strategie und Planung</span>
+        <span class="item-desc">Entwicklung einer mehrjährigen Digital-Fundraising- und Kommunikationsstrategie. Jährlicher und vierteljährlicher Aktionsplan.</span>
+      </li>
+      <li>
+        <span class="item-title">Restart der Kommunikation auf Facebook und Aufbau eines Instagram-Profils</span>
+        <span class="item-desc">Reaktivierung der bestehenden Facebook-Präsenz, Aufbau eines neuen Instagram-Auftritts mit klarer Positionierung.</span>
+      </li>
+      <li>
+        <span class="item-title">Inhaltserstellung für Social Media (FB, IG, LinkedIn, …)</span>
+        <span class="item-desc">Storytelling, Aufklärungskampagnen, Information über Ihre Arbeit, Fundraising-Posts, AI-gestützte Videos. Redaktioneller Plan mit konsistenter Frequenz.</span>
+      </li>
+      <li>
+        <span class="item-title">Steuerung und Optimierung von Aufklärungs- und Fundraising-Kampagnen über Meta Ads</span>
+        <span class="item-desc">Gezielte Reichweitenkampagnen auf Facebook und Instagram. Datenbasierte Optimierung von Targeting, Creatives und Budget.</span>
+      </li>
+      <li>
+        <span class="item-title">Fundraising-Optimierung</span>
+        <span class="item-desc">Überarbeitung der Spendenseite (Storytelling, Dauerspende, bessere UX/UI). Aufbau einer Donor Journey, Spenderpflege, Vorbereitung kleinerer Kampagnen und personalisierter Microsites.</span>
+      </li>
+      <li>
+        <span class="item-title">Reporting und Analyse</span>
+        <span class="item-desc">Monatliche Kennzahlen-Berichte, vierteljährliche Strategie-Reviews mit Empfehlungen für die nächsten Schritte.</span>
+      </li>
+      <li>
+        <span class="item-title">Best-Practice-Recherche aus der Schweiz und international</span>
+        <span class="item-desc">Was funktioniert bei vergleichbaren Organisationen im In- und Ausland? Übertragung relevanter Ansätze auf ProRaris.</span>
+      </li>
+      <li>
+        <span class="item-title">Regelmässige Konsultationen</span>
+        <span class="item-desc">Monatlicher Strategie-Call (60 Minuten). Laufende Erreichbarkeit per E-Mail für operative Abstimmungen.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="dark">
+  <div class="container">
+    <div class="section-tag">Investition</div>
+    <h2>Eine <em>transparente</em> Pauschalbetreuung.</h2>
+    <p class="lead">Ein klar definierter Festpreis — kein Prozentsatz von eingehenden Spenden, keine versteckten Kosten. Alles, was die Kampagnen erbringen, bleibt vollständig bei ProRaris.</p>
+
+    <div class="pricing-card">
+      <h3 style="color: var(--black);">Monatliche Betreuung — 25–40 Stunden</h3>
+
+      <div class="price-options">
+        <div class="price-option">
+          <div class="price-option-label">Monatliche Abrechnung</div>
+          <div class="price-amount">XXXX CHF</div>
+          <div class="price-period">pro Monat</div>
+        </div>
+
+        <div class="price-option price-yearly">
+          <span class="savings-badge">10 % Rabatt</span>
+          <div class="price-option-label">Bei Jahresvertrag</div>
+          <div class="price-amount">XXXX CHF</div>
+          <div class="price-period">pro Monat · 12 Monate</div>
+        </div>
+      </div>
+
+      <div class="pricing-scope">
+        <strong>Im Festpreis enthalten:</strong> alle oben aufgeführten Leistungen (Strategie, Social Media, Meta-Ads-Steuerung, Fundraising-Optimierung, Reporting, Konsultationen). <strong>Nicht enthalten:</strong> Werbebudget für Meta Ads (wird direkt an Meta gezahlt, Höhe legen Sie fest), Transaktionsgebühren des Zahlungsdienstleisters.
+      </div>
+
+      <div class="addon-note">
+        <strong>Optionaler Zusatz — einmalig 1 200 CHF:</strong> Erstellung professioneller Vorlagen für Social-Media-Posts gemäss Ihrer Corporate Identity (in Zusammenarbeit mit meinem externen Grafiker). Diese Vorlagen werden im ersten Monat erstellt und können dann das ganze Jahr verwendet werden.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section>
+  <div class="container">
+    <div class="section-tag">Roadmap</div>
+    <h2>Was im <em>ersten Jahr</em> passiert.</h2>
+    <p class="lead">Eine schrittweise Entwicklung — vom Audit über die Aktivierung bis zur Konversion. Jede Phase baut auf der vorherigen auf.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-phase">Monat 1–2</div>
+        <div class="timeline-title">Audit, Strategie und Fundamente</div>
+        <ul class="timeline-list">
+          <li>Audit des aktuellen Stands (Web, Social Media, Spenderkommunikation)</li>
+          <li>Entwicklung der mehrjährigen Digital-Fundraising-Strategie</li>
+          <li>Recherche von Best-Practice-Beispielen im In- und Ausland</li>
+          <li>Aufsetzen des Reporting-Systems und Content-Plans</li>
+          <li>Erstellung der Social-Media-Vorlagen (optionaler Zusatz)</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-phase">Monat 3–8</div>
+        <div class="timeline-title">Aktivierung und Test-Kampagnen</div>
+        <ul class="timeline-list">
+          <li>Restart der Facebook-Kommunikation, Aufbau des Instagram-Profils</li>
+          <li>Regelmässige Inhalte (Storytelling, Aufklärung, AI-Videos)</li>
+          <li>Erste Aufklärungs- und Test-Fundraising-Kampagnen über Meta Ads</li>
+          <li>Erste Optimierungen der Spendenseite</li>
+          <li>Datenbasierte Anpassung und Lernen</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-phase">Monat 9–12</div>
+        <div class="timeline-title">Konversion, Dauerspender und Ausblick</div>
+        <ul class="timeline-list">
+          <li>Stärkere Fokussierung auf Konversion und Dauerspender-Gewinnung</li>
+          <li>Grosse Aufklärungskampagne (z.B. Tag der Seltenen Krankheiten)</li>
+          <li>Aufbau der personalisierten Dankes-Microsite für neue Spender</li>
+          <li>Jährliches Reporting und Erkenntnisse aus dem ersten Jahr</li>
+          <li>Erstellung des Aktionsplans für das Folgejahr</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="container">
+    <h2>Bereit für ein <em>Gespräch</em>?</h2>
+    <p>Falls Sie diesen Ansatz interessant finden und mehr darüber erfahren möchten, schreiben Sie mir einfach. Ohne Druck, ohne Verpflichtung — gerne erkläre ich Ihnen die Details persönlich und gehe auf Ihre Fragen ein.</p>
+    <a href="mailto:peter@ngo.digital" class="cta">An Peter schreiben →</a>
+    <div class="signature">
+      <strong>Peter Chalupiansky</strong> · Digital Fundraising Consultant<br>
+      ngo.digital · peter@ngo.digital
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <strong>ngo.digital</strong> · Made in Prag · Digitales Fundraising, das wirklich Spenden bringt.
+  </div>
+</footer>
+
+</body>
+</html>
